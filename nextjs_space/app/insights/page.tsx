@@ -5,6 +5,7 @@ import { prisma } from '@/lib/db';
 import { SectionReveal } from '@/components/ui/section-reveal';
 import { CardHover } from '@/components/ui/card-hover';
 import { formatDate } from '@/lib/format-date';
+import { BlogArticle } from '@/lib/types';
 
 export const metadata: Metadata = {
   title: 'Insights | Strategic Thinking on Branding & Design',
@@ -47,7 +48,7 @@ export default async function InsightsPage() {
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {(articles ?? []).map((article, index) => (
+          {(articles ?? []).map((article: BlogArticle, index: number) => (
             <SectionReveal key={article?.id ?? index} delay={index * 0.1}>
               <Link href={`/insights/${article?.slug ?? ''}`} className="block h-full group">
                 <CardHover className="h-full flex flex-col">
