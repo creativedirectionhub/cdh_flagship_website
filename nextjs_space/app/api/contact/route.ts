@@ -34,7 +34,7 @@ export async function POST(request: Request) {
         budget: data.budget ?? null,
         message: data.message,
         status: 'new',
-      })
+      } as Record<string, unknown>)
       .select()
       .single();
 
