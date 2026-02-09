@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { prisma } from '@/lib/db';
+import { getSupabase } from '@/lib/supabase';
 import { CaseStudyContent } from './case-study-content';
 
 export const dynamic = 'force-dynamic';
@@ -11,10 +11,21 @@ interface CaseStudyPageProps {
 
 async function getCaseStudy(slug: string) {
   try {
-    const caseStudy = await prisma.caseStudy.findUnique({
-      where: { slug },
-    });
-    return caseStudy;
+    const supabase = getSupabase();
+    if (!supabase) return null;
+    
+    const { data, error } = await supabase
+      .from('CaseStudy')
+      .select('*')
+      .eq('slug', slug)
+      .single();
+    
+    if (error) {
+      console.error('Error fetching case study:', error);
+      return null;
+    }
+    
+    return data;
   } catch (error) {
     console.error('Error fetching case study:', error);
     return null;
@@ -23,15 +34,23 @@ async function getCaseStudy(slug: string) {
 
 async function getRelatedCaseStudies(currentSlug: string, services: string[]) {
   try {
-    const related = await prisma.caseStudy.findMany({
-      where: {
-        slug: { not: currentSlug },
-        services: { hasSome: services },
-      },
-      take: 2,
-      orderBy: { order: 'asc' },
-    });
-    return related;
+    const supabase = getSupabase();
+    if (!supabase) return [];
+    
+    const { data, error } = await supabase
+      .from('CaseStudy')
+      .select('*')
+      .neq('slug', currentSlug)
+      .overlaps('services', services)
+      .order('order', { ascending: true })
+      .limit(2);
+    
+    if (error) {
+      console.error('Error fetching related case studies:', error);
+      return [];
+    }
+    
+    return data || [];
   } catch (error) {
     console.error('Error fetching related case studies:', error);
     return [];

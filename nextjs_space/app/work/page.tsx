@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { prisma } from '@/lib/db';
 import { WorkPageClient } from './work-page-client';
+import { getSupabase } from '@/lib/supabase';
 
 export const metadata: Metadata = {
   title: 'Our Work | Case Studies & Portfolio',
@@ -11,10 +11,23 @@ export const dynamic = 'force-dynamic';
 
 async function getCaseStudies() {
   try {
-    const caseStudies = await prisma.caseStudy.findMany({
-      orderBy: { order: 'asc' },
-    });
-    return caseStudies;
+    const supabase = getSupabase();
+    if (!supabase) {
+      console.error('Supabase client not initialized');
+      return [];
+    }
+    
+    const { data, error } = await supabase
+      .from('CaseStudy')
+      .select('*')
+      .order('order', { ascending: true });
+    
+    if (error) {
+      console.error('Error fetching case studies:', error);
+      return [];
+    }
+    
+    return data || [];
   } catch (error) {
     console.error('Error fetching case studies:', error);
     return [];

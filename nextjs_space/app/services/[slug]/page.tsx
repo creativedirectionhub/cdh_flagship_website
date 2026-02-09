@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ServicePageContent } from './service-page-content';
 import { getServiceBySlug, services } from '@/lib/services-data';
-import { prisma } from '@/lib/db';
+import { getSupabase } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,13 +33,21 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
 async function getRelatedCaseStudies(caseStudyIds: string[]) {
   try {
-    const caseStudies = await prisma.caseStudy.findMany({
-      where: {
-        slug: { in: caseStudyIds },
-      },
-      take: 3,
-    });
-    return caseStudies;
+    const supabase = getSupabase();
+    if (!supabase || caseStudyIds.length === 0) return [];
+    
+    const { data, error } = await supabase
+      .from('CaseStudy')
+      .select('*')
+      .in('slug', caseStudyIds)
+      .limit(3);
+    
+    if (error) {
+      console.error('Error fetching related case studies:', error);
+      return [];
+    }
+    
+    return data || [];
   } catch (error) {
     console.error('Error fetching related case studies:', error);
     return [];

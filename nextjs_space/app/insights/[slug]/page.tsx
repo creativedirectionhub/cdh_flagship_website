@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { prisma } from '@/lib/db';
+import { getSupabase } from '@/lib/supabase';
 import { ArticleContent } from './article-content';
 
 export const dynamic = 'force-dynamic';
@@ -11,10 +11,21 @@ interface ArticlePageProps {
 
 async function getArticle(slug: string) {
   try {
-    const article = await prisma.blogArticle.findUnique({
-      where: { slug },
-    });
-    return article;
+    const supabase = getSupabase();
+    if (!supabase) return null;
+    
+    const { data, error } = await supabase
+      .from('BlogArticle')
+      .select('*')
+      .eq('slug', slug)
+      .single();
+    
+    if (error) {
+      console.error('Error fetching article:', error);
+      return null;
+    }
+    
+    return data;
   } catch (error) {
     console.error('Error fetching article:', error);
     return null;
@@ -23,16 +34,24 @@ async function getArticle(slug: string) {
 
 async function getRelatedArticles(currentSlug: string, category: string) {
   try {
-    const related = await prisma.blogArticle.findMany({
-      where: {
-        slug: { not: currentSlug },
-        category,
-        published: true,
-      },
-      take: 2,
-      orderBy: { publishedDate: 'desc' },
-    });
-    return related;
+    const supabase = getSupabase();
+    if (!supabase) return [];
+    
+    const { data, error } = await supabase
+      .from('BlogArticle')
+      .select('*')
+      .neq('slug', currentSlug)
+      .eq('category', category)
+      .eq('published', true)
+      .order('publishedDate', { ascending: false })
+      .limit(2);
+    
+    if (error) {
+      console.error('Error fetching related articles:', error);
+      return [];
+    }
+    
+    return data || [];
   } catch (error) {
     console.error('Error fetching related articles:', error);
     return [];
@@ -55,7 +74,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       title: article.metaTitle ?? article.title,
       description: article.metaDescription ?? article.excerpt,
       type: 'article',
-      publishedTime: article.publishedDate?.toISOString(),
+      publishedTime: article.publishedDate,
       authors: [article.author],
     },
   };

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Clock, ArrowRight } from 'lucide-react';
-import { prisma } from '@/lib/db';
+import { getSupabase } from '@/lib/supabase';
 import { SectionReveal } from '@/components/ui/section-reveal';
 import { CardHover } from '@/components/ui/card-hover';
 import { formatDate } from '@/lib/format-date';
@@ -16,11 +16,24 @@ export const dynamic = 'force-dynamic';
 
 async function getArticles() {
   try {
-    const articles = await prisma.blogArticle.findMany({
-      where: { published: true },
-      orderBy: { publishedDate: 'desc' },
-    });
-    return articles;
+    const supabase = getSupabase();
+    if (!supabase) {
+      console.error('Supabase client not initialized');
+      return [];
+    }
+    
+    const { data, error } = await supabase
+      .from('BlogArticle')
+      .select('*')
+      .eq('published', true)
+      .order('publishedDate', { ascending: false });
+    
+    if (error) {
+      console.error('Error fetching articles:', error);
+      return [];
+    }
+    
+    return data || [];
   } catch (error) {
     console.error('Error fetching articles:', error);
     return [];

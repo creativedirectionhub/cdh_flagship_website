@@ -7,7 +7,7 @@ import { ProcessSection } from '@/components/home/process-section';
 import { FounderSection } from '@/components/home/founder-section';
 import { InsightsPreview } from '@/components/home/insights-preview';
 import { FinalCTA } from '@/components/home/final-cta';
-import { prisma } from '@/lib/db';
+import { getSupabase } from '@/lib/supabase';
 
 export const metadata: Metadata = {
   title: 'Creative Direction Hub | Premium Brand & Web Design Studio',
@@ -18,12 +18,22 @@ export const dynamic = 'force-dynamic';
 
 async function getFeaturedCaseStudies() {
   try {
-    const caseStudies = await prisma.caseStudy.findMany({
-      where: { featured: true },
-      orderBy: { order: 'asc' },
-      take: 3,
-    });
-    return caseStudies;
+    const supabase = getSupabase();
+    if (!supabase) return [];
+    
+    const { data, error } = await supabase
+      .from('CaseStudy')
+      .select('*')
+      .eq('featured', true)
+      .order('order', { ascending: true })
+      .limit(3);
+    
+    if (error) {
+      console.error('Error fetching case studies:', error);
+      return [];
+    }
+    
+    return data || [];
   } catch (error) {
     console.error('Error fetching case studies:', error);
     return [];
@@ -32,12 +42,22 @@ async function getFeaturedCaseStudies() {
 
 async function getLatestArticles() {
   try {
-    const articles = await prisma.blogArticle.findMany({
-      where: { published: true },
-      orderBy: { publishedDate: 'desc' },
-      take: 3,
-    });
-    return articles;
+    const supabase = getSupabase();
+    if (!supabase) return [];
+    
+    const { data, error } = await supabase
+      .from('BlogArticle')
+      .select('*')
+      .eq('published', true)
+      .order('publishedDate', { ascending: false })
+      .limit(3);
+    
+    if (error) {
+      console.error('Error fetching articles:', error);
+      return [];
+    }
+    
+    return data || [];
   } catch (error) {
     console.error('Error fetching articles:', error);
     return [];
