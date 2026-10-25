@@ -1,0 +1,86 @@
+@import "@fontsource/schibsted-grotesk/latin-400.css";
+@import "@fontsource/schibsted-grotesk/latin-600.css";
+@import "@fontsource/schibsted-grotesk/latin-800.css";
+@import "@fontsource/schibsted-grotesk/latin-900.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #121110;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #121110;
+  color: #efe9df;
+  font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: #ff5a1f;
+  color: #121110;
+}
+
+:focus-visible {
+  outline: 2px solid #ff5a1f;
+  outline-offset: 2px;
+}
+
+@layer components {
+  .gutter {
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 768px) {
+    .gutter {
+      padding-left: max(48px, env(safe-area-inset-left, 0px));
+      padding-right: max(48px, env(safe-area-inset-right, 0px));
+    }
+  }
+  @media (min-width: 1280px) {
+    .gutter {
+      padding-left: 72px;
+      padding-right: 72px;
+    }
+  }
+  .slate {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .btn-primary {
+    @apply inline-flex min-h-[52px] items-center justify-center rounded-sm bg-gaffer px-7 text-[16px] font-extrabold text-on-gaffer transition-[filter] hover:brightness-110;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-[52px] items-center justify-center rounded-sm border border-line px-7 text-[16px] font-semibold text-ink transition-colors hover:border-muted;
+  }
+  /* torn tape edge, shared by every tape strip on the page */
+  .tape-edge {
+    clip-path: polygon(0 8%, 1.5% 26%, 0 44%, 1.5% 62%, 0 80%, 1.5% 96%, 98.5% 100%, 100% 84%, 98.5% 66%, 100% 48%, 98.5% 30%, 100% 12%, 98.5% 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
