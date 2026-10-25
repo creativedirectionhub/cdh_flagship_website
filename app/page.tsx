@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Hero from "./components/Hero";
 import FilmReel from "./components/FilmReel";
 import AdCheckForm from "./components/AdCheckForm";
@@ -32,9 +33,9 @@ const plans = [
   {
     label: "Most brands",
     name: "Growth Retainer",
-    pace: "Weekly",
-    term: "month to month",
-    items: ["New ads every week", "Meta and TikTok ads run for you", "DM automation and a weekly report"],
+    pace: "16 ads",
+    term: "a month",
+    items: ["16 new ads a month, 3 hooks each", "Meta and TikTok ads run for you", "DM automation and a weekly report"],
     cta: "Book a call",
     featured: true,
   },
@@ -46,6 +47,27 @@ const plans = [
     items: ["A cinematic spot for the season", "Directed by Willie Bernoudy", "Cut-downs for every platform"],
     cta: "Talk to us",
   },
+];
+
+const fit = {
+  yes: ["Online consumer brands already selling every day", "Already running ads on Meta or TikTok", "A founder or marketer who wants one team to own the creative"],
+  no: ["Brands that haven't launched yet", "B2B software and lead-gen businesses", "Anyone shopping for the cheapest clip per dollar"],
+};
+
+const testCard = [
+  { k: "The bet", v: "People buy a silk pillowcase for the morning result: less breakage, less frizz. Price only lands once they believe the result." },
+  { k: "Three hooks", v: "Review: \u201cHair doesn't break like it did before.\u201d Price: \u201cAbout 29\u00a2 a night for better mornings.\u201d Routine: \u201cYour hair care doesn't stop at bedtime.\u201d" },
+  { k: "What we'd read", v: "Thumb-stop rate in the first 3 seconds, click-through, then cost per purchase once each ad has enough spend to judge." },
+  { k: "What we'd make next", v: "Three new hooks on the winning angle, a creator version of it, and a cut-down for Stories. The losing angle gets switched off." },
+];
+
+const faqs = [
+  { q: "Who owns the ads?", a: "You do, once the work is paid for. Creator usage terms (how long and where a creator's face can run) are written into each deal before filming." },
+  { q: "How do you use AI?", a: "For speed: concepts, edits, product shots, voice and AI talent. Every AI performer is labeled as AI, and a director checks every piece before you see it. Where a real face matters, we cast real creators." },
+  { q: "How many revisions do I get?", a: "Two rounds of revisions on every ad." },
+  { q: "How fast is the first cut?", a: "Within 5 business days of the brief being approved." },
+  { q: "What's in the Growth Retainer?", a: "16 new ads a month, each with 3 hook variations and sized for Meta and TikTok, plus running the ads, DM automation and a weekly report. Month to month." },
+  { q: "How does the Free Ad Check work?", a: "Send your website. We pull your three most recent ads, mark what's holding each one back, and email you the fixes. It's free, and you keep it whether you hire us or not." },
 ];
 
 const addOns = ["AI Spokesperson", "Landing Page and Funnel", "Email and SMS Automation", "Creative Audit", "Influencer Campaigns"];
@@ -78,8 +100,9 @@ export default function Home() {
 
       <header className="gutter sticky top-0 z-40 border-b border-line/70 bg-ground/90 backdrop-blur-sm" style={{ top: "env(safe-area-inset-top, 0px)" }}>
         <nav className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between gap-6" aria-label="Main">
-          <a href="#top" aria-label="Creative Direction Hub, home" className="shrink-0">
+          <a href="#top" className="shrink-0">
             <Wordmark size={30} />
+            <span className="sr-only">Creative Direction Hub, home</span>
           </a>
           <ul className="hidden items-center gap-8 text-[15px] font-semibold md:flex">
             <li><a href="#work" className="hover:text-gaffer">Work</a></li>
@@ -118,6 +141,31 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Who it's for */}
+        <section className="gutter border-t border-line py-16 md:py-20" aria-labelledby="fit-title">
+          <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+            <h2 id="fit-title" className="text-[clamp(32px,4vw,56px)] font-black leading-[0.95] tracking-tighter">Who it's for.</h2>
+            <div className="grid min-w-0 gap-10 sm:grid-cols-2">
+              <div>
+                <p className="slate text-gaffer">Built for</p>
+                <ul className="mt-4 grid gap-3 text-[17px] leading-[1.5]">
+                  {fit.yes.map((t) => (
+                    <li key={t} className="relative pl-6"><span aria-hidden="true" className="absolute left-0 top-[11px] h-[3px] w-3 bg-gaffer" />{t}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="slate text-muted">Not a fit</p>
+                <ul className="mt-4 grid gap-3 text-[17px] leading-[1.5] text-muted">
+                  {fit.no.map((t) => (
+                    <li key={t} className="relative pl-6"><span aria-hidden="true" className="absolute left-0 top-[11px] h-px w-3 bg-muted" />{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Work */}
         <section id="work" className="gutter scroll-mt-20 bg-raised py-24 md:py-32" aria-labelledby="work-title">
           <div className="mx-auto max-w-[1440px]">
@@ -129,9 +177,8 @@ export default function Home() {
               {specAds.map((a, n) => (
                 <li key={a.src} className={`min-w-0 ${n % 2 === 1 ? "lg:translate-y-10" : ""}`}>
                   <figure className="grid gap-3">
-                    <div className="aspect-[9/16] overflow-hidden rounded-phone border border-line bg-surface">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={a.src} alt={`${a.brand} spec ad concept: ${a.headline}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]" />
+                    <div className="relative aspect-[9/16] overflow-hidden rounded-phone border border-line bg-surface">
+                      <Image src={a.src} alt={`${a.brand} spec ad concept: ${a.headline}`} width={540} height={960} sizes="(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 46vw" className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]" />
                     </div>
                     <figcaption>
                       <span className="block text-[16px] font-extrabold">{a.brand}</span>
@@ -144,6 +191,21 @@ export default function Home() {
             <p className="mt-20 max-w-[70ch] text-[14px] leading-[1.5] text-muted">
               Spec concepts made by Creative Direction Hub. Not commissioned by, affiliated with or endorsed by these brands.
             </p>
+
+            <div className="mt-20 rounded-md border border-line bg-ground p-7 md:p-10">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <h3 className="text-[clamp(28px,3.4vw,44px)] font-black leading-[0.95] tracking-tighter">How we'd test it: Blissy.</h3>
+                <p className="slate text-muted">One spec set · Concept</p>
+              </div>
+              <dl className="mt-8 grid gap-px overflow-hidden rounded-sm bg-line md:grid-cols-2 lg:grid-cols-4">
+                {testCard.map((c, n) => (
+                  <div key={c.k} className="bg-ground p-6">
+                    <dt className={`slate ${n === testCard.length - 1 ? "text-gaffer" : "text-muted"}`}>{c.k}</dt>
+                    <dd className="mt-3 text-[16px] leading-[1.55]">{c.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
 
             <div className="mt-24 border-t border-line pt-12">
               <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
@@ -185,7 +247,7 @@ export default function Home() {
         <section id="plans" className="gutter scroll-mt-20 border-t border-line py-24 md:py-32" aria-labelledby="plans-title">
           <div className="mx-auto max-w-[1440px]">
             <SectionHead slate="Plans" title={<span id="plans-title">Three ways to work with us.</span>}>
-              Every plan is quoted on a short call, after you've seen your Free Ad Check. No long contracts on the Retainer.
+              Every plan is quoted on a short call, after you've seen your Free Ad Check. The Retainer runs month to month.
             </SectionHead>
             <ul className="mt-14 grid gap-6 lg:grid-cols-3">
               {plans.map((p) => (
@@ -221,8 +283,7 @@ export default function Home() {
           <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
             <figure className="min-w-0">
               <div className="relative">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/media/about-willie.jpg" alt="Willie Bernoudy photographing on the Great Wall of China" width={600} height={800} loading="lazy" className="aspect-[3/4] w-full rounded-md border border-line object-cover" />
+                <Image src="/media/about-willie.webp" alt="Willie Bernoudy photographing on the Great Wall of China" width={600} height={800} sizes="(min-width: 1024px) 34vw, 92vw" className="aspect-[3/4] w-full rounded-md border border-line object-cover" />
                 <TapeMark size={88} className="absolute -bottom-6 -right-4 rotate-6" />
               </div>
               <figcaption className="slate mt-8 text-[11px] text-muted">On set · The Great Wall, China</figcaption>
@@ -244,6 +305,30 @@ export default function Home() {
                   </div>
                 ))}
               </dl>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="gutter scroll-mt-20 border-t border-line py-24 md:py-32" aria-labelledby="faq-title">
+          <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+            <div className="min-w-0">
+              <p className="slate text-muted">Questions</p>
+              <h2 id="faq-title" className="mt-4 text-[clamp(40px,5.6vw,84px)] font-black leading-[0.92] tracking-tighter">Before you ask.</h2>
+            </div>
+            <div className="min-w-0 border-t border-line">
+              {faqs.map((f) => (
+                <details key={f.q} className="group border-b border-line">
+                  <summary className="flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-6 py-5 text-[20px] font-extrabold tracking-[-0.01em] [&::-webkit-details-marker]:hidden">
+                    {f.q}
+                    <span aria-hidden="true" className="relative h-4 w-4 shrink-0">
+                      <span className="absolute left-0 top-[7px] h-[2px] w-4 bg-gaffer" />
+                      <span className="absolute left-[7px] top-0 h-4 w-[2px] bg-gaffer transition-transform group-open:scale-y-0" />
+                    </span>
+                  </summary>
+                  <p className="max-w-[62ch] pb-6 text-[17px] leading-[1.6] text-muted">{f.a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>

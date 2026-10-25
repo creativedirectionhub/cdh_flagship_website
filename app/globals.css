@@ -1,9 +1,3 @@
-@import "@fontsource/schibsted-grotesk/latin-400.css";
-@import "@fontsource/schibsted-grotesk/latin-600.css";
-@import "@fontsource/schibsted-grotesk/latin-800.css";
-@import "@fontsource/schibsted-grotesk/latin-900.css";
-@import "@fontsource/ibm-plex-mono/latin-400.css";
-@import "@fontsource/ibm-plex-mono/latin-500.css";
 
 @tailwind base;
 @tailwind components;
@@ -21,7 +15,7 @@ html {
 body {
   background: #121110;
   color: #efe9df;
-  font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-display), "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -58,7 +52,7 @@ h1, h2, h3 {
     }
   }
   .slate {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-family: var(--font-mono), ui-monospace, monospace;
     font-size: 13px;
     line-height: 1.4;
     font-weight: 500;
@@ -76,6 +70,12 @@ h1, h2, h3 {
     clip-path: polygon(0 8%, 1.5% 26%, 0 44%, 1.5% 62%, 0 80%, 1.5% 96%, 98.5% 100%, 100% 84%, 98.5% 66%, 100% 48%, 98.5% 30%, 100% 12%, 98.5% 0);
   }
 }
+
+/* Hero intro, pure CSS so the headline paints on the first frame */
+@keyframes tape-slap { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes rise { from { transform: translateY(40px); } to { transform: none; } }
+.tape-slap { transform-origin: 0 50%; animation: tape-slap 0.32s cubic-bezier(0.2, 0.9, 0.2, 1) 0.35s both; }
+.rise { animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s both; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

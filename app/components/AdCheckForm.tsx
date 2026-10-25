@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackLead } from "./Pixels";
 
 type State = "idle" | "sending" | "sent" | "offline" | "error";
 
@@ -25,7 +26,10 @@ export default function AdCheckForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ website, email }),
       });
-      if (res.ok) setState("sent");
+      if (res.ok) {
+        trackLead();
+        setState("sent");
+      }
       else if (res.status === 503) setState("offline");
       else setState("error");
     } catch {

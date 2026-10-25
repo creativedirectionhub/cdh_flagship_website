@@ -19,8 +19,8 @@ const config: Config = {
         kill: "#e5484d",
       },
       fontFamily: {
-        display: ['"Schibsted Grotesk"', '"Helvetica Neue"', "Arial", "sans-serif"],
-        mono: ['"IBM Plex Mono"', "ui-monospace", "Menlo", "monospace"],
+        display: ["var(--font-display)", '"Helvetica Neue"', "Arial", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "Menlo", "monospace"],
       },
       borderRadius: { tape: "2px", sm: "4px", md: "8px", phone: "12px" },
       letterSpacing: { tightest: "-0.045em", tighter: "-0.035em", slate: "0.14em" },

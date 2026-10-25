@@ -1,13 +1,15 @@
 "use client";
 
+import Image from "next/image";
+import { preload } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 import { reel } from "./ads";
 
 const STILL_MS = 3000;
 
 export default function Hero() {
-  const root = useRef<HTMLElement>(null);
-  const videos = useRef<(HTMLVideoElement | null)[]>([]);
+  preload("/media/golf-lifestyle.webp", { as: "image", fetchPriority: "high" });
+    const videos = useRef<(HTMLVideoElement | null)[]>([]);
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reduce, setReduce] = useState(false);
@@ -17,23 +19,6 @@ export default function Hero() {
 
   useEffect(() => {
     setReduce(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
-
-  // Intro: the headline rises, then a strip of gaffer tape slaps down under "watch."
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !root.current) return;
-    let ctx: { revert: () => void } | undefined;
-    import("gsap").then(({ gsap }) => {
-      ctx = gsap.context(() => {
-        gsap
-          .timeline({ defaults: { ease: "power3.out" } })
-          .from("[data-line]", { yPercent: 110, duration: 0.8, stagger: 0.12 })
-          .from("[data-tape-word]", { scaleX: 0, transformOrigin: "0% 50%", duration: 0.3, ease: "power4.out" }, "-=0.1")
-          .from("[data-reel]", { y: 48, opacity: 0, duration: 0.9 }, "-=0.55")
-          .from("[data-fade]", { opacity: 0, y: 12, duration: 0.6, stagger: 0.08 }, "-=0.7");
-      }, root);
-    });
-    return () => ctx?.revert();
   }, []);
 
   // Play only the active take. Videos advance when they end, stills after 3 seconds.
@@ -57,7 +42,7 @@ export default function Hero() {
   const take = String(i + 1).padStart(2, "0");
 
   return (
-    <section ref={root} className="gutter relative overflow-hidden pb-20 pt-10 md:pb-28 md:pt-16">
+    <section className="gutter relative overflow-hidden pb-20 pt-10 md:pb-28 md:pt-16">
       <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-10">
         <div className="min-w-0">
           <p data-fade className="slate text-gaffer">Your brand, directed.</p>
@@ -67,7 +52,7 @@ export default function Hero() {
               <span data-line className="block">
                 actually{" "}
                 <span className="relative inline-block">
-                  <span data-tape-word aria-hidden="true" className="tape-edge absolute -left-[0.1em] -right-[0.14em] bottom-[0.02em] top-[0.14em] block bg-gaffer" />
+                  <span data-tape-word aria-hidden="true" className="tape-edge tape-slap absolute -left-[0.1em] -right-[0.14em] bottom-[0.02em] top-[0.14em] block bg-gaffer" />
                   <span className="relative text-on-gaffer">watch.</span>
                 </span>
               </span>
@@ -80,9 +65,16 @@ export default function Hero() {
             <a href="#ad-check" className="btn-primary">Get a Free Ad Check</a>
             <a href="#work" className="btn-secondary">See the work</a>
           </div>
+          <a data-fade href="#about" className="group mt-10 inline-flex items-center gap-4">
+            <Image src="/media/about-willie.webp" alt="" width={56} height={56} className="h-14 w-14 rounded-full border border-line object-cover object-top grayscale" />
+            <span>
+              <span className="slate block text-[11px] text-muted">Every ad directed by</span>
+              <span className="block text-[17px] font-extrabold group-hover:text-gaffer">Willie Bernoudy, founder and creative director</span>
+            </span>
+          </a>
         </div>
 
-        <div data-reel className="flex min-w-0 flex-col items-center gap-5 lg:items-end">
+        <div data-reel className="rise flex min-w-0 flex-col items-center gap-5 lg:items-end">
           <div className="relative w-[min(340px,76vw)]" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
             <div aria-hidden="true" className="absolute inset-0 -translate-x-5 translate-y-5 -rotate-3 rounded-phone border border-line bg-surface" />
             <div className="relative aspect-[9/16] overflow-hidden rounded-phone border border-line bg-surface">
@@ -95,18 +87,18 @@ export default function Hero() {
                     poster={r.poster}
                     muted
                     playsInline
-                    preload={n === 0 ? "auto" : "metadata"}
+                    preload="metadata"
                     aria-label={r.alt}
                     onEnded={() => n === i && next()}
                     className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${n === i ? "opacity-100" : "opacity-0"}`}
                   />
                 ) : (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     key={r.src}
                     src={r.src}
                     alt={r.alt}
-                    loading="lazy"
+                    fill
+                    sizes="340px"
                     className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${n === i ? "opacity-100" : "opacity-0"}`}
                   />
                 ),
