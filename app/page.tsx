@@ -4,6 +4,10 @@ import FilmReel from "./components/FilmReel";
 import AdCheckForm from "./components/AdCheckForm";
 import { TapeMark, Wordmark } from "./components/Brand";
 import { specAds } from "./components/ads";
+import { BOOKING_URL } from "./config";
+
+const book = BOOKING_URL || "#ad-check";
+const bookProps = BOOKING_URL ? { target: "_blank", rel: "noopener" } : {};
 
 const promises = [
   { title: "A director on every ad", body: "Someone with taste decides the hook, the angle and the cut before anything gets made." },
@@ -265,7 +269,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a href="#ad-check" className={`mt-auto ${p.featured ? "btn-primary" : "btn-secondary"}`}>{p.cta}</a>
+                  <a href={p.cta === "Start a Sprint" ? "#ad-check" : book} {...(p.cta === "Start a Sprint" ? {} : bookProps)} className={`mt-auto ${p.featured ? "btn-primary" : "btn-secondary"}`}>{p.cta}</a>
                 </li>
               ))}
             </ul>
@@ -367,6 +371,7 @@ export default function Home() {
             <div className="grid gap-2 text-[15px]">
               <span className="slate text-muted">Email</span>
               <span className="select-all font-semibold">hello@creativedirectionhub.com</span>
+              {BOOKING_URL && <a href={BOOKING_URL} target="_blank" rel="noopener" className="mt-2 font-semibold text-gaffer hover:underline">Book a 20-minute intro call</a>}
             </div>
           </div>
           <div className="flex flex-wrap justify-between gap-4 border-t border-line pt-6 text-[13px] text-muted">

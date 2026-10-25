@@ -14,6 +14,7 @@ export default function AdCheckForm() {
     const form = new FormData(e.currentTarget);
     const website = String(form.get("website") || "").trim();
     const email = String(form.get("email") || "").trim();
+    const company = String(form.get("company") || "");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setEmailError("Add a full email address, like you@yourbrand.com.");
       return;
@@ -24,7 +25,7 @@ export default function AdCheckForm() {
       const res = await fetch("/api/ad-check", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ website, email }),
+        body: JSON.stringify({ website, email, company }),
       });
       if (res.ok) {
         trackLead();
@@ -49,6 +50,10 @@ export default function AdCheckForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-6">
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="grid gap-2">
         <label htmlFor="website" className="slate text-muted">Brand website</label>
         <input id="website" name="website" type="url" required placeholder="yourbrand.com" autoComplete="url"
