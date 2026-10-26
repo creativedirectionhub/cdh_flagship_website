@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { BREVO_LIST_ID, NOTIFY_EMAIL, SENDER, BOOKING_URL } from "../../config";
+import { BREVO_LIST_ID, NOTIFY_EMAIL, SENDER, BOOKING_URL, MAKE_WEBHOOK } from "../../config";
 
 // Free Ad Check intake.
 // With BREVO_API_KEY set in Vercel, each request:
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
   }
 
   const key = process.env.BREVO_API_KEY;
-  const hook = process.env.MAKE_WEBHOOK_URL;
+  const hook = MAKE_WEBHOOK;
   if (!key && !hook) return NextResponse.json({ error: "not_configured" }, { status: 503 });
 
   let delivered = false;
