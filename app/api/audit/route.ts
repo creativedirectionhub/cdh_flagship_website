@@ -90,7 +90,7 @@ export async function POST(req: Request) {
       htmlContent: `<p>New Free Creative Audit request.</p><p>${rows}</p><p>Reply to this email to answer them directly. Promise on the site: audit back within 3 business days.</p>`,
     });
 
-    const booking = BOOKING_URL ? `<p>Want to talk it through sooner? <a href="${BOOKING_URL}">Book a 20-minute call</a>.</p>` : "";
+    const booking = BOOKING_URL ? `<p>Want to talk it through sooner? <a href="${BOOKING_URL}">Book a 30-minute call</a>.</p>` : "";
     await brevo("/smtp/email", key, {
       sender: SENDER,
       to: [{ email, ...(name ? { name } : {}) }],

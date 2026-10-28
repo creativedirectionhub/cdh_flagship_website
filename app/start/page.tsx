@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import AuditForm from "../components/AuditForm";
-import { BOOKING_URL } from "../config";
+import { BOOKING_URL, QUICK_CALL_URL } from "../config";
 import { site } from "../content/services";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const next = [
   { t: "Within a day", b: "You get a note that it's in hand, with anything we need to see that we couldn't find." },
   { t: "Within 3 business days", b: "Your audit lands by email: what's holding the brand, the site and the last three pieces back, with fixes you can use whether you hire us or not." },
-  { t: "If it fits", b: "A 20-minute call. We agree a scope and a fixed price, or a monthly retainer, and start." },
+  { t: "If it fits", b: "A 30-minute call. We agree a scope and a fixed price, or a monthly retainer, and start." },
 ];
 
 export default function StartPage() {
@@ -33,7 +33,7 @@ export default function StartPage() {
                 </li>
               ))}
             </ol>
-            <p className="mt-8 text-[15px] text-muted">Rather talk first? Email <a href={`mailto:${site.email}`} className="font-semibold text-ink hover:text-gaffer">{site.email}</a>{BOOKING_URL && <> or <a href={BOOKING_URL} target="_blank" rel="noopener" className="font-semibold text-gaffer hover:underline">book a 20-minute call</a></>}.</p>
+            <p className="mt-8 text-[15px] text-muted">Rather talk first? Email <a href={`mailto:${site.email}`} className="font-semibold text-ink hover:text-gaffer">{site.email}</a>{BOOKING_URL && <> or <a href={BOOKING_URL} target="_blank" rel="noopener" className="font-semibold text-gaffer hover:underline">book a 30-minute call</a>. Just a quick question? <a href={QUICK_CALL_URL} target="_blank" rel="noopener" className="font-semibold text-gaffer hover:underline">Grab 15 minutes</a></>}.</p>
           </div>
           <div className="min-w-0 rounded-md border border-line bg-raised p-7 md:p-10">
             <AuditForm />
@@ -44,7 +44,7 @@ export default function StartPage() {
         <section className="gutter border-t border-line py-16 md:py-24" aria-labelledby="book-title">
           <div className="mx-auto max-w-[1440px]">
             <h2 id="book-title" className="text-[clamp(32px,4vw,56px)] font-black leading-[0.95] tracking-tighter">Or book a call now.</h2>
-            <iframe src={BOOKING_URL} title="Book a call with Willie Bernoudy" className="mt-8 h-[720px] w-full rounded-md border border-line bg-surface" loading="lazy" />
+            <iframe src={`${BOOKING_URL}?embed=true&theme=dark`} title="Book a call with Willie Bernoudy" className="mt-8 h-[720px] w-full rounded-md border border-line bg-surface" loading="lazy" />
           </div>
         </section>
       )}

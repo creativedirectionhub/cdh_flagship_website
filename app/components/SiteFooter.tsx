@@ -25,7 +25,7 @@ export default function SiteFooter() {
             <div className="grid gap-2 text-[15px]">
               <span className="slate text-muted">Email</span>
               <a href={`mailto:${site.email}`} className="font-semibold hover:text-gaffer">{site.email}</a>
-              {BOOKING_URL && <a href={BOOKING_URL} target="_blank" rel="noopener" className="mt-2 font-semibold text-gaffer hover:underline">Book a 20-minute call</a>}
+              {BOOKING_URL && <a href={BOOKING_URL} target="_blank" rel="noopener" className="mt-2 font-semibold text-gaffer hover:underline">Book a 30-minute call</a>}
             </div>
           </div>
         </div>

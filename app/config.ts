@@ -8,7 +8,10 @@ export const NOTIFY_EMAIL = "hello@creativedirectionhub.com";
 export const SENDER = { name: "Creative Direction Hub", email: "hello@creativedirectionhub.com" };
 
 /** Cal.com booking link for intro calls. Empty = "Book a call" buttons go to the Ad Check form. */
-export const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "";
+export const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "https://cal.com/creative-direction-hub-p8ugjs/30min";
+
+/** Short intro call for people who just have a question. */
+export const QUICK_CALL_URL = "https://cal.com/creative-direction-hub-p8ugjs/15min";
 
 /** Optional Brevo list for Ad Check leads (Brevo → Contacts → Lists → the list's ID). */
 export const BREVO_LIST_ID = process.env.BREVO_LIST_ID ? Number(process.env.BREVO_LIST_ID) : undefined;
