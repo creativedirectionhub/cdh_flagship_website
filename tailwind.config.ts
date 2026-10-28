@@ -6,12 +6,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ground: "#121110",
-        raised: "#1b1a18",
-        surface: "#2a2826",
-        line: "#3a3733",
-        ink: "#efe9df",
-        muted: "#a8a196",
+        ground: "rgb(var(--ground) / <alpha-value>)",
+        raised: "rgb(var(--raised) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        body: "rgb(var(--body) / <alpha-value>)",
         gaffer: "#ff5a1f",
         "on-gaffer": "#121110",
         scale: "#4caf7a",

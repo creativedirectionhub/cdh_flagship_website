@@ -3,9 +3,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root, .set {
   color-scheme: dark;
+  --ground: 18 17 16;
+  --raised: 27 26 24;
+  --surface: 42 40 38;
+  --line: 58 55 51;
+  --ink: 239 233 223;
+  --muted: 168 161 150;
+  --body: 207 200 188;
 }
+/* Bone theme: light sections so the site breathes between dark ones */
+.bone {
+  color-scheme: light;
+  --ground: 239 233 223;
+  --raised: 230 223 211;
+  --surface: 246 242 234;
+  --line: 207 199 184;
+  --ink: 18 17 16;
+  --muted: 107 101 92;
+  --body: 58 55 51;
+  background: rgb(var(--ground));
+  color: rgb(var(--ink));
+}
+/* Gaffer Orange as text on Bone needs a deeper cut to pass contrast */
+.bone .text-gaffer { color: #b53b0c; }
 
 html {
   background: #121110;
@@ -13,8 +35,8 @@ html {
 }
 
 body {
-  background: #121110;
-  color: #efe9df;
+  background: rgb(var(--ground));
+  color: rgb(var(--ink));
   font-family: var(--font-display), "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -76,6 +98,19 @@ h1, h2, h3 {
 @keyframes rise { from { transform: translateY(40px); } to { transform: none; } }
 .tape-slap { transform-origin: 0 50%; animation: tape-slap 0.32s cubic-bezier(0.2, 0.9, 0.2, 1) 0.35s both; }
 .rise { animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s both; }
+
+/* Scroll reveal, no JS: browsers without scroll-driven animations show everything as is */
+@keyframes reveal { from { transform: translateY(32px); } to { transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+  }
+}
+
+/* The tape under one key word per page */
+.tape-word { position: relative; display: inline-block; }
+.tape-word > i { position: absolute; left: -0.1em; right: -0.14em; top: 0.14em; bottom: 0.02em; display: block; background: #ff5a1f; }
+.tape-word > b { position: relative; font-weight: inherit; color: #121110; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
