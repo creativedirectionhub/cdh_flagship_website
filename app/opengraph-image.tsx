@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 export const runtime = "nodejs";
-export const alt = "Creative Direction Hub. Your brand, directed.";
+export const alt = "Creative Direction Hub. We put brands on their mark.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -19,9 +19,9 @@ export default async function OG() {
           <polygon points="80,83 122,82 121,188 115,183 109,190 103,184 97,190 91,184 85,190 80,186" fill="#FF5A1F" />
         </svg>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 118, lineHeight: 0.9, letterSpacing: "-0.045em", display: "flex" }}>Your brand,</div>
+          <div style={{ fontSize: 118, lineHeight: 0.9, letterSpacing: "-0.045em", display: "flex" }}>We put brands</div>
           <div style={{ fontSize: 118, lineHeight: 0.9, letterSpacing: "-0.045em", display: "flex" }}>
-            <span style={{ background: "#FF5A1F", color: "#121110", padding: "0 18px" }}>directed.</span>
+            <span style={{ marginRight: 28 }}>on their</span><span style={{ background: "#FF5A1F", color: "#121110", padding: "0 18px" }}>mark.</span>
           </div>
           <div style={{ fontSize: 30, marginTop: 36, color: "#a8a196", letterSpacing: "-0.01em" }}>Creative Direction Hub · The creative department for growing businesses</div>
         </div>

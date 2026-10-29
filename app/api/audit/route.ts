@@ -96,7 +96,7 @@ export async function POST(req: Request) {
       to: [{ email, ...(name ? { name } : {}) }],
       replyTo: { email: NOTIFY_EMAIL, name: "Willie Bernoudy" },
       subject: "Your Free Creative Audit is in",
-      htmlContent: `<p>Thanks for sending ${esc(website)} over.</p><p>I'm reviewing your brand, your site and your last three pieces now. You'll get what's holding them back, with fixes, within 3 business days. They're yours to keep whether you hire us or not.</p>${booking}<p>Willie Bernoudy<br>Founder and Creative Director, Creative Direction Hub<br>Your brand, directed.</p>`,
+      htmlContent: `<p>Thanks for sending ${esc(website)} over.</p><p>I'm reviewing your brand, your site and your last three pieces now. You'll get what's holding them back, with fixes, within 3 business days. They're yours to keep whether you hire us or not.</p>${booking}<p>Willie Bernoudy<br>Founder and Creative Director, Creative Direction Hub<br>We put brands on their mark.</p>`,
     });
 
     delivered = delivered || saved || alerted;

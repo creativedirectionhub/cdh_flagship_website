@@ -61,7 +61,7 @@ export default function SiteHeader() {
               </li>
             ))}
           </ul>
-          <p className="gutter slate py-6 text-muted">Your brand, directed.</p>
+          <p className="gutter slate py-6 text-muted">We put brands on their mark.</p>
         </div>
       )}
     </header>

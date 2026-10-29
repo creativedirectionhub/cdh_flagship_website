@@ -9,11 +9,11 @@ export default function Hero() {
       <div className="mx-auto grid max-w-[1440px] items-end gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-16">
         <div className="min-w-0">
           <p className="slate text-gaffer">{site.promise}</p>
-          <h1 className="mt-6 font-black leading-[0.9] tracking-tightest text-[clamp(56px,9.4vw,138px)]">
-            <span className="block overflow-hidden pb-[0.04em]"><span className="block">Your brand,</span></span>
+          <h1 className="mt-6 font-black leading-[0.9] tracking-tightest text-[clamp(52px,7.4vw,112px)]">
+            <span className="block overflow-hidden pb-[0.04em]"><span className="block">We put brands</span></span>
             <span className="block overflow-hidden pb-[0.1em]">
               <span className="block">
-                <span className="tape-word"><i aria-hidden="true" className="tape-edge tape-slap" /><b>directed.</b></span>
+                on their <span className="tape-word ml-[0.12em]"><i aria-hidden="true" className="tape-edge tape-slap" /><b>mark.</b></span>
               </span>
             </span>
           </h1>

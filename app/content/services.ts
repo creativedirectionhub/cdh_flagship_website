@@ -2,7 +2,7 @@ import type { Discipline, Lane } from "./work";
 
 export const site = {
   name: "Creative Direction Hub",
-  tagline: "Your brand, directed.",
+  tagline: "We put brands on their mark.",
   promise: "Every project has a director.",
   positioning: "Creative Direction Hub is the creative department for growing businesses, led by creative director Willie Bernoudy.",
   support: "Brand, campaigns, content, digital and AI art direction, directed by one person and made by one team.",

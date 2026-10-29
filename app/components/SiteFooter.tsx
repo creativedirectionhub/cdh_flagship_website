@@ -12,7 +12,7 @@ export default function SiteFooter() {
             <TapeMark size={72} />
             <div>
               <Wordmark size={56} />
-              <p className="mt-3 text-[15px] font-semibold">Your brand, directed<span className="text-gaffer">.</span></p>
+              <p className="mt-3 text-[15px] font-semibold">We put brands on their mark<span className="text-gaffer">.</span></p>
             </div>
           </div>
           <div className="grid gap-8 sm:grid-cols-2">
