@@ -12,7 +12,7 @@ const url = site.url;
 export const metadata: Metadata = {
   metadataBase: new URL(url),
   title: { default: "Creative Direction Hub · Your brand, directed.", template: "%s · Creative Direction Hub" },
-  description: "The creative department for growing businesses, led by creative director Willie Bernoudy. Brand, campaigns, content and digital for consumer brands, personal brands and hospitality.",
+  description: "The creative department for growing businesses, led by creative director Willie Bernoudy. Brand, campaigns, content, digital and AI art direction for consumer brands, personal brands and hospitality.",
   openGraph: { siteName: "Creative Direction Hub", type: "website", url },
   twitter: { card: "summary_large_image" },
   alternates: { canonical: "./" },
@@ -35,11 +35,11 @@ const schema = {
       email: site.email,
       areaServed: "Worldwide",
       founder: { "@type": "Person", "@id": `${url}/about#willie`, name: "Willie Bernoudy", jobTitle: "Founder and Creative Director" },
-      knowsAbout: ["Brand identity", "Creative direction", "Campaigns", "Paid social", "Photography", "Brand film", "Web design"],
+      knowsAbout: ["Brand identity", "Creative direction", "Campaigns", "Paid social", "Photography", "Brand film", "Web design", "AI art direction"],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Services",
-        itemListElement: ["Brand", "Campaigns and ads", "Content and production", "Digital", "Free Creative Audit"].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })),
+        itemListElement: ["Brand", "Campaigns and ads", "Content and production", "Digital", "AI art direction", "Free Creative Audit"].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })),
       },
     },
     { "@type": "WebSite", "@id": `${url}/#site`, url, name: "Creative Direction Hub", publisher: { "@id": `${url}/#org` } },

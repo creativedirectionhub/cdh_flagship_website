@@ -18,7 +18,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="mt-8 max-w-[40ch] text-[19px] leading-[1.5] text-body md:text-[22px]">
-            The creative department for growing businesses, led by creative director Willie Bernoudy. Brand, campaigns, content and digital, directed by one person and made by one team.
+            The creative department for growing businesses, led by creative director Willie Bernoudy. Brand, campaigns, content, digital and AI art direction, directed by one person and made by one team.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/start" className="btn-primary">Get a Free Creative Audit</Link>

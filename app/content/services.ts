@@ -5,7 +5,7 @@ export const site = {
   tagline: "Your brand, directed.",
   promise: "Every project has a director.",
   positioning: "Creative Direction Hub is the creative department for growing businesses, led by creative director Willie Bernoudy.",
-  support: "Brand, campaigns, content and digital, directed by one person and made by one team.",
+  support: "Brand, campaigns, content, digital and AI art direction, directed by one person and made by one team.",
   url: "https://www.creativedirectionhub.com",
   email: "hello@creativedirectionhub.com",
 };
@@ -66,6 +66,14 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     what: "Websites, landing pages and social design systems, built fast on Next.js and Vercel, wired to your forms and booking.",
     get: ["A site built around the one action you need visitors to take", "Landing pages for each campaign", "Social templates your team can post from", "Forms and booking connected on day one"],
     proof: ["cafe-social"],
+  },
+  {
+    id: "ai",
+    name: "AI art direction",
+    short: "AI that looks like your brand.",
+    what: "Most AI content looks like everyone else's. We set the look first, then direct the models: the light, the lens, the wardrobe, the talent, the product. A director checks every frame before it ships, and every AI person or scene is labeled.",
+    get: ["A visual rulebook the AI follows: palette, light, lens, styling", "Product and lifestyle imagery at the volume ads need", "Custom AI talent and spokespeople, labeled as AI", "Every frame reviewed by a director before it ships"],
+    proof: ["four-seasons-anguilla", "brand-films"],
   },
 ];
 

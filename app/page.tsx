@@ -68,12 +68,12 @@ export default function Home() {
       {/* What we do */}
       <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="do-title">
         <div className="mx-auto max-w-[1440px]">
-          <SectionHead slate="What we do" title={<span id="do-title">Four disciplines, under one direction.</span>}>
+          <SectionHead slate="What we do" title={<span id="do-title">Five disciplines, under one direction.</span>}>
             Hire one, or hire the department. The director stays the same either way.
           </SectionHead>
           <ol className="reveal mt-14 grid border-t border-line md:grid-cols-2">
             {disciplines.map((d, n) => (
-              <li key={d.id} className="border-b border-line md:odd:border-r md:odd:pr-10 md:even:pl-10">
+              <li key={d.id} className="border-b border-line md:odd:border-r md:odd:pr-10 md:even:pl-10 md:last:col-span-2 md:last:!border-r-0 md:last:pr-0">
                 <Link href={`/services#${d.id}`} className="group flex min-h-[200px] flex-col justify-between gap-8 py-8">
                   <span className="slate text-muted">0{n + 1}</span>
                   <span>

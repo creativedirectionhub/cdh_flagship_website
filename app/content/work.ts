@@ -2,7 +2,7 @@
 // label: "client" = paid client work. "concept" = made by CDH, not commissioned. "studio" = CDH's own brands. "personal" = Willie's own photography.
 
 export type Lane = "consumer" | "personal" | "hospitality";
-export type Discipline = "brand" | "campaigns" | "content" | "digital";
+export type Discipline = "brand" | "campaigns" | "content" | "digital" | "ai";
 export type Label = "client" | "concept" | "studio" | "personal";
 
 export type Media =
@@ -28,7 +28,7 @@ export type Case = {
 };
 
 export const LANES: Record<Lane, string> = { consumer: "Consumer brands", personal: "Personal brands", hospitality: "Hospitality" };
-export const DISCIPLINES: Record<Discipline, string> = { brand: "Brand", campaigns: "Campaigns and ads", content: "Content and production", digital: "Digital" };
+export const DISCIPLINES: Record<Discipline, string> = { brand: "Brand", campaigns: "Campaigns and ads", content: "Content and production", digital: "Digital", ai: "AI art direction" };
 export const LABELS: Record<Label, string> = { client: "Client", concept: "Concept", studio: "Studio", personal: "Personal work" };
 
 import local from "../components/spec-local.json";
@@ -115,7 +115,7 @@ export const cases: Case[] = [
     client: "Four Seasons Anguilla",
     label: "concept",
     lanes: ["hospitality"],
-    disciplines: ["content", "campaigns"],
+    disciplines: ["content", "campaigns", "ai"],
     year: "2026",
     brief: "A private villa sells the moment you land. This spot sells that moment: the jet, the tarmac, the driver, the water.",
     did: [
@@ -137,7 +137,7 @@ export const cases: Case[] = [
     client: "Consumer brands",
     label: "concept",
     lanes: ["consumer"],
-    disciplines: ["campaigns", "content"],
+    disciplines: ["campaigns", "content", "ai"],
     year: "2026",
     brief: "Paid social for Meta and TikTok lives or dies in the first three seconds. These are the hooks, the cuts and the statics we make on a weekly loop.",
     did: [
@@ -183,7 +183,7 @@ export const cases: Case[] = [
     client: "First Tee and Back Home",
     label: "concept",
     lanes: ["consumer"],
-    disciplines: ["content"],
+    disciplines: ["content", "ai"],
     year: "2026",
     brief: "Two short films that sell a feeling before a product: a golf morning, and a son coming home.",
     did: ["Script and direction", "AI-assisted production, color and sound"],

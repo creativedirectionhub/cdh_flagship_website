@@ -5,7 +5,7 @@ import { DISCIPLINES, LANES, type Discipline, type Lane } from "../content/work"
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Brand, campaigns, content and digital for consumer brands, personal brands and hospitality, directed by Willie Bernoudy. Client work first; concepts labeled.",
+  description: "Brand, campaigns, content, digital and AI art direction for consumer brands, personal brands and hospitality, directed by Willie Bernoudy. Client work first; concepts labeled.",
   alternates: { canonical: "/work" },
 };
 
