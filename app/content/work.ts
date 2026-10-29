@@ -7,7 +7,7 @@ export type Label = "client" | "concept" | "studio" | "personal";
 
 export type Media =
   | { kind: "image"; src: string; alt: string; w: number; h: number; caption?: string }
-  | { kind: "video"; src: string; poster: string; alt: string; w: number; h: number; caption?: string; ai?: boolean };
+  | { kind: "video"; src: string; poster: string; alt: string; w: number; h: number; caption?: string; ai?: boolean; sound?: boolean };
 
 export type Case = {
   slug: string;
@@ -251,7 +251,6 @@ export const cases: Case[] = [
     ],
     credits: ["Art direction: Willie Bernoudy", "AI production: CDH network"],
     ai: "Made with AI tools. The hand is AI-generated. The product is an invented concept, not a real brand.",
-    selected: 5,
   },
   {
     slug: "dinner-service",
@@ -269,6 +268,26 @@ export const cases: Case[] = [
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
     ai: "Made with AI tools. People shown are AI performers. Concept made by CDH; not commissioned by any restaurant.",
+  },
+  {
+    slug: "commercials",
+    title: "Three brands, one standard.",
+    client: "Commercial concepts",
+    label: "concept",
+    lanes: ["consumer", "hospitality", "personal"],
+    disciplines: ["campaigns", "content", "ai"],
+    year: "2026",
+    brief: "A skincare brand, a small hotel and a founder-led ceramics studio, one for each lane we work in. Each spot is written, art directed, scored and cut the way a paid commercial would be, with the same faces, product and places held shot to shot.",
+    did: ["Script, shot list and a visual rulebook for each brand", "AI-assisted production with labeled AI performers, kept consistent across every shot", "Original score, supers and end card, cut as finished spots under 30 seconds"],
+    cover: { kind: "video", src: "/media/spots-cover.mp4", poster: "/media/spots-cover.webp", alt: "Morning sun across a travertine bathroom shelf with an amber dropper bottle", w: 1280, h: 720, ai: true },
+    media: [
+      { kind: "video", src: "/media/spot-halden.mp4", poster: "/media/spot-halden.webp", alt: "Halden face oil: a quiet bathroom at dawn, an amber dropper bottle, a woman pressing oil into her skin, ending on the bottle in moving sunlight", w: 1280, h: 720, caption: "Halden, face oil. Consumer brands, 0:30", ai: true, sound: true },
+      { kind: "video", src: "/media/spot-marisol.mp4", poster: "/media/spot-marisol.webp", alt: "Casa Marisol: a drone glide to a white hotel on a cliff, a guest arriving at golden hour, a swim at sunset, dinner on the terrace, the hotel lit up at night", w: 1280, h: 720, caption: "Casa Marisol, boutique hotel. Hospitality, 0:27", ai: true, sound: true },
+      { kind: "video", src: "/media/spot-okafor.mp4", poster: "/media/spot-okafor.webp", alt: "Okafor Clay: the founder at the potter's wheel, opening the kiln, wrapping an order, then standing in her studio doorway", w: 1280, h: 720, caption: "Okafor Clay, founder brand. Personal brands, 0:30", ai: true, sound: true },
+    ],
+    credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
+    ai: "Made with AI tools, including the music. Everyone shown is an AI performer. Halden, Casa Marisol and Okafor Clay are invented brands made by CDH to show the work; none of them is a real business.",
+    selected: 5,
   },
 ];
 

@@ -14,7 +14,7 @@ export default function CaseMedia({ m, sizes = "100vw", priority = false, classN
 
   // Videos wait until the page has painted and loaded, so they never compete with the first frame.
   useEffect(() => {
-    if (m.kind !== "video") return;
+    if (m.kind !== "video" || m.sound) return;
     let t: ReturnType<typeof setTimeout>;
     const go = () => { t = setTimeout(() => setLoaded(true), 1200); };
     if (document.readyState === "complete") go(); else window.addEventListener("load", go, { once: true });
@@ -24,7 +24,7 @@ export default function CaseMedia({ m, sizes = "100vw", priority = false, classN
   // The video element is only created once it's near the viewport, so posters below the fold load lazily.
   useEffect(() => {
     const el = box.current;
-    if (!el || m.kind !== "video") return;
+    if (!el || m.kind !== "video" || m.sound) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const io = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) setNear(true);
@@ -46,6 +46,8 @@ export default function CaseMedia({ m, sizes = "100vw", priority = false, classN
     <div ref={box} className={`relative overflow-hidden bg-surface ${className}`} style={{ aspectRatio: ratio }}>
       {m.kind === "image" ? (
         <Image src={m.src} alt={m.alt} fill sizes={sizes} priority={priority} className="object-cover" />
+      ) : m.sound ? (
+        <video src={m.src} poster={m.poster} controls playsInline preload="none" aria-label={m.alt} className="absolute inset-0 h-full w-full bg-black object-cover" />
       ) : (
         <>
           <Image src={m.poster} alt={m.alt} fill sizes={sizes} priority={priority} className="object-cover" />
