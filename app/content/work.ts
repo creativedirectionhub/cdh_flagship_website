@@ -107,7 +107,7 @@ export const cases: Case[] = [
     ],
     credits: ["Photographed and directed by Willie Bernoudy"],
     notice: "Subjects shown with permission. Names on request.",
-    selected: 2,
+    selected: 3,
   },
   {
     slug: "four-seasons-anguilla",
@@ -129,7 +129,7 @@ export const cases: Case[] = [
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
     ai: "Made with AI tools. The on-screen lead is an AI performer. Concept made by CDH; not commissioned by, affiliated with or endorsed by Four Seasons.",
-    selected: 3,
+    selected: 4,
   },
   {
     slug: "paid-social",
@@ -154,7 +154,6 @@ export const cases: Case[] = [
     ],
     credits: ["Directed by Willie Bernoudy", "Edit and motion: CDH network"],
     ai: "Every spot here is AI-made. UGC-style spots use AI performers and are labeled as such. Static concepts for real brands are not commissioned by, affiliated with or endorsed by those brands.",
-    selected: 4,
   },
   {
     slug: "identity",
@@ -268,6 +267,24 @@ export const cases: Case[] = [
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
     ai: "Made with AI tools. People shown are AI performers. Concept made by CDH; not commissioned by any restaurant.",
+  },
+  {
+    slug: "her-mark",
+    title: "Her mark.",
+    client: "Brand film concept",
+    label: "concept",
+    lanes: ["consumer", "personal"],
+    disciplines: ["brand", "campaigns", "content", "ai"],
+    year: "2026",
+    brief: "Every founder who lands here has had a 1:47 AM: filming the product under a ring light, posting it, watching nothing happen. This film is that night, then the same kitchen directed. Same woman, same sauce, a real brand on the bottle, and what happens when it lands.",
+    did: ["Story, script and an 11-frame storyboard, every frame approved before a second of video", "The brand itself: name, label and the orange mark it stands on", "AI-assisted production with labeled AI performers, held consistent shot to shot", "Supers, score and end card, cut to 30 seconds for paid social"],
+    cover: { kind: "video", src: "/media/her-mark-cover.mp4", poster: "/media/her-mark-cover.webp", alt: "Sunrise in a home kitchen: hot sauce ribbons off a wooden spoon into a cast iron skillet beside a Mama Lou's bottle on an orange tape mark", w: 1280, h: 720, ai: true },
+    media: [
+      { kind: "video", src: "/media/her-mark.mp4", poster: "/media/her-mark-cover.webp", alt: "A founder films her hot sauce at 1:47 AM under a ring light, a director tapes an orange mark on her counter, the same kitchen at sunrise with her branded bottle, a sold-out pop-up, her mother in tears watching the ad", w: 1280, h: 720, caption: "Her Mark. Brand film, 0:30", ai: true, sound: true },
+    ],
+    credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
+    ai: "Made with AI tools. Everyone shown is an AI performer. Mama Lou's is an invented brand made by CDH to show the work; it is not a real business.",
+    selected: 2,
   },
   {
     slug: "commercials",

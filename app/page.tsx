@@ -5,6 +5,7 @@ import WorkCard from "./components/WorkCard";
 import WaysToStart from "./components/WaysToStart";
 import AuditForm from "./components/AuditForm";
 import SectionHead from "./components/SectionHead";
+import CaseMedia from "./components/CaseMedia";
 import { TapeMark } from "./components/Brand";
 import { selectedCases, bySlug } from "./content/work";
 import { lanes, disciplines, process, facts, network } from "./content/services";
@@ -13,6 +14,29 @@ export default function Home() {
   return (
     <>
       <Hero />
+
+      {/* The film */}
+      {(() => {
+        const film = bySlug("her-mark");
+        if (!film) return null;
+        return (
+          <section className="gutter border-t border-line py-16 md:py-24" aria-labelledby="film-title">
+            <div className="mx-auto max-w-[1440px]">
+              <div className="flex flex-wrap items-end justify-between gap-6">
+                <div className="max-w-[46ch]">
+                  <p className="slate text-gaffer">The film, 0:30, sound on</p>
+                  <h2 id="film-title" className="mt-4 text-[clamp(36px,5vw,64px)] font-black leading-[0.95] tracking-tighter">Same kitchen. Same sauce. Directed.</h2>
+                  <p className="mt-5 text-[17px] leading-[1.55] text-body">A founder at 1:47 AM, filming her own product under a ring light. Then what happens when her brand gets put on its mark.</p>
+                </div>
+                <Link href="/work/her-mark" className="btn-secondary">How we made it</Link>
+              </div>
+              <div className="reveal mt-10">
+                <CaseMedia m={film.media[0]} sizes="(min-width: 1440px) 1296px, 92vw" className="rounded-md border border-line" />
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Selected work */}
       <section id="work" className="gutter scroll-mt-20 border-t border-line py-20 md:py-28" aria-labelledby="work-title">
