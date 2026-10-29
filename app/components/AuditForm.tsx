@@ -70,7 +70,7 @@ export default function AuditForm() {
       <div className="grid gap-2">
         <label htmlFor="website" className="slate text-muted">Business website or Instagram</label>
         <input id="website" name="website" type="text" required placeholder="yourbrand.com or @yourbrand" autoComplete="url" className={`${field} border-line`} />
-        <span className="text-[14px] text-muted">We'll review the brand, the site and your last three pieces.</span>
+        <span className="text-[14px] text-muted">We'll review the brand, the site and your last three pieces. Your details stay with us (<a href="/privacy" className="underline hover:text-gaffer">privacy</a>).</span>
       </div>
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="grid gap-2">

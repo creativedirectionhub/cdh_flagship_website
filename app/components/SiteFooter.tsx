@@ -31,7 +31,7 @@ export default function SiteFooter() {
         </div>
         <div className="flex flex-wrap justify-between gap-4 border-t border-line pt-6 text-[13px] text-muted">
           <span>© 2026 Creative Direction Hub. Fully remote.</span>
-          <span>Concept work is labeled as concept. AI performers are labeled as AI.</span>
+          <span>Concept work is labeled as concept. AI performers are labeled as AI. <a href="/privacy" className="underline hover:text-gaffer">Privacy</a></span>
         </div>
       </div>
     </footer>
