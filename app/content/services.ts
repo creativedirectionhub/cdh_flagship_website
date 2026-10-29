@@ -57,7 +57,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "Pictures and film that do the selling.",
     what: "Photography, brand film and commercials, short-form video, UGC-style and AI-assisted production. Every AI person or scene is labeled.",
     get: ["Editorial photography, on location", "Brand films and commercials with cut-downs", "A month of short-form from one shoot day", "AI production for speed and range, labeled every time"],
-    proof: ["four-seasons-anguilla", "brand-films"],
+    proof: ["dinner-service", "brand-films"],
   },
   {
     id: "digital",
@@ -73,7 +73,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "AI that looks like your brand.",
     what: "Most AI content looks like everyone else's. We set the look first, then direct the models: the light, the lens, the wardrobe, the talent, the product. A director checks every frame before it ships, and every AI person or scene is labeled.",
     get: ["A visual rulebook the AI follows: palette, light, lens, styling", "Product and lifestyle imagery at the volume ads need", "Custom AI talent and spokespeople, labeled as AI", "Every frame reviewed by a director before it ships"],
-    proof: ["four-seasons-anguilla", "brand-films"],
+    proof: ["art-direction", "paid-social"],
   },
 ];
 
