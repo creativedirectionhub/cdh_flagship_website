@@ -56,8 +56,8 @@ export default function CaseMedia({ m, sizes = "100vw", priority = false, classN
       )}
       {(label || (m.kind === "video" && m.ai)) && (
         <div className="pointer-events-none absolute left-3 top-3 flex gap-2">
-          {label && <span className="slate rounded-tape bg-[#121110]/85 px-2 py-1 text-[11px] text-[#efe9df]">{label}</span>}
-          {m.kind === "video" && m.ai && <span className="slate rounded-tape bg-[#121110]/85 px-2 py-1 text-[11px] text-[#ff5a1f]">AI</span>}
+          {label && <span className="slate rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]">{label}</span>}
+          {m.kind === "video" && m.ai && <span className="slate rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#ff5a1f]">AI</span>}
         </div>
       )}
     </div>

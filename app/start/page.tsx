@@ -33,7 +33,7 @@ export default function StartPage() {
             <ol className="mt-5 grid border-t border-line">
               {next.map((n, i) => (
                 <li key={n.t} className="grid gap-2 border-b border-line py-5 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-6">
-                  <span className="text-[17px] font-extrabold"><span className="slate mr-3 text-[11px] text-muted">0{i + 1}</span>{n.t}</span>
+                  <span className="text-[17px] font-extrabold"><span className="slate mr-3 text-[12px] text-muted">0{i + 1}</span>{n.t}</span>
                   <span className="text-[16px] leading-[1.55] text-body">{n.b}</span>
                 </li>
               ))}

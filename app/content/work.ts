@@ -25,6 +25,8 @@ export type Case = {
   ai?: string;
   notice?: string;
   selected?: number;
+  /** Kept online for old links, but left off the Work page, the sitemap and search. */
+  archived?: boolean;
 };
 
 export const LANES: Record<Lane, string> = { consumer: "Consumer brands", personal: "Personal brands", hospitality: "Hospitality" };
@@ -77,6 +79,32 @@ export const cases: Case[] = [
     selected: 1,
   },
   {
+    slug: "hope-live-agency",
+    title: "Built to recruit.",
+    client: "H.O.P.E Live Agency",
+    label: "client",
+    lanes: ["personal"],
+    disciplines: ["digital", "brand"],
+    year: "2026",
+    brief: "A TikTok LIVE creator management agency needed a site that recruits creators: what they get, how it works, and one clear way to apply.",
+    did: [
+      "Site structure, copy flow and page design",
+      "Built in Next.js and deployed on Vercel",
+      "Application flow, services, how it works, success stories and contact pages",
+      "Mobile-first layout for creators who find it from their phones",
+    ],
+    cover: img("/work/hope-cover.webp", "The H.O.P.E Live Agency website on a laptop and a phone: Elevate Your TikTok LIVE Career", 1600, 1000),
+    media: [
+      img("/work/hope-cover.webp", "The H.O.P.E Live Agency home page on desktop and mobile", 1600, 1000, "Home, desktop and mobile"),
+      img("/work/hope-home.webp", "Home page hero with Apply to Join and Learn More buttons", 1440, 900, "Home"),
+      img("/work/hope-how.webp", "How It Works page", 1440, 900, "How it works"),
+      img("/work/hope-apply.webp", "Application page", 1440, 900, "Apply"),
+    ],
+    credits: ["Designed and built by Creative Direction Hub", "Direction: Willie Bernoudy"],
+    notice: "Figures shown on the site are the client's own.",
+    selected: 2,
+  },
+  {
     slug: "portraits",
     title: "The face of the business.",
     client: "Talent and founders",
@@ -106,13 +134,13 @@ export const cases: Case[] = [
       img("/work/talent-susan-1.webp", "A woman in a white jacket reading in a dark hallway", 640, 800),
     ],
     credits: ["Photographed and directed by Willie Bernoudy"],
-    notice: "Subjects shown with permission. Names on request.",
+    notice: "Subjects shown with permission.",
     selected: 3,
   },
   {
-    slug: "four-seasons-anguilla",
+    slug: "island-resort-arrival",
     title: "The arrival.",
-    client: "Four Seasons Anguilla",
+    client: "Island resort concept",
     label: "concept",
     lanes: ["hospitality"],
     disciplines: ["content", "campaigns", "ai"],
@@ -128,11 +156,12 @@ export const cases: Case[] = [
       { kind: "video", src: "/media/luxury-travel.mp4", poster: "/media/luxury-travel.webp", alt: "Arrival film: a jet lands, a guest steps onto the tarmac, a driver waits, the car runs along the coast", w: 1280, h: 720, caption: "Arrival film, 0:30", ai: true },
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
-    ai: "Made with AI tools. The on-screen lead is an AI performer. Concept made by CDH; not commissioned by, affiliated with or endorsed by Four Seasons.",
-    selected: 4,
+    ai: "Made with AI tools. The on-screen lead is an AI performer. Concept made by CDH for an invented island resort.",
+    selected: 5,
   },
   {
     slug: "paid-social",
+    archived: true,
     title: "Ads people actually watch.",
     client: "Consumer brands",
     label: "concept",
@@ -174,12 +203,12 @@ export const cases: Case[] = [
     ],
     credits: ["Creative direction and design: Willie Bernoudy"],
     notice: "Blac Birdie and Trading One are CDH studio brands, shown as studio work, not client work.",
-    selected: 6,
   },
   {
     slug: "brand-films",
+    archived: true,
     title: "Story first.",
-    client: "First Tee and Back Home",
+    client: "Short brand films",
     label: "concept",
     lanes: ["consumer"],
     disciplines: ["content", "ai"],
@@ -188,7 +217,7 @@ export const cases: Case[] = [
     did: ["Script and direction", "AI-assisted production, color and sound"],
     cover: { kind: "video", src: "/media/golf-lifestyle.mp4", poster: "/media/golf-lifestyle.webp", alt: "A hand sets a golf ball on a tee in low gold light", w: 1080, h: 1920, ai: true },
     media: [
-      { kind: "video", src: "/media/golf-lifestyle.mp4", poster: "/media/golf-lifestyle.webp", alt: "First Tee: a golf morning in low gold light", w: 1080, h: 1920, caption: "First Tee, 0:15", ai: true },
+      { kind: "video", src: "/media/golf-lifestyle.mp4", poster: "/media/golf-lifestyle.webp", alt: "Tee Time: a golf morning in low gold light", w: 1080, h: 1920, caption: "Tee Time, 0:15", ai: true },
       { kind: "video", src: "/media/back-home.mp4", poster: "/media/back-home.webp", alt: "Back Home: a son returns to the family house at golden hour", w: 1280, h: 720, caption: "Back Home, 0:13", ai: true },
       { kind: "video", src: "/media/morning-routine.mp4", poster: "/media/morning-routine.webp", alt: "Morning Routine: a quiet morning, coffee in hand", w: 1080, h: 1920, caption: "Morning Routine, 0:15", ai: true },
     ],
@@ -218,6 +247,7 @@ export const cases: Case[] = [
   },
   {
     slug: "cafe-social",
+    archived: true,
     title: "Fresh on the menu.",
     client: "Cafe and juice bar",
     label: "concept",
@@ -236,6 +266,7 @@ export const cases: Case[] = [
   },
   {
     slug: "art-direction",
+    archived: true,
     title: "One look, every frame.",
     client: "Skincare concept",
     label: "concept",
@@ -253,6 +284,7 @@ export const cases: Case[] = [
   },
   {
     slug: "dinner-service",
+    archived: true,
     title: "The last touch.",
     client: "Restaurant concept",
     label: "concept",
@@ -284,7 +316,7 @@ export const cases: Case[] = [
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
     ai: "Made with AI tools. Everyone shown is an AI performer. Mama Lou's is an invented brand made by CDH to show the work; it is not a real business.",
-    selected: 2,
+    selected: 4,
   },
   {
     slug: "commercials",
@@ -304,9 +336,11 @@ export const cases: Case[] = [
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
     ai: "Made with AI tools, including the music. Everyone shown is an AI performer. Halden, Casa Marisol and Okafor Clay are invented brands made by CDH to show the work; none of them is a real business.",
-    selected: 5,
+    selected: 6,
   },
 ];
 
+/** What the Work page shows: live cases, selected ones first in their set order. */
+export const shownCases = cases.filter((c) => !c.archived).sort((a, b) => (a.selected ?? 99) - (b.selected ?? 99));
 export const selectedCases = cases.filter((c) => c.selected).sort((a, b) => (a.selected ?? 99) - (b.selected ?? 99));
 export const bySlug = (slug: string) => cases.find((c) => c.slug === slug);

@@ -67,10 +67,10 @@ export default function MarkReveal() {
     });
   }
   const lineIn = !armed ? 1 : Math.min(1, Math.max(0, (p - 0.7) / 0.17));
-  const cueOut = armed ? Math.max(0, 1 - p * 6) : 0;
+  const cueOut = armed ? Math.max(0, 1 - p * 4) : 0;
 
   return (
-    <section ref={wrap} aria-label="Reel" className={`relative bg-ground ${armed ? "h-[280vh]" : "h-[100svh]"}`}>
+    <section ref={wrap} aria-label="Reel" className={`relative bg-ground ${armed ? "h-[210vh] md:h-[280vh]" : "h-[100svh]"}`}>
       <div ref={stage} className="sticky top-0 h-[100svh] overflow-hidden">
         {armed && !open && (
           <svg aria-hidden="true" viewBox="0 0 200 200" className="absolute" style={{ left: px - size * 0.03, top: py - size * 0.03 + size * 0.012, width: size * 1.06, height: size * 1.06, opacity: Math.max(0, 1 - p * 5) }}>
@@ -79,11 +79,16 @@ export default function MarkReveal() {
           </svg>
         )}
         <div className="absolute inset-0" style={maskStyle}>
-          <video ref={video} muted playsInline loop autoPlay preload="metadata" poster="/media/reel-poster.webp" aria-label="Reel: Black Sox portraits, talent portraits, travel, a pop-up rush for Mama Lou's hot sauce, brand films" className="h-full w-full object-cover" />
+          <video ref={video} muted playsInline loop autoPlay preload="metadata" poster="/media/reel-poster.webp" aria-label="Reel: Hattiesburg Black Sox campaign, talent portraits, travel photography, then AI concept films including a pop-up rush for Mama Lou's hot sauce" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/85 via-[#121110]/10 to-[#121110]/30" style={{ opacity: lineIn }} />
         </div>
 
-        <p className="slate absolute bottom-10 left-1/2 -translate-x-1/2 text-muted" style={{ opacity: cueOut }} aria-hidden={!armed}>Scroll</p>
+        {armed && (
+          <div aria-hidden="true" className="gutter pointer-events-none absolute inset-x-0 bottom-8 flex flex-col items-center gap-3 text-center md:bottom-12" style={{ opacity: cueOut }}>
+            <p className="text-[clamp(22px,2.6vw,34px)] font-black leading-[1.05] tracking-[-0.03em] text-[#efe9df]">We put brands on their mark.</p>
+            <p className="slate text-[12px] text-muted">Creative direction and AI art direction · Scroll</p>
+          </div>
+        )}
 
         <div className="gutter absolute inset-x-0 bottom-0 pb-12 md:pb-16" style={{ opacity: lineIn, transform: `translateY(${(1 - lineIn) * 30}px)` }}>
           <div className="mx-auto flex max-w-[1440px] flex-wrap items-end justify-between gap-8">
@@ -93,7 +98,7 @@ export default function MarkReveal() {
             </h1>
             <div className="flex flex-col items-start gap-4 pb-2">
               <Link href="/about" className="slate inline-block border-b-2 border-gaffer pb-1 pt-3 text-[#efe9df] hover:text-gaffer">About us</Link>
-              <span className="slate text-[11px] text-[#efe9df]/70">Reel includes AI concepts, labeled on each piece</span>
+              <span className="slate text-[12px] text-[#efe9df]/70">Reel includes AI concepts, labeled on each piece</span>
             </div>
           </div>
         </div>

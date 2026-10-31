@@ -9,7 +9,18 @@ import { BREVO_LIST_ID, NOTIFY_EMAIL, SENDER, BOOKING_URL, MAKE_WEBHOOK } from "
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
 
 const LANES = ["Consumer brand", "Personal brand", "Hospitality", "Other"];
-const NEEDS = ["Brand", "Campaigns and ads", "Content", "Website", "Not sure"];
+const NEEDS = ["Brand", "Campaigns and ads", "Content", "Website", "AI art direction", "Not sure"];
+
+// Light spam brake: at most 3 requests per address per 10 minutes on each server instance.
+const hits = new Map<string, number[]>();
+function tooMany(ip: string) {
+  const now = Date.now();
+  const recent = (hits.get(ip) || []).filter((t) => now - t < 10 * 60 * 1000);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) hits.clear();
+  return recent.length > 3;
+}
 
 async function brevo(path: string, key: string, body: unknown) {
   try {
@@ -40,6 +51,8 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ error: "bad_request" }, { status: 400 });
   }
+  const ip = (req.headers.get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
+  if (tooMany(ip)) return NextResponse.json({ error: "slow_down" }, { status: 429 });
   // Honeypot: real visitors never see or fill this field.
   if (body.company) return NextResponse.json({ ok: true });
 

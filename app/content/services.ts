@@ -30,7 +30,7 @@ export const lanes: { id: Lane; name: string; who: string; problem: string; proo
     name: "Hospitality",
     who: "Boutique hotels, resorts, villas, restaurants, cafes and travel brands.",
     problem: "You need imagery and film that make people book, seasonal campaigns, and social that fills rooms and tables.",
-    proof: "four-seasons-anguilla",
+    proof: "island-resort-arrival",
   },
 ];
 
@@ -49,7 +49,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "One idea, every channel.",
     what: "Campaign concepts, paid social for Meta and TikTok, launches and seasonal pushes. Directed to sell, read every week, scaled or cut on the numbers.",
     get: ["A campaign idea with a headline you'd put on a billboard", "Hooks, scripts and statics made on a weekly loop", "Ads launched, read and reported in plain words", "Cut-downs sized for every placement"],
-    proof: ["hattiesburg-black-sox", "paid-social"],
+    proof: ["hattiesburg-black-sox", "her-mark"],
   },
   {
     id: "content",
@@ -57,7 +57,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "Pictures and film that do the selling.",
     what: "Photography, brand film and commercials, short-form video, UGC-style and AI-assisted production. Every AI person or scene is labeled.",
     get: ["Editorial photography, on location", "Brand films and commercials with cut-downs", "A month of short-form from one shoot day", "AI production for speed and range, labeled every time"],
-    proof: ["commercials", "dinner-service"],
+    proof: ["commercials", "portraits"],
   },
   {
     id: "digital",
@@ -65,7 +65,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "A site that closes.",
     what: "Websites, landing pages and social design systems, built fast on Next.js and Vercel, wired to your forms and booking.",
     get: ["A site built around the one action you need visitors to take", "Landing pages for each campaign", "Social templates your team can post from", "Forms and booking connected on day one"],
-    proof: ["cafe-social"],
+    proof: ["hope-live-agency"],
   },
   {
     id: "ai",
@@ -73,7 +73,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "AI that looks like your brand.",
     what: "Most AI content looks like everyone else's. We set the look first, then direct the models: the light, the lens, the wardrobe, the talent, the product. A director checks every frame before it ships, and every AI person or scene is labeled.",
     get: ["A visual rulebook the AI follows: palette, light, lens, styling", "Product and lifestyle imagery at the volume ads need", "Custom AI talent and spokespeople, labeled as AI", "Every frame reviewed by a director before it ships"],
-    proof: ["commercials", "art-direction"],
+    proof: ["her-mark", "commercials"],
   },
 ];
 

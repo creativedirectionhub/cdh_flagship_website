@@ -39,7 +39,7 @@ export default function AuditForm() {
       if (res.ok) {
         trackLead();
         setState("sent");
-      } else if (res.status === 503) setState("offline");
+      } else if (res.status === 503 || res.status === 429) setState("offline");
       else setState("error");
     } catch {
       setState("error");

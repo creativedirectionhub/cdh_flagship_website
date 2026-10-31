@@ -49,10 +49,10 @@ export default function PlayTile({
     >
       <Image src={poster} alt={alt} fill sizes={sizes} className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
       {video && load && <video ref={ref} src={video} muted loop playsInline preload="none" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/90 via-[#121110]/15 to-transparent" />
-      {label && <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[11px] text-[#efe9df]">{label}</span>}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/95 via-[#121110]/25 to-transparent" />
+      {label && <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]">{label}</span>}
       <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
-        {kicker && <p className="slate text-[11px] text-gaffer">{kicker}</p>}
+        {kicker && <p className="slate text-[12px] text-[#efe9df]/85"><span aria-hidden="true" className="mr-2 inline-block h-[3px] w-4 -translate-y-[3px] bg-gaffer" />{kicker}</p>}
         <h3 className={`mt-2 font-black leading-[0.92] tracking-tighter text-[#efe9df] ${titleClass || "text-[clamp(28px,3.4vw,52px)]"}`}>{title}</h3>
         {sub && <p className="mt-2 text-[15px] font-semibold leading-[1.4] text-[#efe9df]/80">{sub}</p>}
       </div>

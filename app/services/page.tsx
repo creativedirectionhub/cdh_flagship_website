@@ -47,7 +47,7 @@ export default function ServicesPage() {
           <p className="mt-6 max-w-[52ch] text-[18px] leading-[1.55] text-body">Five disciplines, one director. Pick the one you need now; the others are there when you need them, with the same person holding the look.</p>
           <ol className="mt-12 flex flex-wrap gap-3">
             {disciplines.map((d, n) => (
-              <li key={d.id}><a href={`#${d.id}`} className="inline-flex min-h-[44px] items-center gap-3 rounded-sm border border-line px-4 text-[15px] font-semibold hover:border-muted"><span className="slate text-[11px] text-muted">0{n + 1}</span>{d.name}</a></li>
+              <li key={d.id}><a href={`#${d.id}`} className="inline-flex min-h-[44px] items-center gap-3 rounded-sm border border-line px-4 text-[15px] font-semibold hover:border-muted"><span className="slate text-[12px] text-muted">0{n + 1}</span>{d.name}</a></li>
             ))}
           </ol>
         </div>

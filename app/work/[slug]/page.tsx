@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import CaseMedia from "../../components/CaseMedia";
 import WorkCard from "../../components/WorkCard";
 import { BOOKING_URL } from "../../config";
-import { cases, bySlug, DISCIPLINES, LABELS, LANES } from "../../content/work";
+import { cases, shownCases, bySlug, DISCIPLINES, LABELS, LANES } from "../../content/work";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -26,6 +26,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: `${c.title} · ${c.client}`,
     description: seoDesc(c),
     alternates: { canonical: `/work/${c.slug}` },
+    ...(c.archived ? { robots: { index: false, follow: true } } : {}),
     openGraph: { title: `${c.client}: ${c.title}`, description: seoDesc(c), images: [{ url: image }] },
   };
 }
@@ -33,8 +34,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 export default function CasePage({ params }: { params: { slug: string } }) {
   const c = bySlug(params.slug);
   if (!c) notFound();
-  const i = cases.findIndex((x) => x.slug === c.slug);
-  const next = cases[(i + 1) % cases.length];
+  const i = shownCases.findIndex((x) => x.slug === c.slug);
+  const next = shownCases[(i + 1) % shownCases.length];
   const book = BOOKING_URL || "/start";
   const lead = c.media[0];
   const rest = c.media.slice(lead.w >= lead.h ? 1 : 2);
@@ -81,17 +82,17 @@ export default function CasePage({ params }: { params: { slug: string } }) {
               <Link href="/work" className="slate text-muted hover:text-gaffer">Work</Link>
               <span className="slate text-muted" aria-hidden="true">/</span>
               <span className="slate text-ink">{c.client}</span>
-              <span className={`slate rounded-tape border px-2 py-1 text-[11px] ${c.label === "client" ? "border-gaffer text-gaffer" : "border-line text-muted"}`}>{LABELS[c.label]}</span>
+              <span className={`slate rounded-tape border px-2 py-1 text-[12px] ${c.label === "client" ? "border-gaffer text-gaffer" : "border-line text-muted"}`}>{LABELS[c.label]}</span>
             </p>
             <h1 className="mt-6 text-[clamp(48px,8vw,128px)] font-black leading-[0.9] tracking-tightest">{c.title}</h1>
             <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-20">
               <div><h2 className="sr-only">The brief</h2><p className="max-w-[48ch] text-[20px] leading-[1.5] text-body md:text-[24px]">{c.brief}</p></div>
               <dl className="grid gap-5 border-t border-line pt-6 text-[15px] sm:grid-cols-2">
-                <div><dt className="slate text-[11px] text-muted">For</dt><dd className="mt-1 font-semibold">{c.lanes.map((l) => LANES[l]).join(", ")}</dd></div>
-                <div><dt className="slate text-[11px] text-muted">Discipline</dt><dd className="mt-1 font-semibold">{c.disciplines.map((d) => DISCIPLINES[d]).join(", ")}</dd></div>
-                {c.year && <div><dt className="slate text-[11px] text-muted">Year</dt><dd className="mt-1 font-semibold">{c.year}</dd></div>}
+                <div><dt className="slate text-[12px] text-muted">For</dt><dd className="mt-1 font-semibold">{c.lanes.map((l) => LANES[l]).join(", ")}</dd></div>
+                <div><dt className="slate text-[12px] text-muted">Discipline</dt><dd className="mt-1 font-semibold">{c.disciplines.map((d) => DISCIPLINES[d]).join(", ")}</dd></div>
+                {c.year && <div><dt className="slate text-[12px] text-muted">Year</dt><dd className="mt-1 font-semibold">{c.year}</dd></div>}
                 <div>
-                  <dt className="slate text-[11px] text-muted">What we did</dt>
+                  <dt className="slate text-[12px] text-muted">What we did</dt>
                   <dd className="mt-1"><ul className="grid gap-1 font-semibold">{c.did.map((d) => <li key={d}>{d}</li>)}</ul></dd>
                 </div>
               </dl>
@@ -120,7 +121,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
                 {rest.map((m, n) => (
                   <figure key={m.src + n} className={`reveal min-w-0 ${m.w > m.h ? "md:col-span-2" : ""}`}>
                     <CaseMedia m={m} sizes={m.w > m.h ? "(min-width: 768px) 62vw, 92vw" : "(min-width: 1024px) 30vw, (min-width: 768px) 46vw, 92vw"} className="rounded-md border border-line" />
-                    {m.caption && <figcaption className="slate mt-3 text-[11px] text-muted">{m.caption}</figcaption>}
+                    {m.caption && <figcaption className="slate mt-3 text-[12px] text-muted">{m.caption}</figcaption>}
                   </figure>
                 ))}
               </div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import WorkCard from "./WorkCard";
-import { cases, DISCIPLINES, LANES, type Discipline, type Lane } from "../content/work";
+import { shownCases as cases, DISCIPLINES, LANES, type Discipline, type Lane } from "../content/work";
 
 // Filters are links, so the state lives in the URL (/work?lane=…&discipline=…) and the grid is in the HTML.
 export default function WorkGrid({ lane, discipline }: { lane: Lane | ""; discipline: Discipline | "" }) {
