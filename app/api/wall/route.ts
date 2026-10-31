@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { WALL_HOOK } from "../../content/wall";
-import { PROMPTS } from "../../content/wall-data";
+import { ROLLS } from "../../content/wall-data";
 
 // Sign the wall. Light filters keep it clean; every tape is emailed to Willie so he can take one down.
 const hits = new Map<string, number[]>();
@@ -27,11 +27,13 @@ export async function POST(req: Request) {
   const name = clean(body.name, 28);
   const line = clean(body.line, 70);
   const from = clean(body.from, 28);
-  const prompt = PROMPTS.includes(String(body.prompt)) ? String(body.prompt) : PROMPTS[0];
+  const color = String(body.color) in ROLLS ? String(body.color) : "orange";
+  const num = (v: unknown, lo: number, hi: number, d: number) => { const n = Number(v); return Number.isFinite(n) ? Math.round(Math.min(hi, Math.max(lo, n)) * 10) / 10 : d; };
+  const x = num(body.x, 6, 94, 50), y = num(body.y, 6, 94, 50), tilt = num(body.tilt, -6, 6, 0);
   if (name.length < 2 || line.length < 2) return NextResponse.json({ error: "missing" }, { status: 400 });
   if (BLOCK.test(`${name} ${line} ${from}`)) return NextResponse.json({ error: "keep_it_clean" }, { status: 422 });
 
-  const tape = { name, line, from, prompt, tilt: Math.round((Math.random() * 8 - 4) * 10) / 10, at: new Date().toISOString() };
+  const tape = { name, line, from, color, x, y, tilt, at: new Date().toISOString() };
   try {
     const res = await fetch(WALL_HOOK, {
       method: "POST",

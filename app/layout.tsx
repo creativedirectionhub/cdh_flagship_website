@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Pixels from "./components/Pixels";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
-import { display, mono } from "./fonts";
+import { display, mono, marker } from "./fonts";
 import { site } from "./content/services";
 import "./globals.css";
 
@@ -49,7 +49,7 @@ const schema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${mono.variable}`}>
+    <html lang="en" className={`${display.variable} ${mono.variable} ${marker.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-gaffer focus:px-4 focus:py-3 focus:text-on-gaffer">Skip to content</a>

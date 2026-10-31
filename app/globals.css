@@ -176,18 +176,68 @@ button:hover .mini-stick { transform: rotate(-26deg); }
   .op-slate, .op-stick, .op-shake, .op-ui, .op-line, .op-tape, .op-ink, .rec-dot { animation: none !important; }
 }
 
-/* ---- The wall ---- */
-.wall-board { background-color: #1b1a18; background-image: linear-gradient(90deg, rgba(239,233,223,.035) 1px, transparent 1px), radial-gradient(rgba(239,233,223,.025) 1px, transparent 1px); background-size: 25% 100%, 5px 5px; border: 1px solid rgb(var(--line)); }
-.wall-strip { position: relative; max-width: min(100%, 340px); padding: 14px 24px 14px 22px; transform: rotate(var(--tilt, 0deg)); clip-path: polygon(0 4%, 3% 0, 97% 2%, 100% 0, 99% 22%, 100% 40%, 98% 58%, 100% 78%, 99% 100%, 2% 98%, 0 100%, 1.5% 80%, 0 62%, 2% 44%, 0 26%); transition: transform .25s ease; }
-.wall-strip:hover { transform: rotate(0deg) scale(1.03); z-index: 1; }
-.tape-orange { background: #ff5a1f; color: #121110; }
-.tape-bone { background: #efe9df; color: #121110; }
-.tape-black { background: #2a2826; color: #efe9df; box-shadow: inset 0 0 0 1px rgba(239,233,223,.12); }
-.wall-slap { animation: wallSlap .45s cubic-bezier(.2,1.4,.4,1) both; }
-@keyframes wallSlap { from { transform: rotate(calc(var(--tilt) * 4)) scale(1.35); opacity: 0; } to { transform: rotate(var(--tilt)) scale(1); opacity: 1; } }
 .wall-input { width: 100%; background: transparent; border: 0; border-bottom: 2px solid rgb(var(--line)); padding: 10px 0; color: rgb(var(--ink)); outline: none; }
 .wall-input:focus { border-color: #ff5a1f; }
 .wall-input::placeholder { color: rgb(var(--muted)); opacity: .7; font-weight: 500; }
-@media (prefers-reduced-motion: reduce) { .wall-slap { animation: none; } .wall-strip { transition: none; } }
-.wall-ghost { max-width: min(100%, 340px); padding: 14px 24px 14px 22px; transform: rotate(var(--tilt)); border: 2px dashed rgba(239,233,223,.28); color: rgb(var(--muted)); transition: border-color .2s, color .2s; }
-.wall-ghost:hover, .wall-ghost:focus-within { border-color: #ff5a1f; color: #ff5a1f; }
+
+/* ---- The wall: gaffer tape on a black stage flat ---- */
+.wall-scroll { scrollbar-width: thin; }
+.wall-flat {
+  container-type: inline-size;
+  --mx: 50%; --my: 30%;
+  background-color: #151413;
+  background-image:
+    radial-gradient(circle at var(--mx) var(--my), rgba(255,236,210,.10), transparent 28%),
+    radial-gradient(ellipse at 50% -10%, rgba(255,236,210,.08), transparent 55%),
+    radial-gradient(circle, rgba(239,233,223,.16) 1.2px, transparent 1.6px),
+    linear-gradient(90deg, rgba(0,0,0,.55) 1px, rgba(239,233,223,.05) 1px, rgba(239,233,223,.05) 2px, transparent 2px),
+    radial-gradient(ellipse at 18% 70%, rgba(239,233,223,.035), transparent 30%),
+    radial-gradient(ellipse at 70% 30%, rgba(239,233,223,.03), transparent 25%);
+  background-size: 100% 100%, 100% 100%, 25% 33.333%, 25% 100%, 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0, -12.5% -16.6%, 0 0, 0 0, 0 0;
+  border-top: 1px solid rgb(var(--line)); border-bottom: 1px solid rgb(var(--line));
+  overflow: hidden;
+}
+.gt-pin { position: absolute; transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)); filter: drop-shadow(0 .25cqw .2cqw rgba(0,0,0,.55)); list-style: none; transition: transform .25s ease, filter .25s ease; }
+.gt-pin:not(.gt-dress):not(.gt-draft):hover { transform: translate(-50%, -50%) rotate(0deg) scale(1.06); z-index: 15; filter: drop-shadow(0 .8cqw .8cqw rgba(0,0,0,.6)); }
+.gt {
+  position: relative; max-width: 24cqw; padding: .75em 1.25em .7em 1.15em; line-height: 1.12;
+  font-family: var(--font-marker), "Marker Felt", cursive;
+}
+.gt::before { /* cloth weave and a little sheen */
+  content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply;
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.07) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, rgba(255,255,255,.22), transparent 28%, transparent 70%, rgba(0,0,0,.14));
+}
+.gt::after { content: ""; position: absolute; left: 0; right: 0; top: 46%; height: 1px; background: rgba(255,255,255,.12); pointer-events: none; }
+.gt-line { position: relative; font-size: 1em; letter-spacing: .01em; overflow-wrap: anywhere; }
+.gt-sign { position: relative; margin-top: .3em; font-size: .62em; opacity: .85; }
+.gt-input { display: block; width: 17cqw; resize: none; background: transparent; border: 0; outline: none; color: inherit; font-family: inherit; line-height: 1.12; padding: 0; caret-color: currentColor; }
+.gt-input::placeholder { color: inherit; opacity: .45; }
+.gt-unroll { transform-origin: left center; animation: gtUnroll .38s cubic-bezier(.2,.9,.3,1) both; }
+@keyframes gtUnroll { from { transform: scaleX(.04) scaleY(.85); } 70% { transform: scaleX(1.03); } to { transform: none; } }
+.gt-slap { animation: gtSlap .42s cubic-bezier(.2,1.5,.4,1) both; }
+@keyframes gtSlap { from { transform: translate(-50%,-50%) rotate(calc(var(--tilt) * 3)) scale(1.25); filter: drop-shadow(0 2cqw 1.6cqw rgba(0,0,0,.6)); } to { transform: translate(-50%,-50%) rotate(var(--tilt)) scale(1); } }
+.gt-draft .gt { box-shadow: none; outline: 2px dashed rgba(255,255,255,.0); }
+.wall-thump { animation: wallThump .3s ease-out; }
+@keyframes wallThump { 20% { transform: translateY(2px); } 45% { transform: translateY(-1px); } 100% { transform: none; } }
+
+/* Tape rolls in the dock */
+.gt-roll { position: relative; width: 46px; height: 46px; border-radius: 50%; background: var(--roll); box-shadow: inset 0 0 0 5px rgba(0,0,0,.18), inset 0 0 0 9px rgba(255,255,255,.08), 0 3px 0 rgba(0,0,0,.4); transition: transform .2s cubic-bezier(.2,1.4,.4,1); }
+.gt-roll-hole { position: absolute; inset: 31%; border-radius: 50%; background: rgb(var(--raised)); box-shadow: inset 0 2px 3px rgba(0,0,0,.6); }
+.gt-roll-tail { position: absolute; right: -6px; bottom: 2px; width: 16px; height: 10px; background: var(--roll); clip-path: polygon(0 0,100% 10%,85% 50%,100% 90%,0 100%); }
+.gt-roll:hover { transform: translateY(-3px) rotate(-12deg); }
+.gt-roll.is-on { transform: translateY(-7px) rotate(-24deg); box-shadow: inset 0 0 0 5px rgba(0,0,0,.18), 0 0 0 2px rgb(var(--ground)), 0 0 0 4px rgb(var(--ink)), 0 6px 0 rgba(0,0,0,.4); }
+.gt-roll[aria-label="Black"] { box-shadow: inset 0 0 0 5px rgba(0,0,0,.18), 0 0 0 1.5px rgba(239,233,223,.4), 0 3px 0 rgba(0,0,0,.4); }
+.gt-roll:focus-visible { outline: 2px solid #ff5a1f; outline-offset: 4px; }
+
+@container (max-width: 767px) {
+  .gt { max-width: 58cqw; font-size: 3.7cqw !important; }
+  .gt-input { width: 44cqw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gt-unroll, .gt-slap, .wall-thump { animation: none; }
+  .gt-pin, .gt-roll { transition: none; }
+}

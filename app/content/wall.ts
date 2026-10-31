@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
-import type { Tape } from "./wall-data";
-export { PROMPTS, FIRST_TAPE } from "./wall-data";
+import { ROLLS, type Tape } from "./wall-data";
+export { FIRST_TAPE } from "./wall-data";
 export type { Tape } from "./wall-data";
 
 // The wall: visitors sign a strip of gaffer tape. Stored in the Make data store "CDH wall",
@@ -22,7 +22,7 @@ const cached = unstable_cache(
       if (!Array.isArray(data)) throw new Error("wall read: not a list");
       return data
         .filter((t) => t && t.name && t.line)
-        .map((t) => ({ k: String(t.k), name: String(t.name), line: String(t.line), prompt: String(t.prompt || ""), from: t.from ? String(t.from) : "", tilt: Number(t.tilt) || 0, at: String(t.at || "") }))
+        .map((t): Tape => ({ k: String(t.k), name: String(t.name), line: String(t.line), from: t.from ? String(t.from) : "", color: (String(t.color) in ROLLS ? String(t.color) : "orange") as Tape["color"], x: Number(t.x) || 0, y: Number(t.y) || 0, tilt: Number(t.tilt) || 0, at: String(t.at || "") }))
         .slice(0, 120);
     } catch (e) {
       console.error(e);

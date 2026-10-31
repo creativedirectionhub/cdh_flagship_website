@@ -23,3 +23,12 @@ export const mono = localFont({
   preload: false,
   fallback: ["ui-monospace", "Menlo", "monospace"],
 });
+
+// The wall's handwriting: Sharpie on gaffer tape. Only loads where the wall is.
+export const marker = localFont({
+  src: [{ path: "./fonts/permanent-marker-latin-400-normal.woff2", weight: "400", style: "normal" }],
+  variable: "--font-marker",
+  display: "swap",
+  preload: false,
+  fallback: ["Marker Felt", "Comic Sans MS", "cursive"],
+});
