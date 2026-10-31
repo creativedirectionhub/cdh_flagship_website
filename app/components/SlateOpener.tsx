@@ -48,7 +48,7 @@ export default function SlateOpener() {
     const v = video.current;
     if (!v) return;
     const sm = window.matchMedia("(max-width: 767px) and (orientation: portrait)").matches;
-    v.src = sm ? "/media/reel-sm.mp4" : "/media/reel.mp4";
+    v.src = sm ? "/media/heist-sm.mp4" : "/media/heist.mp4";
     v.play().catch(() => {});
   }, []);
 
@@ -68,7 +68,7 @@ export default function SlateOpener() {
 
   return (
     <section aria-label="Reel" className="relative h-[calc(100svh-68px)] min-h-[560px] overflow-hidden bg-ground">
-      <video ref={video} muted playsInline loop autoPlay preload="metadata" poster="/media/reel-poster.webp" aria-label="Reel: Hattiesburg Black Sox campaign, talent portraits, travel photography, then AI concept films including a pop-up rush for Mama Lou's hot sauce" className="absolute inset-0 h-full w-full object-cover" />
+      <video ref={video} muted playsInline loop autoPlay preload="metadata" poster="/media/heist-poster.webp" aria-label="The Heist, a CDH concept spot with AI performers: a Mississippi baker whose post gets three likes calls in a creative crew, and by morning there is a line around the block" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/90 via-[#121110]/15 to-[#121110]/45" />
 
       {/* Monitor: frame lines, REC, take, timecode */}
@@ -98,7 +98,7 @@ export default function SlateOpener() {
           </h1>
           <div className="op-ui flex flex-col items-start gap-4 pb-2">
             <Link href="/about" className="slate inline-block border-b-2 border-[#efe9df]/30 pb-1 pt-3 text-[#efe9df] hover:border-gaffer hover:text-gaffer">About us</Link>
-            <span className="slate text-[12px] text-[#efe9df]/70">Reel includes AI concepts, labeled on each piece</span>
+            <span className="slate text-[12px] text-[#efe9df]/70">The Heist · Concept spot. AI performers.</span>
           </div>
         </div>
       </div>
