@@ -81,7 +81,7 @@ export default function SlateOpener() {
             <span className="op-line block">We put brands</span>{" "}
             <span className="op-line op-line-2 block">on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge op-tape" /><b className="op-ink">mark.</b></span></span>
           </h1>
-          <span className="op-ui slate pb-2 text-[11px] text-[#efe9df]/60">Concept spot. AI performers.</span>
+          <span className="op-ui slate pb-2 text-[11px] text-[#efe9df]/70">Creative Direction Hub</span>
         </div>
       </div>
 
