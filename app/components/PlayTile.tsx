@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from "react";
 
 // Still until you point at it, then it plays. On touch screens it plays while it's in view.
 export default function PlayTile({
-  href, poster, video, alt, title, kicker, label, sizes, ratio = "16 / 10", className = "", titleClass = "",
+  href, poster, video, alt, title, sub, kicker, label, sizes, ratio = "16 / 10", className = "", titleClass = "",
 }: {
-  href: string; poster: string; video?: string; alt: string; title: React.ReactNode; kicker?: string; label?: string;
+  href: string; poster: string; video?: string; alt: string; title: React.ReactNode; sub?: string; kicker?: string; label?: string;
   sizes: string; ratio?: string; className?: string; titleClass?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -54,6 +54,7 @@ export default function PlayTile({
       <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
         {kicker && <p className="slate text-[11px] text-gaffer">{kicker}</p>}
         <h3 className={`mt-2 font-black leading-[0.92] tracking-tighter text-[#efe9df] ${titleClass || "text-[clamp(28px,3.4vw,52px)]"}`}>{title}</h3>
+        {sub && <p className="mt-2 text-[15px] font-semibold leading-[1.4] text-[#efe9df]/80">{sub}</p>}
       </div>
     </Link>
   );

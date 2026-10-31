@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { site } from "../content/services";
 
 export const metadata: Metadata = {
-  title: "Privacy",
+  title: "Privacy Policy",
   description: "What Creative Direction Hub collects through this site, why, and how to have it removed.",
   alternates: { canonical: "/privacy" },
 };

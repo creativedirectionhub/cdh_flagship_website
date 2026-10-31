@@ -6,8 +6,8 @@ import WaysToStart from "../components/WaysToStart";
 import { facts, network, site, values } from "../content/services";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Willie Bernoudy, founder and creative director of Creative Direction Hub, and the network of editors, designers, photographers, motion artists and creators that makes the work.",
+  title: { absolute: "Willie Bernoudy, Creative Director & AI Art Director | CDH" },
+  description: "Willie Bernoudy is the founder, creative director and AI art director of Creative Direction Hub. 15 years of creative direction and photography in 23 countries.",
   alternates: { canonical: "/about" },
 };
 
@@ -16,7 +16,15 @@ const person = {
   "@type": "Person",
   "@id": `${site.url}/about#willie`,
   name: "Willie Bernoudy",
-  jobTitle: "Founder and Creative Director",
+  jobTitle: "Founder, Creative Director and AI Art Director",
+  description: "Creative director, AI art director, filmmaker and photographer. Founder of Creative Direction Hub.",
+  knowsAbout: ["Creative direction", "AI art direction", "Photography", "Filmmaking", "Brand strategy", "Social media strategy"],
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Los Angeles Film School" },
+  award: [
+    "Corporate Vision Awards: Best Social Media Marketing Agency 2022 (Blacksheepfocus)",
+    "Corporate Vision Awards: Best Social Media Strategy Agency 2023 (Blacksheepfocus)",
+    "ND Awards 2020: Honorable Mention, Professional, Travel and Culture",
+  ],
   worksFor: { "@id": `${site.url}/#org` },
   image: `${site.url}/media/about-willie.webp`,
 };

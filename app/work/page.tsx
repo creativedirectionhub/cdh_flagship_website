@@ -4,8 +4,8 @@ import WaysToStart from "../components/WaysToStart";
 import { DISCIPLINES, LANES, type Discipline, type Lane } from "../content/work";
 
 export const metadata: Metadata = {
-  title: "Work",
-  description: "Brand, campaigns, content, digital and AI art direction for consumer brands, personal brands and hospitality, directed by Willie Bernoudy. Client work first; concepts labeled.",
+  title: { absolute: "Work: Campaigns, Photography & Brand Films | Creative Direction Hub" },
+  description: "Campaigns, photography, brand films and AI art direction for consumer brands, personal brands and hospitality, directed by Willie Bernoudy.",
   alternates: { canonical: "/work" },
 };
 

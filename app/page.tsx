@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import MarkReveal from "./components/MarkReveal";
 import PlayTile from "./components/PlayTile";
@@ -13,6 +14,11 @@ const services = [
   { id: "digital", name: "Digital", line: "A site that closes.", poster: "/work/gfx-liceria-coffee.webp", alt: "Social design for Liceria Coffee Shop: Fresh on the menu", ai: false },
   { id: "ai", name: "AI art direction", line: "AI that looks like your brand.", poster: "/media/art-direction.webp", video: "/media/art-direction.mp4", alt: "An amber dropper bottle on warm travertine, leaf shadows drifting across the stone", ai: true },
 ];
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { title: "Creative Direction Hub · We put brands on their mark.", description: "Creative direction and AI art direction for consumer brands, personal brands and hospitality, led by Willie Bernoudy." },
+};
 
 export default function Home() {
   const book = BOOKING_URL || "/start";
@@ -66,7 +72,7 @@ export default function Home() {
       {/* The work */}
       <section className="gutter pb-24 md:pb-36" aria-label="The work">
         <div className="mx-auto max-w-[1440px]">
-          <PlayTile href="/work" poster="/media/spots-cover.webp" video="/media/spots-cover.mp4" alt="Morning sun across a travertine shelf with an amber dropper bottle" kicker="The work" title={<>Directed at the<br />speed of culture.</>} label="AI concept" sizes="(min-width: 1440px) 1296px, 92vw" ratio="21 / 9" className="reveal rounded-sm" titleClass="text-[clamp(36px,6vw,104px)]" />
+          <PlayTile href="/work" poster="/media/spots-cover.webp" video="/media/spots-cover.mp4" alt="Morning sun across a travertine shelf with an amber dropper bottle" kicker="The work" title={<>Directed at the{" "}<br />speed of culture.</>} label="AI concept" sizes="(min-width: 1440px) 1296px, 92vw" ratio="21 / 9" className="reveal rounded-sm" titleClass="text-[clamp(36px,6vw,104px)]" />
           <Link href="/work" className="slate mt-8 inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">Watch the work</Link>
         </div>
       </section>
@@ -78,7 +84,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end">
           <div className="min-w-0">
             <p className="slate text-gaffer">The crew</p>
-            <h2 id="crew-title" className="reveal mt-5 text-[clamp(44px,7vw,120px)] font-black leading-[0.9] tracking-tightest">One director.<br />A crew built for the job.</h2>
+            <h2 id="crew-title" className="reveal mt-5 text-[clamp(44px,7vw,120px)] font-black leading-[0.9] tracking-tightest">One director.{" "}<br />A crew built for the job.</h2>
           </div>
           <div className="reveal min-w-0">
             <p className="max-w-[46ch] text-[18px] leading-[1.6] text-body">Willie directs every project. A vetted network of {network.slice(0, -1).join(", ").toLowerCase()} and {network[network.length - 1].toLowerCase()} makes it with him, picked for each job. You get the right people without paying for a bench.</p>
@@ -101,7 +107,7 @@ export default function Home() {
           </div>
           <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-5">
             {services.map((s, n) => (
-              <PlayTile key={s.id} href={`/services#${s.id}`} poster={s.poster} video={s.video} alt={s.alt} kicker={`0${n + 1}`} title={<>{s.name}<span className="mt-3 block text-[16px] font-semibold leading-[1.35] tracking-normal text-[#efe9df]/80">{s.line}</span></>} label={s.ai ? "AI" : undefined} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
+              <PlayTile key={s.id} href={`/services#${s.id}`} poster={s.poster} video={s.video} alt={s.alt} kicker={`0${n + 1}`} title={s.name} sub={s.line} label={s.ai ? "AI" : undefined} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
             ))}
           </div>
         </div>
@@ -129,7 +135,7 @@ export default function Home() {
         <TapeMark size={520} className="pointer-events-none absolute -right-10 -top-10 hidden opacity-[0.07] md:block" />
         <div className="relative mx-auto max-w-[1440px]">
           <h2 id="close-title" className="text-[clamp(56px,11vw,190px)] font-black leading-[0.86] tracking-tightest">
-            Ready for<br />your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark?</b></span>
+            Ready for{" "}<br />your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark?</b></span>
           </h2>
           <p className="mt-10 max-w-[48ch] text-[19px] leading-[1.55] text-body">Send your site or Instagram. Willie reviews the brand, the site and your last three pieces, and emails you the fixes in 3 business days. Free, and yours to keep.</p>
           <div className="mt-10 flex flex-wrap gap-4">

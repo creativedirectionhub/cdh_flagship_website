@@ -4,8 +4,8 @@ import { BOOKING_URL, QUICK_CALL_URL } from "../config";
 import { site } from "../content/services";
 
 export const metadata: Metadata = {
-  title: "Start",
-  description: "Get a Free Creative Audit: we review your brand, your site and your last three pieces, and email you the fixes within 3 business days.",
+  title: { absolute: "Free Creative Audit for Your Brand | Creative Direction Hub" },
+  description: "Get a free creative audit: Willie Bernoudy reviews your brand, website and last three posts or ads, and emails you the fixes within 3 business days.",
   alternates: { canonical: "/start" },
 };
 

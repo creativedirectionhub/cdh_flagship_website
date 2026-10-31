@@ -7,16 +7,39 @@ import { bySlug } from "../content/work";
 import { disciplines, faqs } from "../content/services";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "Brand, campaigns and ads, content and production, and digital. One creative director over all four, and a network to make it.",
+  title: { absolute: "Brand, Campaign, Content, Web & AI Art Direction Services | CDH" },
+  description: "Brand strategy and identity, ad campaigns for Meta and TikTok, photography and brand film, websites, and AI art direction. One creative director over all five.",
   alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {
   const book = BOOKING_URL || "/start";
   const bookProps = BOOKING_URL ? { target: "_blank", rel: "noopener" } : {};
+  const ld = {
+    "@context": "https://schema.org",
+    "@graph": [
+      ...disciplines.map((d) => ({
+        "@type": "Service",
+        name: d.name,
+        serviceType: d.name,
+        description: d.what,
+        provider: { "@id": "https://www.creativedirectionhub.com/#org" },
+        areaServed: "Worldwide",
+        url: `https://www.creativedirectionhub.com/services#${d.id}`,
+      })),
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.creativedirectionhub.com/" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.creativedirectionhub.com/services" },
+      ] },
+    ],
+  };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <section className="gutter py-16 md:py-24">
         <div className="mx-auto max-w-[1440px]">
           <p className="slate text-gaffer">Services</p>
@@ -74,7 +97,7 @@ export default function ServicesPage() {
             {faqs.map((f) => (
               <details key={f.q} className="group border-b border-line">
                 <summary className="flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-6 py-5 text-[20px] font-extrabold tracking-[-0.01em] [&::-webkit-details-marker]:hidden">
-                  {f.q}
+                  <h3 className="text-[20px] font-extrabold tracking-[-0.01em]">{f.q}</h3>
                   <span aria-hidden="true" className="relative h-4 w-4 shrink-0">
                     <span className="absolute left-0 top-[7px] h-[2px] w-4 bg-gaffer" />
                     <span className="absolute left-[7px] top-0 h-4 w-[2px] bg-gaffer transition-transform group-open:scale-y-0" />

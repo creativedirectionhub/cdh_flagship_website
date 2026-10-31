@@ -11,9 +11,9 @@ const url = site.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
-  title: { default: "Creative Direction Hub · We put brands on their mark.", template: "%s · Creative Direction Hub" },
-  description: "The creative department for growing businesses, led by creative director Willie Bernoudy. Brand, campaigns, content, digital and AI art direction for consumer brands, personal brands and hospitality.",
-  openGraph: { siteName: "Creative Direction Hub", type: "website", url },
+  title: { default: "Creative Direction Hub · Creative Direction & AI Art Direction Agency", template: "%s · Creative Direction Hub" },
+  description: "Creative direction agency led by Willie Bernoudy. Brand, campaigns, content, websites and AI art direction for consumer brands, personal brands and hospitality.",
+  openGraph: { siteName: "Creative Direction Hub", type: "website", url, locale: "en_US" },
   twitter: { card: "summary_large_image" },
   alternates: { canonical: "./" },
 };
@@ -34,15 +34,16 @@ const schema = {
       description: site.positioning,
       email: site.email,
       areaServed: "Worldwide",
-      founder: { "@type": "Person", "@id": `${url}/about#willie`, name: "Willie Bernoudy", jobTitle: "Founder and Creative Director" },
-      knowsAbout: ["Brand identity", "Creative direction", "Campaigns", "Paid social", "Photography", "Brand film", "Web design", "AI art direction"],
+      founder: { "@type": "Person", "@id": `${url}/about#willie`, name: "Willie Bernoudy", jobTitle: "Founder, Creative Director and AI Art Director" },
+      image: `${url}/opengraph-image`,
+      knowsAbout: ["Creative direction", "AI art direction", "Brand strategy", "Brand identity", "Advertising campaigns", "Paid social advertising", "Photography", "Brand film", "Commercial production", "Web design"],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Services",
         itemListElement: ["Brand", "Campaigns and ads", "Content and production", "Digital", "AI art direction", "Free Creative Audit"].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })),
       },
     },
-    { "@type": "WebSite", "@id": `${url}/#site`, url, name: "Creative Direction Hub", publisher: { "@id": `${url}/#org` } },
+    { "@type": "WebSite", "@id": `${url}/#site`, url, name: "Creative Direction Hub", alternateName: "CDH", inLanguage: "en-US", publisher: { "@id": `${url}/#org` } },
   ],
 };
 

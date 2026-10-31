@@ -10,7 +10,7 @@ export default function SiteFooter() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] lg:items-end">
           <div className="flex items-end gap-6">
             <TapeMark size={120} className="shrink-0" />
-            <p className="text-[clamp(40px,6vw,96px)] font-black leading-[0.9] tracking-tightest">We put brands<br />on their mark<span className="text-gaffer">.</span></p>
+            <p className="text-[clamp(40px,6vw,96px)] font-black leading-[0.9] tracking-tightest">We put brands{" "}<br />on their mark<span className="text-gaffer">.</span></p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2">
             <ul className="grid text-[16px] font-semibold">
