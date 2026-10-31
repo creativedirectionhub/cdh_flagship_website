@@ -140,6 +140,8 @@ export default function Wall({ initial }: { initial: Tape[] }) {
   const [line, setLine] = useState("");
   const [name, setName] = useState("");
   const [from, setFrom] = useState("");
+  const [email, setEmail] = useState("");
+  const [optin, setOptin] = useState(false);
   const [mine, setMine] = useState<Tape[]>([]);
   const [fresh, setFresh] = useState("");
   const [busy, setBusy] = useState(false);
@@ -208,6 +210,7 @@ export default function Wall({ initial }: { initial: Tape[] }) {
     if (!draft) return;
     if (line.trim().length < 2) { setMsg("Write something on your tape first."); text.current?.focus(); return; }
     if (name.trim().length < 2) { setMsg("Sign it: add your name or brand."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) { setMsg("Add your email. It stays private, never on the wall."); return; }
     setBusy(true); setMsg("");
     // Saved in wall coordinates, so it lands in the same neighborhood on every screen.
     const [c, r] = draft.cell;
@@ -215,10 +218,10 @@ export default function Wall({ initial }: { initial: Tape[] }) {
     const y = mode === "land" ? ((r + 0.5) / 4) * 100 : ((r + 0.5) / 6) * 100;
     const before = grid.rows;
     try {
-      const res = await fetch("/api/wall", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ line, name, from, color: draft.color, x, y, tilt: draft.tilt }) });
+      const res = await fetch("/api/wall", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ line, name, from, email, optin, color: draft.color, x, y, tilt: draft.tilt }) });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.tape) {
-        setMsg(res.status === 422 ? "Keep it clean and link-free, then stick it again." : res.status === 429 ? "That's a lot of tape. Give it a few minutes." : res.status === 400 ? "Write something and sign it." : "The wall's down for a minute. Try again shortly.");
+        setMsg(res.status === 422 ? "Keep it clean and link-free, then stick it again." : res.status === 429 ? "That's a lot of tape. Give it a few minutes." : res.status === 400 ? "Write something, sign it and add your email." : "The wall's down for a minute. Try again shortly.");
         setBusy(false);
         return;
       }
@@ -353,6 +356,14 @@ export default function Wall({ initial }: { initial: Tape[] }) {
                 <span className="slate text-[11px] text-muted">From (optional)</span>
                 <input value={from} onChange={(e) => setFrom(e.target.value)} maxLength={28} autoComplete="off" placeholder="City or crew" className="wall-input md:w-[150px]" onKeyDown={(e) => { if (e.key === "Enter") stick(); }} />
               </label>
+              <label className="col-span-2 grid min-w-0 gap-1">
+                <span className="slate text-[11px] text-muted">Email (private)</span>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={120} autoComplete="email" inputMode="email" placeholder="Never shown on the wall" className="wall-input md:w-[230px]" onKeyDown={(e) => { if (e.key === "Enter") stick(); }} />
+              </label>
+              <label className="col-span-2 flex cursor-pointer items-center gap-2 text-[13px] text-body md:order-last md:basis-full">
+                <input type="checkbox" checked={optin} onChange={(e) => setOptin(e.target.checked)} className="h-4 w-4 accent-[#ff5a1f]" />
+                Send me Willie&apos;s notes on creative direction, a few times a year.
+              </label>
               <div className="col-span-2 flex items-center gap-3 md:ml-auto md:flex-1 md:gap-4">
                 <button type="button" onClick={another} className="group mr-auto flex items-center gap-2" aria-label="Another take: feed me a line">
                 <span key={clap} className={`mini-slate ${clap ? "mini-go" : ""}`} aria-hidden="true"><span className="slate-stripes mini-stick" /><span className="mini-board" /></span>
@@ -363,7 +374,7 @@ export default function Wall({ initial }: { initial: Tape[] }) {
               </div>
             </div>
           )}
-          <p className={`mt-3 text-[12px] leading-[1.5] text-muted ${draft ? "hidden md:block" : ""}`}>Your tape shows publicly on this wall. A first name or nickname is fine. No links.</p>
+          <p className={`mt-3 text-[12px] leading-[1.5] text-muted ${draft ? "hidden md:block" : ""}`}>Your tape shows publicly on this wall; a first name or nickname is fine, no links. Your email stays private: you get a copy of your tape, and notes only if you tick the box.</p>
         </div>
       </div>
     </section>

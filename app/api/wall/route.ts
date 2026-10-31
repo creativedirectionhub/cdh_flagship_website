@@ -30,6 +30,9 @@ export async function POST(req: Request) {
   const color = String(body.color) in ROLLS ? String(body.color) : "orange";
   const num = (v: unknown, lo: number, hi: number, d: number) => { const n = Number(v); return Number.isFinite(n) ? Math.round(Math.min(hi, Math.max(lo, n)) * 10) / 10 : d; };
   const x = num(body.x, 2, 98, 50), y = num(body.y, 2, 600, 50), tilt = num(body.tilt, -6, 6, 0);
+  const email = clean(body.email, 120).toLowerCase();
+  const optin = body.optin === true;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return NextResponse.json({ error: "missing" }, { status: 400 });
   if (name.length < 2 || line.length < 2) return NextResponse.json({ error: "missing" }, { status: 400 });
   if (BLOCK.test(`${name} ${line} ${from}`)) return NextResponse.json({ error: "keep_it_clean" }, { status: 422 });
 
@@ -38,7 +41,7 @@ export async function POST(req: Request) {
     const res = await fetch(WALL_HOOK, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "sign", ...tape }),
+      body: JSON.stringify({ action: "sign", ...tape, email, optin }),
       signal: AbortSignal.timeout(12000),
       cache: "no-store",
     });

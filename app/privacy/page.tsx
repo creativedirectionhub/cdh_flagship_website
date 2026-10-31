@@ -12,7 +12,7 @@ const sections: { h: string; p: string[] }[] = [
     h: "What we collect",
     p: [
       "When you request a Free Creative Audit, we collect what you type into the form: your name, email, website or social handle, the kind of business you run, what you need help with, and any notes.",
-      "When you sign the wall on the home page, we keep what you write on your tape: your answer, the name you sign with and, if you add it, where you're from. It shows publicly on the wall. Ask us and we'll take it down.",
+      "When you sign the wall on the home page, we keep what you write on your tape, the name you sign with, where you're from if you add it, and your email. The tape, name and place show publicly on the wall; your email never does. We use it to send you a copy of your tape and, only if you tick the box, Willie's occasional notes. Ask us and we'll take your tape down and delete your email.",
       "When you book a call, Cal.com handles the booking and shares your name, email and the time you picked with us.",
       "The site uses Vercel Analytics to count visits and see which pages are read, without cookies. If we run ads, the Meta and TikTok pixels may load so we can see whether those ads bring people here.",
     ],
