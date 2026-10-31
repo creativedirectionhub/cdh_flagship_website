@@ -2,8 +2,10 @@ import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { WALL_HOOK } from "../../content/wall";
 import { ROLLS } from "../../content/wall-data";
+import { guard } from "./guard";
 
-// Sign the wall. Light filters keep it clean; every tape is emailed to Willie so he can take one down.
+// Sign the wall. The guard blocks slurs, hate, sexual content, profanity, threats and links, and holds
+// borderline tapes hidden until Willie OKs them. Every tape is emailed to Willie so he can take one down.
 const hits = new Map<string, number[]>();
 function tooMany(ip: string) {
   const now = Date.now();
@@ -14,7 +16,6 @@ function tooMany(ip: string) {
   return recent.length > 2;
 }
 
-const BLOCK = /(https?:|www\.|\.(com|net|org|io|co|xyz|ru|ly)\b|@|\d{6,}|f+u+c+k|sh[i1]t|b[i1]tch|c+u+n+t|d[i1]ck|puss(y|ies)|n[i1]gg|f[a@]g|retard|wh[o0]re|sl[u]t|p[o0]rn|nazi|\bsex\b|\bcock|\bass(hole)?\b|kill yourself|kys)/i;
 const clean = (v: unknown, max: number) => String(v ?? "").replace(/[\u0000-\u001f<>]/g, "").replace(/\s+/g, " ").trim().slice(0, max);
 
 export async function POST(req: Request) {
@@ -34,14 +35,16 @@ export async function POST(req: Request) {
   const optin = body.optin === true;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return NextResponse.json({ error: "missing" }, { status: 400 });
   if (name.length < 2 || line.length < 2) return NextResponse.json({ error: "missing" }, { status: 400 });
-  if (BLOCK.test(`${name} ${line} ${from}`)) return NextResponse.json({ error: "keep_it_clean" }, { status: 422 });
+  const verdict = guard({ line, name, from });
+  if (verdict === "block") return NextResponse.json({ error: "keep_it_clean" }, { status: 422 });
+  const held = verdict === "hold";
 
   const tape = { name, line, from, color, x, y, tilt, at: new Date().toISOString() };
   try {
     const res = await fetch(WALL_HOOK, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "sign", ...tape, email, optin }),
+      body: JSON.stringify({ action: "sign", ...tape, email, optin, hidden: held }),
       signal: AbortSignal.timeout(12000),
       cache: "no-store",
     });
@@ -50,6 +53,6 @@ export async function POST(req: Request) {
     console.error("wall sign failed", e);
     return NextResponse.json({ error: "offline" }, { status: 503 });
   }
-  revalidateTag("wall");
-  return NextResponse.json({ ok: true, tape });
+  if (!held) revalidateTag("wall");
+  return NextResponse.json({ ok: true, tape, held });
 }

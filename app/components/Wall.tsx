@@ -221,7 +221,7 @@ export default function Wall({ initial }: { initial: Tape[] }) {
       const res = await fetch("/api/wall", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ line, name, from, email, optin, color: draft.color, x, y, tilt: draft.tilt }) });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.tape) {
-        setMsg(res.status === 422 ? "Keep it clean and link-free, then stick it again." : res.status === 429 ? "That's a lot of tape. Give it a few minutes." : res.status === 400 ? "Write something, sign it and add your email." : "The wall's down for a minute. Try again shortly.");
+        setMsg(res.status === 422 ? "This wall stays clean: no slurs, cussing, hate or links. Rewrite it and stick it again." : res.status === 429 ? "That's a lot of tape. Give it a few minutes." : res.status === 400 ? "Write something, sign it and add your email." : "The wall's down for a minute. Try again shortly.");
         setBusy(false);
         return;
       }
@@ -233,7 +233,7 @@ export default function Wall({ initial }: { initial: Tape[] }) {
       setDraft(null); setLine(""); setRoll(null);
       const after = layout([...tapes, t], mode).rows;
       setGrew(after > before);
-      setMsg(after > before ? "It's on the wall. The wall just grew to make room for the next one." : "It's on the wall. That's a wrap on your take.");
+      setMsg(data.held ? "Got it. Your tape goes on the public wall after a quick look. For now, only you can see it." : after > before ? "It's on the wall. The wall just grew to make room for the next one." : "It's on the wall. That's a wrap on your take.");
     } catch {
       setMsg("The wall's down for a minute. Try again shortly.");
     }
