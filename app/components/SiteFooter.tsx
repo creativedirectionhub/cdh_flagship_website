@@ -8,9 +8,9 @@ export default function SiteFooter() {
     <footer className="gutter border-t border-line pb-10 pt-20 md:pt-28">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] lg:items-end">
-          <div className="flex items-end gap-6">
-            <TapeMark size={120} className="shrink-0" />
-            <p className="text-[clamp(40px,6vw,96px)] font-black leading-[0.9] tracking-tightest">We put brands<br />on their mark<span className="text-gaffer">.</span></p>
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end">
+            <TapeMark size={88} className="shrink-0" />
+            <p className="t-l">We put brands<br />on their mark<span className="text-gaffer">.</span></p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2">
             <ul className="grid text-[16px] font-semibold">
@@ -26,7 +26,7 @@ export default function SiteFooter() {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-[13px] text-muted">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-[14px] text-muted">
           <span className="slate text-ink">Directed from everywhere.</span>
           <span>© 2026 Creative Direction Hub · Concepts and AI performers are labeled. · <a href="/privacy" className="underline hover:text-gaffer">Privacy</a></span>
         </div>

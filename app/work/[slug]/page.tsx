@@ -41,17 +41,17 @@ export default function CasePage({ params }: { params: { slug: string } }) {
               <Link href="/work" className="slate text-muted hover:text-gaffer">Work</Link>
               <span className="slate text-muted" aria-hidden="true">/</span>
               <span className="slate text-ink">{c.client}</span>
-              <span className={`slate rounded-tape border px-2 py-1 text-[11px] ${c.label === "client" ? "border-gaffer text-gaffer" : "border-line text-muted"}`}>{LABELS[c.label]}</span>
+              <span className={`slate rounded-tape border px-2 py-1 text-[12px] ${c.label === "client" ? "border-gaffer text-gaffer" : "border-line text-muted"}`}>{LABELS[c.label]}</span>
             </p>
-            <h1 className="mt-6 text-[clamp(48px,8vw,128px)] font-black leading-[0.9] tracking-tightest">{c.title}</h1>
+            <h1 className="t-xl mt-6">{c.title}</h1>
             <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-20">
               <p className="max-w-[48ch] text-[20px] leading-[1.5] text-body md:text-[24px]">{c.brief}</p>
               <dl className="grid gap-5 border-t border-line pt-6 text-[15px] sm:grid-cols-2">
-                <div><dt className="slate text-[11px] text-muted">For</dt><dd className="mt-1 font-semibold">{c.lanes.map((l) => LANES[l]).join(", ")}</dd></div>
-                <div><dt className="slate text-[11px] text-muted">Discipline</dt><dd className="mt-1 font-semibold">{c.disciplines.map((d) => DISCIPLINES[d]).join(", ")}</dd></div>
-                {c.year && <div><dt className="slate text-[11px] text-muted">Year</dt><dd className="mt-1 font-semibold">{c.year}</dd></div>}
+                <div><dt className="slate text-[12px] text-muted">For</dt><dd className="mt-1 font-semibold">{c.lanes.map((l) => LANES[l]).join(", ")}</dd></div>
+                <div><dt className="slate text-[12px] text-muted">Discipline</dt><dd className="mt-1 font-semibold">{c.disciplines.map((d) => DISCIPLINES[d]).join(", ")}</dd></div>
+                {c.year && <div><dt className="slate text-[12px] text-muted">Year</dt><dd className="mt-1 font-semibold">{c.year}</dd></div>}
                 <div>
-                  <dt className="slate text-[11px] text-muted">What we did</dt>
+                  <dt className="slate text-[12px] text-muted">What we did</dt>
                   <dd className="mt-1"><ul className="grid gap-1 font-semibold">{c.did.map((d) => <li key={d}>{d}</li>)}</ul></dd>
                 </div>
               </dl>
@@ -80,7 +80,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
                 {rest.map((m, n) => (
                   <figure key={m.src + n} className={`reveal min-w-0 ${m.w > m.h ? "md:col-span-2" : ""}`}>
                     <CaseMedia m={m} sizes={m.w > m.h ? "(min-width: 768px) 62vw, 92vw" : "(min-width: 1024px) 30vw, (min-width: 768px) 46vw, 92vw"} className="rounded-md border border-line" />
-                    {m.caption && <figcaption className="slate mt-3 text-[11px] text-muted">{m.caption}</figcaption>}
+                    {m.caption && <figcaption className="slate mt-3 text-[12px] text-muted">{m.caption}</figcaption>}
                   </figure>
                 ))}
               </div>
@@ -99,7 +99,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
             </div>
             <div className="min-w-0 rounded-md bg-[#121110] p-7 text-[#efe9df] md:p-9">
               <p className="slate text-gaffer">Want this for your brand?</p>
-              <p className="mt-4 text-[clamp(26px,3vw,36px)] font-black leading-[1] tracking-tighter">Let's find your mark.</p>
+              <p className="t-m mt-4">Let's find your mark.</p>
               <div className="mt-6 flex flex-wrap gap-4">
                 <Link href="/start" className="btn-primary">Get a Free Creative Audit</Link>
                 <a href={book} {...(BOOKING_URL ? { target: "_blank", rel: "noopener" } : {})} className="inline-flex min-h-[52px] items-center justify-center rounded-sm border border-[#efe9df]/30 px-7 text-[16px] font-semibold hover:border-[#efe9df]">Book a call</a>
@@ -111,7 +111,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
 
       <section className="gutter border-t border-line py-16 md:py-24" aria-labelledby="next-title">
         <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)]">
-          <h2 id="next-title" className="text-[clamp(32px,4vw,56px)] font-black leading-[0.95] tracking-tighter">Next up.</h2>
+          <h2 id="next-title" className="t-m">Next up.</h2>
           <div className="max-w-[720px]"><WorkCard c={next} sizes="(min-width: 1024px) 50vw, 92vw" big /></div>
         </div>
       </section>

@@ -20,11 +20,11 @@ export default function ServicesPage() {
       <section className="gutter py-16 md:py-24">
         <div className="mx-auto max-w-[1440px]">
           <p className="slate text-gaffer">Services</p>
-          <h1 className="mt-4 text-[clamp(48px,8vw,128px)] font-black leading-[0.9] tracking-tightest">Five ways we put you on your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span></h1>
+          <h1 className="t-xl mt-4">Five ways we put you on your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span></h1>
           <p className="mt-6 max-w-[52ch] text-[18px] leading-[1.55] text-body">Five disciplines, one director. Pick the one you need now; the others are there when you need them, with the same person holding the look.</p>
           <ol className="mt-12 flex flex-wrap gap-3">
             {disciplines.map((d, n) => (
-              <li key={d.id}><a href={`#${d.id}`} className="inline-flex min-h-[44px] items-center gap-3 rounded-sm border border-line px-4 text-[15px] font-semibold hover:border-muted"><span className="slate text-[11px] text-muted">0{n + 1}</span>{d.name}</a></li>
+              <li key={d.id}><a href={`#${d.id}`} className="inline-flex min-h-[44px] items-center gap-3 rounded-sm border border-line px-4 text-[15px] font-semibold hover:border-muted"><span className="slate text-[12px] text-muted">0{n + 1}</span>{d.name}</a></li>
             ))}
           </ol>
         </div>
@@ -36,7 +36,7 @@ export default function ServicesPage() {
             <div className="reveal grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
               <div className="min-w-0">
                 <p className="slate text-muted">0{n + 1}</p>
-                <h2 id={`${d.id}-title`} className="mt-4 text-[clamp(44px,6vw,96px)] font-black leading-[0.92] tracking-tighter">{d.name}<span className="text-gaffer">.</span></h2>
+                <h2 id={`${d.id}-title`} className="t-l mt-4">{d.name}<span className="text-gaffer">.</span></h2>
                 <p className="mt-4 text-[22px] font-semibold leading-[1.3] tracking-[-0.01em]">{d.short}</p>
                 <p className="mt-6 max-w-[50ch] text-[17px] leading-[1.6] text-body">{d.what}</p>
                 <div className="mt-8 flex flex-wrap gap-4">
@@ -68,7 +68,7 @@ export default function ServicesPage() {
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
           <div className="reveal min-w-0">
             <p className="slate text-muted">Questions</p>
-            <h2 id="faq-title" className="mt-4 text-[clamp(40px,5.6vw,84px)] font-black leading-[0.92] tracking-tighter">Before you ask.</h2>
+            <h2 id="faq-title" className="t-l mt-4">Before you ask.</h2>
           </div>
           <div className="reveal min-w-0 border-t border-line">
             {faqs.map((f) => (

@@ -29,11 +29,11 @@ export default function Hero() {
         <figure className="rise relative min-w-0 lg:justify-self-end">
           <div className="relative aspect-[3/4] w-full max-w-[520px] overflow-hidden rounded-md border border-line bg-surface">
             <Image src="/media/about-willie.webp" alt="Willie Bernoudy on the Great Wall of China, camera raised, photographing the valley" fill sizes="(min-width: 1024px) 34vw, 92vw" className="object-cover object-top" />
-            <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[11px] text-[#efe9df]">On set</span>
+            <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]">On set</span>
           </div>
           <figcaption className="mt-4 flex max-w-[520px] items-baseline justify-between gap-4 border-t border-line pt-4">
             <span>
-              <span className="slate block text-[11px] text-muted">Every project directed by</span>
+              <span className="slate block text-[12px] text-muted">Every project directed by</span>
               <span className="mt-1 block text-[18px] font-extrabold leading-tight">Willie Bernoudy</span>
             </span>
             <span className="text-[14px] text-muted">Founder and creative director</span>

@@ -22,7 +22,7 @@ export default function StartPage() {
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-x-20">
           <div className="min-w-0 lg:col-start-1 lg:row-start-1">
             <p className="slate text-gaffer">Free Creative Audit</p>
-            <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">Let's find your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span></h1>
+            <h1 className="t-xl mt-4">Let's find your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span></h1>
             <p className="mt-6 max-w-[46ch] text-[18px] leading-[1.55] text-body">Send your website or Instagram. Willie reviews the brand, the site and your last three pieces of content or ads, and emails you what's holding them back, with fixes. Yours to keep.</p>
           </div>
           <div className="min-w-0 rounded-md border border-line bg-raised p-6 md:p-10 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
@@ -33,7 +33,7 @@ export default function StartPage() {
             <ol className="mt-5 grid border-t border-line">
               {next.map((n, i) => (
                 <li key={n.t} className="grid gap-2 border-b border-line py-5 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-6">
-                  <span className="text-[17px] font-extrabold"><span className="slate mr-3 text-[11px] text-muted">0{i + 1}</span>{n.t}</span>
+                  <span className="text-[17px] font-extrabold"><span className="slate mr-3 text-[12px] text-muted">0{i + 1}</span>{n.t}</span>
                   <span className="text-[16px] leading-[1.55] text-body">{n.b}</span>
                 </li>
               ))}
@@ -45,7 +45,7 @@ export default function StartPage() {
       {BOOKING_URL && (
         <section className="gutter border-t border-line py-16 md:py-24" aria-labelledby="book-title">
           <div className="mx-auto max-w-[1440px]">
-            <h2 id="book-title" className="text-[clamp(32px,4vw,56px)] font-black leading-[0.95] tracking-tighter">Or book a call now.</h2>
+            <h2 id="book-title" className="t-m">Or book a call now.</h2>
             <iframe src={`${BOOKING_URL}?embed=true&theme=dark`} title="Book a call with Willie Bernoudy" className="mt-8 h-[720px] w-full rounded-md border border-line bg-surface" loading="lazy" />
           </div>
         </section>

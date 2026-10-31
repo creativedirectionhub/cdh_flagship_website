@@ -17,7 +17,7 @@ export default function WorkPage({ searchParams }: { searchParams: { lane?: stri
       <section className="gutter py-16 md:py-24">
         <div className="mx-auto max-w-[1440px]">
           <p className="slate text-gaffer">Work</p>
-          <h1 className="mt-4 text-[clamp(48px,8vw,128px)] font-black leading-[0.9] tracking-tightest">The work<span className="text-gaffer">.</span></h1>
+          <h1 className="t-xl mt-4">The work<span className="text-gaffer">.</span></h1>
           <p className="mt-6 max-w-[52ch] text-[18px] leading-[1.55] text-body">Every piece has a director. Filter by who it was for or what kind of work it was. Client work is labeled Client; concepts are labeled Concept and weren't commissioned by the brands shown.</p>
           <WorkGrid lane={lane} discipline={discipline} />
         </div>

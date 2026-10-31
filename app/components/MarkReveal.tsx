@@ -87,12 +87,12 @@ export default function MarkReveal() {
 
         <div className="gutter absolute inset-x-0 bottom-0 pb-12 md:pb-16" style={{ opacity: lineIn, transform: `translateY(${(1 - lineIn) * 30}px)` }}>
           <div className="mx-auto flex max-w-[1440px] flex-wrap items-end justify-between gap-8">
-            <h1 className="text-[clamp(52px,8.6vw,148px)] font-black leading-[0.88] tracking-tightest text-[#efe9df]">
+            <h1 className="t-xl text-[#efe9df]">
               We put brands<br />on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span>
             </h1>
             <div className="flex flex-col items-start gap-4 pb-2">
               <Link href="/about" className="slate inline-block border-b-2 border-gaffer pb-1 pt-3 text-[#efe9df] hover:text-gaffer">About us</Link>
-              <span className="slate text-[11px] text-[#efe9df]/70">Reel includes AI concepts, labeled on each piece</span>
+              <span className="slate text-[12px] text-[#efe9df]/70">Reel includes AI concepts, labeled on each piece</span>
             </div>
           </div>
         </div>

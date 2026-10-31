@@ -60,7 +60,7 @@ export default function SiteHeader() {
             <ul className="grid">
               {links.map((l, n) => (
                 <li key={l.href} className="border-b border-line">
-                  <Link href={l.href} aria-current={active(l.href) ? "page" : undefined} className={`group flex items-baseline gap-5 py-4 text-[clamp(44px,8vw,112px)] font-black leading-[0.95] tracking-tightest ${active(l.href) ? "text-gaffer" : "hover:text-gaffer"}`}>
+                  <Link href={l.href} aria-current={active(l.href) ? "page" : undefined} className={`group flex items-baseline gap-5 py-4 text-[clamp(40px,6.6vw,96px)] font-black leading-[0.95] tracking-tightest ${active(l.href) ? "text-gaffer" : "hover:text-gaffer"}`}>
                     <span className="slate text-[12px] text-muted">0{n + 1}</span>{l.label}
                   </Link>
                 </li>

@@ -16,8 +16,8 @@ export default function WaysToStart({ id = "start-here" }: { id?: string }) {
           {ways.map((w) => (
             <li key={w.id} className={`flex flex-col gap-5 rounded-md border bg-surface p-7 ${w.featured ? "border-gaffer" : "border-line"}`}>
               <p className={`slate ${w.featured ? "text-gaffer" : "text-muted"}`}>{w.label}</p>
-              <h3 className="text-[30px] font-extrabold leading-[1.05] tracking-[-0.02em] lg:min-h-[2.1em]">{w.name}</h3>
-              <p className="text-[40px] font-black leading-none tracking-[-0.03em]">
+              <h3 className="t-s lg:min-h-[2.1em]">{w.name}</h3>
+              <p className="text-[32px] font-black leading-none tracking-[-0.03em] text-gaffer">
                 {w.pace} <span className="text-[16px] font-normal tracking-normal text-muted">{w.term}</span>
               </p>
               <p className="text-[16px] leading-[1.55] text-body">{w.body}</p>
