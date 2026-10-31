@@ -24,6 +24,8 @@ export type Case = {
   credits: string[];
   ai?: string;
   notice?: string;
+  /** Willie's own note on the thinking behind the work, signed by him. */
+  note?: string;
   selected?: number;
   /** Kept online for old links, but left off the Work page, the sitemap and search. */
   archived?: boolean;
@@ -75,6 +77,7 @@ export const cases: Case[] = [
       img("/work/spec-blacksox-3.webp", "Billboard layout: More Than a Game, Hattiesburg Black Sox, over a team photo", 800, 450, "Billboard layout"),
       img("/work/spec-blacksox-4.webp", "Print layout: More Than a Game, with a portrait and campaign notes", 800, 450, "Print layout"),
     ],
+    note: "A hometown club doesn't need to look like the majors. It needs to look like it matters. So we shot the players in raw, unposed moments, put one line over the whole season, and carried the same pictures from the dugout to the billboard.",
     credits: ["Directed and photographed by Willie Bernoudy", "Design and layout: CDH network"],
     selected: 1,
   },
@@ -100,6 +103,7 @@ export const cases: Case[] = [
       img("/work/hope-how.webp", "How It Works page", 1440, 900, "How it works"),
       img("/work/hope-apply.webp", "Application page", 1440, 900, "Apply"),
     ],
+    note: "Creators find an agency on their phone, between streams. So the site does one job in order: show what H.O.P.E gives them, show how it works, then put the application one tap away on every page.",
     credits: ["Designed and built by Creative Direction Hub", "Direction: Willie Bernoudy"],
     notice: "Figures shown on the site are the client's own.",
     selected: 2,

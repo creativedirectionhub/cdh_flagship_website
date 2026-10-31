@@ -114,8 +114,17 @@ export default function CasePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        <div className={`bone gutter mt-16 md:mt-24 ${rest.length > 0 ? "py-16 md:py-24" : "pt-4"}`}>
+        <div className={`bone gutter mt-16 md:mt-24 ${(rest.length > 0 || c.note) ? "py-16 md:py-24" : "pt-4"}`}>
           <div className="mx-auto max-w-[1440px]">
+            {c.note && (
+              <figure className="mb-16 grid gap-6 md:mb-24 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)] lg:gap-20">
+                <h2 className="slate text-muted">Director's note</h2>
+                <div>
+                  <blockquote className="max-w-[34ch] text-[clamp(26px,3vw,42px)] font-black leading-[1.08] tracking-[-0.03em]">{c.note}</blockquote>
+                  <figcaption className="slate mt-6 text-muted">Willie Bernoudy, creative director</figcaption>
+                </div>
+              </figure>
+            )}
             {rest.length > 0 && (
               <div className="grid gap-6 md:grid-cols-2">
                 {rest.map((m, n) => (
