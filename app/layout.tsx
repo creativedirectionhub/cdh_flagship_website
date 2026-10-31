@@ -11,8 +11,8 @@ const url = site.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
-  title: { default: "Creative Direction Hub · Creative Direction & AI Art Direction Agency", template: "%s · Creative Direction Hub" },
-  description: "Creative direction agency led by Willie Bernoudy. Brand, campaigns, content, websites and AI art direction for consumer brands, personal brands and hospitality.",
+  title: { default: "Creative Direction Hub · Media Company for Creative Direction & AI Art Direction", template: "%s · Creative Direction Hub" },
+  description: "A media company led by Willie Bernoudy, specializing in creative direction and AI art direction. Brand, campaigns, content and websites for consumer brands, personal brands and hospitality.",
   openGraph: { siteName: "Creative Direction Hub", type: "website", url, locale: "en_US" },
   twitter: { card: "summary_large_image" },
   alternates: { canonical: "./" },

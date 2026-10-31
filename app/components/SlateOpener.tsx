@@ -1,21 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 // The opening: every visit is a take. The slate drops in with your take number, claps, and the reel cuts in
 // on a director's monitor. (Another take now lives on the wall, further down the home page.)
 // The intro runs in CSS, so the page is complete without JavaScript; reduced motion skips straight to the reel.
 
-const LINES = [
-  "Rolling.",
-  "Again, with feeling.",
-  "Tighter. Faster. Better.",
-  "Hold that look.",
-  "That's the one. Print it.",
-  "One more for safety.",
-  "You're a natural. Book the call.",
-];
 const FPS = 24;
 
 function pad(n: number) { return String(n).padStart(2, "0"); }
@@ -28,7 +18,6 @@ export default function SlateOpener() {
   const video = useRef<HTMLVideoElement>(null);
   const tc = useRef<HTMLSpanElement>(null);
   const [take, setTake] = useState(1);
-  const [line, setLine] = useState(LINES[0]);
   const [today, setToday] = useState("");
 
   // Visits become take numbers.
@@ -39,7 +28,6 @@ export default function SlateOpener() {
       localStorage.setItem("cdh-takes", String(n));
     } catch { /* private window: always take 1 */ }
     setTake(n);
-    if (n > 1) setLine(`Back on set. ${LINES[Math.min(n - 1, LINES.length - 1)]}`);
     const d = new Date();
     setToday(`${pad(d.getMonth() + 1)}.${pad(d.getDate())}.${String(d.getFullYear()).slice(2)}`);
   }, []);
@@ -80,10 +68,7 @@ export default function SlateOpener() {
       </div>
       <div className="op-ui gutter absolute inset-x-0 top-7 md:top-12">
         <div className="mx-auto flex max-w-[1440px] items-start justify-between gap-6 text-[#efe9df]">
-          <div>
-            <p className="slate flex items-center gap-2 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}</p>
-            <p aria-live="polite" className="mt-2 max-w-[26ch] text-[15px] font-extrabold leading-snug md:text-[18px]">“{line}”</p>
-          </div>
+          <p className="slate flex items-center gap-2 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}</p>
           <p className="slate text-[12px] tabular-nums md:text-[13px]" aria-hidden="true"><span ref={tc}>00:00:00:00</span></p>
         </div>
       </div>
@@ -92,14 +77,11 @@ export default function SlateOpener() {
       <div className="gutter absolute inset-x-0 bottom-0 pb-10 md:pb-16">
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-end justify-between gap-8">
           <h1 className="text-[clamp(52px,8.6vw,148px)] font-black leading-[0.88] tracking-tightest text-[#efe9df]">
-            <span className="op-ui slate mb-5 block text-[12px] leading-normal tracking-[0.14em] text-[#efe9df]/80 md:text-[13px]">Creative Direction Hub · Creative direction and AI art direction agency</span>
+            <span className="sr-only">Creative Direction Hub, a media company specializing in creative direction and AI art direction. </span>
             <span className="op-line block">We put brands</span>{" "}
             <span className="op-line op-line-2 block">on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge op-tape" /><b className="op-ink">mark.</b></span></span>
           </h1>
-          <div className="op-ui flex flex-col items-start gap-4 pb-2">
-            <Link href="/about" className="slate inline-block border-b-2 border-[#efe9df]/30 pb-1 pt-3 text-[#efe9df] hover:border-gaffer hover:text-gaffer">About us</Link>
-            <span className="slate text-[12px] text-[#efe9df]/70">The Heist · Concept spot. AI performers.</span>
-          </div>
+          <span className="op-ui slate pb-2 text-[11px] text-[#efe9df]/60">Concept spot. AI performers.</span>
         </div>
       </div>
 
