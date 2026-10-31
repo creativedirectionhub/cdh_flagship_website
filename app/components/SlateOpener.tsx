@@ -57,7 +57,8 @@ export default function SlateOpener() {
   return (
     <section aria-label="Reel" className="relative h-[calc(100svh-68px)] min-h-[560px] overflow-hidden bg-ground">
       <video ref={video} muted playsInline loop autoPlay preload="metadata" poster="/media/heist-poster.webp" aria-label="The Heist, a CDH concept spot with AI performers: a Mississippi baker whose post gets three likes calls in a creative crew, and by morning there is a line around the block" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/90 via-[#121110]/15 to-[#121110]/45" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/95 via-[#121110]/35 to-[#121110]/45 md:from-[#121110]/90 md:via-[#121110]/15" />
+      <div className="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-[#121110] via-[#121110]/85 to-transparent md:hidden" />
 
       {/* Monitor: frame lines, REC, take, timecode */}
       <div className="op-ui pointer-events-none absolute inset-4 md:inset-8" aria-hidden="true">
@@ -76,7 +77,7 @@ export default function SlateOpener() {
       {/* Headline lands on its mark */}
       <div className="gutter absolute inset-x-0 bottom-0 pb-10 md:pb-16">
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-end justify-between gap-8">
-          <h1 className="text-[clamp(52px,8.6vw,148px)] font-black leading-[0.88] tracking-tightest text-[#efe9df]">
+          <h1 className="text-[clamp(52px,8.6vw,148px)] font-black leading-[0.98] tracking-tightest text-[#efe9df] [text-shadow:0_2px_28px_rgba(18,17,16,0.55)]">
             <span className="sr-only">Creative Direction Hub, a media company specializing in creative direction and AI art direction. </span>
             <span className="op-line block">We put brands</span>{" "}
             <span className="op-line op-line-2 block">on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge op-tape" /><b className="op-ink">mark.</b></span></span>
