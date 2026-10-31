@@ -18,77 +18,123 @@ function torn(seed: number) {
   return `polygon(${right.join(",")},${left.join(",")})`;
 }
 
-function placeFor(t: { k: string; name: string }) {
-  const r = rng(hash(t.k + t.name));
-  return { x: 12 + r() * 76, y: 14 + r() * 72, tilt: r() * 9 - 4.5 };
+// The wall is laid out on an invisible grid so it stays organized as it fills.
+// Each tape asks for the cell nearest the spot it was stuck; first come keeps its cell.
+// When open cells run low, the wall grows another row: it makes room for the next one.
+type Mode = "land" | "port";
+const GRID = {
+  land: { cols: 6, base: 4, cellH: 0.15625, minFree: 4 }, // cell height as a fraction of wall width
+  port: { cols: 2, base: 6, cellH: 0.36, minFree: 2 },
+} as const;
+type Cell = [number, number];
+const ck = (c: number, r: number) => `${c},${r}`;
+
+function wants(t: Tape, mode: Mode): Cell {
+  const x = Number.isFinite(t.x) && t.x > 0 ? t.x : 12 + (hash(t.k) % 76);
+  const y = Number.isFinite(t.y) && t.y > 0 ? t.y : 14 + (hash(t.name) % 72);
+  if (mode === "land") return [Math.min(5, Math.max(0, Math.floor((x / 100) * 6))), Math.max(0, Math.floor((y / 100) * 4))];
+  return [x < 50 ? 0 : 1, Math.max(0, Math.floor((y / 100) * 6))];
 }
 
-// On phones the wall stands up: the collage is transposed so it fills a tall screen.
-const flip = (x: number, y: number, portrait: boolean) => (portrait ? { x: 22 + y * 0.56, y: 6 + x * 0.88 } : { x, y });
-// Inverse, for a tap on the standing wall.
-const unflip = (x: number, y: number, portrait: boolean) => (portrait ? { x: (y - 6) / 0.88, y: (x - 22) / 0.56 } : { x, y });
+function nearestFree(want: Cell, taken: Set<string>, cols: number, maxRows: number): Cell {
+  let best: Cell = [0, maxRows]; let bd = Infinity;
+  for (let r = 0; r < maxRows; r++) for (let c = 0; c < cols; c++) {
+    if (taken.has(ck(c, r))) continue;
+    const d = (c - want[0]) ** 2 + 1.3 * (r - want[1]) ** 2 + r * 0.01;
+    if (d < bd) { bd = d; best = [c, r]; }
+  }
+  return best;
+}
+
+function layout(tapes: Tape[], mode: Mode, hold?: Cell) {
+  const g = GRID[mode];
+  const taken = new Set<string>();
+  DRESSING.forEach((d) => { const cell = mode === "land" ? d.land : d.port; if (cell) taken.add(ck(cell[0], cell[1])); });
+  if (hold) taken.add(ck(hold[0], hold[1]));
+  const pos = new Map<string, Cell>();
+  let rows: number = g.base;
+  const cap = g.base + Math.ceil((tapes.length + 2) / g.cols) + 2;
+  for (const t of tapes) {
+    const cell = nearestFree(wants(t, mode), taken, g.cols, cap);
+    taken.add(ck(cell[0], cell[1])); pos.set(t.k, cell); rows = Math.max(rows, cell[1] + 1);
+  }
+  const free = () => { const f: Cell[] = []; for (let r = 0; r < rows; r++) for (let c = 0; c < g.cols; c++) if (!taken.has(ck(c, r))) f.push([c, r]); return f; };
+  while (free().length < g.minFree) rows++;
+  return { pos, rows, free: free(), taken };
+}
+
+// Where a cell sits on the wall, in percent, with a little hand-placed wobble.
+function spot(cell: Cell, mode: Mode, rows: number, seed: number) {
+  const g = GRID[mode]; const r = rng(seed);
+  const jx = mode === "land" ? 0.2 : 0.1;
+  return { left: ((cell[0] + 0.5) / g.cols) * 100 + (r() - 0.5) * (100 / g.cols) * jx, top: ((cell[1] + 0.5) / rows) * 100 + (r() - 0.5) * (100 / rows) * 0.22 };
+}
+
+const when = (iso: string) => { const d = new Date(iso); return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); };
 
 function TapeBody({ color, seed, size = 1, children, className = "" }: { color: RollKey; seed: number; size?: number; children: React.ReactNode; className?: string }) {
   const roll = ROLLS[color] || ROLLS.orange;
   return (
-    <div className={`gt ${className}`} style={{ background: roll.tape, color: roll.ink, clipPath: torn(seed), fontSize: `${1.6 * size}cqw` }}>
+    <div className={`gt ${className}`} style={{ background: roll.tape, color: roll.ink, clipPath: torn(seed), ["--s" as string]: size }}>
       {children}
+      <span aria-hidden="true" className="gt-curl" />
     </div>
   );
 }
 
-function Strip({ t, fresh, portrait }: { t: Tape; fresh?: boolean; portrait: boolean }) {
-  const p0 = Number.isFinite(t.x) && t.x > 0 ? { x: t.x, y: t.y, tilt: t.tilt } : placeFor(t);
-  const p = { ...p0, ...flip(p0.x, p0.y, portrait) };
+function Strip({ t, fresh, at, peeled, onPeel }: { t: Tape; fresh?: boolean; at: { left: number; top: number }; peeled: boolean; onPeel: () => void }) {
   return (
-    <li className={`gt-pin ${fresh ? "gt-slap" : ""}`} style={{ left: `${p.x}%`, top: `${p.y}%`, ["--tilt" as string]: `${p.tilt}deg` }}>
-      <TapeBody color={t.color} seed={hash(t.k)}>
-        <p className="gt-line">{t.line}</p>
-        <p className="gt-sign">— {t.name}{t.from ? `, ${t.from}` : ""}{t.own ? " (you)" : ""}</p>
-      </TapeBody>
+    <li className={`gt-pin ${fresh ? "gt-slap" : ""} ${peeled ? "is-peeled" : ""}`} style={{ left: `${at.left}%`, top: `${at.top}%`, ["--tilt" as string]: `${t.tilt || ((hash(t.k) % 80) / 10 - 4)}deg` }}>
+      <button type="button" onClick={(e) => { e.stopPropagation(); onPeel(); }} className="gt-flap block text-left" aria-label={`Tape by ${t.name}: ${t.line}. Peel it up.`}>
+        <TapeBody color={t.color} seed={hash(t.k)}>
+          <p className="gt-line">{t.line}</p>
+          <p className="gt-sign">— {t.name}{t.from ? `, ${t.from}` : ""}{t.own ? " (you)" : ""}</p>
+        </TapeBody>
+      </button>
+      <span aria-hidden="true" className="gt-tag slate">{ROLLS[t.color]?.label || "Tape"} · {when(t.at) || "today"}</span>
     </li>
   );
 }
 
-function Dress({ d, portrait }: { d: Dressing; portrait: boolean }) {
-  const q = flip(d.x, d.y, portrait);
-  const style = { left: `${q.x}%`, top: `${q.y}%`, ["--tilt" as string]: `${d.tilt}deg` };
+function Dress({ d, at, peeled, onPeel }: { d: Dressing; at: { left: number; top: number }; peeled: boolean; onPeel: () => void }) {
+  const style = { left: `${at.left}%`, top: `${at.top}%`, ["--tilt" as string]: `${d.tilt}deg` };
+  let body: React.ReactNode;
   if (d.kind === "x") {
-    return (
-      <li aria-hidden="true" className="gt-pin gt-dress" style={style}>
-        <div className="relative h-[7cqw] w-[7cqw]">
-          <div className="absolute left-1/2 top-1/2 w-[8.5cqw] -translate-x-1/2 -translate-y-1/2 rotate-45"><TapeBody color={d.color} seed={11} size={0.5}><span className="block h-[0.9cqw]" /></TapeBody></div>
-          <div className="absolute left-1/2 top-1/2 w-[8.5cqw] -translate-x-1/2 -translate-y-1/2 -rotate-45"><TapeBody color={d.color} seed={23} size={0.5}><span className="block h-[0.9cqw]" /></TapeBody></div>
-        </div>
-      </li>
+    body = (
+      <div className="relative h-[var(--u7)] w-[var(--u7)]">
+        <div className="absolute left-1/2 top-1/2 w-[var(--u85)] -translate-x-1/2 -translate-y-1/2 rotate-45"><TapeBody color={d.color} seed={11} size={0.5}><span className="block h-[0.9em]" /></TapeBody></div>
+        <div className="absolute left-1/2 top-1/2 w-[var(--u85)] -translate-x-1/2 -translate-y-1/2 -rotate-45"><TapeBody color={d.color} seed={23} size={0.5}><span className="block h-[0.9em]" /></TapeBody></div>
+      </div>
     );
-  }
-  if (d.kind === "t") {
-    return (
-      <li aria-hidden="true" className="gt-pin gt-dress" style={style}>
-        <div className="flex w-[13cqw] flex-col items-center">
-          <TapeBody color={d.color} seed={31} size={0.5} className="w-full"><span className="block h-[1.4cqw]" /></TapeBody>
-          <div className="-mt-[0.3cqw] w-[2.6cqw]" style={{ height: "8cqw", background: ROLLS[d.color].tape, clipPath: "polygon(0 0,100% 0,100% 96%,80% 100%,60% 96%,40% 100%,20% 96%,0 100%)" }} />
-        </div>
-      </li>
+  } else if (d.kind === "t") {
+    body = (
+      <div className="flex w-[var(--u13)] flex-col items-center">
+        <TapeBody color={d.color} seed={31} size={0.5} className="w-full"><span className="block h-[1.4em]" /></TapeBody>
+        <div className="-mt-[2px] w-[20%]" style={{ height: "var(--u8)", background: ROLLS[d.color].tape, clipPath: "polygon(0 0,100% 0,100% 96%,80% 100%,60% 96%,40% 100%,20% 96%,0 100%)" }} />
+      </div>
     );
-  }
-  return (
-    <li aria-hidden="true" className="gt-pin gt-dress" style={style}>
+  } else {
+    body = (
       <TapeBody color={d.color} seed={hash(d.k)} size={d.size}>
         <p className="gt-line whitespace-nowrap">{d.text}</p>
         {d.sub && <p className="gt-sign">{d.sub}</p>}
       </TapeBody>
+    );
+  }
+  return (
+    <li className={`gt-pin gt-dress ${peeled ? "is-peeled" : ""}`} style={style}>
+      <button type="button" onClick={(e) => { e.stopPropagation(); onPeel(); }} className="gt-flap block" aria-label={`${d.text || "Tape mark"}: ${d.quip}`}>{body}</button>
+      <span aria-hidden="true" className="gt-tag slate">{d.quip}</span>
     </li>
   );
 }
 
-type Draft = { x: number; y: number; tilt: number; color: RollKey; seed: number };
+type Draft = { cell: Cell; tilt: number; color: RollKey; seed: number };
 
 export default function Wall({ initial }: { initial: Tape[] }) {
   const board = useRef<HTMLDivElement>(null);
-  const scroller = useRef<HTMLDivElement>(null);
   const text = useRef<HTMLTextAreaElement>(null);
+  const draftEl = useRef<HTMLDivElement>(null);
   const [roll, setRoll] = useState<RollKey | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [line, setLine] = useState("");
@@ -101,27 +147,41 @@ export default function Wall({ initial }: { initial: Tape[] }) {
   const [thump, setThump] = useState(0);
   const [spark, setSpark] = useState(-1);
   const [clap, setClap] = useState(0);
-  const [portrait, setPortrait] = useState(false);
-  const draftEl = useRef<HTMLDivElement>(null);
+  const [mode, setMode] = useState<Mode>("land");
+  const [peeled, setPeeled] = useState("");
+  const [grew, setGrew] = useState(false);
 
   useEffect(() => {
     try { setMine(JSON.parse(localStorage.getItem("cdh-wall-mine") || "[]")); } catch { /* fine */ }
     const mq = window.matchMedia("(max-width: 767px)");
-    const on = () => setPortrait(mq.matches);
+    const on = () => setMode(mq.matches ? "port" : "land");
     on(); mq.addEventListener("change", on);
     return () => mq.removeEventListener("change", on);
   }, []);
 
+  // Oldest first, so the first to sign keeps their spot.
   const tapes = useMemo(() => {
     const seen = new Set(initial.map((t) => `${t.name}|${t.line}`));
     const own = mine.filter((t) => !seen.has(`${t.name}|${t.line}`)).map((t) => ({ ...t, own: true }));
-    return [FIRST_TAPE, ...initial.slice().reverse(), ...own];
+    return [FIRST_TAPE, ...initial, ...own].sort((x, y) => (x.at < y.at ? -1 : x.at > y.at ? 1 : 0));
   }, [initial, mine]);
 
-  function tear(x: number, y: number) {
+  const grid = useMemo(() => layout(tapes, mode, draft?.cell), [tapes, mode, draft]);
+  const g = GRID[mode];
+
+  // Tap a tape: it peels up with a rip, shows its tag, then slaps back down.
+  const peelTimer = useRef<ReturnType<typeof setTimeout>>();
+  function peelUp(k: string) {
+    if (draft) return;
+    clearTimeout(peelTimer.current);
+    ripSound(); setPeeled(k);
+    peelTimer.current = setTimeout(() => { setPeeled(""); slapSound(); }, 1700);
+  }
+
+  function tearAt(cell: Cell) {
     const color = roll || "orange";
-    ripSound();
-    setDraft({ x: Math.min(86, Math.max(14, x)), y: Math.min(90, Math.max(10, y)), tilt: Math.round((Math.random() * 8 - 4) * 10) / 10, color, seed: Math.floor(Math.random() * 1e9) });
+    ripSound(); setPeeled("");
+    setDraft({ cell, tilt: Math.round((Math.random() * 8 - 4) * 10) / 10, color, seed: Math.floor(Math.random() * 1e9) });
     setMsg("");
     setTimeout(() => { draftEl.current?.scrollIntoView({ block: "center", behavior: "smooth" }); text.current?.focus({ preventScroll: true }); }, 380);
   }
@@ -130,12 +190,11 @@ export default function Wall({ initial }: { initial: Tape[] }) {
     if (!roll || draft) return;
     if ((e.target as HTMLElement).closest("textarea,button,input,a")) return;
     const r = board.current!.getBoundingClientRect();
-    const px = ((e.clientX - r.left) / r.width) * 100, py = ((e.clientY - r.top) / r.height) * 100;
-    const c = unflip(px, py, portrait); // store in landscape coordinates
-    tear(c.x, c.y);
+    const want: Cell = [Math.floor(((e.clientX - r.left) / r.width) * g.cols), Math.floor(((e.clientY - r.top) / r.height) * grid.rows)];
+    tearAt(nearestFree(want, grid.taken, g.cols, grid.rows + 1));
   }
 
-  function anywhere() { tear(18 + Math.random() * 64, 18 + Math.random() * 64); }
+  function anywhere() { if (grid.free.length) tearAt(grid.free[Math.floor(Math.random() * grid.free.length)]); }
 
   function another() {
     clapSound(); setClap((c) => c + 1);
@@ -150,8 +209,13 @@ export default function Wall({ initial }: { initial: Tape[] }) {
     if (line.trim().length < 2) { setMsg("Write something on your tape first."); text.current?.focus(); return; }
     if (name.trim().length < 2) { setMsg("Sign it: add your name or brand."); return; }
     setBusy(true); setMsg("");
+    // Saved in wall coordinates, so it lands in the same neighborhood on every screen.
+    const [c, r] = draft.cell;
+    const x = mode === "land" ? ((c + 0.5) / 6) * 100 : c === 0 ? 25 : 75;
+    const y = mode === "land" ? ((r + 0.5) / 4) * 100 : ((r + 0.5) / 6) * 100;
+    const before = grid.rows;
     try {
-      const res = await fetch("/api/wall", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ line, name, from, color: draft.color, x: draft.x, y: draft.y, tilt: draft.tilt }) });
+      const res = await fetch("/api/wall", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ line, name, from, color: draft.color, x, y, tilt: draft.tilt }) });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.tape) {
         setMsg(res.status === 422 ? "Keep it clean and link-free, then stick it again." : res.status === 429 ? "That's a lot of tape. Give it a few minutes." : res.status === 400 ? "Write something and sign it." : "The wall's down for a minute. Try again shortly.");
@@ -164,7 +228,9 @@ export default function Wall({ initial }: { initial: Tape[] }) {
       try { localStorage.setItem("cdh-wall-mine", JSON.stringify(next)); } catch { /* fine */ }
       slapSound(); setFresh(t.k); setThump((n) => n + 1);
       setDraft(null); setLine(""); setRoll(null);
-      setMsg("It's on the wall. That's a wrap on your take.");
+      const after = layout([...tapes, t], mode).rows;
+      setGrew(after > before);
+      setMsg(after > before ? "It's on the wall. The wall just grew to make room for the next one." : "It's on the wall. That's a wrap on your take.");
     } catch {
       setMsg("The wall's down for a minute. Try again shortly.");
     }
@@ -177,8 +243,19 @@ export default function Wall({ initial }: { initial: Tape[] }) {
     el.style.setProperty("--mx", `${e.clientX - r.left}px`); el.style.setProperty("--my", `${e.clientY - r.top}px`);
   };
 
+  // Holding a roll: if every open spot is off screen, bring the nearest one into view.
+  useEffect(() => {
+    if (!roll || draft) return;
+    const spots = Array.from(document.querySelectorAll<HTMLElement>(".gt-open"));
+    const vis = spots.some((el) => { const r = el.getBoundingClientRect(); return r.top > 70 && r.bottom < window.innerHeight - 160; });
+    if (!vis && spots.length) {
+      const near = spots.sort((a, b) => Math.abs(a.getBoundingClientRect().top - innerHeight / 2) - Math.abs(b.getBoundingClientRect().top - innerHeight / 2))[0];
+      near.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }, [roll, draft]);
+
   const count = tapes.length;
-  const hint = draft ? "Write on your tape, sign it, stick it." : roll ? `${ROLLS[roll].label} it is. Now tap a spot on the wall.` : "Grab a roll.";
+  const hint = draft ? "Write on your tape, sign it, stick it." : roll ? `${ROLLS[roll].label} it is. Tap an open spot on the wall.` : "Grab a roll, or tap any tape.";
 
   return (
     <section id="wall" className="relative border-t border-line py-20 md:py-28" aria-labelledby="wall-title">
@@ -192,40 +269,62 @@ export default function Wall({ initial }: { initial: Tape[] }) {
         </div>
       </div>
 
-      <div ref={scroller} className="mt-12 md:mt-16">
+      <div className="mt-12 md:mt-16">
         <div
           ref={board}
           onClick={onBoard}
           onPointerMove={light}
           role="group"
-          aria-label="The CDH wall: tape signed by visitors"
-          className={`wall-flat relative mx-auto aspect-[2/3] w-full md:aspect-[16/10] md:max-w-[1920px] ${roll && !draft ? "cursor-crosshair" : ""} ${thump ? "wall-thump" : ""}`}
+          aria-label={`The CDH wall: ${count} tapes signed`}
+          data-mode={mode}
+          className={`wall-flat relative mx-auto w-full md:max-w-[1920px] ${roll && !draft ? "cursor-crosshair" : ""} ${thump ? "wall-thump" : ""} ${grew ? "wall-grew" : ""}`}
+          style={{ paddingBottom: `${grid.rows * g.cellH * 100}%` }}
           key={`b${thump}`}
         >
           <ul className="absolute inset-0">
-            {DRESSING.map((d) => <Dress key={d.k} d={d} portrait={portrait} />)}
-            {tapes.map((t) => <Strip key={t.k} t={t} fresh={t.k === fresh} portrait={portrait} />)}
+            {DRESSING.map((d) => {
+              const cell = mode === "land" ? d.land : d.port;
+              if (!cell) return null;
+              return <Dress key={d.k} d={d} at={spot(cell, mode, grid.rows, hash(d.k))} peeled={peeled === d.k} onPeel={() => peelUp(d.k)} />;
+            })}
+            {tapes.map((t) => {
+              const cell = grid.pos.get(t.k); if (!cell) return null;
+              return <Strip key={t.k} t={t} fresh={t.k === fresh} at={spot(cell, mode, grid.rows, hash(t.k))} peeled={peeled === t.k} onPeel={() => peelUp(t.k)} />;
+            })}
+            {roll && !draft && grid.free.map((cell) => {
+              const at = spot(cell, mode, grid.rows, 7);
+              return (
+                <li key={ck(cell[0], cell[1])} className="gt-pin gt-open" style={{ left: `${at.left}%`, top: `${at.top}%`, ["--tilt" as string]: "0deg" }}>
+                  <button type="button" onClick={(e) => { e.stopPropagation(); tearAt(cell); }} className="gt-open-btn" style={{ ["--roll" as string]: ROLLS[roll].tape }}>
+                    <span className="slate">Open spot</span>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
 
-          {draft && (
-            <div ref={draftEl} className="gt-pin gt-draft z-20" style={{ left: `${flip(draft.x, draft.y, portrait).x}%`, top: `${flip(draft.x, draft.y, portrait).y}%`, ["--tilt" as string]: `${draft.tilt}deg` }}>
-              <TapeBody color={draft.color} seed={draft.seed} className="gt-unroll">
-                <label className="sr-only" htmlFor="wall-line">What you write on your tape</label>
-                <textarea
-                  id="wall-line"
-                  ref={text}
-                  value={line}
-                  onChange={(e) => setLine(e.target.value.replace(/\n/g, " "))}
-                  onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); stick(); } if (e.key === "Escape") peel(); }}
-                  maxLength={70}
-                  rows={2}
-                  placeholder="Write anything…"
-                  className="gt-line gt-input"
-                />
-                <p className="gt-sign">— {name || "your name"}{from ? `, ${from}` : ""}</p>
-              </TapeBody>
-            </div>
-          )}
+          {draft && (() => {
+            const at = spot(draft.cell, mode, grid.rows, draft.seed);
+            return (
+              <div ref={draftEl} className="gt-pin gt-draft z-20" style={{ left: `${at.left}%`, top: `${at.top}%`, ["--tilt" as string]: `${draft.tilt}deg` }}>
+                <TapeBody color={draft.color} seed={draft.seed} className="gt-unroll">
+                  <label className="sr-only" htmlFor="wall-line">What you write on your tape</label>
+                  <textarea
+                    id="wall-line"
+                    ref={text}
+                    value={line}
+                    onChange={(e) => setLine(e.target.value.replace(/\n/g, " "))}
+                    onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); stick(); } if (e.key === "Escape") peel(); }}
+                    maxLength={70}
+                    rows={2}
+                    placeholder="Write anything…"
+                    className="gt-line gt-input"
+                  />
+                  <p className="gt-sign">— {name || "your name"}{from ? `, ${from}` : ""}</p>
+                </TapeBody>
+              </div>
+            );
+          })()}
         </div>
       </div>
 
@@ -235,7 +334,7 @@ export default function Wall({ initial }: { initial: Tape[] }) {
           <p aria-live="polite" className="slate text-[12px] text-muted">{msg || hint}</p>
           {!draft ? (
             <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-4">
-              <div className="flex flex-wrap items-end gap-3" role="radiogroup" aria-label="Tape rolls">
+              <div className="flex items-end gap-[7px] md:gap-3" role="radiogroup" aria-label="Tape rolls">
                 {ROLL_KEYS.map((k) => (
                   <button key={k} type="button" role="radio" aria-checked={roll === k} aria-label={ROLLS[k].label} onClick={() => setRoll(k)} className={`gt-roll ${roll === k ? "is-on" : ""}`} style={{ ["--roll" as string]: ROLLS[k].tape }}>
                     <span className="gt-roll-hole" /><span className="gt-roll-tail" />

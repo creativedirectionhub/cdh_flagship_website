@@ -58,3 +58,19 @@ export function slapSound() {
     setTimeout(() => ctx.close(), 500);
   } catch { /* fine */ }
 }
+
+// Peeling a strip up off the wall: a short, lower tear.
+export function peelSound() {
+  const ctx = ctxOrNull(); if (!ctx) return;
+  try {
+    const dur = 0.2, len = Math.floor(ctx.sampleRate * dur);
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate); const d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (Math.random() < 0.25 ? 1 : 0.2) * Math.pow(1 - i / len, 2);
+    const src = ctx.createBufferSource(); src.buffer = buf;
+    const bp = ctx.createBiquadFilter(); bp.type = "bandpass"; bp.Q.value = 1.4;
+    bp.frequency.setValueAtTime(2600, ctx.currentTime); bp.frequency.exponentialRampToValueAtTime(700, ctx.currentTime + dur);
+    const g = ctx.createGain(); g.gain.value = 0.28;
+    src.connect(bp).connect(g).connect(ctx.destination); src.start();
+    setTimeout(() => ctx.close(), 500);
+  } catch { /* fine */ }
+}

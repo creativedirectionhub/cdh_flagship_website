@@ -29,7 +29,7 @@ export async function POST(req: Request) {
   const from = clean(body.from, 28);
   const color = String(body.color) in ROLLS ? String(body.color) : "orange";
   const num = (v: unknown, lo: number, hi: number, d: number) => { const n = Number(v); return Number.isFinite(n) ? Math.round(Math.min(hi, Math.max(lo, n)) * 10) / 10 : d; };
-  const x = num(body.x, 6, 94, 50), y = num(body.y, 6, 94, 50), tilt = num(body.tilt, -6, 6, 0);
+  const x = num(body.x, 2, 98, 50), y = num(body.y, 2, 600, 50), tilt = num(body.tilt, -6, 6, 0);
   if (name.length < 2 || line.length < 2) return NextResponse.json({ error: "missing" }, { status: 400 });
   if (BLOCK.test(`${name} ${line} ${from}`)) return NextResponse.json({ error: "keep_it_clean" }, { status: 422 });
 
