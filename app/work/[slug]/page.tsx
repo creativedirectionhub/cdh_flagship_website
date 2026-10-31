@@ -114,7 +114,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        <div className="bone gutter mt-16 py-16 md:mt-24 md:py-24">
+        <div className={`bone gutter mt-16 md:mt-24 ${rest.length > 0 ? "py-16 md:py-24" : "pt-4"}`}>
           <div className="mx-auto max-w-[1440px]">
             {rest.length > 0 && (
               <div className="grid gap-6 md:grid-cols-2">
