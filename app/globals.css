@@ -119,3 +119,15 @@ h1, h2, h3 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Tape wipe: the strip slaps across as it scrolls into view */
+@keyframes wipe-in { from { scale: 0 1; } to { scale: 1 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .tape-wipe { animation: wipe-in linear both; animation-timeline: view(); animation-range: entry 10% cover 30%; }
+  }
+}
+
+/* Hover-play tiles keep their poster crisp until they move */
+.play-tile video { opacity: 0; transition: opacity .3s; }
+.play-tile:hover video, .play-tile:focus-within video, .play-tile.is-on video { opacity: 1; }

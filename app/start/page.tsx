@@ -22,7 +22,7 @@ export default function StartPage() {
         <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
           <div className="min-w-0">
             <p className="slate text-gaffer">Free Creative Audit</p>
-            <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">Start here. It's free.</h1>
+            <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">Let's find your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span></h1>
             <p className="mt-6 max-w-[46ch] text-[18px] leading-[1.55] text-body">Send your website or Instagram. Willie reviews the brand, the site and your last three pieces of content or ads, and emails you what's holding them back, with fixes. Yours to keep.</p>
             <h2 className="slate mt-12 text-muted">What happens next</h2>
             <ol className="mt-5 grid border-t border-line">

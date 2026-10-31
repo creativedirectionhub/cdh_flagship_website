@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TapeMark } from "../components/Brand";
 import WaysToStart from "../components/WaysToStart";
-import { facts, network, site } from "../content/services";
+import { facts, network, site, values } from "../content/services";
 
 export const metadata: Metadata = {
   title: "About",
@@ -25,7 +25,7 @@ export default function AboutPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
-      <section className="bone gutter py-16 md:py-24">
+      <section className="gutter py-16 md:py-24">
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
           <figure className="relative min-w-0 lg:order-2">
             <Image src="/media/about-willie.webp" alt="Willie Bernoudy on the Great Wall of China, camera raised" width={600} height={800} priority sizes="(min-width: 1024px) 40vw, 92vw" className="aspect-[3/4] w-full rounded-md border border-line object-cover" />
@@ -37,7 +37,17 @@ export default function AboutPage() {
             <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">I direct every project.</h1>
             <div className="mt-8 grid max-w-[58ch] gap-5 text-[18px] leading-[1.6] text-body">
               <p>I'm Willie Bernoudy. Fifteen years in creative strategy and direction, as a filmmaker, a photographer and a creative director. I started behind the camera in Mississippi, shooting talent, events and travel, and grew into brand strategy and social growth for media brands.</p>
-              <p>The agency I owned won the Corporate Vision Award for Best Social Media Company two years running. I've been given an honorable mention as an international photographer, and I've photographed in 23 countries.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bone gutter py-20 md:py-28" aria-labelledby="story-title">
+        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
+          <h2 id="story-title" className="reveal text-[clamp(40px,5.6vw,84px)] font-black leading-[0.92] tracking-tighter">From Mississippi to 23 countries.</h2>
+          <div className="min-w-0">
+            <div className="grid max-w-[58ch] gap-5 text-[18px] leading-[1.6] text-body">
+              <p>Blacksheepfocus, the agency I owned, won two Corporate Vision Awards: Best Social Media Marketing Agency in 2022 and Best Social Media Strategy Agency in 2023. My travel and culture work earned an honorable mention at the ND Awards, and I've photographed in 23 countries.</p>
               <p>I built Creative Direction Hub for the businesses that have a product, a person or a place worth selling, and nobody with taste in charge of how it looks. That's the job I do.</p>
             </div>
             <dl className="mt-12 grid border-t border-line sm:grid-cols-2">
@@ -96,6 +106,22 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="mark-title">
+        <div className="mx-auto max-w-[1440px]">
+          <p className="slate text-gaffer">What we stand for</p>
+          <h2 id="mark-title" className="mt-4 text-[clamp(40px,5.6vw,84px)] font-black leading-[0.92] tracking-tighter">Our values spell <span className="text-gaffer">MARK</span>.</h2>
+          <ol className="mt-12 grid border-t border-line md:grid-cols-4">
+            {values.map((v) => (
+              <li key={v.l} className="reveal border-b border-line py-8 md:border-b-0 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0">
+                <span aria-hidden="true" className="block text-[clamp(80px,9vw,150px)] font-black leading-[0.8] tracking-tightest text-gaffer">{v.l}</span>
+                <h3 className="mt-6 text-[24px] font-black leading-none tracking-[-0.02em]">{v.name}</h3>
+                <p className="mt-3 max-w-[30ch] text-[16px] leading-[1.5] text-muted">{v.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

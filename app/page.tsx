@@ -1,190 +1,140 @@
-import Image from "next/image";
 import Link from "next/link";
-import Hero from "./components/Hero";
-import WorkCard from "./components/WorkCard";
-import WaysToStart from "./components/WaysToStart";
-import AuditForm from "./components/AuditForm";
-import SectionHead from "./components/SectionHead";
-import CaseMedia from "./components/CaseMedia";
+import MarkReveal from "./components/MarkReveal";
+import PlayTile from "./components/PlayTile";
+import TapeWipe from "./components/TapeWipe";
 import { TapeMark } from "./components/Brand";
-import { selectedCases, bySlug } from "./content/work";
-import { lanes, disciplines, process, facts, network } from "./content/services";
+import { BOOKING_URL } from "./config";
+import { brands, talent, values, network } from "./content/services";
+
+const services = [
+  { id: "brand", name: "Brand", line: "Who you are, decided once.", poster: "/media/golf-lifestyle.webp", video: "/media/golf-lifestyle.mp4", alt: "A hand sets a golf ball on a tee in low gold light", ai: true },
+  { id: "campaigns", name: "Campaigns", line: "One idea, every channel.", poster: "/work/spec-blacksox-3.webp", alt: "Billboard layout for the Hattiesburg Black Sox: More Than a Game", ai: false },
+  { id: "content", name: "Content", line: "Pictures and film that sell.", poster: "/media/dinner-service.webp", video: "/media/dinner-service.mp4", alt: "A chef plates seared fish at the pass of a candlelit restaurant", ai: true },
+  { id: "digital", name: "Digital", line: "A site that closes.", poster: "/work/gfx-liceria-coffee.webp", alt: "Social design for Liceria Coffee Shop: Fresh on the menu", ai: false },
+  { id: "ai", name: "AI art direction", line: "AI that looks like your brand.", poster: "/media/art-direction.webp", video: "/media/art-direction.mp4", alt: "An amber dropper bottle on warm travertine, leaf shadows drifting across the stone", ai: true },
+];
 
 export default function Home() {
+  const book = BOOKING_URL || "/start";
   return (
     <>
-      <Hero />
+      <MarkReveal />
 
-      {/* The film */}
-      {(() => {
-        const film = bySlug("her-mark");
-        if (!film) return null;
-        return (
-          <section className="gutter border-t border-line py-16 md:py-24" aria-labelledby="film-title">
-            <div className="mx-auto max-w-[1440px]">
-              <div className="flex flex-wrap items-end justify-between gap-6">
-                <div className="max-w-[46ch]">
-                  <p className="slate text-gaffer">The film, 0:30, sound on</p>
-                  <h2 id="film-title" className="mt-4 text-[clamp(36px,5vw,64px)] font-black leading-[0.95] tracking-tighter">Same kitchen. Same sauce. Directed.</h2>
-                  <p className="mt-5 text-[17px] leading-[1.55] text-body">A founder at 1:47 AM, filming her own product under a ring light. Then what happens when her brand gets put on its mark.</p>
-                </div>
-                <Link href="/work/her-mark" className="btn-secondary">How we made it</Link>
-              </div>
-              <div className="reveal mt-10">
-                <CaseMedia m={film.media[0]} sizes="(min-width: 1440px) 1296px, 92vw" className="rounded-md border border-line" />
-              </div>
-            </div>
-          </section>
-        );
-      })()}
-
-      {/* Selected work */}
-      <section id="work" className="gutter scroll-mt-20 border-t border-line py-20 md:py-28" aria-labelledby="work-title">
+      {/* What we do, in one breath */}
+      <section className="gutter py-24 md:py-36" aria-labelledby="breath-title">
         <div className="mx-auto max-w-[1440px]">
-          <SectionHead slate="Selected work" title={<span id="work-title">The work is the pitch.</span>}>
-            Client work first. Concepts are labeled as concepts, and every AI performer is labeled as AI.
-          </SectionHead>
-          <div className="mt-14 grid gap-x-8 gap-y-16 md:grid-cols-2">
-            {selectedCases.map((c, n) => (
-              <div key={c.slug} className={`reveal ${n % 2 === 1 ? "md:translate-y-16" : ""}`}>
-                <WorkCard c={c} sizes="(min-width: 768px) 46vw, 92vw" big />
-              </div>
-            ))}
-          </div>
-          <div className="mt-24 flex justify-start md:mt-32">
-            <Link href="/work" className="btn-secondary">All the work</Link>
+          <p className="slate text-gaffer">Creative Direction Hub</p>
+          <h2 id="breath-title" className="reveal mt-6 max-w-[22ch] text-[clamp(34px,4.8vw,76px)] font-black leading-[1] tracking-tighter">
+            The creative department for growing brands. One director over the brand, the campaign, the content, the site and the AI, <span className="text-muted">and a crew built for every job.</span>
+          </h2>
+          <div className="mt-16 grid gap-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-8">
+            <PlayTile href="/work/hattiesburg-black-sox" poster="/work/events-27.webp" alt="A Black Sox player, number 13, seen from behind in the dugout" kicker="CDH + Hattiesburg Black Sox" title="More than a game." label="Client" sizes="(min-width: 768px) 56vw, 92vw" ratio="4 / 3" className="reveal rounded-sm" />
+            <PlayTile href="/work/her-mark" poster="/media/her-mark-cover.webp" video="/media/her-mark-cover.mp4" alt="Hot sauce ribbons off a wooden spoon beside a Mama Lou's bottle on an orange tape mark" kicker="CDH + Her Mark" title="Same kitchen. Directed." label="AI concept" sizes="(min-width: 768px) 40vw, 92vw" ratio="4 / 3" className="reveal rounded-sm md:mt-24" />
           </div>
         </div>
       </section>
 
-      {/* Who we work with */}
-      <section className="bone gutter py-20 md:py-28" aria-labelledby="lanes-title">
+      <TapeWipe />
+
+      {/* Who we've worked with */}
+      <section className="gutter py-20 md:py-28" aria-labelledby="brands-title">
         <div className="mx-auto max-w-[1440px]">
-          <SectionHead slate="Who we work with" title={<span id="lanes-title">Three kinds of business. One director.</span>} light>
-            If your brand is the thing you sell, the person you are, or the place people come to, this is built for you.
-          </SectionHead>
-          <ul className="reveal mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line lg:grid-cols-3">
-            {lanes.map((l) => {
-              const proof = bySlug(l.proof);
-              return (
-                <li key={l.id} className="flex flex-col gap-6 bg-ground p-7 md:p-9">
-                  <h3 className="text-[32px] font-black leading-none tracking-tighter">{l.name}</h3>
-                  <p className="text-[16px] leading-[1.55] text-body">{l.who}</p>
-                  <p className="text-[18px] font-semibold leading-[1.45]">{l.problem}</p>
-                  {proof && (
-                    <Link href={`/work/${proof.slug}`} className="group mt-auto flex items-center gap-4 border-t border-line pt-6">
-                      <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-sm border border-line bg-surface">
-                        <Image src={proof.cover.kind === "image" ? proof.cover.src : proof.cover.poster} alt="" fill sizes="56px" className="object-cover" />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="slate block text-[11px] text-muted">Proof</span>
-                        <span className="block truncate text-[16px] font-extrabold group-hover:text-gaffer">{proof.client}</span>
-                      </span>
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
+          <h2 id="brands-title" className="slate text-muted">Brands Willie has worked with</h2>
+          <ul className="reveal mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3 text-[clamp(26px,3.6vw,56px)] font-black leading-[1.05] tracking-tighter">
+            {brands.map((b, i) => (
+              <li key={b} className="flex items-baseline gap-6">
+                {b}
+                {i < brands.length - 1 && <span aria-hidden="true" className="tape-edge inline-block h-[0.2em] w-[0.42em] -translate-y-[0.26em] -rotate-6 bg-gaffer" />}
+              </li>
+            ))}
           </ul>
+          <h2 className="slate mt-16 text-muted">Talent photographed</h2>
+          <p className="reveal mt-5 max-w-[60ch] text-[clamp(18px,1.8vw,24px)] font-semibold leading-[1.45] text-body">{talent.join(" · ")}</p>
         </div>
       </section>
 
-      {/* What we do */}
-      <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="do-title">
+      {/* Services teaser */}
+      <section className="gutter border-t border-line py-24 md:py-36" aria-labelledby="teaser-title">
         <div className="mx-auto max-w-[1440px]">
-          <SectionHead slate="What we do" title={<span id="do-title">Five disciplines, under one direction.</span>}>
-            Hire one, or hire the department. The director stays the same either way.
-          </SectionHead>
-          <ol className="reveal mt-14 grid border-t border-line md:grid-cols-2">
-            {disciplines.map((d, n) => (
-              <li key={d.id} className="border-b border-line md:odd:border-r md:odd:pr-10 md:even:pl-10 md:last:col-span-2 md:last:!border-r-0 md:last:pr-0">
-                <Link href={`/services#${d.id}`} className="group flex min-h-[200px] flex-col justify-between gap-8 py-8">
-                  <span className="slate text-muted">0{n + 1}</span>
-                  <span>
-                    <span className="block text-[clamp(32px,4vw,52px)] font-black leading-none tracking-tighter group-hover:text-gaffer">{d.name}</span>
-                    <span className="mt-3 block text-[17px] leading-[1.5] text-body">{d.short}</span>
-                  </span>
-                </Link>
+          <h2 id="teaser-title" className="reveal text-[clamp(40px,7vw,120px)] font-black leading-[0.92] tracking-tightest">
+            Bold brands. Campaigns that sell. Content that stops the scroll. Sites that close. <span className="text-gaffer">AI that looks like you.</span>
+          </h2>
+          <Link href="/services" className="slate mt-12 inline-block border-b-2 border-gaffer pb-1 hover:text-gaffer">See all services</Link>
+        </div>
+      </section>
+
+      {/* The work */}
+      <section className="gutter pb-24 md:pb-36" aria-label="The work">
+        <div className="mx-auto max-w-[1440px]">
+          <PlayTile href="/work" poster="/media/spots-cover.webp" video="/media/spots-cover.mp4" alt="Morning sun across a travertine shelf with an amber dropper bottle" kicker="The work" title={<>Directed at the<br />speed of culture.</>} label="AI concept" sizes="(min-width: 1440px) 1296px, 92vw" ratio="21 / 9" className="reveal rounded-sm" titleClass="text-[clamp(36px,6vw,104px)]" />
+          <Link href="/work" className="slate mt-8 inline-block border-b-2 border-gaffer pb-1 hover:text-gaffer">Watch the work</Link>
+        </div>
+      </section>
+
+      <TapeWipe side="right" tilt={1} />
+
+      {/* The crew */}
+      <section className="gutter py-24 md:py-32" aria-labelledby="crew-title">
+        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end">
+          <div className="min-w-0">
+            <p className="slate text-gaffer">The crew</p>
+            <h2 id="crew-title" className="reveal mt-5 text-[clamp(44px,7vw,120px)] font-black leading-[0.9] tracking-tightest">One director.<br />A crew built for the job.</h2>
+          </div>
+          <div className="reveal min-w-0">
+            <p className="max-w-[46ch] text-[18px] leading-[1.6] text-body">Willie directs every project. A vetted network of {network.slice(0, -1).join(", ").toLowerCase()} and {network[network.length - 1].toLowerCase()} makes it with him, picked for each job. You get the right people without paying for a bench.</p>
+            <ul className="mt-8 flex flex-wrap gap-2">
+              {["Brand", "Campaigns", "Content", "Digital", "AI"].map((t) => (
+                <li key={t} className="slate rounded-sm border border-line px-3 py-2 text-[11px] text-body">{t}</li>
+              ))}
+            </ul>
+            <a href="mailto:hello@creativedirectionhub.com?subject=Joining%20the%20CDH%20crew" className="slate mt-10 inline-block border-b-2 border-gaffer pb-1 hover:text-gaffer">Work with the crew</a>
+          </div>
+        </div>
+      </section>
+
+      {/* The five services */}
+      <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="five-title">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 id="five-title" className="text-[clamp(36px,4.8vw,72px)] font-black leading-[0.95] tracking-tighter">Five ways onto your mark.</h2>
+            <Link href="/services" className="slate border-b-2 border-gaffer pb-1 hover:text-gaffer">All services</Link>
+          </div>
+          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-5">
+            {services.map((s, n) => (
+              <PlayTile key={s.id} href={`/services#${s.id}`} poster={s.poster} video={s.video} alt={s.alt} kicker={`0${n + 1}`} title={<>{s.name}<span className="mt-3 block text-[16px] font-semibold leading-[1.35] tracking-normal text-[#efe9df]/80">{s.line}</span></>} label={s.ai ? "AI" : undefined} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MARK */}
+      <section className="gutter border-t border-line py-24 md:py-32" aria-labelledby="values-title">
+        <div className="mx-auto max-w-[1440px]">
+          <p className="slate text-gaffer">What we stand for</p>
+          <h2 id="values-title" className="sr-only">Our values spell MARK</h2>
+          <ol className="mt-10 grid border-t border-line md:grid-cols-4">
+            {values.map((v) => (
+              <li key={v.l} className="reveal border-b border-line py-8 md:border-b-0 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0">
+                <span aria-hidden="true" className="block text-[clamp(96px,12vw,200px)] font-black leading-[0.8] tracking-tightest text-gaffer">{v.l}</span>
+                <h3 className="mt-8 text-[26px] font-black leading-none tracking-[-0.02em]">{v.name}</h3>
+                <p className="mt-3 max-w-[30ch] text-[16px] leading-[1.5] text-muted">{v.body}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* How it works */}
-      <section id="how" className="gutter scroll-mt-20 border-t border-line bg-raised py-20 md:py-28" aria-labelledby="how-title">
-        <div className="mx-auto max-w-[1440px]">
-          <SectionHead slate="How it works" title={<span id="how-title">Direction first. Then production.</span>}>
-            Nothing gets made until the idea, the look and the shot list are decided. That's the whole difference.
-          </SectionHead>
-          <ol className="reveal mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
-            {process.map((s, n) => (
-              <li key={s.step} className="flex min-h-[220px] flex-col gap-10 bg-ground p-6">
-                <span className={`slate ${n === process.length - 1 ? "text-gaffer" : "text-muted"}`}>Step {String(n + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3 className="text-[24px] font-black leading-none tracking-[-0.03em]">{s.step}</h3>
-                  <p className="mt-3 text-[15px] leading-[1.5] text-muted">{s.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* About strip */}
-      <section className="bone gutter py-20 md:py-28" aria-labelledby="about-title">
-        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)] lg:gap-20">
-          <div className="reveal relative min-w-0 self-start rounded-md border border-line bg-surface p-7 md:p-9">
-            <p className="slate text-muted">Credits</p>
-            <dl className="mt-6 grid gap-3 text-[15px]">
-              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4 border-b border-line pb-3">
-                <dt className="slate text-[11px] text-muted">Directed by</dt>
-                <dd className="font-extrabold">Willie Bernoudy</dd>
-              </div>
-              {network.map((n) => (
-                <div key={n} className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4 border-b border-line pb-3">
-                  <dt className="slate text-[11px] text-muted">{n}</dt>
-                  <dd className="font-semibold text-body">CDH network</dd>
-                </div>
-              ))}
-            </dl>
-            <TapeMark size={72} className="absolute -bottom-5 -right-3 rotate-6" />
-          </div>
-          <div className="reveal min-w-0">
-            <p className="slate text-gaffer">The director</p>
-            <h2 id="about-title" className="mt-4 text-[clamp(40px,5.6vw,84px)] font-black leading-[0.92] tracking-tighter">I direct every project. A network makes it with me.</h2>
-            <p className="mt-8 max-w-[60ch] text-[18px] leading-[1.6] text-body">
-              Fifteen years in creative strategy, direction and photography. Editors, designers, photographers, motion artists and creators, picked for each job, under one director. That's the department.
-            </p>
-            <dl className="mt-10 grid border-t border-line sm:grid-cols-2">
-              {facts.map((f) => (
-                <div key={f.k} className="border-b border-line py-5 sm:odd:pr-8 sm:even:border-l sm:even:pl-8">
-                  <dt className="text-[30px] font-black leading-none tracking-[-0.03em]">{f.k}</dt>
-                  <dd className="mt-2 text-[15px] leading-[1.5] text-muted">{f.v}</dd>
-                </div>
-              ))}
-            </dl>
-            <Link href="/about" className="btn-secondary mt-10">About Willie and the network</Link>
-          </div>
-        </div>
-      </section>
-
-      <WaysToStart />
-
-      {/* Audit form */}
-      <section id="audit" className="gutter scroll-mt-20 border-t border-line py-20 md:py-28" aria-labelledby="audit-title">
-        <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
-          <div className="reveal min-w-0">
-            <p className="slate text-gaffer">Free Creative Audit</p>
-            <h2 id="audit-title" className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tighter">See what's holding your brand back.</h2>
-            <ol className="mt-10 grid max-w-[52ch] gap-4 text-[17px] leading-[1.5]">
-              <li className="grid grid-cols-[44px_minmax(0,1fr)] gap-3"><span className="slate pt-1 text-muted">01</span><span>Send your website or Instagram.</span></li>
-              <li className="grid grid-cols-[44px_minmax(0,1fr)] gap-3"><span className="slate pt-1 text-muted">02</span><span>Willie reviews the brand, the site and your last three pieces, and marks what's holding each one back.</span></li>
-              <li className="grid grid-cols-[44px_minmax(0,1fr)] gap-3"><span className="slate pt-1 text-muted">03</span><span>You get the fixes by email within 3 business days. Keep them whether you hire us or not.</span></li>
-            </ol>
-          </div>
-          <div className="reveal min-w-0 rounded-md border border-line bg-raised p-7 md:p-10">
-            <AuditForm />
+      {/* Close */}
+      <section className="gutter relative overflow-hidden border-t border-line py-28 md:py-40" aria-labelledby="close-title">
+        <TapeMark size={520} className="pointer-events-none absolute -right-10 -top-10 hidden opacity-[0.07] md:block" />
+        <div className="relative mx-auto max-w-[1440px]">
+          <h2 id="close-title" className="text-[clamp(56px,11vw,190px)] font-black leading-[0.86] tracking-tightest">
+            Ready for<br />your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark?</b></span>
+          </h2>
+          <p className="mt-10 max-w-[48ch] text-[19px] leading-[1.55] text-body">Send your site or Instagram. Willie reviews the brand, the site and your last three pieces, and emails you the fixes in 3 business days. Free, and yours to keep.</p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link href="/start" className="btn-primary">Get a Free Creative Audit</Link>
+            <a href={book} {...(BOOKING_URL ? { target: "_blank", rel: "noopener" } : {})} className="btn-secondary">Book a call</a>
           </div>
         </div>
       </section>

@@ -70,8 +70,13 @@ export default function CasePage({ params }: { params: { slug: string } }) {
                 ))}
               </div>
             )}
+          </div>
+        </div>
+
+        <div className="bone gutter mt-16 py-16 md:mt-24 md:py-24">
+          <div className="mx-auto max-w-[1440px]">
             {rest.length > 0 && (
-              <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-6 md:grid-cols-2">
                 {rest.map((m, n) => (
                   <figure key={m.src + n} className={`reveal min-w-0 ${m.w > m.h ? "md:col-span-2" : ""}`}>
                     <CaseMedia m={m} sizes={m.w > m.h ? "(min-width: 768px) 62vw, 92vw" : "(min-width: 1024px) 30vw, (min-width: 768px) 46vw, 92vw"} className="rounded-md border border-line" />
@@ -83,7 +88,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        <footer className="gutter py-16 md:py-24">
+        <footer className="bone gutter pb-16 md:pb-24">
           <div className="mx-auto grid max-w-[1440px] gap-12 border-t border-line pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
             <div className="min-w-0">
               <p className="slate text-muted">Credits</p>
@@ -92,19 +97,19 @@ export default function CasePage({ params }: { params: { slug: string } }) {
               </ul>
               {(c.ai || c.notice) && <p className="mt-6 max-w-[48ch] text-[14px] leading-[1.5] text-muted">{[c.ai, c.notice].filter(Boolean).join(" ")}</p>}
             </div>
-            <div className="min-w-0 rounded-md border border-line bg-surface p-7 md:p-9">
+            <div className="min-w-0 rounded-md bg-[#121110] p-7 text-[#efe9df] md:p-9">
               <p className="slate text-gaffer">Want this for your brand?</p>
-              <p className="mt-4 text-[clamp(26px,3vw,36px)] font-black leading-[1] tracking-tighter">Start with a free audit, or book a call.</p>
+              <p className="mt-4 text-[clamp(26px,3vw,36px)] font-black leading-[1] tracking-tighter">Let's find your mark.</p>
               <div className="mt-6 flex flex-wrap gap-4">
                 <Link href="/start" className="btn-primary">Get a Free Creative Audit</Link>
-                <a href={book} {...(BOOKING_URL ? { target: "_blank", rel: "noopener" } : {})} className="btn-secondary">Book a call</a>
+                <a href={book} {...(BOOKING_URL ? { target: "_blank", rel: "noopener" } : {})} className="inline-flex min-h-[52px] items-center justify-center rounded-sm border border-[#efe9df]/30 px-7 text-[16px] font-semibold hover:border-[#efe9df]">Book a call</a>
               </div>
             </div>
           </div>
         </footer>
       </article>
 
-      <section className="bone gutter py-16 md:py-24" aria-labelledby="next-title">
+      <section className="gutter border-t border-line py-16 md:py-24" aria-labelledby="next-title">
         <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)]">
           <h2 id="next-title" className="text-[clamp(32px,4vw,56px)] font-black leading-[0.95] tracking-tighter">Next up.</h2>
           <div className="max-w-[720px]"><WorkCard c={next} sizes="(min-width: 1024px) 50vw, 92vw" big /></div>

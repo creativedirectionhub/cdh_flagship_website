@@ -20,7 +20,7 @@ export default function ServicesPage() {
       <section className="gutter py-16 md:py-24">
         <div className="mx-auto max-w-[1440px]">
           <p className="slate text-gaffer">Services</p>
-          <h1 className="mt-4 text-[clamp(48px,8vw,128px)] font-black leading-[0.9] tracking-tightest">Hire one. Or hire the department.</h1>
+          <h1 className="mt-4 text-[clamp(48px,8vw,128px)] font-black leading-[0.9] tracking-tightest">Five ways we put you on your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span></h1>
           <p className="mt-6 max-w-[52ch] text-[18px] leading-[1.55] text-body">Five disciplines, one director. Pick the one you need now; the others are there when you need them, with the same person holding the look.</p>
           <ol className="mt-12 flex flex-wrap gap-3">
             {disciplines.map((d, n) => (
@@ -31,7 +31,7 @@ export default function ServicesPage() {
       </section>
 
       {disciplines.map((d, n) => (
-        <section key={d.id} id={d.id} className={`gutter scroll-mt-20 border-t border-line py-20 md:py-28 ${n % 2 === 1 ? "bone" : ""}`} aria-labelledby={`${d.id}-title`}>
+        <section key={d.id} id={d.id} className={`gutter scroll-mt-20 border-t border-line py-20 md:py-28 `} aria-labelledby={`${d.id}-title`}>
           <div className="mx-auto max-w-[1440px]">
             <div className="reveal grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
               <div className="min-w-0">

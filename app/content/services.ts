@@ -135,7 +135,21 @@ export const network = ["Editors", "Designers", "Photographers", "Motion artists
 
 export const facts = [
   { k: "15 years", v: "in creative strategy, direction and photography" },
-  { k: "2 awards", v: "Corporate Vision Awards, Best Social Media Company, two years running" },
-  { k: "23 countries", v: "photographed, with an honorable mention as an international photographer" },
+  { k: "2 awards", v: "Corporate Vision Awards for Blacksheepfocus: Best Social Media Marketing Agency (2022), Best Social Media Strategy Agency (2023)" },
+  { k: "23 countries", v: "photographed, with an ND Awards honorable mention for travel and culture" },
   { k: "38k to 100k+", v: "followers grown for a travel media brand with its creative squad" },
 ];
+
+// The values, and they spell the point.
+export const values = [
+  { l: "M", name: "Make it bold.", body: "If it looks like everyone else's, it isn't done." },
+  { l: "A", name: "Act fast.", body: "Culture moves every week. So do we." },
+  { l: "R", name: "Respect the craft.", body: "Light, lens, type and timing. All of it matters." },
+  { l: "K", name: "Keep your word.", body: "Dates hit, revisions honored, and you own what you pay for." },
+];
+
+// Brands Willie has worked with across his career, as named in his portfolio. Names only, no logos.
+export const brands = ["Hattiesburg Black Sox", "H.O.P.E Live Agency", "Sonic", "Walmart", "Fashion Nova", "RTIC", "Red Diamond", "Homer", "Black Girl Travel Slay", "Mom on the Move", "Blacktravelgram"];
+
+// Talent Willie has photographed.
+export const talent = ["Eva Marcille", "David Banner", "Blac Chyna", "Adrian Lockett", "Blue Kimble", "Ptosha Storey", "DreamDoll", "Jada Wada"];
