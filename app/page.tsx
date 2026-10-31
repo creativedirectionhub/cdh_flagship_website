@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import MarkReveal from "./components/MarkReveal";
+import SlateOpener from "./components/SlateOpener";
 import PlayTile from "./components/PlayTile";
 import TapeWipe from "./components/TapeWipe";
 import { TapeMark } from "./components/Brand";
@@ -24,7 +24,7 @@ export default function Home() {
   const book = BOOKING_URL || "/start";
   return (
     <>
-      <MarkReveal />
+      <SlateOpener />
 
       {/* What we do, in one breath */}
       <section className="gutter py-24 md:py-36" aria-labelledby="breath-title">
