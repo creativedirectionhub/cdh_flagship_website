@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SlateOpener from "./components/SlateOpener";
+import WallSection from "./components/WallSection";
 import PlayTile from "./components/PlayTile";
 import TapeWipe from "./components/TapeWipe";
 import { TapeMark } from "./components/Brand";
@@ -129,6 +130,8 @@ export default function Home() {
           </ol>
         </div>
       </section>
+
+      <WallSection />
 
       {/* Close */}
       <section className="gutter relative overflow-hidden border-t border-line py-28 md:py-40" aria-labelledby="close-title">

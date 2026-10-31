@@ -18,6 +18,7 @@ export default function SiteFooter() {
               <li><Link href="/services" className="inline-block py-2 hover:text-gaffer">Services</Link></li>
               <li><Link href="/about" className="inline-block py-2 hover:text-gaffer">About</Link></li>
               <li><Link href="/start" className="inline-block py-2 hover:text-gaffer">Free Creative Audit</Link></li>
+              <li><Link href="/#wall" className="inline-block py-2 hover:text-gaffer">Sign the wall</Link></li>
             </ul>
             <div className="grid content-start gap-2 text-[16px]">
               <span className="slate text-muted">Say hello</span>

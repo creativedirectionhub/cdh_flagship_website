@@ -4,11 +4,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 // The opening: every visit is a take. The slate drops in with your take number, claps, and the reel cuts in
-// on a director's monitor. "Another take" claps again and cuts to the next shot.
+// on a director's monitor. (Another take now lives on the wall, further down the home page.)
 // The intro runs in CSS, so the page is complete without JavaScript; reduced motion skips straight to the reel.
 
-// Start time of each shot in the reel (seconds), matching the cut in kie/reel/reel1080.py.
-const SHOTS = [0, 2.4, 4.6, 6.6, 8.6, 10.4, 12.2, 13.7, 15.2];
 const LINES = [
   "Rolling.",
   "Again, with feeling.",
@@ -22,27 +20,6 @@ const FPS = 24;
 
 function pad(n: number) { return String(n).padStart(2, "0"); }
 
-function clapSound() {
-  try {
-    const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    const ctx = new AC();
-    const len = Math.floor(ctx.sampleRate * 0.09);
-    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
-    const d = buf.getChannelData(0);
-    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 6);
-    const src = ctx.createBufferSource(); src.buffer = buf;
-    const bp = ctx.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = 2200; bp.Q.value = 0.7;
-    const g = ctx.createGain(); g.gain.value = 0.35;
-    src.connect(bp).connect(g).connect(ctx.destination);
-    const o = ctx.createOscillator(); const og = ctx.createGain();
-    o.frequency.setValueAtTime(160, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(60, ctx.currentTime + 0.08);
-    og.gain.setValueAtTime(0.25, ctx.currentTime); og.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
-    o.connect(og).connect(ctx.destination);
-    src.start(); o.start(); o.stop(ctx.currentTime + 0.12);
-    setTimeout(() => ctx.close(), 400);
-  } catch { /* no audio, no problem */ }
-}
-
 function Stripes({ className = "" }: { className?: string }) {
   return <div aria-hidden="true" className={`slate-stripes ${className}`} />;
 }
@@ -52,8 +29,6 @@ export default function SlateOpener() {
   const tc = useRef<HTMLSpanElement>(null);
   const [take, setTake] = useState(1);
   const [line, setLine] = useState(LINES[0]);
-  const [shot, setShot] = useState(0);
-  const [cut, setCut] = useState(0); // bumps to replay the flash and the mini clap
   const [today, setToday] = useState("");
 
   // Visits become take numbers.
@@ -90,16 +65,6 @@ export default function SlateOpener() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  const another = () => {
-    clapSound();
-    const next = (shot + 1) % SHOTS.length;
-    setShot(next);
-    setTake((t) => t + 1);
-    setLine(take + 1 > 8 ? `Take ${take + 1}. The crew is getting hungry.` : LINES[take % LINES.length]);
-    setCut((c) => c + 1);
-    const v = video.current;
-    if (v) { v.currentTime = SHOTS[next] + 0.35; v.play().catch(() => {}); }
-  };
 
   return (
     <section aria-label="Reel" className="relative h-[calc(100svh-68px)] min-h-[560px] overflow-hidden bg-ground">
@@ -132,17 +97,11 @@ export default function SlateOpener() {
             <span className="op-line op-line-2 block">on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge op-tape" /><b className="op-ink">mark.</b></span></span>
           </h1>
           <div className="op-ui flex flex-col items-start gap-4 pb-2">
-            <button type="button" onClick={another} className="group flex items-center gap-3 text-left text-[#efe9df]" aria-label={`Call take ${take + 1}`}>
-              <span key={cut} className={`mini-slate ${cut ? "mini-go" : ""}`} aria-hidden="true"><Stripes className="mini-stick" /><span className="mini-board" /></span>
-              <span className="slate border-b-2 border-gaffer pb-1 pt-3 group-hover:text-gaffer">Another take</span>
-            </button>
             <Link href="/about" className="slate inline-block border-b-2 border-[#efe9df]/30 pb-1 pt-3 text-[#efe9df] hover:border-gaffer hover:text-gaffer">About us</Link>
             <span className="slate text-[12px] text-[#efe9df]/70">Reel includes AI concepts, labeled on each piece</span>
           </div>
         </div>
       </div>
-
-      {cut > 0 && <div key={`f${cut}`} aria-hidden="true" className="cut-flash pointer-events-none absolute inset-0" />}
 
       {/* The intro: black stage, the slate drops, claps, cut. Pure CSS. */}
       <div aria-hidden="true" className="op-cover pointer-events-none absolute inset-0 grid place-items-center bg-ground">

@@ -175,3 +175,19 @@ button:hover .mini-stick { transform: rotate(-26deg); }
 .cut-flash { display: none; }
   .op-slate, .op-stick, .op-shake, .op-ui, .op-line, .op-tape, .op-ink, .rec-dot { animation: none !important; }
 }
+
+/* ---- The wall ---- */
+.wall-board { background-color: #1b1a18; background-image: linear-gradient(90deg, rgba(239,233,223,.035) 1px, transparent 1px), radial-gradient(rgba(239,233,223,.025) 1px, transparent 1px); background-size: 25% 100%, 5px 5px; border: 1px solid rgb(var(--line)); }
+.wall-strip { position: relative; max-width: min(100%, 340px); padding: 14px 24px 14px 22px; transform: rotate(var(--tilt, 0deg)); clip-path: polygon(0 4%, 3% 0, 97% 2%, 100% 0, 99% 22%, 100% 40%, 98% 58%, 100% 78%, 99% 100%, 2% 98%, 0 100%, 1.5% 80%, 0 62%, 2% 44%, 0 26%); transition: transform .25s ease; }
+.wall-strip:hover { transform: rotate(0deg) scale(1.03); z-index: 1; }
+.tape-orange { background: #ff5a1f; color: #121110; }
+.tape-bone { background: #efe9df; color: #121110; }
+.tape-black { background: #2a2826; color: #efe9df; box-shadow: inset 0 0 0 1px rgba(239,233,223,.12); }
+.wall-slap { animation: wallSlap .45s cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes wallSlap { from { transform: rotate(calc(var(--tilt) * 4)) scale(1.35); opacity: 0; } to { transform: rotate(var(--tilt)) scale(1); opacity: 1; } }
+.wall-input { width: 100%; background: transparent; border: 0; border-bottom: 2px solid rgb(var(--line)); padding: 10px 0; color: rgb(var(--ink)); outline: none; }
+.wall-input:focus { border-color: #ff5a1f; }
+.wall-input::placeholder { color: rgb(var(--muted)); opacity: .7; font-weight: 500; }
+@media (prefers-reduced-motion: reduce) { .wall-slap { animation: none; } .wall-strip { transition: none; } }
+.wall-ghost { max-width: min(100%, 340px); padding: 14px 24px 14px 22px; transform: rotate(var(--tilt)); border: 2px dashed rgba(239,233,223,.28); color: rgb(var(--muted)); transition: border-color .2s, color .2s; }
+.wall-ghost:hover, .wall-ghost:focus-within { border-color: #ff5a1f; color: #ff5a1f; }
