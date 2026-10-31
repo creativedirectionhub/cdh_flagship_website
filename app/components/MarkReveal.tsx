@@ -40,7 +40,7 @@ export default function MarkReveal() {
   useEffect(() => {
     const v = video.current;
     if (!v) return;
-    const sm = window.matchMedia("(max-width: 767px)").matches;
+    const sm = window.matchMedia("(max-width: 767px) and (orientation: portrait)").matches;
     v.src = sm ? "/media/reel-sm.mp4" : "/media/reel.mp4";
     v.play().catch(() => {});
   }, []);
