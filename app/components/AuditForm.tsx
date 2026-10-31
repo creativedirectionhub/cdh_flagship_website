@@ -7,13 +7,14 @@ import { site } from "../content/services";
 type State = "idle" | "sending" | "sent" | "offline" | "error";
 
 const LANES = ["Consumer brand", "Personal brand", "Hospitality", "Other"];
-const NEEDS = ["Brand", "Campaigns and ads", "Content", "Website", "Not sure"];
+const NEEDS = ["Brand", "Campaigns and ads", "Content", "Website", "AI art direction", "Not sure"];
 
 const field = "min-h-[52px] w-full rounded-sm border bg-surface px-4 text-[16px] text-ink placeholder:text-muted focus-visible:border-gaffer";
 
 export default function AuditForm() {
   const [state, setState] = useState<State>("idle");
   const [emailError, setEmailError] = useState("");
+  const [siteError, setSiteError] = useState("");
   const [notes, setNotes] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -22,9 +23,16 @@ export default function AuditForm() {
     const data = Object.fromEntries(Array.from(form.entries()).map(([k, v]) => [k, String(v).trim()]));
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || "")) {
       setEmailError("Add a full email address, like you@yourbrand.com.");
+      document.getElementById("email")?.focus();
       return;
     }
     setEmailError("");
+    if ((data.website || "").length < 3) {
+      setSiteError("Add your website or Instagram so there's something to audit.");
+      document.getElementById("website")?.focus();
+      return;
+    }
+    setSiteError("");
     setState("sending");
     try {
       const res = await fetch("/api/audit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
@@ -69,7 +77,10 @@ export default function AuditForm() {
       </div>
       <div className="grid gap-2">
         <label htmlFor="website" className="slate text-muted">Business website or Instagram</label>
-        <input id="website" name="website" type="text" required placeholder="yourbrand.com or @yourbrand" autoComplete="url" className={`${field} border-line`} />
+        <input id="website" name="website" type="text" required placeholder="yourbrand.com or @yourbrand" autoComplete="url"
+          aria-invalid={siteError ? true : undefined} aria-describedby={siteError ? "website-error" : undefined}
+          className={`${field} ${siteError ? "border-kill" : "border-line"}`} />
+        {siteError && <span id="website-error" className="text-[14px] text-kill">{siteError}</span>}
         <span className="text-[14px] text-muted">We'll review the brand, the site and your last three pieces. Your details stay with us (<a href="/privacy" className="underline hover:text-gaffer">privacy</a>).</span>
       </div>
       <div className="grid gap-6 sm:grid-cols-2">

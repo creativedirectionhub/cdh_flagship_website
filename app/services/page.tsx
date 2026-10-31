@@ -31,7 +31,7 @@ export default function ServicesPage() {
       </section>
 
       {disciplines.map((d, n) => (
-        <section key={d.id} id={d.id} className={`gutter scroll-mt-20 border-t border-line py-20 md:py-28 `} aria-labelledby={`${d.id}-title`}>
+        <section key={d.id} id={d.id} className={`gutter scroll-mt-20 border-t border-line py-20 md:py-28 ${n % 2 === 1 ? "bg-raised" : ""}`} aria-labelledby={`${d.id}-title`}>
           <div className="mx-auto max-w-[1440px]">
             <div className="reveal grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
               <div className="min-w-0">

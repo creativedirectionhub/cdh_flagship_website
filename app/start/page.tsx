@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const next = [
-  { t: "Within a day", b: "You get a note that it's in hand, with anything we need to see that we couldn't find." },
+  { t: "Right away", b: "An email lands confirming your request is in, with a link to book a call if you'd rather talk." },
   { t: "Within 3 business days", b: "Your audit lands by email: what's holding the brand, the site and the last three pieces back, with fixes you can use whether you hire us or not." },
   { t: "If it fits", b: "A 30-minute call. We agree a scope and a fixed price, or a monthly retainer, and start." },
 ];
@@ -19,12 +19,17 @@ export default function StartPage() {
   return (
     <>
       <section className="gutter py-16 md:py-24">
-        <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
-          <div className="min-w-0">
+        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-x-20">
+          <div className="min-w-0 lg:col-start-1 lg:row-start-1">
             <p className="slate text-gaffer">Free Creative Audit</p>
             <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">Let's find your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span></h1>
             <p className="mt-6 max-w-[46ch] text-[18px] leading-[1.55] text-body">Send your website or Instagram. Willie reviews the brand, the site and your last three pieces of content or ads, and emails you what's holding them back, with fixes. Yours to keep.</p>
-            <h2 className="slate mt-12 text-muted">What happens next</h2>
+          </div>
+          <div className="min-w-0 rounded-md border border-line bg-raised p-6 md:p-10 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
+            <AuditForm />
+          </div>
+          <div className="min-w-0 lg:col-start-1 lg:row-start-2">
+            <h2 className="slate text-muted">What happens next</h2>
             <ol className="mt-5 grid border-t border-line">
               {next.map((n, i) => (
                 <li key={n.t} className="grid gap-2 border-b border-line py-5 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-6">
@@ -34,9 +39,6 @@ export default function StartPage() {
               ))}
             </ol>
             <p className="mt-8 text-[15px] text-muted">Rather talk first? Email <a href={`mailto:${site.email}`} className="font-semibold text-ink hover:text-gaffer">{site.email}</a>{BOOKING_URL && <> or <a href={BOOKING_URL} target="_blank" rel="noopener" className="font-semibold text-gaffer hover:underline">book a 30-minute call</a>. Just a quick question? <a href={QUICK_CALL_URL} target="_blank" rel="noopener" className="font-semibold text-gaffer hover:underline">Grab 15 minutes</a></>}.</p>
-          </div>
-          <div className="min-w-0 rounded-md border border-line bg-raised p-7 md:p-10">
-            <AuditForm />
           </div>
         </div>
       </section>

@@ -36,7 +36,7 @@ export default function AboutPage() {
             <p className="slate text-gaffer">About</p>
             <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">I direct every project.</h1>
             <div className="mt-8 grid max-w-[58ch] gap-5 text-[18px] leading-[1.6] text-body">
-              <p>I'm Willie Bernoudy. Fifteen years in creative strategy and direction, as a filmmaker, a photographer and a creative director. I started behind the camera in Mississippi, shooting talent, events and travel, and grew into brand strategy and social growth for media brands.</p>
+              <p>I'm Willie Bernoudy, creative director and AI art director. Fifteen years in creative strategy and direction, as a filmmaker, a photographer and a creative director. I started behind the camera in Mississippi, shooting talent, events and travel, grew into brand strategy and social growth for media brands, and now direct AI the same way I direct a set.</p>
             </div>
           </div>
         </div>

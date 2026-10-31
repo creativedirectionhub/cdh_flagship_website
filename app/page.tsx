@@ -23,7 +23,7 @@ export default function Home() {
       {/* What we do, in one breath */}
       <section className="gutter py-24 md:py-36" aria-labelledby="breath-title">
         <div className="mx-auto max-w-[1440px]">
-          <p className="slate text-gaffer">Creative Direction Hub</p>
+          <p className="slate text-gaffer">For consumer brands · personal brands · hospitality</p>
           <h2 id="breath-title" className="reveal mt-6 max-w-[22ch] text-[clamp(34px,4.8vw,76px)] font-black leading-[1] tracking-tighter">
             The creative department for growing brands. One director over the brand, the campaign, the content, the site and the AI, <span className="text-muted">and a crew built for every job.</span>
           </h2>
@@ -59,7 +59,7 @@ export default function Home() {
           <h2 id="teaser-title" className="reveal text-[clamp(40px,7vw,120px)] font-black leading-[0.92] tracking-tightest">
             Bold brands. Campaigns that sell. Content that stops the scroll. Sites that close. <span className="text-gaffer">AI that looks like you.</span>
           </h2>
-          <Link href="/services" className="slate mt-12 inline-block border-b-2 border-gaffer pb-1 hover:text-gaffer">See all services</Link>
+          <Link href="/services" className="slate mt-12 inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">See all services</Link>
         </div>
       </section>
 
@@ -67,7 +67,7 @@ export default function Home() {
       <section className="gutter pb-24 md:pb-36" aria-label="The work">
         <div className="mx-auto max-w-[1440px]">
           <PlayTile href="/work" poster="/media/spots-cover.webp" video="/media/spots-cover.mp4" alt="Morning sun across a travertine shelf with an amber dropper bottle" kicker="The work" title={<>Directed at the<br />speed of culture.</>} label="AI concept" sizes="(min-width: 1440px) 1296px, 92vw" ratio="21 / 9" className="reveal rounded-sm" titleClass="text-[clamp(36px,6vw,104px)]" />
-          <Link href="/work" className="slate mt-8 inline-block border-b-2 border-gaffer pb-1 hover:text-gaffer">Watch the work</Link>
+          <Link href="/work" className="slate mt-8 inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">Watch the work</Link>
         </div>
       </section>
 
@@ -87,7 +87,7 @@ export default function Home() {
                 <li key={t} className="slate rounded-sm border border-line px-3 py-2 text-[11px] text-body">{t}</li>
               ))}
             </ul>
-            <a href="mailto:hello@creativedirectionhub.com?subject=Joining%20the%20CDH%20crew" className="slate mt-10 inline-block border-b-2 border-gaffer pb-1 hover:text-gaffer">Work with the crew</a>
+            <a href="mailto:hello@creativedirectionhub.com?subject=Joining%20the%20CDH%20crew" className="slate mt-10 inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">Work with the crew</a>
           </div>
         </div>
       </section>
@@ -96,8 +96,8 @@ export default function Home() {
       <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="five-title">
         <div className="mx-auto max-w-[1440px]">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 id="five-title" className="text-[clamp(36px,4.8vw,72px)] font-black leading-[0.95] tracking-tighter">Five ways onto your mark.</h2>
-            <Link href="/services" className="slate border-b-2 border-gaffer pb-1 hover:text-gaffer">All services</Link>
+            <h2 id="five-title" className="text-[clamp(36px,4.8vw,72px)] font-black leading-[0.95] tracking-tighter">Five ways we put you on your mark.</h2>
+            <Link href="/services" className="slate inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">All services</Link>
           </div>
           <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-5">
             {services.map((s, n) => (

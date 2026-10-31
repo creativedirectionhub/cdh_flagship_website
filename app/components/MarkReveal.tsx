@@ -91,7 +91,7 @@ export default function MarkReveal() {
               We put brands<br />on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span>
             </h1>
             <div className="flex flex-col items-start gap-4 pb-2">
-              <Link href="/about" className="slate border-b-2 border-gaffer pb-1 text-[#efe9df] hover:text-gaffer">About us</Link>
+              <Link href="/about" className="slate inline-block border-b-2 border-gaffer pb-1 pt-3 text-[#efe9df] hover:text-gaffer">About us</Link>
               <span className="slate text-[11px] text-[#efe9df]/70">Reel includes AI concepts, labeled on each piece</span>
             </div>
           </div>

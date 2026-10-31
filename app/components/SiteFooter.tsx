@@ -13,16 +13,16 @@ export default function SiteFooter() {
             <p className="text-[clamp(40px,6vw,96px)] font-black leading-[0.9] tracking-tightest">We put brands<br />on their mark<span className="text-gaffer">.</span></p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2">
-            <ul className="grid gap-2 text-[16px] font-semibold">
-              <li><Link href="/work" className="hover:text-gaffer">Work</Link></li>
-              <li><Link href="/services" className="hover:text-gaffer">Services</Link></li>
-              <li><Link href="/about" className="hover:text-gaffer">About</Link></li>
-              <li><Link href="/start" className="hover:text-gaffer">Free Creative Audit</Link></li>
+            <ul className="grid text-[16px] font-semibold">
+              <li><Link href="/work" className="inline-block py-2 hover:text-gaffer">Work</Link></li>
+              <li><Link href="/services" className="inline-block py-2 hover:text-gaffer">Services</Link></li>
+              <li><Link href="/about" className="inline-block py-2 hover:text-gaffer">About</Link></li>
+              <li><Link href="/start" className="inline-block py-2 hover:text-gaffer">Free Creative Audit</Link></li>
             </ul>
             <div className="grid content-start gap-2 text-[16px]">
               <span className="slate text-muted">Say hello</span>
-              <a href={`mailto:${site.email}`} className="font-semibold hover:text-gaffer">{site.email}</a>
-              {BOOKING_URL && <a href={BOOKING_URL} target="_blank" rel="noopener" className="mt-1 font-semibold text-gaffer hover:underline">Book a 30-minute call</a>}
+              <a href={`mailto:${site.email}`} className="inline-block py-2 font-semibold hover:text-gaffer">{site.email}</a>
+              {BOOKING_URL && <a href={BOOKING_URL} target="_blank" rel="noopener" className="inline-block py-2 font-semibold text-gaffer hover:underline">Book a 30-minute call</a>}
             </div>
           </div>
         </div>

@@ -29,14 +29,15 @@ export default function SiteHeader() {
   const active = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
 
   return (
+    <>
     <header className="gutter sticky top-0 z-40 border-b border-line/60 bg-ground/85 backdrop-blur-sm" style={{ top: "env(safe-area-inset-top, 0px)" }}>
       <nav className="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between gap-6" aria-label="Main">
-        <Link href="/" className="shrink-0">
+        <Link href="/" className="shrink-0 py-3">
           <Wordmark size={28} />
           <span className="sr-only">Creative Direction Hub, home</span>
         </Link>
         <div className="flex items-center gap-3">
-          <Link href="/start" className="btn-primary hidden min-h-[42px] px-5 text-[14px] sm:inline-flex">Free Audit</Link>
+          <Link href="/start" className="btn-primary min-h-[40px] px-4 text-[13px] sm:min-h-[42px] sm:px-5 sm:text-[14px]">Free Audit</Link>
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
@@ -52,8 +53,9 @@ export default function SiteHeader() {
           </button>
         </div>
       </nav>
+    </header>
       {open && (
-        <div id="site-menu" className="fixed inset-x-0 bottom-0 top-[68px] z-40 overflow-auto bg-ground">
+        <div id="site-menu" className="fixed inset-x-0 bottom-0 top-[68px] z-50 overflow-auto bg-ground">
           <div className="gutter mx-auto grid max-w-[1440px] gap-10 py-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)] md:py-14">
             <ul className="grid">
               {links.map((l, n) => (
@@ -73,6 +75,6 @@ export default function SiteHeader() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
