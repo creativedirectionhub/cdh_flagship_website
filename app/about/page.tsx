@@ -24,7 +24,7 @@ const person = {
   award: [
     "Corporate Vision Awards: Best Social Media Marketing Agency 2022 (Blacksheepfocus)",
     "Corporate Vision Awards: Best Social Media Strategy Agency 2023 (Blacksheepfocus)",
-    "ND Awards 2020: Honorable Mention, Professional, Travel and Culture",
+    "ND Awards 2020: Honorable Mention, People: Travel / Culture",
   ],
   worksFor: { "@id": `${site.url}/#org` },
   image: `${site.url}/media/about-willie.webp`,
@@ -56,7 +56,7 @@ export default function AboutPage() {
           <h2 id="story-title" className="reveal self-start text-[clamp(36px,4.2vw,64px)] font-black leading-[0.95] tracking-tighter">From Mississippi to 23 countries.</h2>
           <div className="min-w-0">
             <div className="grid max-w-[58ch] gap-5 text-[18px] leading-[1.6] text-body">
-              <p>Blacksheepfocus, the agency I owned, won two Corporate Vision Awards: Best Social Media Marketing Agency in 2022 and Best Social Media Strategy Agency in 2023. My travel and culture work earned an honorable mention at the ND Awards, and I've photographed in 23 countries.</p>
+              <p>Blacksheepfocus, the agency I owned, won two Corporate Vision Awards: Best Social Media Marketing Agency in 2022 and Best Social Media Strategy Agency in 2023. My travel and culture work earned an honorable mention at the ND Awards, and I've photographed in 23 countries. <Link href="/proof" className="font-semibold underline underline-offset-4 hover:text-gaffer">See the receipts.</Link></p>
               <p>I built Creative Direction Hub for the businesses that have a product, a person or a place worth selling, and nobody with taste in charge of how it looks. That's the job I do.</p>
             </div>
             <dl className="mt-12 grid border-t border-line sm:grid-cols-2">

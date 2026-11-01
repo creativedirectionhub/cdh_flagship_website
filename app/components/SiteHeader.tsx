@@ -8,6 +8,7 @@ import { TapeMark, Wordmark } from "./Brand";
 const links = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
+  { href: "/proof", label: "Proof" },
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/start", label: "Free Audit" },

@@ -15,6 +15,7 @@ export default function SiteFooter() {
           <div className="grid gap-8 sm:grid-cols-2">
             <ul className="grid text-[16px] font-semibold">
               <li><Link href="/work" className="inline-block py-2 hover:text-gaffer">Work</Link></li>
+              <li><Link href="/proof" className="inline-block py-2 hover:text-gaffer">Proof</Link></li>
               <li><Link href="/services" className="inline-block py-2 hover:text-gaffer">Services</Link></li>
               <li><Link href="/about" className="inline-block py-2 hover:text-gaffer">About</Link></li>
               <li><Link href="/start" className="inline-block py-2 hover:text-gaffer">Free Creative Audit</Link></li>
