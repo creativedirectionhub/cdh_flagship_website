@@ -106,7 +106,7 @@ export const ways = [
     label: "Ongoing",
     name: "Creative Director on Retainer",
     pace: "Monthly",
-    term: "month to month",
+    term: "3-month minimum",
     body: "A creative director over everything you put out, with the team to make it. The Growth Retainer, for example: 16 ads a month on a weekly test loop.",
     items: ["Direction on everything you publish", "Growth Retainer: 16 ads a month, 3 hooks each", "Weekly report in plain words"],
     cta: "Book a call",
@@ -127,7 +127,7 @@ export const faqs = [
   { q: "How do you use AI?", a: "For speed and range: concepts, edits, product shots, voice and AI performers. Every AI person or scene is labeled, and a director checks every piece before you see it. Where a real face matters, we cast real people." },
   { q: "Who actually does the work?", a: "Willie directs every project. A vetted network of editors, designers, photographers, motion artists and creators makes it with him, picked for each job." },
   { q: "How many revisions do I get?", a: "Two rounds on every piece. The first cut lands within 5 business days of an approved brief." },
-  { q: "What does it cost?", a: "Projects are quoted on a short call after your audit, with a fixed price before we start. Retainers run month to month." },
+  { q: "What does it cost?", a: "Projects are quoted on a short call after your audit, with a fixed price before we start. Retainers have a 3-month minimum, then run month to month with 30 days’ notice." },
   { q: "How does the Free Creative Audit work?", a: "Send your website or Instagram. We review the brand, the site and your last three pieces, mark what's holding each one back, and email you the fixes within 3 business days." },
 ];
 

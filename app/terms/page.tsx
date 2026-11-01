@@ -12,7 +12,7 @@ const sections: { h: string; p: string[] }[] = [
     h: "Scope and price",
     p: [
       "Every project starts with a written scope and a fixed price, agreed before work begins. Anything outside that scope is quoted separately before we do it.",
-      "Retainers run month to month.",
+      "Retainers have a 3-month minimum, then run month to month with 30 days’ notice.",
     ],
   },
   {
