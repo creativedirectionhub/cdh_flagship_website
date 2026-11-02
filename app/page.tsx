@@ -3,10 +3,11 @@ import Link from "next/link";
 import SlateOpener from "./components/SlateOpener";
 import WallSection from "./components/WallSection";
 import PlayTile from "./components/PlayTile";
+import FilmPlayer from "./components/FilmPlayer";
 import TapeWipe from "./components/TapeWipe";
 import { TapeMark } from "./components/Brand";
 import { BOOKING_URL } from "./config";
-import { brands, talent, values, network } from "./content/services";
+import { clients, brandDeals, brandDealsLine, talent, values, network, process } from "./content/services";
 
 const services = [
   { id: "brand", name: "Brand", line: "Who you are, decided once.", poster: "/media/golf-lifestyle.webp", video: "/media/golf-lifestyle.mp4", alt: "A hand sets a golf ball on a tee in low gold light", ai: true },
@@ -41,17 +42,51 @@ export default function Home() {
         </div>
       </section>
 
+      {/* The film */}
+      <section id="film" className="gutter scroll-mt-24 border-t border-line py-24 md:py-32" aria-labelledby="film-title">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:items-end">
+            <div className="min-w-0">
+              <p className="slate text-gaffer">The film · CDH concept</p>
+              <h2 id="film-title" className="reveal mt-5 text-[clamp(44px,7vw,120px)] font-black leading-[0.9] tracking-tightest">Three likes.{" "}<br />Then the crew.</h2>
+            </div>
+            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">A Mississippi baker posts the same pound cake she's made since '87 and gets three likes. She calls in a crew. By morning there's a line around the block. Thirty seconds on what direction does for a business, made with AI performers and directed frame by frame.</p>
+          </div>
+          <div className="reveal mt-12">
+            <FilmPlayer
+              poster="/media/heist-poster.webp"
+              src="/media/heist.mp4"
+              srcVertical="/media/heist-sm.mp4"
+              alt="The Heist, a CDH concept film with AI performers: a Mississippi baker whose post gets three likes calls in a creative crew, and by morning there is a line around the block"
+              title="The Heist."
+              length="0:30"
+              label="AI concept · AI performers"
+            />
+          </div>
+        </div>
+      </section>
+
       <TapeWipe />
 
       {/* Who we've worked with */}
       <section className="gutter py-20 md:py-28" aria-labelledby="brands-title">
         <div className="mx-auto max-w-[1440px]">
-          <h2 id="brands-title" className="slate text-muted">Brands Willie has worked with</h2>
-          <ul className="reveal mt-8 grid grid-cols-2 items-baseline gap-x-6 gap-y-3 sm:flex sm:flex-wrap text-[clamp(26px,3.6vw,56px)] font-black leading-[1.05] tracking-tighter">
-            {brands.map((b, i) => (
+          <h2 id="brands-title" className="slate text-muted">Clients and partners</h2>
+          <ul className="reveal mt-8 grid grid-cols-1 items-baseline gap-x-6 gap-y-3 sm:flex sm:flex-wrap text-[clamp(26px,3.6vw,56px)] font-black leading-[1.05] tracking-tighter">
+            {clients.map((b, i) => (
               <li key={b} className="flex items-baseline gap-6">
                 {b}
-                {i < brands.length - 1 && <span aria-hidden="true" className="tape-edge hidden h-[0.2em] w-[0.42em] -translate-y-[0.26em] -rotate-6 bg-gaffer sm:inline-block" />}
+                {i < clients.length - 1 && <span aria-hidden="true" className="tape-edge hidden h-[0.2em] w-[0.42em] -translate-y-[0.26em] -rotate-6 bg-gaffer sm:inline-block" />}
+              </li>
+            ))}
+          </ul>
+          <h2 className="slate mt-16 text-muted">Brand deals</h2>
+          <p className="mt-3 max-w-[56ch] text-[17px] leading-[1.55] text-body">{brandDealsLine}</p>
+          <ul className="reveal mt-6 grid grid-cols-2 items-baseline gap-x-6 gap-y-3 sm:flex sm:flex-wrap text-[clamp(26px,3.6vw,56px)] font-black leading-[1.05] tracking-tighter">
+            {brandDeals.map((b, i) => (
+              <li key={b} className="flex items-baseline gap-6">
+                {b}
+                {i < brandDeals.length - 1 && <span aria-hidden="true" className="tape-edge hidden h-[0.2em] w-[0.42em] -translate-y-[0.26em] -rotate-6 bg-gaffer sm:inline-block" />}
               </li>
             ))}
           </ul>
@@ -114,6 +149,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How a project runs */}
+      <section className="gutter border-t border-line py-24 md:py-32" aria-labelledby="process-title">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:items-end">
+            <div className="min-w-0">
+              <p className="slate text-gaffer">How a project runs</p>
+              <h2 id="process-title" className="reveal mt-5 text-[clamp(40px,6vw,96px)] font-black leading-[0.92] tracking-tightest">One director,{" "}<br />start to finish.</h2>
+            </div>
+            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">A fixed scope and a fixed price before anything gets made. Willie directs every project, the first cut lands within 5 business days of an approved brief, and every piece gets two rounds of revisions.</p>
+          </div>
+          <ol className="mt-14 grid border-t border-line sm:grid-cols-2 lg:grid-cols-5">
+            {process.map((p, i) => (
+              <li key={p.step} className="reveal border-b border-line py-8 sm:pr-6 lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0">
+                <span className="slate text-[13px] text-gaffer">0{i + 1}</span>
+                <h3 className="mt-4 text-[26px] font-black leading-none tracking-[-0.02em]">{p.step}</h3>
+                <p className="mt-3 max-w-[30ch] text-[16px] leading-[1.5] text-muted">{p.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* MARK */}
       <section className="gutter border-t border-line py-24 md:py-32" aria-labelledby="values-title">
         <div className="mx-auto max-w-[1440px]">
@@ -140,10 +197,20 @@ export default function Home() {
           <h2 id="close-title" className="text-[clamp(56px,11vw,190px)] font-black leading-[0.86] tracking-tightest">
             Ready for{" "}<br />your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark?</b></span>
           </h2>
-          <p className="mt-10 max-w-[48ch] text-[19px] leading-[1.55] text-body">Send your site or Instagram. Willie reviews the brand, the site and your last three pieces, and emails you the fixes in 3 business days. Free, and yours to keep.</p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/start" className="btn-primary">Get a Free Creative Audit</Link>
-            <a href={book} {...(BOOKING_URL ? { target: "_blank", rel: "noopener" } : {})} className="btn-secondary">Book a call</a>
+          <div className="mt-14 grid gap-10 border-t border-line pt-10 md:grid-cols-2 md:gap-16">
+            <div className="min-w-0">
+              <p className="slate text-gaffer">Not sure yet</p>
+              <p className="mt-4 max-w-[42ch] text-[19px] leading-[1.55] text-body">Send your site or Instagram. Willie reviews the brand, the site and your last three pieces, and emails you the fixes in 3 business days. Free, and yours to keep.</p>
+              <Link href="/start" className="btn-primary mt-8">Get a Free Creative Audit</Link>
+            </div>
+            <div className="min-w-0">
+              <p className="slate text-gaffer">Ready to build</p>
+              <p className="mt-4 max-w-[42ch] text-[19px] leading-[1.55] text-body">Tell us what you're launching, when, and the budget you're working with. You'll get a fixed scope and price after a 30-minute call with Willie.</p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link href="/start#project" className="btn-secondary">Start a project</Link>
+                <a href={book} {...(BOOKING_URL ? { target: "_blank", rel: "noopener" } : {})} className="slate inline-flex min-h-[52px] items-center border-b-2 border-gaffer hover:text-gaffer">Book a call</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

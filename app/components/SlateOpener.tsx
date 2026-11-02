@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-// The opening: every visit is a take. The slate drops in with your take number, claps, and the reel cuts in
-// on a director's monitor. (Another take now lives on the wall, further down the home page.)
-// The intro runs in CSS, so the page is complete without JavaScript; reduced motion skips straight to the reel.
+// The opening: every visit is a take. The slate drops in with your take number, claps, and the crew is on its mark
+// on a director's monitor. The still is the page's first paint (priority image); the film itself plays further down.
+// The intro runs in CSS, so the page is complete without JavaScript; reduced motion skips straight to the frame.
 
 const FPS = 24;
 
@@ -15,7 +17,6 @@ function Stripes({ className = "" }: { className?: string }) {
 }
 
 export default function SlateOpener() {
-  const video = useRef<HTMLVideoElement>(null);
   const tc = useRef<HTMLSpanElement>(null);
   const [take, setTake] = useState(1);
   const [today, setToday] = useState("");
@@ -30,14 +31,6 @@ export default function SlateOpener() {
     setTake(n);
     const d = new Date();
     setToday(`${pad(d.getMonth() + 1)}.${pad(d.getDate())}.${String(d.getFullYear()).slice(2)}`);
-  }, []);
-
-  useEffect(() => {
-    const v = video.current;
-    if (!v) return;
-    const sm = window.matchMedia("(max-width: 767px) and (orientation: portrait)").matches;
-    v.src = sm ? "/media/heist-sm.mp4" : "/media/heist.mp4";
-    v.play().catch(() => {});
   }, []);
 
   // Running timecode on the monitor.
@@ -55,34 +48,55 @@ export default function SlateOpener() {
 
 
   return (
-    <section aria-label="Reel" className="relative h-[calc(100svh-68px)] min-h-[560px] overflow-hidden bg-ground">
-      <video ref={video} muted playsInline loop autoPlay preload="metadata" poster="/media/heist-poster.webp" aria-label="The Heist, a CDH concept spot with AI performers: a Mississippi baker whose post gets three likes calls in a creative crew, and by morning there is a line around the block" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/95 via-[#121110]/35 to-[#121110]/45 md:from-[#121110]/90 md:via-[#121110]/15" />
-      <div className="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-[#121110] via-[#121110]/85 to-transparent md:hidden" />
+    <section aria-label="Opening" className="relative overflow-hidden bg-ground md:h-[calc(100svh-68px)] md:min-h-[600px]">
+      {/* The frame: the crew on its mark. 4:5 on phones so all five read, full bleed from tablet up. */}
+      <div className="relative aspect-[4/5] w-full md:absolute md:inset-0 md:aspect-auto">
+        <Image
+          src="/media/heist-poster.webp"
+          alt="Five crew members in black with orange tape armbands stand in a night alley in front of a van: a planner with a rolled-out layout, a writer, a photographer with a camera, an editor with a laptop and a designer with a tablet. AI performers, from the CDH concept film The Heist."
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover object-[50%_38%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#121110] via-[#121110]/10 to-[#121110]/40 md:from-[#121110]/92 md:via-[#121110]/15" />
 
-      {/* Monitor: frame lines, REC, take, timecode */}
-      <div className="op-ui pointer-events-none absolute inset-4 md:inset-8" aria-hidden="true">
-        <i className="frame-corner left-0 top-0 border-l-2 border-t-2" />
-        <i className="frame-corner right-0 top-0 border-r-2 border-t-2" />
-        <i className="frame-corner bottom-0 left-0 border-b-2 border-l-2" />
-        <i className="frame-corner bottom-0 right-0 border-b-2 border-r-2" />
-      </div>
-      <div className="op-ui gutter absolute inset-x-0 top-7 md:top-12">
-        <div className="mx-auto flex max-w-[1440px] items-start justify-between gap-6 text-[#efe9df]">
-          <p className="slate flex items-center gap-2 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}</p>
-          <p className="slate text-[12px] tabular-nums md:text-[13px]" aria-hidden="true"><span ref={tc}>00:00:00:00</span></p>
+        {/* Monitor: frame lines, REC, take, timecode */}
+        <div className="op-ui pointer-events-none absolute inset-4 md:inset-8" aria-hidden="true">
+          <i className="frame-corner left-0 top-0 border-l-2 border-t-2" />
+          <i className="frame-corner right-0 top-0 border-r-2 border-t-2" />
+          <i className="frame-corner bottom-0 left-0 border-b-2 border-l-2 max-md:hidden" />
+          <i className="frame-corner bottom-0 right-0 border-b-2 border-r-2 max-md:hidden" />
+        </div>
+        <div className="op-ui gutter absolute inset-x-0 top-7 md:top-12">
+          <div className="mx-auto flex max-w-[1440px] items-start justify-between gap-6 text-[#efe9df]">
+            <p className="slate flex items-center gap-2 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}</p>
+            <p className="slate text-[12px] tabular-nums md:text-[13px]" aria-hidden="true"><span ref={tc}>00:00:00:00</span></p>
+          </div>
         </div>
       </div>
 
       {/* Headline lands on its mark */}
-      <div className="gutter absolute inset-x-0 bottom-0 pb-10 md:pb-16">
-        <div className="mx-auto flex max-w-[1440px] flex-wrap items-end justify-between gap-8">
-          <h1 className="text-[clamp(52px,8.6vw,148px)] font-black leading-[0.98] tracking-tightest text-[#efe9df] [text-shadow:0_2px_28px_rgba(18,17,16,0.55)]">
-            <span className="sr-only">Creative Direction Hub, a media company specializing in creative direction and AI art direction. </span>
-            <span className="op-line block">We put brands</span>{" "}
-            <span className="op-line op-line-2 block">on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge op-tape" /><b className="op-ink">mark.</b></span></span>
-          </h1>
-          <span className="op-ui slate pb-2 text-[11px] text-[#efe9df]/70">Creative Direction Hub</span>
+      <div className="gutter relative -mt-16 pb-12 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:pb-16">
+        <div className="mx-auto flex max-w-[1440px] flex-wrap items-end justify-between gap-x-8 gap-y-6">
+          <div className="min-w-0">
+            <h1 className="text-[clamp(52px,8.6vw,148px)] font-black leading-[0.98] tracking-tightest text-[#efe9df] [text-shadow:0_2px_28px_rgba(18,17,16,0.55)]">
+              <span className="sr-only">Creative Direction Hub, a media company specializing in creative direction and AI art direction. </span>
+              <span className="op-line block">We put brands</span>{" "}
+              <span className="op-line op-line-2 block">on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge op-tape" /><b className="op-ink">mark.</b></span></span>
+            </h1>
+            <div className="op-ui mt-8 flex flex-wrap gap-3 md:mt-10">
+              <Link href="/start" className="btn-primary">Get a Free Creative Audit</Link>
+              <Link href="/start#project" className="btn-secondary border-[#efe9df]/40 bg-[#121110]/40 text-[#efe9df] backdrop-blur-sm hover:border-[#efe9df]">Start a project</Link>
+            </div>
+          </div>
+          <a href="#film" className="op-ui slate group flex items-center gap-3 pb-2 text-[12px] text-[#efe9df]/85 hover:text-[#efe9df]">
+            <span aria-hidden="true" className="grid h-11 w-11 place-items-center rounded-full border border-[#efe9df]/50 transition-colors group-hover:border-gaffer group-hover:bg-gaffer">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z" /></svg>
+            </span>
+            Watch the film · The Heist · AI performers
+          </a>
         </div>
       </div>
 
@@ -93,12 +107,12 @@ export default function SlateOpener() {
             <Stripes className="op-stick h-[clamp(34px,5vw,52px)]" />
             <Stripes className="slate-stripes-rev mt-[3px] h-[clamp(30px,4.4vw,46px)]" />
             <div className="mt-[3px] grid grid-cols-3 border-2 border-[#efe9df]/80 bg-[#1b1a18] text-[#efe9df]">
-              <div className="col-span-3 border-b-2 border-[#efe9df]/30 p-4"><p className="slate text-[11px] text-[#efe9df]/60">Prod.</p><p className="mt-1 text-[clamp(22px,3.4vw,34px)] font-black leading-none tracking-[-0.03em]">Creative Direction Hub</p></div>
-              <div className="border-r-2 border-[#efe9df]/30 p-4"><p className="slate text-[11px] text-[#efe9df]/60">Roll</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none">A</p></div>
-              <div className="border-r-2 border-[#efe9df]/30 p-4"><p className="slate text-[11px] text-[#efe9df]/60">Scene</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none">01</p></div>
-              <div className="p-4"><p className="slate text-[11px] text-[#efe9df]/60">Take</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none text-gaffer">{pad(take)}</p></div>
-              <div className="col-span-2 border-r-2 border-t-2 border-[#efe9df]/30 p-4"><p className="slate text-[11px] text-[#efe9df]/60">Director</p><p className="mt-1 text-[clamp(16px,2.2vw,22px)] font-black leading-none">Willie Bernoudy</p></div>
-              <div className="border-t-2 border-[#efe9df]/30 p-4"><p className="slate text-[11px] text-[#efe9df]/60">Date</p><p className="mt-1 text-[clamp(16px,2.2vw,22px)] font-black leading-none tabular-nums">{today || "—"}</p></div>
+              <div className="col-span-3 border-b-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Prod.</p><p className="mt-1 text-[clamp(22px,3.4vw,34px)] font-black leading-none tracking-[-0.03em]">Creative Direction Hub</p></div>
+              <div className="border-r-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Roll</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none">A</p></div>
+              <div className="border-r-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Scene</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none">01</p></div>
+              <div className="p-4"><p className="slate text-[12px] text-[#efe9df]/60">Take</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none text-gaffer">{pad(take)}</p></div>
+              <div className="col-span-2 border-r-2 border-t-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Director</p><p className="mt-1 text-[clamp(16px,2.2vw,22px)] font-black leading-none">Willie Bernoudy</p></div>
+              <div className="border-t-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Date</p><p className="mt-1 text-[clamp(16px,2.2vw,22px)] font-black leading-none tabular-nums">{today || "—"}</p></div>
             </div>
           </div>
         </div>

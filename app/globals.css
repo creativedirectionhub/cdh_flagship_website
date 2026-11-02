@@ -170,9 +170,8 @@ button:hover .mini-stick { transform: rotate(-26deg); }
 .cut-flash { background: #efe9df; animation: opFlash .28s ease-out both; }
 
 @media (prefers-reduced-motion: reduce) {
-  .op-cover, .op-flash, .mini-go .mini-stick { animation: miniClap .4s cubic-bezier(.6,0,.3,1) both; }
-@keyframes miniClap { 0% { transform: rotate(-32deg); } 35% { transform: rotate(0); } 100% { transform: rotate(-18deg); } }
-.cut-flash { display: none; }
+  .op-cover, .op-flash, .cut-flash { display: none; }
+  .mini-go .mini-stick { animation: none; }
   .op-slate, .op-stick, .op-shake, .op-ui, .op-line, .op-tape, .op-ink, .rec-dot { animation: none !important; }
 }
 
@@ -246,7 +245,7 @@ button:hover .mini-stick { transform: rotate(-26deg); }
 .gt-flap:focus-visible { outline: 2px solid #ff5a1f; outline-offset: 4px; }
 .gt-pin.is-peeled { z-index: 16; filter: drop-shadow(0 1.6cqw 1.2cqw rgba(0,0,0,.6)); }
 .gt-pin.is-peeled .gt-flap { transform: perspective(700px) rotateX(48deg) rotateZ(-3deg) translateY(-6%); }
-.gt-tag { position: absolute; left: 50%; top: 100%; transform: translate(-50%, 6px) rotate(calc(var(--tilt) * -1)); white-space: nowrap; font-size: 11px; letter-spacing: .1em; padding: 5px 9px; background: #121110; color: #efe9df; border: 1px solid rgba(239,233,223,.25); opacity: 0; pointer-events: none; transition: opacity .2s, transform .3s; }
+.gt-tag { position: absolute; left: 50%; top: 100%; transform: translate(-50%, 6px) rotate(calc(var(--tilt) * -1)); white-space: nowrap; font-size: 12px; letter-spacing: .1em; padding: 5px 9px; background: #121110; color: #efe9df; border: 1px solid rgba(239,233,223,.25); opacity: 0; pointer-events: none; transition: opacity .2s, transform .3s; }
 .gt-pin.is-peeled .gt-tag { opacity: 1; transform: translate(-50%, 12px) rotate(calc(var(--tilt) * -1)); }
 .gt-curl { position: absolute; right: 0; bottom: 0; width: 1.5em; height: 1.5em; pointer-events: none; transform: scale(0); transform-origin: 100% 100%; transition: transform .25s cubic-bezier(.2,1.4,.4,1);
   background: linear-gradient(315deg, #151413 0 47%, rgba(0,0,0,.35) 49%, rgba(255,255,255,.5) 52%, rgba(255,255,255,.12) 70%, rgba(0,0,0,.18) 100%); }
@@ -254,7 +253,7 @@ button:hover .mini-stick { transform: rotate(-26deg); }
 
 /* Open spots appear when you hold a roll */
 .gt-open { filter: none; z-index: 1; }
-.gt-open-btn { display: grid; place-items: center; width: calc(var(--gtw) * .7); height: calc(var(--fs) * 4.2); border: 2px dashed var(--roll); color: var(--roll); font-size: 10px; letter-spacing: .14em; background: rgba(18,17,16,.35); animation: openPulse 1.6s ease-in-out infinite; }
+.gt-open-btn { display: grid; place-items: center; width: calc(var(--gtw) * .7); height: calc(var(--fs) * 4.2); border: 2px dashed var(--roll); color: var(--roll); font-size: 12px; letter-spacing: .14em; background: rgba(18,17,16,.35); animation: openPulse 1.6s ease-in-out infinite; }
 .gt-open-btn:hover, .gt-open-btn:focus-visible { background: color-mix(in srgb, var(--roll) 18%, transparent); outline: none; animation: none; }
 @keyframes openPulse { 50% { opacity: .45; } }
 .wall-grew { box-shadow: inset 0 -3px 0 #ff5a1f; }

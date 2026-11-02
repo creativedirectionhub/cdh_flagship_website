@@ -148,8 +148,14 @@ export const values = [
   { l: "K", name: "Keep your word.", body: "Dates hit, revisions honored, and you own what you pay for." },
 ];
 
-// Brands Willie has worked with across his career, as named in his portfolio. Names only, no logos.
-export const brands = ["Hattiesburg Black Sox", "H.O.P.E Live Agency", "Sonic", "Walmart", "Fashion Nova", "RTIC", "Red Diamond", "Homer", "Black Girl Travel Slay", "Mom on the Move", "Blacktravelgram"];
+// Who Willie has made work for. Names only, no logos.
+// Clients and partners: work he directed or shot for them directly.
+export const clients = ["Hattiesburg Black Sox", "H.O.P.E Live Agency", "Blacktravelgram", "Black Girl Travel Slay", "Mom on the Move"];
+// Brand deals: paid partnerships where Willie made the content that ran for the brand.
+export const brandDeals = ["Sonic", "Walmart", "Fashion Nova", "RTIC", "Red Diamond", "Homer"];
+export const brandDealsLine = "Paid brand deals where Willie concepted, shot and delivered the content that ran for the brand.";
+/** Everything above, in one list, for schema and anywhere a single list is needed. */
+export const brands = [...clients, ...brandDeals];
 
 // Talent Willie has photographed.
 export const talent = ["Eva Marcille", "David Banner", "Blac Chyna", "Adrian Lockett", "Blue Kimble", "Ptosha Storey", "DreamDoll", "Jada Wada"];

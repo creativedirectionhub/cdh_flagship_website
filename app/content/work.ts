@@ -64,11 +64,12 @@ export const cases: Case[] = [
     lanes: ["consumer"],
     disciplines: ["campaigns", "content"],
     year: "",
-    brief: "A hometown baseball club needed the town to feel the season before it started.",
+    brief: "A hometown baseball club took its season on the road to Kentucky and needed one person over every picture, post and layout the team put out while it was there.",
     did: [
-      "Campaign idea and headline: More Than a Game",
-      "Editorial portraits of the players in raw, unposed moments",
-      "Billboard and print layouts built from the same shoot",
+      "Ran all of the team's media coverage for its run in Kentucky",
+      "Campaign idea and headline over the whole run: More Than a Game",
+      "Game-day and dugout photography of the players in raw, unposed moments",
+      "Billboard and print layouts built from the same coverage",
     ],
     cover: img("/work/events-27.webp", "A Black Sox player, number 13, seen from behind in the dugout, in black and white", 1120, 1400),
     media: [
@@ -77,8 +78,8 @@ export const cases: Case[] = [
       img("/work/spec-blacksox-3.webp", "Billboard layout: More Than a Game, Hattiesburg Black Sox, over a team photo", 800, 450, "Billboard layout"),
       img("/work/spec-blacksox-4.webp", "Print layout: More Than a Game, with a portrait and campaign notes", 800, 450, "Print layout"),
     ],
-    note: "A hometown club doesn't need to look like the majors. It needs to look like it matters. So we shot the players in raw, unposed moments, put one line over the whole season, and carried the same pictures from the dugout to the billboard.",
-    credits: ["Directed and photographed by Willie Bernoudy", "Design and layout: CDH network"],
+    note: "When a team is on the road, the coverage is the only way home sees them. I ran all of it in Kentucky, every shot and every post, so it all looked like one team with one story. A hometown club doesn't need to look like the majors. It needs to look like it matters.",
+    credits: ["Media coverage directed and photographed by Willie Bernoudy", "Design and layout: CDH network"],
     selected: 1,
   },
   {

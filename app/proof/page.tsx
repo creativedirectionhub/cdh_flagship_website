@@ -88,8 +88,8 @@ export default function ProofPage() {
               <Tape className="-top-3 left-1/2 -translate-x-1/2 -rotate-2" />
               <div className="receipt -rotate-[1.5deg] bg-[#f3eee4] px-7 pb-12 pt-10 text-[#1b1a18] sm:px-9" style={{ fontFamily: "var(--font-mono), ui-monospace, monospace" }}>
                 <p className="text-center text-[13px] tracking-[0.2em]">BLACK TRAVEL GRAM</p>
-                <p className="mt-1 text-center text-[11px] tracking-[0.14em] text-[#1b1a18]/60">CREATIVE SQUAD · SINCE 2019</p>
-                <p className="mt-5 border-y border-dashed border-[#1b1a18]/40 py-2 text-center text-[11px] tracking-[0.14em]">PHOTOGRAPHER / CREATIVE: STACKZ</p>
+                <p className="mt-1 text-center text-[12px] tracking-[0.14em] text-[#1b1a18]/60">CREATIVE SQUAD · SINCE 2019</p>
+                <p className="mt-5 border-y border-dashed border-[#1b1a18]/40 py-2 text-center text-[12px] tracking-[0.14em]">PHOTOGRAPHER / CREATIVE: STACKZ</p>
                 <dl className="mt-5 grid gap-3 text-[14px]">
                   {receipt.map((r) => (
                     <div key={r.l} className="flex items-baseline gap-2">
@@ -103,7 +103,7 @@ export default function ProofPage() {
                   <span className="text-[14px] tracking-[0.1em]">TOTAL GROWTH</span>
                   <span className="text-[34px] font-black leading-none tracking-[-0.02em]" style={{ fontFamily: "var(--font-display)" }}>3x</span>
                 </div>
-                <p className="mt-6 text-center text-[11px] tracking-[0.18em] text-[#1b1a18]/70">THANK YOU · KEEP DOING IT</p>
+                <p className="mt-6 text-center text-[12px] tracking-[0.18em] text-[#1b1a18]/70">THANK YOU · KEEP DOING IT</p>
               </div>
             </figure>
           </div>
@@ -115,7 +115,7 @@ export default function ProofPage() {
                 <div className="overflow-hidden bg-white p-2 shadow-[0_24px_50px_rgba(0,0,0,0.45)]">
                   <Image src="/proof/btg-90k-post.webp" alt="Black Travel Gram's Facebook post from January 24, 2021: 90,000 followers, 214,000 hashtags, 900,000 impressions a week, with a 90k Followers Thank You graphic" width={700} height={1037} sizes="(min-width: 1024px) 26vw, 44vw" className="w-full" />
                 </div>
-                <figcaption className="slate mt-4 text-[11px] text-muted">Their post · Jan 24, 2021</figcaption>
+                <figcaption className="slate mt-4 text-[12px] text-muted">Their post · Jan 24, 2021</figcaption>
               </figure>
               <div className="grid gap-8">
                 <figure className="relative -rotate-[1.5deg]">
@@ -123,13 +123,13 @@ export default function ProofPage() {
                   <div className="overflow-hidden bg-white p-2 shadow-[0_24px_50px_rgba(0,0,0,0.45)]">
                     <Image src="/proof/btg-profile-118k.webp" alt="Black Travel Gram's Instagram profile: 3,209 posts, 118K followers, Travel Company, We curate Black Travel Experiences around the world" width={900} height={467} sizes="(min-width: 1024px) 30vw, 48vw" className="w-full" />
                   </div>
-                  <figcaption className="slate mt-4 text-[11px] text-muted">Their profile · 118K</figcaption>
+                  <figcaption className="slate mt-4 text-[12px] text-muted">Their profile · 118K</figcaption>
                 </figure>
                 <figure className="relative hidden rotate-[1deg] sm:ml-6 sm:block">
                   <Tape className="-left-4 top-5 -rotate-[38deg] !w-[70px]" />
                   <blockquote className="bg-gaffer px-6 py-7 text-[#141312] shadow-[0_24px_50px_rgba(0,0,0,0.45)] sm:px-8">
                     <p className="text-[clamp(22px,2.4vw,34px)] font-black leading-[1.05] tracking-tighter">“BlackTravelGram ➕ Stackz = DIGITAL CREATIVES”</p>
-                    <footer className="slate mt-4 text-[11px] text-[#141312]/75">Black Travel Gram · public comment</footer>
+                    <footer className="slate mt-4 text-[12px] text-[#141312]/75">Black Travel Gram · public comment</footer>
                   </blockquote>
                 </figure>
               </div>
@@ -138,7 +138,7 @@ export default function ProofPage() {
               <Tape className="-left-4 top-5 -rotate-[38deg] !w-[70px]" />
               <blockquote className="bg-gaffer px-6 py-7 text-[#141312] shadow-[0_24px_50px_rgba(0,0,0,0.45)] sm:px-8">
                 <p className="text-[clamp(22px,2.4vw,34px)] font-black leading-[1.05] tracking-tighter">“BlackTravelGram ➕ Stackz = DIGITAL CREATIVES”</p>
-                <footer className="slate mt-4 text-[11px] text-[#141312]/75">Black Travel Gram · public comment</footer>
+                <footer className="slate mt-4 text-[12px] text-[#141312]/75">Black Travel Gram · public comment</footer>
               </blockquote>
             </figure>
             <blockquote className="mt-14 border-l-4 border-gaffer pl-6 md:ml-[8%]">
@@ -182,13 +182,13 @@ export default function ProofPage() {
             <div className="relative mt-10 max-w-[560px]">
               <div className="relative overflow-hidden rounded-sm bg-[#141312] px-7 py-9 text-[#efe9df] sm:px-10 sm:py-11">
                 <span aria-hidden="true" className="absolute inset-3 rounded-[2px] border border-[#efe9df]/15" />
-                <p className="slate relative text-[11px] text-[#efe9df]/60">Neutral Density Photography Awards · 2020</p>
+                <p className="slate relative text-[12px] text-[#efe9df]/60">Neutral Density Photography Awards · 2020</p>
                 <p className="relative mt-5 text-[clamp(30px,3.4vw,46px)] font-black leading-[0.95] tracking-tighter">Honorable<br />Mention</p>
                 <p className="relative mt-4 text-[15px] text-[#efe9df]/80">People: Travel / Culture</p>
                 <div className="relative mt-8 grid gap-1 border-t border-[#efe9df]/15 pt-5 sm:max-w-[62%]">
                   <p className="text-[17px] font-extrabold">Willie Bernoudy</p>
                   <p className="text-[15px] text-[#efe9df]/75">“The Beautiful Shot”</p>
-                  <p className="slate mt-2 text-[11px] text-[#efe9df]/55">Certified 22 Nov 2020</p>
+                  <p className="slate mt-2 text-[12px] text-[#efe9df]/55">Certified 22 Nov 2020</p>
                 </div>
               </div>
               <Image src="/proof/nd-seal.webp" alt="ND Awards 2020 Honorable Mention seal" width={727} height={698} className="absolute -bottom-8 -right-4 w-[124px] rotate-[8deg] drop-shadow-[0_14px_24px_rgba(0,0,0,0.35)] sm:-right-8 sm:w-[156px]" />
@@ -211,7 +211,7 @@ export default function ProofPage() {
             {gallery.map((g) => (
               <figure key={g.src} className={`min-w-0 ${g.span ?? ""}`}>
                 <Image src={g.src} alt={g.alt} width={g.w} height={g.h} sizes={"wide" in g ? "100vw" : g.span ? "(min-width: 768px) 50vw, 92vw" : "(min-width: 768px) 25vw, 46vw"} className={`w-full rounded-md object-cover ${"wide" in g ? "aspect-[16/9] object-bottom md:aspect-[21/9]" : g.span ? "aspect-[16/11]" : "aspect-[9/16]"}`} />
-                <figcaption className="slate mt-2 text-[11px] text-muted">{g.place}</figcaption>
+                <figcaption className="slate mt-2 text-[12px] text-muted">{g.place}</figcaption>
               </figure>
             ))}
           </div>
@@ -229,7 +229,7 @@ export default function ProofPage() {
             </div>
             <figure className="mx-auto w-full max-w-[300px] lg:justify-self-end">
               <video src="/proof/group-chat-story.mp4" poster="/proof/group-chat-poster.webp" controls playsInline preload="none" className="aspect-[9/16] w-full rounded-md border border-line bg-ground" aria-label="Story ad: years of group-chat messages about a girls trip end with 'deposit sent', then two friends run into the surf. The group chat finally booked it." />
-              <figcaption className="slate mt-3 text-[11px] text-muted">Story ad · 11 seconds · sound on</figcaption>
+              <figcaption className="slate mt-3 text-[12px] text-muted">Story ad · 11 seconds · sound on</figcaption>
             </figure>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">

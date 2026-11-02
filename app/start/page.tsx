@@ -42,6 +42,23 @@ export default function StartPage() {
           </div>
         </div>
       </section>
+      <section id="project" className="gutter scroll-mt-24 border-t border-line py-16 md:py-24" aria-labelledby="project-title">
+        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-x-20">
+          <div className="min-w-0">
+            <p className="slate text-gaffer">Ready to build</p>
+            <h2 id="project-title" className="mt-4 text-[clamp(40px,5.4vw,84px)] font-black leading-[0.92] tracking-tightest">Start a project.</h2>
+            <p className="mt-6 max-w-[46ch] text-[18px] leading-[1.55] text-body">Already know you need a brand, a campaign, a film or a site? Skip the audit. Tell us what you're launching, the budget and the timeline, and we'll set up a 30-minute call. You get a fixed scope and a fixed price before anything starts.</p>
+            <ul className="mt-8 grid border-t border-line">
+              {["Fixed scope and price, agreed before we begin", "First cut within 5 business days of an approved brief", "Two rounds of revisions on every piece", "You own the finished work once it's paid"].map((t) => (
+                <li key={t} className="flex gap-4 border-b border-line py-4 text-[16px] leading-[1.5] text-body"><span aria-hidden="true" className="mt-[0.55em] h-[3px] w-4 shrink-0 bg-gaffer" />{t}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="min-w-0 rounded-md border border-line bg-raised p-6 md:p-10">
+            <AuditForm kind="project" />
+          </div>
+        </div>
+      </section>
       {BOOKING_URL && (
         <section className="gutter border-t border-line py-16 md:py-24" aria-labelledby="book-title">
           <div className="mx-auto max-w-[1440px]">

@@ -265,7 +265,7 @@ export default function Wall({ initial }: { initial: Tape[] }) {
       <div className="gutter">
         <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,0.45fr)] lg:items-end">
           <div>
-            <p className="slate text-gaffer">The wall · {count} {count === 1 ? "mark" : "marks"} and counting</p>
+            <p className="slate text-gaffer">{count >= 50 ? `The wall · ${count} marks and counting` : "The wall · Open to everyone"}</p>
             <h2 id="wall-title" className="mt-5 text-[clamp(48px,8vw,136px)] font-black leading-[0.88] tracking-tightest">That&apos;s a wrap.{" "}<br />Sign the <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>wall.</b></span></h2>
           </div>
           <p className="max-w-[44ch] text-[18px] leading-[1.6] text-body lg:pb-3">On set, the crew signs the wall when the job is done. This one&apos;s ours, and it&apos;s open to you. Grab a roll, tap a spot, write whatever you want. It stays up.</p>
@@ -349,15 +349,15 @@ export default function Wall({ initial }: { initial: Tape[] }) {
           ) : (
             <div className="mt-3 grid grid-cols-2 items-end gap-x-4 gap-y-3 md:flex md:flex-wrap md:gap-x-5">
               <label className="grid min-w-0 gap-1">
-                <span className="slate text-[11px] text-muted">Sign it</span>
+                <span className="slate text-[12px] text-muted">Sign it</span>
                 <input value={name} onChange={(e) => setName(e.target.value)} maxLength={28} autoComplete="nickname" placeholder="Name or brand" className="wall-input md:w-[180px]" onKeyDown={(e) => { if (e.key === "Enter") stick(); }} />
               </label>
               <label className="grid min-w-0 gap-1">
-                <span className="slate text-[11px] text-muted">From (optional)</span>
+                <span className="slate text-[12px] text-muted">From (optional)</span>
                 <input value={from} onChange={(e) => setFrom(e.target.value)} maxLength={28} autoComplete="off" placeholder="City or crew" className="wall-input md:w-[150px]" onKeyDown={(e) => { if (e.key === "Enter") stick(); }} />
               </label>
               <label className="col-span-2 grid min-w-0 gap-1">
-                <span className="slate text-[11px] text-muted">Email (private)</span>
+                <span className="slate text-[12px] text-muted">Email (private)</span>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={120} autoComplete="email" inputMode="email" placeholder="Never shown on the wall" className="wall-input md:w-[230px]" onKeyDown={(e) => { if (e.key === "Enter") stick(); }} />
               </label>
               <label className="col-span-2 flex cursor-pointer items-center gap-2 text-[13px] text-body md:order-last md:basis-full">

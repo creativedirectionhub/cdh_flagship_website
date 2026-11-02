@@ -38,6 +38,13 @@ export default function SiteHeader() {
           <span className="sr-only">Creative Direction Hub, home</span>
         </Link>
         <div className="flex items-center gap-3">
+          <ul className="mr-4 hidden items-center gap-1 lg:flex">
+            {links.slice(1, 5).map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} aria-current={active(l.href) ? "page" : undefined} className={`slate inline-flex min-h-[44px] items-center px-3 text-[13px] transition-colors ${active(l.href) ? "text-gaffer" : "text-ink hover:text-gaffer"}`}>{l.label}</Link>
+              </li>
+            ))}
+          </ul>
           <Link href="/start" className="btn-primary min-h-[40px] px-4 text-[13px] sm:min-h-[42px] sm:px-5 sm:text-[14px]">Free Audit</Link>
           <button
             type="button"
