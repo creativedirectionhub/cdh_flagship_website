@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Pixels from "./components/Pixels";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import { CommentaryBar } from "./components/Commentary";
 import { display, mono, marker } from "./fonts";
 import { site } from "./content/services";
 import "./globals.css";
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <CommentaryBar />
         <Analytics />
         <Pixels />
       </body>

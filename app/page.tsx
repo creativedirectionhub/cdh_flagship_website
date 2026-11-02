@@ -4,6 +4,9 @@ import SlateOpener from "./components/SlateOpener";
 import WallSection from "./components/WallSection";
 import PlayTile from "./components/PlayTile";
 import FilmPlayer from "./components/FilmPlayer";
+import DirectedSlider from "./components/DirectedSlider";
+import { CommentaryMarker } from "./components/Commentary";
+import { pairs } from "./content/directed";
 import TapeWipe from "./components/TapeWipe";
 import { TapeMark } from "./components/Brand";
 import { BOOKING_URL } from "./config";
@@ -43,7 +46,8 @@ export default function Home() {
       </section>
 
       {/* The film */}
-      <section id="film" className="gutter scroll-mt-24 border-t border-line py-24 md:py-32" aria-labelledby="film-title">
+      <section id="film" data-cm="film" className="gutter relative scroll-mt-24 border-t border-line py-24 md:py-32" aria-labelledby="film-title">
+        <CommentaryMarker id="film" className="right-5 top-8 md:right-10" />
         <div className="mx-auto max-w-[1440px]">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:items-end">
             <div className="min-w-0">
@@ -69,7 +73,8 @@ export default function Home() {
       <TapeWipe />
 
       {/* Who we've worked with */}
-      <section className="gutter py-20 md:py-28" aria-labelledby="brands-title">
+      <section data-cm="brands" className="gutter relative py-20 md:py-28" aria-labelledby="brands-title">
+        <CommentaryMarker id="brands" className="right-5 top-6 md:right-10" />
         <div className="mx-auto max-w-[1440px]">
           <h2 id="brands-title" className="slate text-muted">Clients and partners</h2>
           <ul className="reveal mt-8 grid grid-cols-1 items-baseline gap-x-6 gap-y-3 sm:flex sm:flex-wrap text-[clamp(26px,3.6vw,56px)] font-black leading-[1.05] tracking-tighter">
@@ -105,6 +110,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Undirected / directed */}
+      <section data-cm="directed" className="gutter relative border-t border-line py-24 md:py-32" aria-labelledby="directed-title">
+        <CommentaryMarker id="directed" className="right-5 top-8 md:right-10" />
+        <div className="mx-auto max-w-[1440px]">
+          <div className="mb-14 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:items-end">
+            <div className="min-w-0">
+              <p className="slate text-gaffer">What direction does</p>
+              <h2 id="directed-title" className="reveal mt-5 text-[clamp(44px,7vw,120px)] font-black leading-[0.9] tracking-tightest">Same subject.{" "}<br />Directed.</h2>
+            </div>
+            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">Most businesses don&apos;t have a product problem. They have a picture problem. Drag the line to see what changes when someone decides the light, the lens and the frame on purpose.</p>
+          </div>
+          <DirectedSlider pairs={pairs} />
+        </div>
+      </section>
+
       {/* The work */}
       <section className="gutter pb-24 md:pb-36" aria-label="The work">
         <div className="mx-auto max-w-[1440px]">
@@ -135,7 +155,8 @@ export default function Home() {
       </section>
 
       {/* How a project runs */}
-      <section className="gutter border-t border-line py-24 md:py-32" aria-labelledby="process-title">
+      <section data-cm="process" className="gutter relative border-t border-line py-24 md:py-32" aria-labelledby="process-title">
+        <CommentaryMarker id="process" className="right-5 top-8 md:right-10" />
         <div className="mx-auto max-w-[1440px]">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:items-end">
             <div className="min-w-0">
@@ -191,7 +212,8 @@ export default function Home() {
       <WallSection />
 
       {/* Close */}
-      <section className="gutter relative overflow-hidden border-t border-line py-28 md:py-40" aria-labelledby="close-title">
+      <section data-cm="close" className="gutter relative overflow-hidden border-t border-line py-28 md:py-40" aria-labelledby="close-title">
+        <CommentaryMarker id="close" className="right-5 top-8 md:right-10" />
         <TapeMark size={520} className="pointer-events-none absolute -right-10 -top-10 hidden opacity-[0.07] md:block" />
         <div className="relative mx-auto max-w-[1440px]">
           <h2 id="close-title" className="text-[clamp(56px,11vw,190px)] font-black leading-[0.86] tracking-tightest">

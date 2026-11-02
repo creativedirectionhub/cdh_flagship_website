@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { TapeMark, Wordmark } from "./Brand";
+import { CommentaryToggle } from "./Commentary";
 
 const links = [
   { href: "/", label: "Home" },
@@ -45,6 +46,7 @@ export default function SiteHeader() {
               </li>
             ))}
           </ul>
+          {path === "/" && <CommentaryToggle />}
           <Link href="/start" className="btn-primary min-h-[40px] px-4 text-[13px] sm:min-h-[42px] sm:px-5 sm:text-[14px]">Free Audit</Link>
           <button
             type="button"

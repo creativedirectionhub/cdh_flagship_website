@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { CommentaryMarker } from "./Commentary";
 
 // The opening: every visit is a take. The slate drops in with your take number, claps, and the crew is on its mark
 // on a director's monitor. The still is the page's first paint (priority image); the film itself plays further down.
@@ -48,7 +49,7 @@ export default function SlateOpener() {
 
 
   return (
-    <section aria-label="Opening" className="relative overflow-hidden bg-ground md:h-[calc(100svh-68px)] md:min-h-[600px]">
+    <section aria-label="Opening" data-cm="hero" className="relative overflow-hidden bg-ground md:h-[calc(100svh-68px)] md:min-h-[600px]">
       {/* The frame: the crew on its mark. 4:5 on phones so all five read, full bleed from tablet up. */}
       <div className="relative aspect-[4/5] w-full md:absolute md:inset-0 md:aspect-auto">
         <Image
@@ -69,6 +70,7 @@ export default function SlateOpener() {
           <i className="frame-corner bottom-0 left-0 border-b-2 border-l-2 max-md:hidden" />
           <i className="frame-corner bottom-0 right-0 border-b-2 border-r-2 max-md:hidden" />
         </div>
+        <CommentaryMarker id="hero" className="right-6 top-20 md:right-12 md:top-28" />
         <div className="op-ui gutter absolute inset-x-0 top-7 md:top-12">
           <div className="mx-auto flex max-w-[1440px] items-start justify-between gap-6 text-[#efe9df]">
             <p className="slate flex items-center gap-2 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}</p>

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { clapSound, ripSound, slapSound } from "./clap";
 import { ROLLS, ROLL_KEYS, SPARKS, FIRST_TAPE, DRESSING, type Tape, type RollKey, type Dressing } from "../content/wall-data";
+import { CommentaryMarker } from "./Commentary";
 
 // The wall. On set, the crew signs the wall when the job is done; this one's ours.
 // Grab a roll, tap a spot, a strip rips off right there. Write on it, stick it. It stays up for everyone.
@@ -261,7 +262,8 @@ export default function Wall({ initial }: { initial: Tape[] }) {
   const hint = draft ? "Write on your tape, sign it, stick it." : roll ? `${ROLLS[roll].label} it is. Tap an open spot on the wall.` : "Grab a roll, or tap any tape.";
 
   return (
-    <section id="wall" className="relative border-t border-line py-20 md:py-28" aria-labelledby="wall-title">
+    <section id="wall" data-cm="wall" className="relative border-t border-line py-20 md:py-28" aria-labelledby="wall-title">
+      <CommentaryMarker id="wall" className="right-5 top-8 md:right-10" />
       <div className="gutter">
         <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,0.45fr)] lg:items-end">
           <div>
