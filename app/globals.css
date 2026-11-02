@@ -215,7 +215,7 @@ button:hover .mini-stick { transform: rotate(-26deg); }
 }
 .gt::after { content: ""; position: absolute; left: 0; right: 0; top: 46%; height: 1px; background: rgba(255,255,255,.12); pointer-events: none; }
 .gt-line { position: relative; font-size: 1em; letter-spacing: .01em; overflow-wrap: anywhere; }
-.gt-sign { position: relative; margin-top: .3em; font-size: .62em; opacity: .85; }
+.gt-sign { position: relative; margin-top: .3em; font-size: max(.62em, 12px); opacity: .85; }
 .gt-input { display: block; width: calc(var(--gtw) * .8); resize: none; background: transparent; border: 0; outline: none; color: inherit; font-family: inherit; line-height: 1.12; padding: 0; caret-color: currentColor; }
 .gt-input::placeholder { color: inherit; opacity: .45; }
 .gt-unroll { transform-origin: left center; animation: gtUnroll .38s cubic-bezier(.2,.9,.3,1) both; }

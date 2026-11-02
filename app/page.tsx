@@ -54,7 +54,7 @@ export default function Home() {
           </div>
           <div className="reveal mt-12">
             <FilmPlayer
-              poster="/media/heist-poster.webp"
+              poster="/media/heist-film-poster.webp"
               src="/media/heist.mp4"
               srcVertical="/media/heist-sm.mp4"
               alt="The Heist, a CDH concept film with AI performers: a Mississippi baker whose post gets three likes calls in a creative crew, and by morning there is a line around the block"
@@ -101,7 +101,7 @@ export default function Home() {
           <h2 id="teaser-title" className="reveal text-[clamp(40px,7vw,120px)] font-black leading-[0.92] tracking-tightest">
             Bold brands. Campaigns that sell. Content that stops the scroll. Sites that close. <span className="text-gaffer">AI that looks like you.</span>
           </h2>
-          <Link href="/services" className="slate mt-12 inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">See all services</Link>
+          <Link href="/services" className="slate mt-12 inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">See all services</Link>
         </div>
       </section>
 
@@ -109,7 +109,7 @@ export default function Home() {
       <section className="gutter pb-24 md:pb-36" aria-label="The work">
         <div className="mx-auto max-w-[1440px]">
           <PlayTile href="/work" poster="/media/spots-cover.webp" video="/media/spots-cover.mp4" alt="Morning sun across a travertine shelf with an amber dropper bottle" kicker="The work" title={<>Directed at the{" "}<br />speed of culture.</>} label="AI concept" sizes="(min-width: 1440px) 1296px, 92vw" ratio="21 / 9" className="reveal rounded-sm" titleClass="text-[clamp(36px,6vw,104px)]" />
-          <Link href="/work" className="slate mt-8 inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">Watch the work</Link>
+          <Link href="/work" className="slate mt-8 inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">Watch the work</Link>
         </div>
       </section>
 
@@ -129,22 +129,7 @@ export default function Home() {
                 <li key={t} className="slate rounded-sm border border-line px-3 py-2 text-[12px] text-body">{t}</li>
               ))}
             </ul>
-            <a href="mailto:hello@creativedirectionhub.com?subject=Joining%20the%20CDH%20crew" className="slate mt-10 inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">Work with the crew</a>
-          </div>
-        </div>
-      </section>
-
-      {/* The five services */}
-      <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="five-title">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 id="five-title" className="text-[clamp(36px,4.8vw,72px)] font-black leading-[0.95] tracking-tighter">Five ways we put you on your mark.</h2>
-            <Link href="/services" className="slate inline-block border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">All services</Link>
-          </div>
-          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-5">
-            {services.map((s, n) => (
-              <PlayTile key={s.id} href={`/services#${s.id}`} poster={s.poster} video={s.video} alt={s.alt} kicker={`0${n + 1}`} title={s.name} sub={s.line} label={s.ai ? "AI" : undefined} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
-            ))}
+            <a href="mailto:hello@creativedirectionhub.com?subject=Joining%20the%20CDH%20crew" className="slate mt-10 inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">Work with the crew</a>
           </div>
         </div>
       </section>
@@ -155,7 +140,7 @@ export default function Home() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:items-end">
             <div className="min-w-0">
               <p className="slate text-gaffer">How a project runs</p>
-              <h2 id="process-title" className="reveal mt-5 text-[clamp(40px,6vw,96px)] font-black leading-[0.92] tracking-tightest">One director,{" "}<br />start to finish.</h2>
+              <h2 id="process-title" className="reveal mt-5 text-[clamp(40px,6vw,96px)] font-black leading-[0.92] tracking-tightest">From audit{" "}<br />to results.</h2>
             </div>
             <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">A fixed scope and a fixed price before anything gets made. Willie directs every project, the first cut lands within 5 business days of an approved brief, and every piece gets two rounds of revisions.</p>
           </div>
@@ -168,6 +153,21 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* The five services */}
+      <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="five-title">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 id="five-title" className="text-[clamp(36px,4.8vw,72px)] font-black leading-[0.95] tracking-tighter">Five ways we put you on your mark.</h2>
+            <Link href="/services" className="slate inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">All services</Link>
+          </div>
+          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-5">
+            {services.map((s, n) => (
+              <PlayTile key={s.id} href={`/services#${s.id}`} poster={s.poster} video={s.video} alt={s.alt} kicker={`0${n + 1}`} title={s.name} sub={s.line} label={s.ai ? "AI" : undefined} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
+            ))}
+          </div>
         </div>
       </section>
 
