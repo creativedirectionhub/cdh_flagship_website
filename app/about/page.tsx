@@ -27,7 +27,7 @@ const person = {
     "ND Awards 2020: Honorable Mention, People: Travel / Culture",
   ],
   worksFor: { "@id": `${site.url}/#org` },
-  image: `${site.url}/media/about-willie.webp`,
+  image: `${site.url}/media/willie-portrait.webp`,
 };
 
 export default function AboutPage() {
@@ -37,9 +37,9 @@ export default function AboutPage() {
       <section className="gutter py-16 md:py-24">
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
           <figure className="relative min-w-0 lg:order-2">
-            <Image src="/media/about-willie.webp" alt="Willie Bernoudy on the Great Wall of China, camera raised" width={600} height={800} priority sizes="(min-width: 1024px) 40vw, 92vw" className="aspect-[3/4] w-full rounded-md border border-line object-cover" />
+            <Image src="/media/willie-portrait.webp" alt="Willie Bernoudy, founder and creative director of Creative Direction Hub, seated on a wooden stool in a camel overshirt" width={900} height={1200} priority sizes="(min-width: 1024px) 40vw, 92vw" className="aspect-[3/4] w-full rounded-md border border-line object-cover" />
             <TapeMark size={88} className="absolute -bottom-6 -right-4 rotate-6" />
-            <figcaption className="slate mt-8 text-[12px] text-muted">On set · The Great Wall, China</figcaption>
+            <figcaption className="slate mt-8 pr-28 text-[12px] text-muted">Willie Bernoudy · Founder and creative director</figcaption>
           </figure>
           <div className="min-w-0 lg:order-1">
             <p className="slate text-gaffer">About</p>

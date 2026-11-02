@@ -28,8 +28,8 @@ export default function Hero() {
 
         <figure className="rise relative min-w-0 lg:justify-self-end">
           <div className="relative aspect-[3/4] w-full max-w-[520px] overflow-hidden rounded-md border border-line bg-surface">
-            <Image src="/media/about-willie.webp" alt="Willie Bernoudy on the Great Wall of China, camera raised, photographing the valley" fill sizes="(min-width: 1024px) 34vw, 92vw" className="object-cover object-top" />
-            <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]">On set</span>
+            <Image src="/media/willie-portrait.webp" alt="Willie Bernoudy, founder and creative director of Creative Direction Hub" fill sizes="(min-width: 1024px) 34vw, 92vw" className="object-cover object-top" />
+            <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]">The director</span>
           </div>
           <figcaption className="mt-4 flex max-w-[520px] items-baseline justify-between gap-4 border-t border-line pt-4">
             <span>
