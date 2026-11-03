@@ -71,8 +71,9 @@ export const cases: Case[] = [
       "Game-day and dugout photography of the players in raw, unposed moments",
       "Billboard and print layouts built from the same coverage",
     ],
-    cover: img("/work/events-27.webp", "A Black Sox player, number 13, seen from behind in the dugout, in black and white", 1120, 1400),
+    cover: img("/work/blacksox-huddle.webp", "The Hattiesburg Black Sox in a huddle on the field before a game, seen from behind, in black and white", 1080, 720),
     media: [
+      img("/work/blacksox-huddle.webp", "The Hattiesburg Black Sox in a huddle on the field before a game, seen from behind, in black and white", 1080, 720, "Team huddle, before first pitch"),
       img("/work/events-27.webp", "Player number 13 leaning on the dugout rail, black and white", 1120, 1400, "Editorial portrait, dugout"),
       img("/work/events-17.webp", "Player number 44 walking across the infield in the late sun", 768, 960, "Infield, golden hour"),
       img("/work/spec-blacksox-3.webp", "Billboard layout: More Than a Game, Hattiesburg Black Sox, over a team photo", 800, 450, "Billboard layout"),

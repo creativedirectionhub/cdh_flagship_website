@@ -39,9 +39,9 @@ export default function Home() {
           <h2 id="breath-title" className="reveal mt-6 max-w-[22ch] text-[clamp(34px,4.8vw,76px)] font-black leading-[1] tracking-tighter">
             The creative department for growing brands. One director over the brand, the campaign, the content, the site and the AI, <span className="text-muted">and a crew built for every job.</span>
           </h2>
-          <div className="mt-16 grid gap-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-8">
-            <PlayTile href="/work/hattiesburg-black-sox" poster="/work/events-27.webp" alt="A Black Sox player, number 13, seen from behind in the dugout" kicker="Hattiesburg Black Sox" title="More than a game." label="Client" sizes="(min-width: 768px) 56vw, 92vw" ratio="4 / 3" className="reveal rounded-sm" />
-            <PlayTile href="/work/her-mark" poster="/media/her-mark-cover.webp" video="/media/her-mark-cover.mp4" alt="Hot sauce ribbons off a wooden spoon beside a Mama Lou's bottle on an orange tape mark" kicker="The film · Her Mark" title="Same kitchen. Directed." label="AI concept" sizes="(min-width: 768px) 40vw, 92vw" ratio="4 / 3" className="reveal rounded-sm md:mt-24" />
+          <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
+            <PlayTile href="/work/hattiesburg-black-sox" poster="/work/blacksox-huddle.webp" alt="The Hattiesburg Black Sox in a huddle on the field before a game, seen from behind, in black and white" kicker="Hattiesburg Black Sox" title="More than a game." label="Client" sizes="(min-width: 768px) 46vw, 92vw" ratio="3 / 2" className="reveal rounded-sm" />
+            <PlayTile href="/work/her-mark" poster="/media/her-mark-cover.webp" video="/media/her-mark-cover.mp4" alt="Hot sauce ribbons off a wooden spoon beside a Mama Lou's bottle on an orange tape mark" kicker="The film · Her Mark" title="Same kitchen. Directed." label="AI concept" sizes="(min-width: 768px) 46vw, 92vw" ratio="3 / 2" className="reveal rounded-sm" />
           </div>
         </div>
       </section>
