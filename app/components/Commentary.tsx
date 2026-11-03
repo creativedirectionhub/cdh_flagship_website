@@ -16,6 +16,22 @@ const snap = () => state;
 const serverSnap = () => state;
 
 let audio: HTMLAudioElement | null = null;
+// When a note's audio isn't there (or won't play), the caption still runs on a reading-pace timer.
+let timer = 0;
+function captionOnly(id: string) {
+  const note = allNotes.find((x) => x.id === id);
+  const ms = Math.max(3500, (note?.text.length || 80) * 62);
+  const t0 = performance.now();
+  cancelAnimationFrame(timer);
+  const tick = () => {
+    if (state.id !== id) return;
+    const p = Math.min(1, (performance.now() - t0) / ms);
+    emit({ progress: p, playing: p < 1 });
+    if (p < 1) timer = requestAnimationFrame(tick);
+    else setTimeout(() => { if (state.id === id && !state.playing) spotlight(null); }, 700);
+  };
+  timer = requestAnimationFrame(tick);
+}
 const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function spotlight(id: string | null) {
@@ -40,15 +56,18 @@ export function play(id: string) {
     audio.addEventListener("ended", () => { emit({ playing: false, progress: 1 }); setTimeout(() => { if (!state.playing) spotlight(null); }, 700); });
     audio.addEventListener("pause", () => emit({ playing: false }));
     audio.addEventListener("play", () => emit({ playing: true }));
+    audio.addEventListener("error", () => { if (state.id) captionOnly(state.id); });
   }
+  cancelAnimationFrame(timer);
   audio.pause();
   audio.src = `/media/commentary/${id}.mp3`;
   emit({ id, progress: 0, playing: true });
   spotlight(id);
-  audio.play().catch(() => emit({ playing: false }));
+  audio.play().catch((e: Error) => { if (e.name !== "NotAllowedError" && e.name !== "AbortError") captionOnly(id); else emit({ playing: false }); });
 }
 
 function stop() {
+  cancelAnimationFrame(timer);
   audio?.pause();
   spotlight(null);
   emit({ on: false, id: null, playing: false, progress: 0 });
