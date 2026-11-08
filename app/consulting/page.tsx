@@ -46,7 +46,7 @@ export default function ConsultingPage() {
           </figure>
           <div className="min-w-0 lg:order-1">
             <p className="slate text-gaffer">Consulting</p>
-            <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">Your creative director, without the full-time hire.</h1>
+            <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">Your creative director, without the full&#8209;time hire.</h1>
             <div className="mt-8 grid max-w-[58ch] gap-5 text-[18px] leading-[1.6] text-body">
               <p>I'm Willie Bernoudy, creative director and AI art director. Fifteen years in creative strategy and direction, as a filmmaker, a photographer and a creative director. I started behind the camera in Mississippi, shooting talent, events and travel, grew into brand strategy and social growth for media brands, and now direct AI the same way I direct a set.</p>
               <p>I work with founders and marketing teams who know the business but need someone with taste in charge of how it looks and what it says. I set the direction, write the briefs and sign off the work. When it needs making, the CDH network makes it.</p>
