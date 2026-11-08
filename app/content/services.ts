@@ -4,7 +4,7 @@ export const site = {
   name: "Creative Direction Hub",
   tagline: "We put brands on their mark.",
   promise: "Every project has a director.",
-  positioning: "Creative Direction Hub is the creative department for growing businesses, led by creative director Willie Bernoudy.",
+  positioning: "Creative Direction Hub is the creative department for growing businesses.",
   support: "Brand, campaigns, content, digital and AI art direction, directed by one person and made by one team.",
   url: "https://www.creativedirectionhub.com",
   email: "hello@creativedirectionhub.com",
@@ -125,9 +125,9 @@ export const process = [
 export const faqs = [
   { q: "Who owns the work?", a: "You do, once it's paid for. Creator usage terms, meaning how long and where a creator's face can run, are written into each deal before filming." },
   { q: "How do you use AI?", a: "For speed and range: concepts, edits, product shots, voice and AI performers. Every AI person or scene is labeled, and a director checks every piece before you see it. Where a real face matters, we cast real people." },
-  { q: "Who actually does the work?", a: "Willie directs every project. A vetted network of editors, designers, photographers, motion artists and creators makes it with him, picked for each job." },
+  { q: "Who actually does the work?", a: "A CDH creative director leads every project. A vetted network of editors, designers, photographers, motion artists and creators makes it, picked for each job." },
   { q: "How many revisions do I get?", a: "Two rounds on every piece. The first cut lands within 5 business days of an approved brief." },
-  { q: "What does it cost?", a: "Projects are quoted on a short call after your audit, with a fixed price before we start. Retainers have a 3-month minimum, then run month to month with 30 days’ notice." },
+  { q: "What does it cost?", a: "Engagements start at $2,500. Projects are quoted on a short call after your audit, with a fixed price before we start. Retainers have a 3-month minimum, then run month to month with 30 days’ notice." },
   { q: "How does the Free Creative Audit work?", a: "Send your website or Instagram. We review the brand, the site and your last three pieces, mark what's holding each one back, and email you the fixes within 3 business days." },
 ];
 
@@ -153,7 +153,7 @@ export const values = [
 export const clients = ["Hattiesburg Black Sox", "H.O.P.E Live Agency", "Blacktravelgram", "Black Girl Travel Slay", "Mom on the Move"];
 // Brand deals: paid partnerships where Willie made the content that ran for the brand.
 export const brandDeals = ["Sonic", "Walmart", "Fashion Nova", "RTIC", "Red Diamond", "Homer"];
-export const brandDealsLine = "Paid brand deals where Willie concepted, shot and delivered the content that ran for the brand.";
+export const brandDealsLine = "Paid brand deals where our creative director concepted, shot and delivered the content that ran for the brand.";
 /** Everything above, in one list, for schema and anywhere a single list is needed. */
 export const brands = [...clients, ...brandDeals];
 

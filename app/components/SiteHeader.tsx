@@ -9,9 +9,8 @@ import { CommentaryToggle } from "./Commentary";
 const links = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
-  { href: "/proof", label: "Proof" },
   { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
+  { href: "/consulting", label: "Consulting" },
   { href: "/start", label: "Free Audit" },
 ];
 
@@ -40,7 +39,7 @@ export default function SiteHeader() {
         </Link>
         <div className="flex items-center gap-3">
           <ul className="mr-4 hidden items-center gap-1 lg:flex">
-            {links.slice(1, 5).map((l) => (
+            {links.slice(1, 4).map((l) => (
               <li key={l.href}>
                 <Link href={l.href} aria-current={active(l.href) ? "page" : undefined} className={`slate inline-flex min-h-[44px] items-center px-3 text-[13px] transition-colors ${active(l.href) ? "text-gaffer" : "text-ink hover:text-gaffer"}`}>{l.label}</Link>
               </li>

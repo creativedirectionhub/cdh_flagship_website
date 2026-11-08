@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { TapeMark } from "../components/Brand";
-import WaysToStart from "../components/WaysToStart";
+import { TapeMark } from "../../components/Brand";
+import WaysToStart from "../../components/WaysToStart";
 
 export const metadata: Metadata = {
   title: { absolute: "Proof: Black Travel Gram, Awards and Travel Work | Creative Direction Hub" },
   description: "The receipts: two years as Black Travel Gram's photographer and creative, the account's own growth numbers, a 2020 ND Awards honorable mention, and the travel work behind it.",
-  alternates: { canonical: "/proof" },
+  alternates: { canonical: "/consulting/proof" },
 };
 
 // Every number here comes from Black Travel Gram's own posts and profile (screenshots below).

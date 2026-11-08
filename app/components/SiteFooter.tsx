@@ -15,9 +15,8 @@ export default function SiteFooter() {
           <div className="grid gap-8 sm:grid-cols-2">
             <ul className="grid text-[16px] font-semibold">
               <li><Link href="/work" className="inline-block py-2 hover:text-gaffer">Work</Link></li>
-              <li><Link href="/proof" className="inline-block py-2 hover:text-gaffer">Proof</Link></li>
               <li><Link href="/services" className="inline-block py-2 hover:text-gaffer">Services</Link></li>
-              <li><Link href="/about" className="inline-block py-2 hover:text-gaffer">About</Link></li>
+              <li><Link href="/consulting" className="inline-block py-2 hover:text-gaffer">Consulting</Link></li>
               <li><Link href="/start" className="inline-block py-2 hover:text-gaffer">Free Creative Audit</Link></li>
               <li><Link href="/#wall" className="inline-block py-2 hover:text-gaffer">Sign the wall</Link></li>
             </ul>
@@ -25,7 +24,6 @@ export default function SiteFooter() {
               <span className="slate text-muted">Say hello</span>
               <a href={`mailto:${site.email}`} className="inline-block py-2 font-semibold hover:text-gaffer">{site.email}</a>
               {BOOKING_URL && <a href={BOOKING_URL} target="_blank" rel="noopener" className="inline-block py-2 font-semibold text-gaffer hover:underline">Book a 30-minute call</a>}
-              <a href="https://www.linkedin.com/in/wbernoudy/" target="_blank" rel="noopener me" className="inline-block py-2 font-semibold hover:text-gaffer">Willie on LinkedIn</a>
             </div>
           </div>
         </div>

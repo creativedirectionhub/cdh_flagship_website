@@ -80,7 +80,7 @@ export const cases: Case[] = [
       img("/work/spec-blacksox-4.webp", "Print layout: More Than a Game, with a portrait and campaign notes", 800, 450, "Print layout"),
     ],
     note: "When a team is on the road, the coverage is the only way home sees them. I ran all of it in Kentucky, every shot and every post, so it all looked like one team with one story. A hometown club doesn't need to look like the majors. It needs to look like it matters.",
-    credits: ["Media coverage directed and photographed by Willie Bernoudy", "Design and layout: CDH network"],
+    credits: ["Media coverage directed and photographed by CDH", "Design and layout: CDH network"],
     selected: 1,
   },
   {
@@ -106,7 +106,7 @@ export const cases: Case[] = [
       img("/work/hope-apply.webp", "Application page", 1440, 900, "Apply"),
     ],
     note: "Creators find an agency on their phone, between streams. So the site does one job in order: show what H.O.P.E gives them, show how it works, then put the application one tap away on every page.",
-    credits: ["Designed and built by Creative Direction Hub", "Direction: Willie Bernoudy"],
+    credits: ["Designed and built by Creative Direction Hub", "Direction: CDH"],
     notice: "Figures shown on the site are the client's own.",
     selected: 2,
   },
@@ -139,7 +139,7 @@ export const cases: Case[] = [
       img("/work/talent-sasha.webp", "A woman with long braids at a window, in black and white", 571, 800),
       img("/work/talent-susan-1.webp", "A woman in a white jacket reading in a dark hallway", 640, 800),
     ],
-    credits: ["Photographed and directed by Willie Bernoudy"],
+    credits: ["Photographed and directed by CDH"],
     notice: "Subjects shown with permission.",
     selected: 3,
   },
@@ -161,7 +161,7 @@ export const cases: Case[] = [
     media: [
       { kind: "video", src: "/media/luxury-travel.mp4", poster: "/media/luxury-travel.webp", alt: "Arrival film: a jet lands, a guest steps onto the tarmac, a driver waits, the car runs along the coast", w: 1280, h: 720, caption: "Arrival film, 0:30", ai: true },
     ],
-    credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
+    credits: ["Written and directed by CDH", "AI production: CDH network"],
     ai: "Made with AI tools. The on-screen lead is an AI performer. Concept made by CDH for an invented island resort.",
     selected: 5,
   },
@@ -187,7 +187,7 @@ export const cases: Case[] = [
       { kind: "video", src: "/media/ugc-smoothie.mp4", poster: "/media/ugc-smoothie.webp", alt: "A creator drinks a lemon smoothie in a kitchen", w: 960, h: 960, caption: "Smoothie, UGC-style", ai: true },
       ...statics.map(([brand, line, id]) => img(spec(id), `${brand} static ad concept: ${line}`, 1080, 1920, `${brand}, static concept`)),
     ],
-    credits: ["Directed by Willie Bernoudy", "Edit and motion: CDH network"],
+    credits: ["Directed by CDH", "Edit and motion: CDH network"],
     ai: "Every spot here is AI-made. UGC-style spots use AI performers and are labeled as such. Static concepts for real brands are not commissioned by, affiliated with or endorsed by those brands.",
   },
   {
@@ -207,7 +207,7 @@ export const cases: Case[] = [
       img("/work/logo-trading-one.webp", "Trading One crest: a green bull and a red bear in a gold shield", 800, 800, "Trading One"),
       img("/work/logo-good-laughs.webp", "Good Laughs logo: a laughing G on a yellow circle", 500, 500, "Good Laughs"),
     ],
-    credits: ["Creative direction and design: Willie Bernoudy"],
+    credits: ["Creative direction and design: CDH"],
     notice: "Blac Birdie and Trading One are CDH studio brands, shown as studio work, not client work.",
   },
   {
@@ -227,7 +227,7 @@ export const cases: Case[] = [
       { kind: "video", src: "/media/back-home.mp4", poster: "/media/back-home.webp", alt: "Back Home: a son returns to the family house at golden hour", w: 1280, h: 720, caption: "Back Home, 0:13", ai: true },
       { kind: "video", src: "/media/morning-routine.mp4", poster: "/media/morning-routine.webp", alt: "Morning Routine: a quiet morning, coffee in hand", w: 1080, h: 1920, caption: "Morning Routine, 0:15", ai: true },
     ],
-    credits: ["Written and directed by Willie Bernoudy"],
+    credits: ["Written and directed by CDH"],
     ai: "Made with AI tools. People shown are AI performers.",
   },
   {
@@ -249,7 +249,7 @@ export const cases: Case[] = [
       img("/work/travel-31.webp", "A beach at sunset with mountains on the horizon", 1400, 1050),
       img("/work/travel-42.webp", "A stone plaza under a blue sky, a lone walker crossing", 1400, 1120),
     ],
-    credits: ["Photographed by Willie Bernoudy"],
+    credits: ["Photographed by CDH"],
   },
   {
     slug: "cafe-social",
@@ -267,7 +267,7 @@ export const cases: Case[] = [
       img("/work/gfx-pineapple-juice.webp", "Pineapple juice social graphic", 640, 800, "Juice bar, feed"),
       img("/work/gfx-liceria-coffee.webp", "Cold cappuccino social graphic with the line Fresh on the menu", 640, 800, "Cafe, offer post"),
     ],
-    credits: ["Creative direction: Willie Bernoudy", "Design: CDH network"],
+    credits: ["Creative direction: CDH", "Design: CDH network"],
     ai: "Concept work. Brand names shown are placeholders.",
   },
   {
@@ -285,7 +285,7 @@ export const cases: Case[] = [
     media: [
       { kind: "video", src: "/media/art-direction.mp4", poster: "/media/art-direction.webp", alt: "Shot one: the bottle on travertine in morning sun. Shot two: the same bottle on a limestone shelf as a hand lifts the dropper and a golden drop falls", w: 1280, h: 720, caption: "Two shots, one rulebook, 0:10", ai: true },
     ],
-    credits: ["Art direction: Willie Bernoudy", "AI production: CDH network"],
+    credits: ["Art direction: CDH", "AI production: CDH network"],
     ai: "Made with AI tools. The hand is AI-generated. The product is an invented concept, not a real brand.",
   },
   {
@@ -303,7 +303,7 @@ export const cases: Case[] = [
     media: [
       { kind: "video", src: "/media/dinner-service.mp4", poster: "/media/dinner-service.webp", alt: "A chef sets the final herb leaf with tweezers, wipes the plate rim and slides it to a server, guests and a wood-fired oven glowing behind", w: 1280, h: 720, caption: "Dinner service, 0:08", ai: true },
     ],
-    credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
+    credits: ["Written and directed by CDH", "AI production: CDH network"],
     ai: "Made with AI tools. People shown are AI performers. Concept made by CDH; not commissioned by any restaurant.",
   },
   {
@@ -320,7 +320,7 @@ export const cases: Case[] = [
     media: [
       { kind: "video", src: "/media/her-mark.mp4", poster: "/media/her-mark-cover.webp", alt: "A founder films her hot sauce at 1:47 AM under a ring light, a director tapes an orange mark on her counter, the same kitchen at sunrise with her branded bottle, a sold-out pop-up, her mother in tears watching the ad", w: 1280, h: 720, caption: "Her Mark. Brand film, 0:30", ai: true, sound: true },
     ],
-    credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
+    credits: ["Written and directed by CDH", "AI production: CDH network"],
     ai: "Made with AI tools. Everyone shown is an AI performer. Mama Lou's is an invented brand made by CDH to show the work; it is not a real business.",
     selected: 4,
   },
@@ -340,7 +340,7 @@ export const cases: Case[] = [
       { kind: "video", src: "/media/spot-marisol.mp4", poster: "/media/spot-marisol.webp", alt: "Casa Marisol: a drone glide to a white hotel on a cliff, a guest arriving at golden hour, a swim at sunset, dinner on the terrace, the hotel lit up at night", w: 1280, h: 720, caption: "Casa Marisol, boutique hotel. Hospitality, 0:27", ai: true, sound: true },
       { kind: "video", src: "/media/spot-okafor.mp4", poster: "/media/spot-okafor.webp", alt: "Okafor Clay: the founder at the potter's wheel, opening the kiln, wrapping an order, then standing in her studio doorway", w: 1280, h: 720, caption: "Okafor Clay, founder brand. Personal brands, 0:30", ai: true, sound: true },
     ],
-    credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
+    credits: ["Written and directed by CDH", "AI production: CDH network"],
     ai: "Made with AI tools, including the music. Everyone shown is an AI performer. Halden, Casa Marisol and Okafor Clay are invented brands made by CDH to show the work; none of them is a real business.",
     selected: 6,
   },

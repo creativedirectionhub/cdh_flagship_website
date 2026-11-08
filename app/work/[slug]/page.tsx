@@ -56,7 +56,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
         description: c.brief,
         url: `${base}/work/${c.slug}`,
         image: `${base}${c.cover.kind === "image" ? c.cover.src : c.cover.poster}`,
-        creator: { "@id": `${base}/about#willie` },
+        creator: { "@id": `${base}/#org` },
         publisher: { "@id": `${base}/#org` },
         genre: c.disciplines.map((d) => DISCIPLINES[d]).join(", "),
       },
@@ -67,7 +67,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
         thumbnailUrl: `${base}${film.poster}`,
         contentUrl: `${base}${film.src}`,
         uploadDate: "2026-10-29",
-        creator: { "@id": `${base}/about#willie` },
+        creator: { "@id": `${base}/#org` },
       }] : []),
     ],
   };
@@ -121,7 +121,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
                 <h2 className="slate text-muted">Director's note</h2>
                 <div>
                   <blockquote className="max-w-[34ch] text-[clamp(26px,3vw,42px)] font-black leading-[1.08] tracking-[-0.03em]">{c.note}</blockquote>
-                  <figcaption className="slate mt-6 text-muted">Willie Bernoudy, creative director</figcaption>
+                  <figcaption className="slate mt-6 text-muted">The director&apos;s note · CDH</figcaption>
                 </div>
               </figure>
             )}

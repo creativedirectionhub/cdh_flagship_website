@@ -118,11 +118,11 @@ export async function POST(req: Request) {
     await brevo("/smtp/email", key, {
       sender: SENDER,
       to: [{ email, ...(name ? { name } : {}) }],
-      replyTo: { email: NOTIFY_EMAIL, name: "Willie Bernoudy" },
+      replyTo: { email: NOTIFY_EMAIL, name: "Creative Direction Hub" },
       subject: project ? "Your project inquiry is in" : "Your Free Creative Audit is in",
       htmlContent: project
         ? `<p>Thanks for telling us about ${esc(website)}.</p><p>We'll reply to set up a 30-minute call. After the call you'll get a fixed scope and a fixed price before anything starts.</p>${booking}<p>Willie Bernoudy<br>Founder and Creative Director, Creative Direction Hub<br>We put brands on their mark.</p>`
-        : `<p>Thanks for sending ${esc(website)} over.</p><p>I'm reviewing your brand, your site and your last three pieces now. You'll get what's holding them back, with fixes, within 3 business days. They're yours to keep whether you hire us or not.</p>${booking}<p>Willie Bernoudy<br>Founder and Creative Director, Creative Direction Hub<br>We put brands on their mark.</p>`,
+        : `<p>Thanks for sending ${esc(website)} over.</p><p>We're reviewing your brand, your site and your last three pieces now. You'll get what's holding them back, with fixes, within 3 business days. They're yours to keep whether you hire us or not.</p>${booking}<p>Willie Bernoudy<br>Founder and Creative Director, Creative Direction Hub<br>We put brands on their mark.</p>`,
     });
 
     delivered = delivered || saved || alerted;

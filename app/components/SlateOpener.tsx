@@ -113,7 +113,7 @@ export default function SlateOpener() {
               <div className="border-r-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Roll</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none">A</p></div>
               <div className="border-r-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Scene</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none">01</p></div>
               <div className="p-4"><p className="slate text-[12px] text-[#efe9df]/60">Take</p><p className="mt-1 text-[clamp(28px,4.6vw,48px)] font-black leading-none text-gaffer">{pad(take)}</p></div>
-              <div className="col-span-2 border-r-2 border-t-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Director</p><p className="mt-1 text-[clamp(16px,2.2vw,22px)] font-black leading-none">Willie Bernoudy</p></div>
+              <div className="col-span-2 border-r-2 border-t-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Director</p><p className="mt-1 text-[clamp(16px,2.2vw,22px)] font-black leading-none">CDH</p></div>
               <div className="border-t-2 border-[#efe9df]/30 p-4"><p className="slate text-[12px] text-[#efe9df]/60">Date</p><p className="mt-1 text-[clamp(16px,2.2vw,22px)] font-black leading-none tabular-nums">{today || "—"}</p></div>
             </div>
           </div>

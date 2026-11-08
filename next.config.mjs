@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return [{ source: "/work/four-seasons-anguilla", destination: "/work/island-resort-arrival", permanent: true }];
+    return [
+      { source: "/work/four-seasons-anguilla", destination: "/work/island-resort-arrival", permanent: true },
+      { source: "/about", destination: "/consulting", permanent: true },
+      { source: "/proof", destination: "/consulting/proof", permanent: true },
+    ];
   },
   images: {
     formats: ["image/avif", "image/webp"],

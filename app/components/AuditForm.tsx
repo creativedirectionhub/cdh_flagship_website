@@ -55,7 +55,7 @@ export default function AuditForm({ kind = "audit" }: { kind?: "audit" | "projec
     return (
       <div className="rounded-md border border-gaffer p-8" role="status">
         <p className="slate text-gaffer">{project ? "Project received" : "Request received"}</p>
-        <p className="mt-4 text-[28px] font-extrabold leading-tight tracking-[-0.02em]">{project ? "Got it. We'll reply to set up a 30-minute call." : "Got it. Willie will send your audit within 3 business days."}</p>
+        <p className="mt-4 text-[28px] font-extrabold leading-tight tracking-[-0.02em]">{project ? "Got it. We'll reply to set up a 30-minute call." : "Got it. We'll send your audit within 3 business days."}</p>
         <p className="mt-3 text-[16px] leading-[1.55] text-muted">It comes from {site.email}. Reply to it with anything you want looked at first.</p>
       </div>
     );

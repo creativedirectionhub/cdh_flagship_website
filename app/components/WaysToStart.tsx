@@ -10,7 +10,7 @@ export default function WaysToStart({ id = "start-here" }: { id?: string }) {
     <section id={id} className="gutter scroll-mt-20 border-t border-line py-24 md:py-32" aria-labelledby={`${id}-title`}>
       <div className="mx-auto max-w-[1440px]">
         <SectionHead slate="Three ways to start" title={<span id={`${id}-title`}>Start with the audit. It's free.</span>}>
-          Projects are quoted on a short call after your audit, with a fixed price before we begin. Retainers have a 3-month minimum, then run month to month with 30 days’ notice.
+          Engagements start at $2,500. Projects are quoted on a short call after your audit, with a fixed price before we begin. Retainers have a 3-month minimum, then run month to month with 30 days’ notice.
         </SectionHead>
         <ul className="reveal mt-14 grid gap-6 lg:grid-cols-3">
           {ways.map((w) => (

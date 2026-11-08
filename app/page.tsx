@@ -23,7 +23,7 @@ const services = [
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  openGraph: { title: "Creative Direction Hub · We put brands on their mark.", description: "Creative direction and AI art direction for consumer brands, personal brands and hospitality, led by Willie Bernoudy." },
+  openGraph: { title: "Creative Direction Hub · We put brands on their mark.", description: "Creative direction and AI art direction for consumer brands, personal brands and hospitality." },
 };
 
 export default function Home() {
@@ -130,7 +130,7 @@ export default function Home() {
             <h2 id="crew-title" className="reveal mt-5 text-[clamp(44px,7vw,120px)] font-black leading-[0.9] tracking-tightest">One director.{" "}<br />A crew built for the job.</h2>
           </div>
           <div className="reveal min-w-0">
-            <p className="max-w-[46ch] text-[18px] leading-[1.6] text-body">Willie directs every project. A vetted network of {network.slice(0, -1).join(", ").toLowerCase()} and {network[network.length - 1].toLowerCase()} makes it with him, picked for each job. You get the right people without paying for a bench.</p>
+            <p className="max-w-[46ch] text-[18px] leading-[1.6] text-body">A CDH creative director leads every project. A vetted network of {network.slice(0, -1).join(", ").toLowerCase()} and {network[network.length - 1].toLowerCase()} makes it, picked for each job. You get the right people without paying for a bench.</p>
             <ul className="mt-8 flex flex-wrap gap-2">
               {["Brand", "Campaigns", "Content", "Digital", "AI"].map((t) => (
                 <li key={t} className="slate rounded-sm border border-line px-3 py-2 text-[12px] text-body">{t}</li>
@@ -150,7 +150,7 @@ export default function Home() {
               <p className="slate text-gaffer">How a project runs</p>
               <h2 id="process-title" className="reveal mt-5 text-[clamp(40px,6vw,96px)] font-black leading-[0.92] tracking-tightest">From audit{" "}<br />to results.</h2>
             </div>
-            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">A fixed scope and a fixed price before anything gets made. Willie directs every project, the first cut lands within 5 business days of an approved brief, and every piece gets two rounds of revisions.</p>
+            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">A fixed scope and a fixed price before anything gets made. A creative director leads every project, the first cut lands within 5 business days of an approved brief, and every piece gets two rounds of revisions.</p>
           </div>
           <ol className="mt-14 grid border-t border-line sm:grid-cols-2 lg:grid-cols-5">
             {process.map((p, i) => (
@@ -209,12 +209,12 @@ export default function Home() {
           <div className="mt-14 grid gap-10 border-t border-line pt-10 md:grid-cols-2 md:gap-16">
             <div className="min-w-0">
               <p className="slate text-gaffer">Not sure yet</p>
-              <p className="mt-4 max-w-[42ch] text-[19px] leading-[1.55] text-body">Send your site or Instagram. Willie reviews the brand, the site and your last three pieces, and emails you the fixes in 3 business days. Free, and yours to keep.</p>
+              <p className="mt-4 max-w-[42ch] text-[19px] leading-[1.55] text-body">Send your site or Instagram. We review the brand, the site and your last three pieces, and emails you the fixes in 3 business days. Free, and yours to keep.</p>
               <Link href="/start" className="btn-primary mt-8">Get a Free Creative Audit</Link>
             </div>
             <div className="min-w-0">
               <p className="slate text-gaffer">Ready to build</p>
-              <p className="mt-4 max-w-[42ch] text-[19px] leading-[1.55] text-body">Tell us what you're launching, when, and the budget you're working with. You'll get a fixed scope and price after a 30-minute call with Willie.</p>
+              <p className="mt-4 max-w-[42ch] text-[19px] leading-[1.55] text-body">Tell us what you're launching, when, and the budget you're working with. You'll get a fixed scope and price after a 30-minute call. Engagements start at $2,500.</p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link href="/start#project" className="btn-secondary">Start a project</Link>
                 <a href={book} {...(BOOKING_URL ? { target: "_blank", rel: "noopener" } : {})} className="slate inline-flex min-h-[52px] items-center border-b-2 border-gaffer hover:text-gaffer">Book a call</a>

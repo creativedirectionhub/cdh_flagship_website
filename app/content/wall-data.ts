@@ -35,14 +35,14 @@ export const SPARKS = [
   "Next stop: my name in lights.",
   "My brand in three words: ",
   "First ad I ever loved: ",
-  "Hey Willie, call me. We got work.",
+  "Hey CDH, call me. We got work.",
   "If my brand was a song, it'd be ",
   "Shot list: me, a Cadillac, slow motion.",
 ];
 
 // Willie's own tape, signed by him.
 export const FIRST_TAPE: Tape = {
-  k: "willie", name: "Willie Bernoudy", from: "CDH", line: "Bold. Southern. Directed.", color: "orange", x: 50, y: 37, slot: 7, tilt: -2.5, at: "2026-10-30T00:00:00Z",
+  k: "willie", name: "CDH", from: "Creative Direction Hub", line: "Bold. Southern. Directed.", color: "orange", x: 50, y: 37, slot: 7, tilt: -2.5, at: "2026-10-30T00:00:00Z",
 };
 
 // CDH's own set dressing: what's already on any stage wall. Not visitors.

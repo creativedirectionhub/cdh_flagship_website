@@ -4,19 +4,20 @@ import Link from "next/link";
 import { TapeMark } from "../components/Brand";
 import WaysToStart from "../components/WaysToStart";
 import { facts, network, site, values } from "../content/services";
+import { BOOKING_URL } from "../config";
 
 export const metadata: Metadata = {
-  title: { absolute: "Willie Bernoudy, Creative Director & AI Art Director | CDH" },
-  description: "Willie Bernoudy is the founder, creative director and AI art director of Creative Direction Hub. 15 years of creative direction and photography in 23 countries.",
-  alternates: { canonical: "/about" },
+  title: { absolute: "Willie Bernoudy, Creative Consultant & Fractional Creative Director | CDH" },
+  description: "Work with Willie Bernoudy, founder of Creative Direction Hub, as your creative consultant or fractional creative director. 15 years of creative direction and photography in 23 countries.",
+  alternates: { canonical: "/consulting" },
 };
 
 const person = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": `${site.url}/about#willie`,
+  "@id": `${site.url}/consulting#willie`,
   name: "Willie Bernoudy",
-  jobTitle: "Founder, Creative Director and AI Art Director",
+  jobTitle: "Founder, Creative Consultant and Fractional Creative Director",
   description: "Creative director, AI art director, filmmaker and photographer. Founder of Creative Direction Hub.",
   knowsAbout: ["Creative direction", "AI art direction", "Photography", "Filmmaking", "Brand strategy", "Social media strategy"],
   sameAs: ["https://www.linkedin.com/in/wbernoudy/"],
@@ -30,7 +31,9 @@ const person = {
   image: `${site.url}/media/willie-portrait.webp`,
 };
 
-export default function AboutPage() {
+export default function ConsultingPage() {
+  const book = BOOKING_URL || "/start";
+  const bookProps = BOOKING_URL ? { target: "_blank", rel: "noopener" } : {};
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
@@ -42,12 +45,54 @@ export default function AboutPage() {
             <figcaption className="slate mt-8 pr-28 text-[12px] text-muted">Willie Bernoudy · Founder and creative director</figcaption>
           </figure>
           <div className="min-w-0 lg:order-1">
-            <p className="slate text-gaffer">About</p>
-            <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">I direct every project.</h1>
+            <p className="slate text-gaffer">Consulting</p>
+            <h1 className="mt-4 text-[clamp(44px,6.6vw,104px)] font-black leading-[0.9] tracking-tightest">Your creative director, without the full-time hire.</h1>
             <div className="mt-8 grid max-w-[58ch] gap-5 text-[18px] leading-[1.6] text-body">
               <p>I'm Willie Bernoudy, creative director and AI art director. Fifteen years in creative strategy and direction, as a filmmaker, a photographer and a creative director. I started behind the camera in Mississippi, shooting talent, events and travel, grew into brand strategy and social growth for media brands, and now direct AI the same way I direct a set.</p>
+              <p>I work with founders and marketing teams who know the business but need someone with taste in charge of how it looks and what it says. I set the direction, write the briefs and sign off the work. When it needs making, the CDH network makes it.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="work-with-me-title">
+        <div className="mx-auto max-w-[1440px]">
+          <p className="slate text-gaffer">Two ways to work with me</p>
+          <h2 id="work-with-me-title" className="mt-4 max-w-[18ch] text-[clamp(40px,5.6vw,84px)] font-black leading-[0.92] tracking-tighter">Start with a session. Stay for the direction.</h2>
+          <p className="mt-6 max-w-[56ch] text-[18px] leading-[1.6] text-body">Engagements start at $2,500. Every engagement is scoped and priced before it begins.</p>
+          <ul className="reveal mt-14 grid gap-6 lg:grid-cols-2">
+            {[
+              {
+                label: "Start here",
+                name: "The Mark Session",
+                body: "A paid working session to find what's holding the brand back and what to do first. Credited in full if you start an engagement within 30 days.",
+                items: ["90 minutes with me, live", "A scan of your brand, site, ads and competitors", "A one-page creative direction roadmap", "Three options for what comes next"],
+                featured: true,
+              },
+              {
+                label: "Ongoing",
+                name: "Fractional Creative Director",
+                body: "I'm your creative director one day a week. You get senior direction without a full-time salary, and your team or agencies get one clear point of view.",
+                items: ["Creative strategy and campaign direction", "Briefs for your team, agencies and creators", "Review and sign-off on everything that ships", "Monthly, with a 3-month minimum"],
+                featured: false,
+              },
+            ].map((o) => (
+              <li key={o.name} className={`flex flex-col gap-5 rounded-md border bg-surface p-7 md:p-9 ${o.featured ? "border-gaffer" : "border-line"}`}>
+                <p className={`slate ${o.featured ? "text-gaffer" : "text-muted"}`}>{o.label}</p>
+                <h3 className="text-[30px] font-extrabold leading-[1.05] tracking-[-0.02em]">{o.name}</h3>
+                <p className="text-[16px] leading-[1.55] text-body">{o.body}</p>
+                <ul className="grid gap-2.5 text-[15px] leading-[1.45]">
+                  {o.items.map((it) => (
+                    <li key={it} className="relative pl-6">
+                      <span aria-hidden="true" className="absolute left-0 top-[9px] h-[3px] w-3 bg-gaffer" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+                <a href={book} {...bookProps} className={`mt-auto ${o.featured ? "btn-primary" : "btn-secondary"}`}>Book a call</a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -56,8 +101,8 @@ export default function AboutPage() {
           <h2 id="story-title" className="reveal self-start text-[clamp(36px,4.2vw,64px)] font-black leading-[0.95] tracking-tighter">From Mississippi to 23 countries.</h2>
           <div className="min-w-0">
             <div className="grid max-w-[58ch] gap-5 text-[18px] leading-[1.6] text-body">
-              <p>Blacksheepfocus, the agency I owned, won two Corporate Vision Awards: Best Social Media Marketing Agency in 2022 and Best Social Media Strategy Agency in 2023. My travel and culture work earned an honorable mention at the ND Awards, and I've photographed in 23 countries. <Link href="/proof" className="font-semibold underline underline-offset-4 hover:text-gaffer">See the receipts.</Link></p>
-              <p>I built Creative Direction Hub for the businesses that have a product, a person or a place worth selling, and nobody with taste in charge of how it looks. That's the job I do.</p>
+              <p>Blacksheepfocus, the agency I owned, won two Corporate Vision Awards: Best Social Media Marketing Agency in 2022 and Best Social Media Strategy Agency in 2023. My travel and culture work earned an honorable mention at the ND Awards, and I've photographed in 23 countries. <Link href="/consulting/proof" className="font-semibold underline underline-offset-4 hover:text-gaffer">See the receipts.</Link></p>
+              <p>I built Creative Direction Hub for the businesses that have a product, a person or a place worth selling, and nobody with taste in charge of how it looks. That's the job I do. <a href="https://www.linkedin.com/in/wbernoudy/" target="_blank" rel="noopener me" className="font-semibold underline underline-offset-4 hover:text-gaffer">Find me on LinkedIn.</a></p>
             </div>
             <dl className="mt-12 grid border-t border-line sm:grid-cols-2">
               {facts.map((f) => (

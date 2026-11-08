@@ -364,7 +364,7 @@ export default function Wall({ initial }: { initial: Tape[] }) {
               </label>
               <label className="col-span-2 flex cursor-pointer items-center gap-2 text-[13px] text-body md:order-last md:basis-full">
                 <input type="checkbox" checked={optin} onChange={(e) => setOptin(e.target.checked)} className="h-4 w-4 accent-[#ff5a1f]" />
-                Send me Willie&apos;s notes on creative direction, a few times a year.
+                Send me CDH&apos;s notes on creative direction, a few times a year.
               </label>
               <div className="col-span-2 flex items-center gap-3 md:ml-auto md:flex-1 md:gap-4">
                 <button type="button" onClick={another} className="group mr-auto flex items-center gap-2" aria-label="Another take: feed me a line">
