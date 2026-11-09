@@ -29,6 +29,8 @@ export type Case = {
   selected?: number;
   /** Which package the project was, shown on its card like "Brand identity / Take 02". */
   take?: "Take 01" | "Take 02" | "Take 03";
+  /** Has its own hand-built page at /work/<slug>, so the generic case template skips it. */
+  custom?: boolean;
   /** Kept online for old links, but left off the Work page, the sitemap and search. */
   archived?: boolean;
 };
@@ -58,6 +60,25 @@ const statics: [string, string, string][] = [
 const img = (src: string, alt: string, w: number, h: number, caption?: string): Media => ({ kind: "image", src, alt, w, h, caption });
 
 export const cases: Case[] = [
+  {
+    slug: "black-birdie-farms",
+    custom: true,
+    title: "A bird with a mushroom for a wing.",
+    client: "Black Birdie Farms",
+    label: "studio",
+    lanes: ["consumer"],
+    take: "Take 03",
+    disciplines: ["identity", "logo", "packaging", "social"],
+    year: "2026",
+    brief: "Black Birdie became a farm: gourmet mushrooms grown, processed and sold by hand, with hens, goats and a garden around them. The new identity turns the blackbird's wing into an oyster mushroom.",
+    did: ["Logo design", "Brand identity", "Packaging design", "Social media branding", "Signage and merch"],
+    cover: img("/work/black-birdie-farms/cover.webp", "The Black Birdie Farms logo, a blackbird whose wing is an oyster mushroom, beside gourmet mushrooms on kraft paper in a barn at dawn", 1080, 1350),
+    media: [img("/work/black-birdie-farms/board-01.webp", "Black Birdie Farms hero board", 2000, 1350)],
+    note: "A farm brand has to look right on a muddy sign and on a white tablecloth. So the mark had to be simple enough to paint by hand and still carry a story: the bird was always ours, and the mushroom was always going to be the star. Now it's both.",
+    credits: ["Creative direction, logo and identity: Willie Bernoudy", "Layouts and mockups: CDH network"],
+    ai: "Photography is AI-generated. Packaging, signage and merch are mockups. Black Birdie Farms is a CDH studio brand, not client work.",
+    selected: 1.5,
+  },
   {
     slug: "hattiesburg-black-sox",
     title: "More than a game.",
@@ -195,23 +216,22 @@ export const cases: Case[] = [
   {
     slug: "identity",
     title: "A mark that holds.",
-    client: "Blac Birdie, Soulful Ties, Trading One, Good Laughs",
+    client: "Soulful Ties, Trading One, Good Laughs",
     label: "studio",
     lanes: ["consumer"],
     take: "Take 01",
     disciplines: ["logo", "identity"],
     year: "",
-    brief: "Four small brands, four marks built to work at app-icon size and on a storefront.",
+    brief: "Three small brands, three marks built to work at app-icon size and on a storefront.",
     did: ["Logo and wordmark", "Color and type"],
-    cover: img("/work/logo-blac-birdie.webp", "Blac Birdie logo: a black bird holding a golf tee, with a serif wordmark", 800, 800),
+    cover: img("/work/logo-trading-one.webp", "Trading One crest: a green bull and a red bear in a gold shield", 800, 800),
     media: [
-      img("/work/logo-blac-birdie.webp", "Blac Birdie logo: a black bird holding a golf tee", 800, 800, "Blac Birdie"),
       img("/work/logo-soulful-ties.webp", "Soulful Ties logo: an S in two tones with the line Go with the flow, naturally", 420, 420, "Soulful Ties"),
       img("/work/logo-trading-one.webp", "Trading One crest: a green bull and a red bear in a gold shield", 800, 800, "Trading One"),
       img("/work/logo-good-laughs.webp", "Good Laughs logo: a laughing G on a yellow circle", 500, 500, "Good Laughs"),
     ],
     credits: ["Creative direction and design: Willie Bernoudy"],
-    notice: "Blac Birdie and Trading One are CDH studio brands, shown as studio work, not client work.",
+    notice: "Trading One is a CDH studio brand, shown as studio work, not client work.",
   },
   {
     slug: "brand-films",

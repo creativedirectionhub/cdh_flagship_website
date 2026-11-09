@@ -41,7 +41,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "The whole world your brand lives in.",
     what: "Positioning, name, voice, logo system, color, type, photography rules, motion and guidelines. Decided once, so every piece after it looks like it came from the same place.",
     get: ["A positioning you can say in one breath", "A full visual system: mark, color, type, image style and motion", "Voice and messaging your whole team can write in", "Guidelines as a living page, not a PDF nobody opens"],
-    proof: ["identity", "her-mark"],
+    proof: ["black-birdie-farms", "her-mark"],
   },
   {
     id: "logo",
@@ -49,7 +49,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "A mark that means something.",
     what: "Logos, wordmarks and monograms built to work at app-icon size and on a storefront, in one color and in motion. Built to last decades, not seasons.",
     get: ["Primary logo, wordmark and a compact mark", "Versions for dark, light and one color", "An animated logo for reels and video", "Files for print, web and social, organized"],
-    proof: ["identity"],
+    proof: ["black-birdie-farms", "identity"],
   },
   {
     id: "packaging",
@@ -57,7 +57,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "Sells before anyone picks it up.",
     what: "Labels, boxes, bottles and bags designed for the shelf and the scroll: structure, label system, production-ready files, and the product photography to launch it.",
     get: ["A label or box system that extends across the range", "Print-ready files checked with your printer", "Launch photography of the finished pack", "Shelf and feed mockups before anything is printed"],
-    proof: ["her-mark", "art-direction"],
+    proof: ["black-birdie-farms", "her-mark"],
   },
   {
     id: "social",
@@ -65,7 +65,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "Your feed, looking like a brand.",
     what: "Profile, grid, templates, highlight covers, cover frames and the rules for photos, captions and video, so every post looks like yours without a designer on every one.",
     get: ["Profile, bio and highlight covers", "Post, story and reel cover templates your team can use", "A grid plan and content pillars", "Photo, caption and video rules in one page"],
-    proof: ["paid-social", "hattiesburg-black-sox"],
+    proof: ["black-birdie-farms", "paid-social"],
   },
   {
     id: "rollout",

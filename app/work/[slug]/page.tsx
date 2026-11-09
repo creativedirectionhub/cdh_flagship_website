@@ -8,7 +8,7 @@ import { cases, shownCases, bySlug, DISCIPLINES, LABELS, LANES } from "../../con
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return cases.map((c) => ({ slug: c.slug }));
+  return cases.filter((c) => !c.custom).map((c) => ({ slug: c.slug }));
 }
 
 // Search snippets cut off near 155 characters: keep whole sentences that fit, then name the work.
