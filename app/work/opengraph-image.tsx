@@ -6,5 +6,5 @@ export const size = ogSize;
 export const contentType = "image/png";
 
 export default function OG() {
-  return ogCard({ kicker: "The work", line1: "Every piece", line2: "has a", tape: "director.", sub: "Campaigns, photography, brand films and AI art direction" });
+  return ogCard({ kicker: "The work", line1: "Every piece", line2: "has a", tape: "director.", sub: "Brand identity · Logos · Packaging · Social · Rollout" });
 }
