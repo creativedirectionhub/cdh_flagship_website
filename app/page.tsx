@@ -14,7 +14,7 @@ import { TapeMark } from "./components/Brand";
 import { BOOKING_URL } from "./config";
 import { clients, brandDeals, brandDealsLine, talent, values, network, process } from "./content/services";
 
-const services = [
+const services: { id: string; name: string; line: string; poster: string; video?: string; alt: string; ai: boolean }[] = [
   { id: "identity", name: "Brand identity", line: "The whole world your brand lives in.", poster: "/work/black-birdie-farms/cover.webp", alt: "Black Birdie Farms: the blackbird mark beside gourmet mushrooms in a barn at dawn", ai: true },
   { id: "logo", name: "Logo design", line: "A mark that means something.", poster: "/work/logo-wall.webp", alt: "Four logos by CDH: Black Birdie Farms, Soulful Ties, Trading One and Good Laughs", ai: false },
   { id: "packaging", name: "Packaging design", line: "Sells before anyone picks it up.", poster: "/work/black-birdie-farms/tile-packaging.webp", alt: "Black Birdie Farms packaging: a golden oyster pouch and a pink oyster grow kit box", ai: true },
