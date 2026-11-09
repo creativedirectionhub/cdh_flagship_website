@@ -1,6 +1,6 @@
 import Link from "next/link";
 import CaseMedia from "./CaseMedia";
-import { LABELS, LANES, type Case } from "../content/work";
+import { DISCIPLINES, LABELS, type Case } from "../content/work";
 
 export default function WorkCard({ c, sizes, priority = false, big = false }: { c: Case; sizes: string; priority?: boolean; big?: boolean }) {
   const cover = big ? { ...c.cover, w: 16, h: 10 } : { ...c.cover, w: 4, h: 5 };
@@ -13,7 +13,7 @@ export default function WorkCard({ c, sizes, priority = false, big = false }: { 
             <h3 className={`font-black leading-[0.95] tracking-tighter ${big ? "text-[clamp(28px,3.4vw,44px)]" : "text-[26px]"}`}>{c.title}</h3>
             <p className="mt-2 text-[15px] font-semibold text-muted">{c.client}</p>
           </div>
-          <p className="slate mt-2 text-[12px] text-muted">{c.lanes.map((l) => LANES[l]).join(" · ")}</p>
+          <p className="slate mt-2 text-[12px] text-muted"><span className="text-gaffer">{DISCIPLINES[c.disciplines[0]]}</span>{c.take ? ` / ${c.take}` : ""}</p>
         </div>
       </Link>
     </article>

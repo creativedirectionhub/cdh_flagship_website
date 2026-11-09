@@ -5,6 +5,7 @@ import WallSection from "./components/WallSection";
 import PlayTile from "./components/PlayTile";
 import FilmPlayer from "./components/FilmPlayer";
 import TapeNames from "./components/TapeNames";
+import Showreel from "./components/Showreel";
 import DirectedSlider from "./components/DirectedSlider";
 import { CommentaryMarker } from "./components/Commentary";
 import { readyPairs } from "./content/directed";
@@ -14,16 +15,16 @@ import { BOOKING_URL } from "./config";
 import { clients, brandDeals, brandDealsLine, talent, values, network, process } from "./content/services";
 
 const services = [
-  { id: "brand", name: "Brand", line: "Who you are, decided once.", poster: "/media/golf-lifestyle.webp", video: "/media/golf-lifestyle.mp4", alt: "A hand sets a golf ball on a tee in low gold light", ai: true },
-  { id: "campaigns", name: "Campaigns", line: "One idea, every channel.", poster: "/work/spec-blacksox-3.webp", alt: "Billboard layout for the Hattiesburg Black Sox: More Than a Game", ai: false },
-  { id: "content", name: "Content", line: "Pictures and film that sell.", poster: "/media/dinner-service.webp", video: "/media/dinner-service.mp4", alt: "A chef plates seared fish at the pass of a candlelit restaurant", ai: true },
-  { id: "digital", name: "Digital", line: "A site that closes.", poster: "/work/gfx-liceria-coffee.webp", alt: "Social design for Liceria Coffee Shop: Fresh on the menu", ai: false },
-  { id: "ai", name: "AI art direction", line: "AI that looks like your brand.", poster: "/media/art-direction.webp", video: "/media/art-direction.mp4", alt: "An amber dropper bottle on warm travertine, leaf shadows drifting across the stone", ai: true },
+  { id: "identity", name: "Brand identity", line: "The whole world your brand lives in.", poster: "/media/her-mark-cover.webp", video: "/media/her-mark-cover.mp4", alt: "Mama Lou's hot sauce bottle on an orange tape mark, sauce ribboning off a wooden spoon", ai: true },
+  { id: "logo", name: "Logo design", line: "A mark that means something.", poster: "/work/logo-blac-birdie.webp", alt: "Blac Birdie logo: a black bird holding a golf tee, with a serif wordmark", ai: false },
+  { id: "packaging", name: "Packaging design", line: "Sells before anyone picks it up.", poster: "/media/directed/product-after.webp", alt: "A Mama Lou's hot sauce bottle on warm stone in low side light, a pepper and a spoon beside it", ai: true },
+  { id: "social", name: "Social media branding", line: "Your feed, looking like a brand.", poster: "/work/gfx-liceria-coffee.webp", alt: "Social design for a cafe: a cold cappuccino with the line Fresh on the menu", ai: false },
+  { id: "rollout", name: "Brand rollout", line: "Carried everywhere, the same way.", poster: "/work/spec-blacksox-3.webp", alt: "Billboard layout for the Hattiesburg Black Sox: More Than a Game", ai: false },
 ];
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  openGraph: { title: "Creative Direction Hub · We put brands on their mark.", description: "Creative direction and AI art direction for consumer brands, personal brands and hospitality, led by Willie Bernoudy." },
+  openGraph: { title: "Creative Direction Hub · We put brands on their mark.", description: "Brand identity, logos, packaging and social media branding for consumer brands, personal brands and hospitality, led by Willie Bernoudy." },
 };
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1440px]">
           <p className="slate text-gaffer">For consumer brands · personal brands · hospitality</p>
           <h2 id="breath-title" className="reveal mt-6 max-w-[22ch] text-[clamp(34px,4.8vw,76px)] font-black leading-[1] tracking-tighter">
-            The creative department for growing brands. One director over the brand, the campaign, the content, the site and the AI, <span className="text-muted">and a crew built for every job.</span>
+            The brand studio for growing businesses. One director over the identity, the logo, the pack and the feed, <span className="text-muted">and a crew built for every job.</span>
           </h2>
           <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
             <PlayTile href="/work/hattiesburg-black-sox" poster="/work/blacksox-huddle.webp" alt="The Hattiesburg Black Sox in a huddle on the field before a game, seen from behind, in black and white" kicker="Hattiesburg Black Sox" title="More than a game." label="Client" sizes="(min-width: 768px) 46vw, 92vw" ratio="3 / 2" className="reveal rounded-sm" />
@@ -91,7 +92,7 @@ export default function Home() {
       <section className="gutter border-t border-line py-24 md:py-36" aria-labelledby="teaser-title">
         <div className="mx-auto max-w-[1440px]">
           <h2 id="teaser-title" className="reveal text-[clamp(40px,7vw,120px)] font-black leading-[0.92] tracking-tightest">
-            Bold brands. Campaigns that sell. Content that stops the scroll. Sites that close. <span className="text-gaffer">AI that looks like you.</span>
+            A mark that means something. Packs that sell from the shelf. A feed that looks like a brand. <span className="text-gaffer">Carried everywhere, the same way.</span>
           </h2>
           <Link href="/services" className="slate mt-12 inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">See all services</Link>
         </div>
@@ -115,8 +116,8 @@ export default function Home() {
       {/* The work */}
       <section className="gutter pb-24 md:pb-36" aria-label="The work">
         <div className="mx-auto max-w-[1440px]">
-          <PlayTile href="/work" poster="/media/spots-cover.webp" video="/media/spots-cover.mp4" alt="Morning sun across a travertine shelf with an amber dropper bottle" kicker="The work" title={<>Directed at the{" "}<br />speed of culture.</>} label="AI concept" sizes="(min-width: 1440px) 1296px, 92vw" ratio="21 / 9" className="reveal rounded-sm" titleClass="text-[clamp(36px,6vw,104px)]" />
-          <Link href="/work" className="slate mt-8 inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">Watch the work</Link>
+          <Showreel />
+          <Link href="/work" className="slate mt-8 inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">See all the work</Link>
         </div>
       </section>
 

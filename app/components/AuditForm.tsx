@@ -7,7 +7,7 @@ import { site } from "../content/services";
 type State = "idle" | "sending" | "sent" | "offline" | "error";
 
 const LANES = ["Consumer brand", "Personal brand", "Hospitality", "Other"];
-const NEEDS = ["Brand", "Campaigns and ads", "Content", "Website", "AI art direction", "Not sure"];
+const NEEDS = ["Brand identity", "Logo design", "Packaging design", "Social media branding", "Brand rollout", "Not sure"];
 const BUDGETS = ["$5k to $15k", "$15k to $35k", "$35k to $75k", "$75k+", "Not sure yet"];
 const TIMELINES = ["ASAP", "Within 1 month", "1 to 3 months", "3+ months"];
 

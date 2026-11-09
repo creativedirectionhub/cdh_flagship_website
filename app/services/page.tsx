@@ -4,11 +4,11 @@ import WorkCard from "../components/WorkCard";
 import WaysToStart from "../components/WaysToStart";
 import { BOOKING_URL } from "../config";
 import { bySlug } from "../content/work";
-import { disciplines, faqs } from "../content/services";
+import { disciplines, faqs, takes } from "../content/services";
 
 export const metadata: Metadata = {
-  title: { absolute: "Brand, Campaign, Content, Web & AI Art Direction Services | CDH" },
-  description: "Brand strategy and identity, ad campaigns for Meta and TikTok, photography and brand film, websites, and AI art direction. One creative director over all five.",
+  title: { absolute: "Brand Identity, Logo, Packaging & Social Media Branding Services | CDH" },
+  description: "Brand identity, logo design, packaging design, social media branding and brand rollout. Three packages, The Mark, The Identity and The World, with one creative director over all of it.",
   alternates: { canonical: "/services" },
 };
 
@@ -44,7 +44,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-[1440px]">
           <p className="slate text-gaffer">Services</p>
           <h1 className="mt-4 text-[clamp(48px,8vw,128px)] font-black leading-[0.9] tracking-tightest">Five ways we put you on your <span className="tape-word"><i aria-hidden="true" className="tape-edge" /><b>mark.</b></span></h1>
-          <p className="mt-6 max-w-[52ch] text-[18px] leading-[1.55] text-body">Five disciplines, one director. Pick the one you need now; the others are there when you need them, with the same person holding the look.</p>
+          <p className="mt-6 max-w-[52ch] text-[18px] leading-[1.55] text-body">Five services, one director. Start with the mark or build the whole world. Every service is directed by the same person, so the brand looks the same from the logo to the last post.</p>
           <ol className="mt-12 flex flex-wrap gap-3">
             {disciplines.map((d, n) => (
               <li key={d.id}><a href={`#${d.id}`} className="inline-flex min-h-[44px] items-center gap-3 rounded-sm border border-line px-4 text-[15px] font-semibold hover:border-muted"><span className="slate text-[12px] text-muted">0{n + 1}</span>{d.name}</a></li>
@@ -84,6 +84,29 @@ export default function ServicesPage() {
           </div>
         </section>
       ))}
+
+      <section id="takes" className="gutter scroll-mt-20 border-t border-line py-20 md:py-28" aria-labelledby="takes-title">
+        <div className="mx-auto max-w-[1440px]">
+          <p className="slate text-gaffer">Packages</p>
+          <h2 id="takes-title" className="reveal mt-4 text-[clamp(44px,6vw,96px)] font-black leading-[0.92] tracking-tighter">Three takes.</h2>
+          <p className="mt-6 max-w-[52ch] text-[18px] leading-[1.55] text-body">Most brands start with one of these. Each is quoted on a call with a fixed price before anything starts.</p>
+          <ol className="reveal mt-14 grid gap-6 lg:grid-cols-3">
+            {takes.map((t, n) => (
+              <li key={t.id} id={t.id} className={`flex flex-col rounded-md border p-7 md:p-9 ${n === 2 ? "border-gaffer" : "border-line"} bg-surface`}>
+                <span className="tape-name-wrap self-start" style={{ ["--tilt" as string]: `${[-2, 1.5, -1][n]}deg` }}><span className="tape-name tape-edge !text-[clamp(18px,1.6vw,24px)]">{t.take}</span></span>
+                <h3 className="mt-8 text-[clamp(32px,3vw,44px)] font-black leading-none tracking-tighter">{t.name}</h3>
+                <p className="mt-3 text-[16px] leading-[1.5] text-muted">{t.for}</p>
+                <ul className="mt-6 grid border-t border-line">
+                  {t.items.map((it) => (
+                    <li key={it} className="relative border-b border-line py-3.5 pl-7 text-[16px] font-semibold leading-[1.4]"><span aria-hidden="true" className="absolute left-0 top-[20px] h-[3px] w-3 bg-gaffer" />{it}</li>
+                  ))}
+                </ul>
+                <a href={book} {...bookProps} className={`mt-8 self-start ${n === 2 ? "btn-primary" : "btn-secondary"}`}>Start {t.take}</a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
       <WaysToStart />
 

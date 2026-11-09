@@ -6,5 +6,5 @@ export const size = ogSize;
 export const contentType = "image/png";
 
 export default function OG() {
-  return ogCard({ kicker: "Services", line1: "Five ways we put", line2: "you on your", tape: "mark.", sub: "Brand · Campaigns · Content · Digital · AI art direction" });
+  return ogCard({ kicker: "Services", line1: "Five ways we put", line2: "you on your", tape: "mark.", sub: "Identity · Logo · Packaging · Social · Rollout" });
 }

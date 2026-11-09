@@ -2,7 +2,7 @@
 // label: "client" = paid client work. "concept" = made by CDH, not commissioned. "studio" = CDH's own brands. "personal" = Willie's own photography.
 
 export type Lane = "consumer" | "personal" | "hospitality";
-export type Discipline = "brand" | "campaigns" | "content" | "digital" | "ai";
+export type Discipline = "identity" | "logo" | "packaging" | "social" | "rollout";
 export type Label = "client" | "concept" | "studio" | "personal";
 
 export type Media =
@@ -27,12 +27,14 @@ export type Case = {
   /** Willie's own note on the thinking behind the work, signed by him. */
   note?: string;
   selected?: number;
+  /** Which package the project was, shown on its card like "Brand identity / Take 02". */
+  take?: "Take 01" | "Take 02" | "Take 03";
   /** Kept online for old links, but left off the Work page, the sitemap and search. */
   archived?: boolean;
 };
 
 export const LANES: Record<Lane, string> = { consumer: "Consumer brands", personal: "Personal brands", hospitality: "Hospitality" };
-export const DISCIPLINES: Record<Discipline, string> = { brand: "Brand", campaigns: "Campaigns and ads", content: "Content and production", digital: "Digital", ai: "AI art direction" };
+export const DISCIPLINES: Record<Discipline, string> = { identity: "Brand identity", logo: "Logo design", packaging: "Packaging design", social: "Social media branding", rollout: "Brand rollout" };
 export const LABELS: Record<Label, string> = { client: "Client", concept: "Concept", studio: "Studio", personal: "Personal work" };
 
 import local from "../components/spec-local.json";
@@ -62,7 +64,7 @@ export const cases: Case[] = [
     client: "Hattiesburg Black Sox",
     label: "client",
     lanes: ["consumer"],
-    disciplines: ["campaigns", "content"],
+    disciplines: ["rollout", "social"],
     year: "",
     brief: "A hometown baseball club took its season on the road to Kentucky and needed one person over every picture, post and layout the team put out while it was there.",
     did: [
@@ -89,7 +91,7 @@ export const cases: Case[] = [
     client: "H.O.P.E Live Agency",
     label: "client",
     lanes: ["personal"],
-    disciplines: ["digital", "brand"],
+    disciplines: ["rollout"],
     year: "2026",
     brief: "A TikTok LIVE creator management agency needed a site that recruits creators: what they get, how it works, and one clear way to apply.",
     did: [
@@ -116,7 +118,7 @@ export const cases: Case[] = [
     client: "Talent and founders",
     label: "client",
     lanes: ["personal"],
-    disciplines: ["content", "brand"],
+    disciplines: ["social", "rollout"],
     year: "",
     brief: "People who are their own brand need pictures that look as serious as they are. One session, a year of content.",
     did: [
@@ -149,7 +151,7 @@ export const cases: Case[] = [
     client: "Island resort concept",
     label: "concept",
     lanes: ["hospitality"],
-    disciplines: ["content", "campaigns", "ai"],
+    disciplines: ["rollout"],
     year: "2026",
     brief: "A private villa sells the moment you land. This spot sells that moment: the jet, the tarmac, the driver, the water.",
     did: [
@@ -172,7 +174,7 @@ export const cases: Case[] = [
     client: "Consumer brands",
     label: "concept",
     lanes: ["consumer"],
-    disciplines: ["campaigns", "content", "ai"],
+    disciplines: ["social", "rollout"],
     year: "2026",
     brief: "Paid social for Meta and TikTok lives or dies in the first three seconds. These are the hooks, the cuts and the statics we make on a weekly loop.",
     did: [
@@ -196,7 +198,8 @@ export const cases: Case[] = [
     client: "Blac Birdie, Soulful Ties, Trading One, Good Laughs",
     label: "studio",
     lanes: ["consumer"],
-    disciplines: ["brand"],
+    take: "Take 01",
+    disciplines: ["logo", "identity"],
     year: "",
     brief: "Four small brands, four marks built to work at app-icon size and on a storefront.",
     did: ["Logo and wordmark", "Color and type"],
@@ -217,7 +220,7 @@ export const cases: Case[] = [
     client: "Short brand films",
     label: "concept",
     lanes: ["consumer"],
-    disciplines: ["content", "ai"],
+    disciplines: ["rollout"],
     year: "2026",
     brief: "Two short films that sell a feeling before a product: a golf morning, and a son coming home.",
     did: ["Script and direction", "AI-assisted production, color and sound"],
@@ -236,7 +239,7 @@ export const cases: Case[] = [
     client: "Personal work",
     label: "personal",
     lanes: ["hospitality"],
-    disciplines: ["content"],
+    disciplines: ["rollout"],
     year: "",
     brief: "Hotels and travel brands buy an eye for place. This is mine, shot across 23 countries, the Great Wall included.",
     did: ["Travel and landscape photography", "Editorial color", "Licensed for hospitality campaigns on request"],
@@ -258,7 +261,7 @@ export const cases: Case[] = [
     client: "Cafe and juice bar",
     label: "concept",
     lanes: ["hospitality", "consumer"],
-    disciplines: ["campaigns", "digital"],
+    disciplines: ["social"],
     year: "",
     brief: "A social set a cafe can post the same day: one product, one offer, one picture that makes you thirsty.",
     did: ["Social campaign graphics", "Offer and menu templates", "Sized for feed and story"],
@@ -277,7 +280,7 @@ export const cases: Case[] = [
     client: "Skincare concept",
     label: "concept",
     lanes: ["consumer"],
-    disciplines: ["ai", "brand", "content"],
+    disciplines: ["packaging", "identity"],
     year: "2026",
     brief: "AI can make anything, which is why most of it looks like nothing in particular. This is one product held to one rulebook: same bottle, same light, same palette, across every shot.",
     did: ["A visual rulebook: palette, light, lens and styling", "Two scenes directed to that rulebook, product consistent shot to shot", "Every frame reviewed before it ships"],
@@ -295,7 +298,7 @@ export const cases: Case[] = [
     client: "Restaurant concept",
     label: "concept",
     lanes: ["hospitality"],
-    disciplines: ["content", "ai"],
+    disciplines: ["rollout", "social"],
     year: "2026",
     brief: "A dining room sells the moment the plate leaves the pass. This spot is that moment: the final leaf, the wiped rim, the hand-off, candlelight behind it.",
     did: ["Script, shot design and direction", "AI-assisted production with a labeled AI performer", "A 16:9 spot ready to cut down for Reels"],
@@ -312,7 +315,7 @@ export const cases: Case[] = [
     client: "Brand film concept",
     label: "concept",
     lanes: ["consumer", "personal"],
-    disciplines: ["brand", "campaigns", "content", "ai"],
+    disciplines: ["packaging", "rollout"],
     year: "2026",
     brief: "Every founder who lands here has had a 1:47 AM: filming the product under a ring light, posting it, watching nothing happen. This film is that night, then the same kitchen directed. Same woman, same sauce, a real brand on the bottle, and what happens when it lands.",
     did: ["Story, script and an 11-frame storyboard, every frame approved before a second of video", "The brand itself: name, label and the orange mark it stands on", "AI-assisted production with labeled AI performers, held consistent shot to shot", "Supers, score and end card, cut to 30 seconds for paid social"],
@@ -330,7 +333,7 @@ export const cases: Case[] = [
     client: "Commercial concepts",
     label: "concept",
     lanes: ["consumer", "hospitality", "personal"],
-    disciplines: ["campaigns", "content", "ai"],
+    disciplines: ["rollout"],
     year: "2026",
     brief: "A skincare brand, a small hotel and a founder-led ceramics studio, one for each lane we work in. Each spot is written, art directed, scored and cut the way a paid commercial would be, with the same faces, product and places held shot to shot.",
     did: ["Script, shot list and a visual rulebook for each brand", "AI-assisted production with labeled AI performers, kept consistent across every shot", "Original score, supers and end card, cut as finished spots under 30 seconds"],
