@@ -16,7 +16,7 @@ import { clients, brandDeals, brandDealsLine, talent, values, network, process }
 
 const services = [
   { id: "identity", name: "Brand identity", line: "The whole world your brand lives in.", poster: "/media/her-mark-cover.webp", video: "/media/her-mark-cover.mp4", alt: "Mama Lou's hot sauce bottle on an orange tape mark, sauce ribboning off a wooden spoon", ai: true },
-  { id: "logo", name: "Logo design", line: "A mark that means something.", poster: "/work/logo-blac-birdie.webp", alt: "Blac Birdie logo: a black bird holding a golf tee, with a serif wordmark", ai: false },
+  { id: "logo", name: "Logo design", line: "A mark that means something.", poster: "/work/logo-wall.webp", alt: "Four logos by CDH: Blac Birdie, Soulful Ties, Trading One and Good Laughs", ai: false },
   { id: "packaging", name: "Packaging design", line: "Sells before anyone picks it up.", poster: "/media/directed/product-after.webp", alt: "A Mama Lou's hot sauce bottle on warm stone in low side light, a pepper and a spoon beside it", ai: true },
   { id: "social", name: "Social media branding", line: "Your feed, looking like a brand.", poster: "/work/gfx-liceria-coffee.webp", alt: "Social design for a cafe: a cold cappuccino with the line Fresh on the menu", ai: false },
   { id: "rollout", name: "Brand rollout", line: "Carried everywhere, the same way.", poster: "/work/spec-blacksox-3.webp", alt: "Billboard layout for the Hattiesburg Black Sox: More Than a Game", ai: false },

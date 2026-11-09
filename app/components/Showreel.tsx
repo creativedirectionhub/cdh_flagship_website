@@ -12,6 +12,7 @@ export default function Showreel() {
   const [src, setSrc] = useState<string | null>(null);
   const [muted, setMuted] = useState(true);
   const [still, setStill] = useState(false);
+  const visible = useRef(false);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -20,6 +21,7 @@ export default function Showreel() {
     const el = box.current;
     if (!el) return;
     const io = new IntersectionObserver(([e]) => {
+      visible.current = e.isIntersecting;
       if (e.isIntersecting) {
         setSrc((s) => s ?? (sm ? "/media/showreel-sm.mp4" : "/media/showreel.mp4"));
         if (!reduce) vid.current?.play().catch(() => {});
@@ -28,6 +30,11 @@ export default function Showreel() {
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  // The first time it scrolls in, the video element only exists after this render, so start it here.
+  useEffect(() => {
+    if (src && visible.current && !still) vid.current?.play().catch(() => {});
+  }, [src, still]);
 
   function sound() {
     const v = vid.current;
