@@ -98,7 +98,6 @@ export default function MarkReveal() {
             </h1>
             <div className="flex flex-col items-start gap-4 pb-2">
               <Link href="/about" className="slate inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 text-[#efe9df] hover:text-gaffer">About us</Link>
-              <span className="slate text-[12px] text-[#efe9df]/70">Reel includes AI concepts, labeled on each piece</span>
             </div>
           </div>
         </div>

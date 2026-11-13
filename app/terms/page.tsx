@@ -31,7 +31,7 @@ const sections: { h: string; p: string[] }[] = [
   },
   {
     h: "AI",
-    p: ["We use AI tools for concepts, edits, product shots, voice and AI performers. Every AI person or scene is labeled, and a director checks every piece before you see it."],
+    p: ["We use AI tools for concepts, edits, product shots, voice and AI performers. Concept work on this site is made with AI and marked as concept; every AI person or scene in client work is labeled, and a director checks every piece before you see it."],
   },
   {
     h: "Payment",

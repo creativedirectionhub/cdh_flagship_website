@@ -65,7 +65,7 @@ export default function Showreel() {
         />
       )}
       <span className="absolute inset-0 bg-gradient-to-t from-[#121110]/85 via-transparent to-[#121110]/25" />
-      <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]">Showreel · AI concepts</span>
+      <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]">Showreel</span>
       <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-5 md:p-8">
         <p className="text-[clamp(32px,5vw,80px)] font-black leading-[0.92] tracking-tightest text-[#efe9df]">Directed at the{" "}<br />speed of culture.</p>
         {still ? (

@@ -73,7 +73,7 @@ export default function SlateOpener() {
         <CommentaryMarker id="hero" className="right-6 top-20 md:right-12 md:top-28" />
         <div className="op-ui gutter absolute inset-x-0 top-7 md:top-12">
           <div className="mx-auto flex max-w-[1440px] items-start justify-between gap-6 text-[#efe9df]">
-            <p className="slate flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}<span className="basis-full pl-4 text-[#efe9df]/60 md:basis-auto md:pl-0">AI concept frame</span></p>
+            <p className="slate flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}</p>
             <p className="slate text-[12px] tabular-nums md:text-[13px]" aria-hidden="true"><span ref={tc}>00:00:00:00</span></p>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function SlateOpener() {
             <span aria-hidden="true" className="grid h-11 w-11 place-items-center rounded-full border border-[#efe9df]/50 transition-colors group-hover:border-gaffer group-hover:bg-gaffer">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z" /></svg>
             </span>
-            Watch the film · The Heist · AI performers
+            Watch the film · The Heist
           </a>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function SiteFooter() {
         </div>
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-[14px] text-muted">
           <span className="slate text-ink">Directed from everywhere.</span>
-          <span>© 2026 Creative Direction Hub · Concepts and AI performers are labeled. · <a href="/privacy" className="inline-block py-3 underline hover:text-gaffer">Privacy</a> · <a href="/terms" className="inline-block py-3 underline hover:text-gaffer">Terms</a></span>
+          <span>© 2026 Creative Direction Hub · Concept work is made with AI. · <a href="/privacy" className="inline-block py-3 underline hover:text-gaffer">Privacy</a> · <a href="/terms" className="inline-block py-3 underline hover:text-gaffer">Terms</a></span>
         </div>
       </div>
     </footer>

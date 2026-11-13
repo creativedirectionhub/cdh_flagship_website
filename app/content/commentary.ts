@@ -11,7 +11,7 @@ export const intro: Note = {
 };
 
 export const notes: Note[] = [
-  { id: "hero", label: "The opening", text: "A client's ball, sitting on our tape. That's the whole company in one frame: we put brands on their mark. This frame is an AI concept, and we label it." },
+  { id: "hero", label: "The opening", text: "A client's ball, sitting on our tape. That's the whole company in one frame: we put brands on their mark." },
   { id: "film", label: "The Heist", text: "The whole pitch in thirty seconds. Three likes on a pound cake she's made since '87. Nothing wrong with the cake. Everything wrong with how it was shown." },
   { id: "brands", label: "The names", text: "Real names only. The clients I directed, and the brand deals where I made the content that ran. If it's on this list, I can tell you exactly what I did." },
   { id: "directed", label: "Undirected, directed", text: "Drag the line. Same subject. One side is what most businesses post. The other side is directed: light, lens, styling, and a reason for every choice." },

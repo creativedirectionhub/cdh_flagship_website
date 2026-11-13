@@ -50,7 +50,6 @@ export default function DirectedSlider({ pairs }: { pairs: Pair[] }) {
           </div>
           <span className="slate absolute left-4 top-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]">Undirected</span>
           <span className="slate absolute right-4 top-4 rounded-tape bg-gaffer px-2 py-1 text-[12px] text-on-gaffer">Directed</span>
-          <span className="slate absolute bottom-4 left-4 rounded-tape bg-[#121110]/85 px-2 py-1 text-[12px] text-[#efe9df]/85">AI concept</span>
 
           <div className="pointer-events-none absolute inset-y-0" style={{ left: `${pos}%` }}>
             <span className="tape-edge absolute inset-y-0 -left-[5px] w-[10px] bg-gaffer shadow-[0_0_24px_rgba(0,0,0,.5)]" />

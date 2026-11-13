@@ -42,7 +42,7 @@ export default function Home() {
           </h2>
           <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
             <PlayTile href="/work/hattiesburg-black-sox" poster="/work/blacksox-huddle.webp" alt="The Hattiesburg Black Sox in a huddle on the field before a game, seen from behind, in black and white" kicker="Hattiesburg Black Sox" title="More than a game." label="Client" sizes="(min-width: 768px) 46vw, 92vw" ratio="3 / 2" className="reveal rounded-sm" />
-            <PlayTile href="/work/her-mark" poster="/media/her-mark-cover.webp" video="/media/her-mark-cover.mp4" alt="Hot sauce ribbons off a wooden spoon beside a Mama Lou's bottle on an orange tape mark" kicker="The film · Her Mark" title="Same kitchen. Directed." label="AI concept" sizes="(min-width: 768px) 46vw, 92vw" ratio="3 / 2" className="reveal rounded-sm" />
+            <PlayTile href="/work/her-mark" poster="/media/her-mark-cover.webp" video="/media/her-mark-cover.mp4" alt="Hot sauce ribbons off a wooden spoon beside a Mama Lou's bottle on an orange tape mark" kicker="The film · Her Mark" title="Same kitchen. Directed." label="Concept" sizes="(min-width: 768px) 46vw, 92vw" ratio="3 / 2" className="reveal rounded-sm" />
           </div>
         </div>
       </section>
@@ -56,7 +56,7 @@ export default function Home() {
               <p className="slate text-gaffer">The film · CDH concept</p>
               <h2 id="film-title" className="reveal mt-5 text-[clamp(44px,7vw,120px)] font-black leading-[0.9] tracking-tightest">Three likes.{" "}<br />Then the crew.</h2>
             </div>
-            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">A Mississippi baker posts the same pound cake she's made since '87 and gets three likes. She calls in a crew. By morning there's a line around the block. Thirty seconds on what direction does for a business, made with AI performers and directed frame by frame.</p>
+            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">A Mississippi baker posts the same pound cake she's made since '87 and gets three likes. She calls in a crew. By morning there's a line around the block. Thirty seconds on what direction does for a business, directed frame by frame.</p>
           </div>
           <div className="reveal mt-12">
             <FilmPlayer
@@ -66,7 +66,7 @@ export default function Home() {
               alt="The Heist, a CDH concept film with AI performers: a Mississippi baker whose post gets three likes calls in a creative crew, and by morning there is a line around the block"
               title="The Heist."
               length="0:30"
-              label="AI concept · AI performers"
+              label="Concept"
             />
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function Home() {
           </div>
           <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-5">
             {services.map((s, n) => (
-              <PlayTile key={s.id} href={`/services#${s.id}`} poster={s.poster} video={s.video} alt={s.alt} kicker={`0${n + 1}`} title={s.name} sub={s.line} label={s.ai ? "AI" : undefined} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
+              <PlayTile key={s.id} href={`/services#${s.id}`} poster={s.poster} video={s.video} alt={s.alt} kicker={`0${n + 1}`} title={s.name} sub={s.line} label={undefined} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
             ))}
           </div>
         </div>

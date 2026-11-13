@@ -131,7 +131,7 @@ export const process = [
 
 export const faqs = [
   { q: "Who owns the work?", a: "You do, once it's paid for. Creator usage terms, meaning how long and where a creator's face can run, are written into each deal before filming." },
-  { q: "How do you use AI?", a: "For speed and range: concepts, edits, product shots, voice and AI performers. Every AI person or scene is labeled, and a director checks every piece before you see it. Where a real face matters, we cast real people." },
+  { q: "How do you use AI?", a: "For speed and range: concepts, edits, product shots, voice and AI performers. Concept work on this site is made with AI and marked as concept; every AI person or scene in client work is labeled, and a director checks every piece before you see it. Where a real face matters, we cast real people." },
   { q: "Who actually does the work?", a: "Willie directs every project. A vetted network of editors, designers, photographers, motion artists and creators makes it with him, picked for each job." },
   { q: "How many revisions do I get?", a: "Two rounds on every piece. The first cut lands within 5 business days of an approved brief." },
   { q: "What does it cost?", a: "Projects are quoted on a short call after your audit, with a fixed price before we start. Retainers have a 3-month minimum, then run month to month with 30 days’ notice." },
