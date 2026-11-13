@@ -15,9 +15,9 @@ import { BOOKING_URL } from "./config";
 import { clients, brandDeals, brandDealsLine, talent, values, network, process } from "./content/services";
 
 const services: { id: string; name: string; line: string; poster: string; video?: string; alt: string; ai: boolean }[] = [
-  { id: "identity", name: "Brand identity", line: "The whole world your brand lives in.", poster: "/work/black-birdie-farms/cover.webp", alt: "Black Birdie Farms at the market: the farmer in an apron printed with the bird mark, kraft boxes stamped with the farm seal", ai: true },
-  { id: "logo", name: "Logo design", line: "A mark that means something.", poster: "/work/logo-wall.webp", alt: "Four logos by CDH: Black Birdie Farms, Soulful Ties, Trading One and Good Laughs", ai: false },
-  { id: "packaging", name: "Packaging design", line: "Sells before anyone picks it up.", poster: "/work/black-birdie-farms/tile-packaging.webp", alt: "Black Birdie Farms packaging: a kraft produce box of lion's mane with a by-the-pound label, between boxes of oyster and chestnut mushrooms", ai: true },
+  { id: "identity", name: "Brand identity", line: "The whole world your brand lives in.", poster: "/work/blac-birdie-farms/tile-identity.webp", alt: "The Blac Birdie Farms logo: a black bird rising out of a dark circle, above the Blac Birdie wordmark", ai: false },
+  { id: "logo", name: "Logo design", line: "A mark that means something.", poster: "/work/logo-wall.webp", alt: "Four logos by CDH: Blac Birdie Farms, Soulful Ties, Trading One and Good Laughs", ai: false },
+  { id: "packaging", name: "Packaging design", line: "Sells before anyone picks it up.", poster: "/work/blac-birdie-farms/tile-packaging.webp", alt: "Blac Birdie Farms packaging: matte black produce boxes of pink and yellow oyster mushrooms with cream variety labels", ai: true },
   { id: "social", name: "Social media branding", line: "Your feed, looking like a brand.", poster: "/work/gfx-liceria-coffee.webp", alt: "Social design for a cafe: a cold cappuccino with the line Fresh on the menu", ai: false },
   { id: "rollout", name: "Brand rollout", line: "Carried everywhere, the same way.", poster: "/work/spec-blacksox-3.webp", alt: "Billboard layout for the Hattiesburg Black Sox: More Than a Game", ai: false },
 ];

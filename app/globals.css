@@ -309,13 +309,12 @@ html[data-spot] main > *:not([data-cm-on]), html[data-spot] body > footer { opac
 @media (max-width: 639px) { .tape-name { font-size: clamp(19px, 5.6vw, 26px); } }
 @media (prefers-reduced-motion: reduce) { .tape-name-wrap { transition: none; } }
 
-/* ---- Black Birdie Farms mark: the stems swing up into the beak, then the three caps open one by one ---- */
-/* Origins are the beak's grip point, measured from the viewBox's left edge (x 40). */
-.bbf-anim .bbf-stems, .bbf-anim .bbf-cap { transform-origin: 628px 391px; transform-box: view-box; }
-.bbf-anim .bbf-stems { animation: bbfStems .7s cubic-bezier(.2,1.3,.4,1) .3s both; }
-.bbf-anim .bbf-cap { animation: bbfCap .6s cubic-bezier(.2,1.5,.4,1) both; animation-delay: calc(.75s + var(--i) * 130ms); }
-@keyframes bbfStems { from { transform: rotate(28deg) scale(.4); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes bbfCap { from { transform: scale(.55); opacity: 0; } to { transform: none; opacity: 1; } }
+/* ---- Blac Birdie Farms mark: the dark circle settles, then the bird rises out of it ---- */
+/* Origins are measured from the viewBox's left edge (x 110). */
+.bbf-anim .bbf-disc { transform-origin: 390px 560px; transform-box: view-box; animation: bbfDisc .6s cubic-bezier(.2,.9,.3,1) .1s both; }
+.bbf-anim .bbf-rise { animation: bbfRise 1.1s cubic-bezier(.2,1,.3,1) .45s both; }
+@keyframes bbfDisc { from { transform: scale(.9); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes bbfRise { from { transform: translateY(150px); opacity: 0; } 30% { opacity: 1; } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-  .bbf-anim .bbf-stems, .bbf-anim .bbf-cap { animation: none; }
+  .bbf-anim .bbf-disc, .bbf-anim .bbf-rise { animation: none; }
 }
