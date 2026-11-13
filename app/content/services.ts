@@ -65,7 +65,7 @@ export const disciplines: { id: Discipline; name: string; short: string; what: s
     short: "Your feed, looking like a brand.",
     what: "Profile, grid, templates, highlight covers, cover frames and the rules for photos, captions and video, so every post looks like yours without a designer on every one.",
     get: ["Profile, bio and highlight covers", "Post, story and reel cover templates your team can use", "A grid plan and content pillars", "Photo, caption and video rules in one page"],
-    proof: ["blac-birdie-farms", "paid-social"],
+    proof: ["blacktravelgram", "hattiesburg-black-sox"],
   },
   {
     id: "rollout",

@@ -31,6 +31,8 @@ export type Case = {
   take?: "Take 01" | "Take 02" | "Take 03";
   /** Has its own hand-built page at /work/<slug>, so the generic case template skips it. */
   custom?: boolean;
+  /** Outside links to the live work, shown under "What we did". */
+  links?: { label: string; href: string }[];
   /** Kept online for old links, but left off the Work page, the sitemap and search. */
   archived?: boolean;
 };
@@ -60,6 +62,36 @@ const statics: [string, string, string][] = [
 const img = (src: string, alt: string, w: number, h: number, caption?: string): Media => ({ kind: "image", src, alt, w, h, caption });
 
 export const cases: Case[] = [
+  {
+    slug: "blacktravelgram",
+    title: "A feed people wanted to be in.",
+    client: "Blacktravelgram",
+    label: "client",
+    lanes: ["personal", "hospitality"],
+    disciplines: ["social"],
+    year: "2021",
+    brief: "Blacktravelgram is a travel community for Black travelers. Willie joined its creative brand squad when the account had about 38,000 followers, shot travel photography for it, and helped grow it past 100,000.",
+    did: [
+      "Creative brand squad: the look of the feed, post by post",
+      "Travel photography for the account",
+      "Posts for the group's trips and yacht parties in Riviera Maya, Mexico",
+      "Helped grow the account from about 38,000 to more than 100,000 followers",
+    ],
+    cover: img("/work/btg-cover.webp", "A slice of the Blacktravelgram Instagram grid: Black travelers in bright, sunlit shots at beaches, Petra, a Moroccan street mural and an overwater bungalow", 968, 1292),
+    media: [
+      img("/work/btg-feed.webp", "The Blacktravelgram Instagram grid: two dozen bright travel portraits of Black travelers, from Positano and Machu Picchu to Petra, Zanzibar and the Caribbean", 1452, 1292, "The Blacktravelgram feed"),
+      img("/work/btg-yacht.webp", "A Blacktravelgram post: a man floating on a pink inflatable in turquoise water under the red Black Travel Gram logo, announcing a yacht party on June 3, 2021, 2pm to 6pm, only 15 spots", 990, 1243, "Trip post, Riviera Maya yacht party, 2021"),
+    ],
+    links: [
+      { label: "Post on Instagram", href: "https://www.instagram.com/blacktravelgram/p/CO_jy6clMUf/" },
+      { label: "Post on Instagram", href: "https://www.instagram.com/blacktravelgram/p/CO66Ac3lxCC/" },
+      { label: "Post on Instagram", href: "https://www.instagram.com/blacktravelgram/p/COvwUrEhDEX/" },
+      { label: "Reel on Instagram", href: "https://www.instagram.com/reel/CMxAWjgBC7h/" },
+    ],
+    note: "A travel page lives or dies on one feeling: I want to be there. Every post had to make somebody check their passport. When the grid looks like a trip people want to take, the follows take care of themselves.",
+    credits: ["Creative brand squad and travel photography: Willie Bernoudy", "Feed and posts from @blacktravelgram; travelers' photos belong to the people in them"],
+    selected: 2.5,
+  },
   {
     slug: "blac-birdie-farms",
     custom: true,

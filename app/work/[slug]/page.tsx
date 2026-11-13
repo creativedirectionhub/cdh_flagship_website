@@ -95,6 +95,12 @@ export default function CasePage({ params }: { params: { slug: string } }) {
                   <dt className="slate text-[12px] text-muted">What we did</dt>
                   <dd className="mt-1"><ul className="grid gap-1 font-semibold">{c.did.map((d) => <li key={d}>{d}</li>)}</ul></dd>
                 </div>
+                {c.links && c.links.length > 0 && (
+                  <div>
+                    <dt className="slate text-[12px] text-muted">See it live</dt>
+                    <dd className="mt-1"><ul className="grid gap-1">{c.links.map((l, i) => <li key={l.href}><a href={l.href} target="_blank" rel="noopener" className="inline-flex min-h-[44px] items-center font-semibold underline decoration-gaffer underline-offset-4 hover:text-gaffer">{l.label} {String(i + 1).padStart(2, "0")}</a></li>)}</ul></dd>
+                  </div>
+                )}
               </dl>
             </div>
           </div>
