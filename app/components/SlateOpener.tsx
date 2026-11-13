@@ -50,16 +50,16 @@ export default function SlateOpener() {
 
   return (
     <section aria-label="Opening" data-cm="hero" className="relative overflow-hidden bg-ground md:h-[calc(100svh-68px)] md:min-h-[600px]">
-      {/* The frame: the crew on its mark. 4:5 on phones so all five read, full bleed from tablet up. */}
+      {/* The frame: a client's brand, literally on its mark. 4:5 on phones with the ball centered, full bleed from tablet up with the ball right of the headline. */}
       <div className="relative aspect-[4/5] w-full md:absolute md:inset-0 md:aspect-auto">
         <Image
-          src="/media/heist-poster.webp"
-          alt="Five crew members in black with orange tape armbands stand in a night alley in front of a van: a planner with a rolled-out layout, a writer, a photographer with a camera, an editor with a laptop and a designer with a tablet. AI performers, from the CDH concept film The Heist."
+          src="/media/hero-mark.webp"
+          alt="A scuffed Hattiesburg Black Sox baseball sitting on an orange gaffer-tape T mark on a concrete stage floor, lit by one hard light, with a C-stand, a coiled cable, a camera monitor and a crew member's sneakers out of focus behind it. AI concept frame."
           fill
           priority
           fetchPriority="high"
           sizes="100vw"
-          className="object-cover object-[50%_38%]"
+          className="object-cover object-[50%_50%] md:object-[0%_55%]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#121110] via-[#121110]/10 to-[#121110]/40 md:from-[#121110]/92 md:via-[#121110]/15" />
 
@@ -73,7 +73,7 @@ export default function SlateOpener() {
         <CommentaryMarker id="hero" className="right-6 top-20 md:right-12 md:top-28" />
         <div className="op-ui gutter absolute inset-x-0 top-7 md:top-12">
           <div className="mx-auto flex max-w-[1440px] items-start justify-between gap-6 text-[#efe9df]">
-            <p className="slate flex items-center gap-2 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}</p>
+            <p className="slate flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] md:text-[13px]"><span aria-hidden="true" className="rec-dot" />Rec · Take {pad(take)}<span className="basis-full pl-4 text-[#efe9df]/60 md:basis-auto md:pl-0">AI concept frame</span></p>
             <p className="slate text-[12px] tabular-nums md:text-[13px]" aria-hidden="true"><span ref={tc}>00:00:00:00</span></p>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function SlateOpener() {
       <div className="gutter relative -mt-16 pb-12 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:pb-16">
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-end justify-between gap-x-8 gap-y-6">
           <div className="min-w-0">
-            <h1 className="text-[clamp(52px,8.6vw,148px)] font-black leading-[0.98] tracking-tightest text-[#efe9df] [text-shadow:0_2px_28px_rgba(18,17,16,0.55)]">
+            <h1 className="text-[clamp(52px,8.6vw,148px)] md:text-[clamp(64px,6.4vw,104px)] font-black leading-[0.98] tracking-tightest text-[#efe9df] [text-shadow:0_2px_28px_rgba(18,17,16,0.55)]">
               <span className="sr-only">Creative Direction Hub, a media company specializing in creative direction and AI art direction. </span>
               <span className="op-line block">We put brands</span>{" "}
               <span className="op-line op-line-2 block">on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge op-tape" /><b className="op-ink">mark.</b></span></span>
