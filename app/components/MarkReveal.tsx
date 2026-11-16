@@ -79,7 +79,7 @@ export default function MarkReveal() {
           </svg>
         )}
         <div className="absolute inset-0" style={maskStyle}>
-          <video ref={video} muted playsInline loop autoPlay preload="metadata" poster="/media/reel-poster.webp" aria-label="Reel: Hattiesburg Black Sox campaign, talent portraits, travel photography, then AI concept films including a pop-up rush for Mama Lou's hot sauce" className="h-full w-full object-cover" />
+          <video ref={video} muted playsInline loop autoPlay preload="metadata" poster="/media/reel-poster.webp" aria-label="Reel: Hattiesburg Black Sox campaign, talent portraits, travel photography, then concept films including a pop-up rush for Mama Lou's hot sauce" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/85 via-[#121110]/10 to-[#121110]/30" style={{ opacity: lineIn }} />
         </div>
 

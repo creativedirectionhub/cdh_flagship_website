@@ -130,7 +130,7 @@ export function CommentaryBar() {
   const note: Note | undefined = allNotes.find((x) => x.id === s.id);
   const n = notes.findIndex((x) => x.id === s.id);
   return (
-    <div role="region" aria-label="Director's commentary" className="cm-bar fixed inset-x-3 bottom-3 z-50 mx-auto max-w-[760px] overflow-hidden rounded-md border border-line bg-raised/95 shadow-[0_18px_60px_rgba(0,0,0,.55)] backdrop-blur-md md:bottom-6">
+    <div role="region" aria-label="Director's commentary" className="cm-bar fixed inset-x-3 bottom-3 z-50 mx-auto max-w-[760px] overflow-hidden rounded-md border border-line bg-raised/95 shadow-[0_18px_60px_rgba(0,0,0,.55)] backdrop-blur-sm md:bottom-6">
       <div className="h-[3px] bg-line"><div className="h-full bg-gaffer transition-[width] duration-200" style={{ width: `${Math.round(s.progress * 100)}%` }} /></div>
       <div className="flex items-start gap-4 p-4 md:p-5">
         <button

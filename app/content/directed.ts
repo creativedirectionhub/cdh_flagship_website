@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Pair } from "../components/DirectedSlider";
 
-// Undirected / directed pairs for the home page slider. AI concepts, labeled on the image.
+// Undirected / directed pairs for the home page slider. Concept frames, labeled Concept on the image.
 // One per lane: a consumer product, a personal brand, a hospitality plate.
 export const pairs: Pair[] = [
   {

@@ -3,7 +3,7 @@ import { site } from "../content/services";
 
 export const metadata: Metadata = {
   title: "Terms",
-  description: "How Creative Direction Hub works with clients: scope and price, timing, revisions, ownership, AI and payment.",
+  description: "How Creative Direction Hub works with clients: scope and price, timing, revisions, ownership, how the work is made and payment.",
   alternates: { canonical: "/terms" },
 };
 
@@ -30,8 +30,8 @@ const sections: { h: string; p: string[] }[] = [
     ],
   },
   {
-    h: "AI",
-    p: ["We use AI tools for concepts, edits, product shots, voice and AI performers. Concept work on this site is made with AI and marked as concept; every AI person or scene in client work is labeled, and a director checks every piece before you see it."],
+    h: "How the work is made",
+    p: ["We use the tools that fit the job, including AI tools, and a director checks every piece before you see it.", "Work on this site marked Concept was made by CDH and was not commissioned by a client. Ask how any piece was made and we'll tell you.", "Ads that run on platforms with their own disclosure rules are delivered to meet those rules."],
   },
   {
     h: "Payment",

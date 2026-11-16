@@ -1,11 +1,11 @@
-import type { Discipline, Lane } from "./work";
+import type { Lane } from "./work";
 
 export const site = {
   name: "Creative Direction Hub",
   tagline: "We put brands on their mark.",
   promise: "Every project has a director.",
   positioning: "Creative Direction Hub is the creative department for growing businesses, led by creative director Willie Bernoudy.",
-  support: "Brand identity, logos, packaging, social media branding and the rollout that carries it everywhere, directed by one person and made by one team.",
+  support: "Branding, marketing, websites and brand photography, directed by one person and made by one crew.",
   url: "https://www.creativedirectionhub.com",
   email: "hello@creativedirectionhub.com",
 };
@@ -34,50 +34,7 @@ export const lanes: { id: Lane; name: string; who: string; problem: string; proo
   },
 ];
 
-export const disciplines: { id: Discipline; name: string; short: string; what: string; get: string[]; proof: string[] }[] = [
-  {
-    id: "identity",
-    name: "Brand identity",
-    short: "The whole world your brand lives in.",
-    what: "Positioning, name, voice, logo system, color, type, photography rules, motion and guidelines. Decided once, so every piece after it looks like it came from the same place.",
-    get: ["A positioning you can say in one breath", "A full visual system: mark, color, type, image style and motion", "Voice and messaging your whole team can write in", "Guidelines as a living page, not a PDF nobody opens"],
-    proof: ["blac-birdie-farms", "her-mark"],
-  },
-  {
-    id: "logo",
-    name: "Logo design",
-    short: "A mark that means something.",
-    what: "Logos, wordmarks and monograms built to work at app-icon size and on a storefront, in one color and in motion. Built to last decades, not seasons.",
-    get: ["Primary logo, wordmark and a compact mark", "Versions for dark, light and one color", "An animated logo for reels and video", "Files for print, web and social, organized"],
-    proof: ["blac-birdie-farms", "identity"],
-  },
-  {
-    id: "packaging",
-    name: "Packaging design",
-    short: "Sells before anyone picks it up.",
-    what: "Labels, boxes, bottles and bags designed for the shelf and the scroll: structure, label system, production-ready files, and the product photography to launch it.",
-    get: ["A label or box system that extends across the range", "Print-ready files checked with your printer", "Launch photography of the finished pack", "Shelf and feed mockups before anything is printed"],
-    proof: ["blac-birdie-farms", "her-mark"],
-  },
-  {
-    id: "social",
-    name: "Social media branding",
-    short: "Your feed, looking like a brand.",
-    what: "Profile, grid, templates, highlight covers, cover frames and the rules for photos, captions and video, so every post looks like yours without a designer on every one.",
-    get: ["Profile, bio and highlight covers", "Post, story and reel cover templates your team can use", "A grid plan and content pillars", "Photo, caption and video rules in one page"],
-    proof: ["blacktravelgram", "hattiesburg-black-sox"],
-  },
-  {
-    id: "rollout",
-    name: "Brand rollout",
-    short: "Carried everywhere, the same way.",
-    what: "Launch campaigns, ads for Meta and TikTok, photography, brand film, websites and collateral that carry the brand into the world. AI-directed production where it helps, labeled every time.",
-    get: ["A launch campaign with one idea across every channel", "Photography and brand film, with cut-downs", "A website or landing page built around one action", "Ads made, read and reported every week"],
-    proof: ["hattiesburg-black-sox", "hope-live-agency"],
-  },
-];
-
-// Packages, named like takes on set. No prices on the site; every project is quoted on a call.
+// Branding packages, named like takes on set. No prices on the site; every project is quoted on a call.
 export const takes = [
   { id: "take-01", take: "Take 01", name: "The Mark", for: "New brands that need to look real, fast.", items: ["Logo, wordmark and compact mark", "Color and type", "Animated logo", "Social profile kit"] },
   { id: "take-02", take: "Take 02", name: "The Identity", for: "Growing brands ready to look like one company everywhere.", items: ["Everything in The Mark", "Positioning and voice", "Full visual system and image style", "Guidelines and social templates"] },
@@ -104,7 +61,7 @@ export const ways = [
     pace: "2 to 8",
     term: "weeks",
     body: "A start, a finish and a price agreed before we begin. Pick a Take, or scope one service on its own.",
-    items: ["Take 01: The Mark", "Take 02: The Identity", "Take 03: The World", "Or one service: packaging, social, a launch"],
+    items: ["Take 01: The Mark", "Take 02: The Identity", "Take 03: The World", "Or one scene on its own: a site, a shoot, a menu"],
     cta: "Book a call",
     href: "book",
   },
@@ -114,8 +71,8 @@ export const ways = [
     name: "Creative Director on Retainer",
     pace: "Monthly",
     term: "3-month minimum",
-    body: "A creative director over everything you put out after launch, with the team to make it: social, ads and new pieces that stay on brand.",
-    items: ["Social posts and reels made on brand", "Growth Retainer: 16 ads a month, 3 hooks each", "Weekly report in plain words"],
+    body: "A creative director over everything you put out after launch, with the crew to make it: brand support, search, social and ads that stay on brand.",
+    items: ["Brand support: design and content made each month", "Search, social and Google Ads, read every week", "Growth Retainer: 16 ads a month, 3 hooks each"],
     cta: "Book a call",
     href: "book",
   },
@@ -124,14 +81,14 @@ export const ways = [
 export const process = [
   { step: "Audit", body: "We look at what you have and tell you what's holding it back." },
   { step: "Direction", body: "The idea, the look and the shot list, decided before anything gets made." },
-  { step: "Design", body: "The mark, the system, the pack and the feed, made by the network under one director." },
-  { step: "Launch", body: "Live on your site, your feeds and your ads, sized for every placement." },
+  { step: "Make", body: "The brand, the site, the pictures and the posts, made by the network under one director." },
+  { step: "Launch", body: "Live on your site, your feeds, your ads and in search, sized for every placement." },
   { step: "Read the results", body: "What worked, what didn't, what we make next. Every week, in plain words." },
 ];
 
 export const faqs = [
   { q: "Who owns the work?", a: "You do, once it's paid for. Creator usage terms, meaning how long and where a creator's face can run, are written into each deal before filming." },
-  { q: "How do you use AI?", a: "For speed and range: concepts, edits, product shots, voice and AI performers. Concept work on this site is made with AI and marked as concept; every AI person or scene in client work is labeled, and a director checks every piece before you see it. Where a real face matters, we cast real people." },
+  { q: "How is the work made?", a: "By a director and a crew picked for the job: designers, photographers, editors, writers and developers. We use the tools that get the best result, and a director checks every piece before you see it. Ask how any piece was made and we'll tell you." },
   { q: "Who actually does the work?", a: "Willie directs every project. A vetted network of editors, designers, photographers, motion artists and creators makes it with him, picked for each job." },
   { q: "How many revisions do I get?", a: "Two rounds on every piece. The first cut lands within 5 business days of an approved brief." },
   { q: "What does it cost?", a: "Projects are quoted on a short call after your audit, with a fixed price before we start. Retainers have a 3-month minimum, then run month to month with 30 days’ notice." },

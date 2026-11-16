@@ -54,7 +54,7 @@ export default function SlateOpener() {
       <div className="relative aspect-[4/5] w-full md:absolute md:inset-0 md:aspect-auto">
         <Image
           src="/media/hero-mark.webp"
-          alt="A scuffed Hattiesburg Black Sox baseball sitting on an orange gaffer-tape T mark on a concrete stage floor, lit by one hard light, with a C-stand, a coiled cable, a camera monitor and a crew member's sneakers out of focus behind it. AI concept frame."
+          alt="A scuffed Hattiesburg Black Sox baseball sitting on an orange gaffer-tape T mark on a concrete stage floor, lit by one hard light, with a C-stand, a coiled cable, a camera monitor and a crew member's sneakers out of focus behind it. Concept frame."
           fill
           priority
           fetchPriority="high"
@@ -84,7 +84,7 @@ export default function SlateOpener() {
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-end justify-between gap-x-8 gap-y-6">
           <div className="min-w-0">
             <h1 className="text-[clamp(52px,8.6vw,148px)] md:text-[clamp(64px,6.4vw,104px)] font-black leading-[0.98] tracking-tightest text-[#efe9df] [text-shadow:0_2px_28px_rgba(18,17,16,0.55)]">
-              <span className="sr-only">Creative Direction Hub, a media company specializing in creative direction and AI art direction. </span>
+              <span className="sr-only">Creative Direction Hub: branding, marketing, websites and brand photography. </span>
               <span className="op-line block">We put brands</span>{" "}
               <span className="op-line op-line-2 block">on their <span className="tape-word ml-[0.1em]"><i aria-hidden="true" className="tape-edge op-tape" /><b className="op-ink">mark.</b></span></span>
             </h1>

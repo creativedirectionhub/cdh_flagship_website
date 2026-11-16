@@ -4,8 +4,8 @@ import WaysToStart from "../components/WaysToStart";
 import { DISCIPLINES, LANES, type Discipline, type Lane } from "../content/work";
 
 export const metadata: Metadata = {
-  title: { absolute: "Work: Brand Identity, Logos, Packaging & Social | Creative Direction Hub" },
-  description: "Brand identity, logos, packaging, social media branding and brand rollouts for consumer brands, personal brands and hospitality, directed by Willie Bernoudy.",
+  title: { absolute: "Work: Branding, Marketing, Websites & Photography | Creative Direction Hub" },
+  description: "Branding, marketing, websites and brand photography for consumer brands, personal brands and hospitality, directed by Willie Bernoudy.",
   alternates: { canonical: "/work" },
 };
 

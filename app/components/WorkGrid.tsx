@@ -25,7 +25,7 @@ export default function WorkGrid({ lane, discipline }: { lane: Lane | ""; discip
           ))}
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="slate mr-2 text-muted">Discipline</span>
+          <span className="slate mr-2 text-muted">Dept.</span>
           <Link href={href(lane, "")} aria-current={!discipline ? "true" : undefined} className={chip(!discipline)}>All</Link>
           {(Object.keys(DISCIPLINES) as Discipline[]).map((k) => (
             <Link key={k} href={href(lane, discipline === k ? "" : k)} aria-current={discipline === k ? "true" : undefined} className={chip(discipline === k)}>{DISCIPLINES[k]}</Link>

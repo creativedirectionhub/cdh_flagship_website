@@ -13,18 +13,18 @@ import TapeWipe from "./components/TapeWipe";
 import { TapeMark } from "./components/Brand";
 import { BOOKING_URL } from "./config";
 import { clients, brandDeals, brandDealsLine, talent, values, network, process } from "./content/services";
+import { depts } from "./content/offer";
 
-const services: { id: string; name: string; line: string; poster: string; video?: string; alt: string; ai: boolean }[] = [
-  { id: "identity", name: "Brand identity", line: "The whole world your brand lives in.", poster: "/work/blac-birdie-farms/tile-identity.webp", alt: "The Blac Birdie Farms logo: a black bird rising out of a dark circle, above the Blac Birdie wordmark", ai: false },
-  { id: "logo", name: "Logo design", line: "A mark that means something.", poster: "/work/logo-wall.webp", alt: "Four logos by CDH: Blac Birdie Farms, Soulful Ties, Trading One and Good Laughs", ai: false },
-  { id: "packaging", name: "Packaging design", line: "Sells before anyone picks it up.", poster: "/work/blac-birdie-farms/tile-packaging.webp", alt: "Blac Birdie Farms packaging: matte black produce boxes of pink and yellow oyster mushrooms with cream variety labels", ai: true },
-  { id: "social", name: "Social media branding", line: "Your feed, looking like a brand.", poster: "/work/gfx-liceria-coffee.webp", alt: "Social design for a cafe: a cold cappuccino with the line Fresh on the menu", ai: false },
-  { id: "rollout", name: "Brand rollout", line: "Carried everywhere, the same way.", poster: "/work/spec-blacksox-3.webp", alt: "Billboard layout for the Hattiesburg Black Sox: More Than a Game", ai: false },
+const services: { href: string; name: string; line: string; poster: string; alt: string }[] = [
+  { href: "/services#branding", name: "Branding", line: depts[0].line, poster: "/work/logo-wall.webp", alt: "Four logos by CDH: Blac Birdie Farms, Soulful Ties, Trading One and Good Laughs" },
+  { href: "/services#marketing", name: "Marketing", line: depts[1].line, poster: "/work/btg-cover.webp", alt: "A slice of the Blacktravelgram Instagram grid: Black travelers in bright, sunlit shots at beaches, Petra, a Moroccan street mural and an overwater bungalow" },
+  { href: "/services/website-design", name: "Websites", line: depts[2].line, poster: "/work/hope-cover.webp", alt: "The H.O.P.E Live Agency website on a laptop and a phone" },
+  { href: "/services/brand-photography", name: "Photography", line: depts[3].line, poster: "/work/portrait-37.webp", alt: "A woman in a dark dress and leopard scarf, sunglasses on, on a tree-lined path" },
 ];
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  openGraph: { title: "Creative Direction Hub · We put brands on their mark.", description: "Brand identity, logos, packaging and social media branding for consumer brands, personal brands and hospitality, led by Willie Bernoudy." },
+  openGraph: { title: "Creative Direction Hub · We put brands on their mark.", description: "Branding, marketing, websites and brand photography for consumer brands, personal brands and hospitality, with one creative director over all of it." },
 };
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1440px]">
           <p className="slate text-gaffer">For consumer brands · personal brands · hospitality</p>
           <h2 id="breath-title" className="reveal mt-6 max-w-[22ch] text-[clamp(34px,4.8vw,76px)] font-black leading-[1] tracking-tighter">
-            The brand studio for growing businesses. One director over the identity, the logo, the pack and the feed, <span className="text-muted">and a crew built for every job.</span>
+            Branding, marketing, websites and photography for growing businesses. One director over all of it, <span className="text-muted">and a crew built for every job.</span>
           </h2>
           <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
             <PlayTile href="/work/hattiesburg-black-sox" poster="/work/blacksox-huddle.webp" alt="The Hattiesburg Black Sox in a huddle on the field before a game, seen from behind, in black and white" kicker="Hattiesburg Black Sox" title="More than a game." label="Client" sizes="(min-width: 768px) 46vw, 92vw" ratio="3 / 2" className="reveal rounded-sm" />
@@ -63,7 +63,7 @@ export default function Home() {
               poster="/media/heist-film-poster.webp"
               src="/media/heist.mp4"
               srcVertical="/media/heist-sm.mp4"
-              alt="The Heist, a CDH concept film with AI performers: a Mississippi baker whose post gets three likes calls in a creative crew, and by morning there is a line around the block"
+              alt="The Heist, a CDH concept film: a Mississippi baker whose post gets three likes calls in a creative crew, and by morning there is a line around the block"
               title="The Heist."
               length="0:30"
               label="Concept"
@@ -92,9 +92,9 @@ export default function Home() {
       <section className="gutter border-t border-line py-24 md:py-36" aria-labelledby="teaser-title">
         <div className="mx-auto max-w-[1440px]">
           <h2 id="teaser-title" className="reveal text-[clamp(40px,7vw,120px)] font-black leading-[0.92] tracking-tightest">
-            A mark that means something. Packs that sell from the shelf. A feed that looks like a brand. <span className="text-gaffer">Carried everywhere, the same way.</span>
+            A brand people remember. A site that sells it. Pictures that prove it. <span className="text-gaffer">And your name, when they search, ask or prompt.</span>
           </h2>
-          <Link href="/services" className="slate mt-12 inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">See all services</Link>
+          <Link href="/services" className="slate mt-12 inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">See the call sheet</Link>
         </div>
       </section>
 
@@ -133,7 +133,7 @@ export default function Home() {
           <div className="reveal min-w-0">
             <p className="max-w-[46ch] text-[18px] leading-[1.6] text-body">Willie directs every project. A vetted network of {network.slice(0, -1).join(", ").toLowerCase()} and {network[network.length - 1].toLowerCase()} makes it with him, picked for each job. You get the right people without paying for a bench.</p>
             <ul className="mt-8 flex flex-wrap gap-2">
-              {["Brand", "Campaigns", "Content", "Digital", "AI"].map((t) => (
+              {depts.map((d) => d.name).map((t) => (
                 <li key={t} className="slate rounded-sm border border-line px-3 py-2 text-[12px] text-body">{t}</li>
               ))}
             </ul>
@@ -165,16 +165,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The five services */}
+      {/* The four departments */}
       <section className="gutter border-t border-line py-20 md:py-28" aria-labelledby="five-title">
         <div className="mx-auto max-w-[1440px]">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 id="five-title" className="text-[clamp(36px,4.8vw,72px)] font-black leading-[0.95] tracking-tighter">Five ways we put you on your mark.</h2>
-            <Link href="/services" className="slate inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">All services</Link>
+            <h2 id="five-title" className="text-[clamp(36px,4.8vw,72px)] font-black leading-[0.95] tracking-tighter">Four departments. One director.</h2>
+            <Link href="/services" className="slate inline-flex min-h-[44px] items-end border-b-2 border-gaffer pb-1 pt-3 hover:text-gaffer">The call sheet: all 14 services</Link>
           </div>
-          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-5">
+          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
             {services.map((s, n) => (
-              <PlayTile key={s.id} href={`/services#${s.id}`} poster={s.poster} video={s.video} alt={s.alt} kicker={`0${n + 1}`} title={s.name} sub={s.line} label={undefined} sizes="(min-width: 1024px) 19vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
+              <PlayTile key={s.href} href={s.href} poster={s.poster} alt={s.alt} kicker={`Dept. 0${n + 1}`} title={s.name} sub={s.line} label={undefined} sizes="(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 92vw" ratio="3 / 4" className="reveal w-[72vw] shrink-0 snap-start rounded-sm sm:w-auto" titleClass="text-[clamp(26px,2.2vw,34px)]" />
             ))}
           </div>
         </div>

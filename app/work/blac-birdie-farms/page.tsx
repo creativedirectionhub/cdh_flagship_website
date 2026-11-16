@@ -67,7 +67,7 @@ export default function BlacBirdieFarms() {
             </p>
             <div className="mt-8 grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_auto]">
               <div className="min-w-0">
-                <p className="slate text-gaffer">Brand identity / Take 03</p>
+                <p className="slate text-gaffer">Branding / Take 03</p>
                 <h1 className="mt-5 text-[clamp(52px,9vw,148px)] font-black leading-[0.88] tracking-tightest">Blac Birdie Farms.</h1>
               </div>
               <div className="grid h-[180px] w-[180px] place-items-center rounded-full bg-[#F3EBDD] md:h-[240px] md:w-[240px]">
@@ -87,7 +87,7 @@ export default function BlacBirdieFarms() {
                     <li key={d} className="flex items-center gap-3"><span aria-hidden="true" className="h-[3px] w-3 bg-gaffer" />{d}</li>
                   ))}
                 </ul>
-                <p className="slate mt-8 text-[12px] text-muted">Logo, system and layouts designed by CDH. Photography is AI-generated; labels, stamps, signage and ads are mockups placed by CDH.</p>
+                <p className="slate mt-8 text-[12px] text-muted">Logo, system and layouts designed by CDH. Packaging, labels, stamps, signage and ads are shown as concept mockups.</p>
               </div>
             </div>
           </div>

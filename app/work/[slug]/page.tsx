@@ -89,7 +89,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
               <div><h2 className="sr-only">The brief</h2><p className="max-w-[48ch] text-[20px] leading-[1.5] text-body md:text-[24px]">{c.brief}</p></div>
               <dl className="grid gap-5 border-t border-line pt-6 text-[15px] sm:grid-cols-2">
                 <div><dt className="slate text-[12px] text-muted">For</dt><dd className="mt-1 font-semibold">{c.lanes.map((l) => LANES[l]).join(", ")}</dd></div>
-                <div><dt className="slate text-[12px] text-muted">Discipline</dt><dd className="mt-1 font-semibold">{c.disciplines.map((d) => DISCIPLINES[d]).join(", ")}</dd></div>
+                <div><dt className="slate text-[12px] text-muted">Dept.</dt><dd className="mt-1 font-semibold">{c.disciplines.map((d) => DISCIPLINES[d]).join(", ")}</dd></div>
                 {c.year && <div><dt className="slate text-[12px] text-muted">Year</dt><dd className="mt-1 font-semibold">{c.year}</dd></div>}
                 <div>
                   <dt className="slate text-[12px] text-muted">What we did</dt>
@@ -151,7 +151,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
               <ul className="mt-5 grid gap-2 text-[17px] font-semibold">
                 {c.credits.map((cr) => <li key={cr}>{cr}</li>)}
               </ul>
-              {(c.ai || c.notice) && <p className="mt-6 max-w-[48ch] text-[14px] leading-[1.5] text-muted">{[c.ai, c.notice].filter(Boolean).join(" ")}</p>}
+              {(c.fine || c.notice) && <p className="mt-6 max-w-[48ch] text-[14px] leading-[1.5] text-muted">{[c.fine, c.notice].filter(Boolean).join(" ")}</p>}
             </div>
             <div className="min-w-0 rounded-md bg-[#121110] p-7 text-[#efe9df] md:p-9">
               <p className="slate text-gaffer">Want this for your brand?</p>

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { cases } from "./content/work";
 import { site } from "./content/services";
+import { offers } from "./content/offer";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}/start`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${site.url}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     { url: `${site.url}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
+    ...offers.map((o) => ({ url: `${site.url}/services/${o.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.85 })),
     ...cases.filter((c) => !c.archived).map((c) => ({ url: `${site.url}/work/${c.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 })),
   ];
 }

@@ -6,14 +6,15 @@ import SiteFooter from "./components/SiteFooter";
 import { CommentaryBar } from "./components/Commentary";
 import { display, mono, marker } from "./fonts";
 import { site } from "./content/services";
+import { depts, offers } from "./content/offer";
 import "./globals.css";
 
 const url = site.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
-  title: { default: "Creative Direction Hub · Media Company for Creative Direction & AI Art Direction", template: "%s · Creative Direction Hub" },
-  description: "A media company led by Willie Bernoudy, specializing in creative direction and AI art direction. Brand identity, logos, packaging and social media branding for consumer brands, personal brands and hospitality.",
+  title: { default: "Creative Direction Hub · Branding, Marketing, Websites & Brand Photography", template: "%s · Creative Direction Hub" },
+  description: "A media company led by creative director Willie Bernoudy. Branding, marketing (SEO, AEO, GEO, social and Google Ads), websites and brand photography for consumer brands, personal brands and hospitality.",
   openGraph: { siteName: "Creative Direction Hub", type: "website", url, locale: "en_US" },
   twitter: { card: "summary_large_image" },
   alternates: { canonical: "./" },
@@ -37,11 +38,11 @@ const schema = {
       areaServed: "Worldwide",
       founder: { "@type": "Person", "@id": `${url}/about#willie`, name: "Willie Bernoudy", jobTitle: "Founder, Creative Director and AI Art Director" },
       image: `${url}/opengraph-image`,
-      knowsAbout: ["Creative direction", "AI art direction", "Brand strategy", "Brand identity", "Logo design", "Packaging design", "Social media branding", "Advertising campaigns", "Paid social advertising", "Photography", "Brand film", "Commercial production", "Web design"],
+      knowsAbout: ["Creative direction", "Brand strategy", ...offers.map((o) => o.long ?? o.name)],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Services",
-        itemListElement: ["Brand identity", "Logo design", "Packaging design", "Social media branding", "Brand rollout", "Free Creative Audit"].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })),
+        itemListElement: depts.map((d) => ({ "@type": "OfferCatalog", name: d.name, itemListElement: offers.filter((o) => o.dept === d.id).map((o) => ({ "@type": "Offer", itemOffered: { "@type": "Service", "@id": `${url}/services/${o.slug}#service`, name: o.long ?? o.name, url: `${url}/services/${o.slug}` } })) })),
       },
     },
     { "@type": "WebSite", "@id": `${url}/#site`, url, name: "Creative Direction Hub", alternateName: "CDH", inLanguage: "en-US", publisher: { "@id": `${url}/#org` } },

@@ -2,7 +2,7 @@
 // label: "client" = paid client work. "concept" = made by CDH, not commissioned. "studio" = CDH's own brands. "personal" = Willie's own photography.
 
 export type Lane = "consumer" | "personal" | "hospitality";
-export type Discipline = "identity" | "logo" | "packaging" | "social" | "rollout";
+export type Discipline = "branding" | "marketing" | "websites" | "photography";
 export type Label = "client" | "concept" | "studio" | "personal";
 
 export type Media =
@@ -22,12 +22,13 @@ export type Case = {
   cover: Media;
   media: Media[];
   credits: string[];
-  ai?: string;
+  /** Fine print: what is a concept, a mockup or an invented brand. */
+  fine?: string;
   notice?: string;
   /** Willie's own note on the thinking behind the work, signed by him. */
   note?: string;
   selected?: number;
-  /** Which package the project was, shown on its card like "Brand identity / Take 02". */
+  /** Which package the project was, shown on its card like "Branding / Take 02". */
   take?: "Take 01" | "Take 02" | "Take 03";
   /** Has its own hand-built page at /work/<slug>, so the generic case template skips it. */
   custom?: boolean;
@@ -38,7 +39,7 @@ export type Case = {
 };
 
 export const LANES: Record<Lane, string> = { consumer: "Consumer brands", personal: "Personal brands", hospitality: "Hospitality" };
-export const DISCIPLINES: Record<Discipline, string> = { identity: "Brand identity", logo: "Logo design", packaging: "Packaging design", social: "Social media branding", rollout: "Brand rollout" };
+export const DISCIPLINES: Record<Discipline, string> = { branding: "Branding", marketing: "Marketing", websites: "Websites", photography: "Photography" };
 export const LABELS: Record<Label, string> = { client: "Client", concept: "Concept", studio: "Studio", personal: "Personal work" };
 
 import local from "../components/spec-local.json";
@@ -68,7 +69,7 @@ export const cases: Case[] = [
     client: "Blacktravelgram",
     label: "client",
     lanes: ["personal", "hospitality"],
-    disciplines: ["social"],
+    disciplines: ["marketing", "photography"],
     year: "2021",
     brief: "Blacktravelgram is a travel community for Black travelers. Willie joined its creative brand squad when the account had about 38,000 followers, shot travel photography for it, and helped grow it past 100,000.",
     did: [
@@ -100,7 +101,7 @@ export const cases: Case[] = [
     label: "studio",
     lanes: ["consumer"],
     take: "Take 03",
-    disciplines: ["identity", "logo", "packaging", "social"],
+    disciplines: ["branding"],
     year: "2026",
     brief: "Blac Birdie Farms grows grey, pink and yellow oyster and lion's mane mushrooms in Magee, Mississippi, for chefs, restaurants and the local market. The identity is built on one true line: grown in the dark, picked at first light.",
     did: ["Logo design", "Brand identity", "Packaging and care cards", "Entrance and market signage", "Social ads"],
@@ -108,7 +109,7 @@ export const cases: Case[] = [
     media: [img("/work/blac-birdie-farms/board-01.webp", "Blac Birdie Farms hero board", 2000, 1350)],
     note: "Every farm at the market is kraft and green. I wanted the one table you could see from the parking lot. Black boxes, a black tent, and the mushrooms bringing all the color. The bird stayed exactly as it was. It just learned how to rise.",
     credits: ["Creative direction, logo and identity: Willie Bernoudy", "Layouts and mockups: CDH network"],
-    ai: "Photography is AI-generated. Labels, stamps, signage and ads are mockups placed by CDH. Blac Birdie Farms is Willie's own farm brand, not client work.",
+    fine: "Packaging, labels, stamps, signage and ads are shown as concept mockups. Blac Birdie Farms is Willie's own farm brand, not client work.",
     selected: 1.5,
   },
   {
@@ -117,7 +118,7 @@ export const cases: Case[] = [
     client: "Hattiesburg Black Sox",
     label: "client",
     lanes: ["consumer"],
-    disciplines: ["rollout", "social"],
+    disciplines: ["marketing", "photography"],
     year: "",
     brief: "A hometown baseball club took its season on the road to Kentucky and needed one person over every picture, post and layout the team put out while it was there.",
     did: [
@@ -144,7 +145,7 @@ export const cases: Case[] = [
     client: "H.O.P.E Live Agency",
     label: "client",
     lanes: ["personal"],
-    disciplines: ["rollout"],
+    disciplines: ["websites"],
     year: "2026",
     brief: "A TikTok LIVE creator management agency needed a site that recruits creators: what they get, how it works, and one clear way to apply.",
     did: [
@@ -171,7 +172,7 @@ export const cases: Case[] = [
     client: "Talent and founders",
     label: "client",
     lanes: ["personal"],
-    disciplines: ["social", "rollout"],
+    disciplines: ["photography"],
     year: "",
     brief: "People who are their own brand need pictures that look as serious as they are. One session, a year of content.",
     did: [
@@ -204,12 +205,12 @@ export const cases: Case[] = [
     client: "Island resort concept",
     label: "concept",
     lanes: ["hospitality"],
-    disciplines: ["rollout"],
+    disciplines: ["marketing"],
     year: "2026",
     brief: "A private villa sells the moment you land. This spot sells that moment: the jet, the tarmac, the driver, the water.",
     did: [
       "Script, shot list and direction",
-      "AI-assisted production, from plane to villa, with a labeled AI performer",
+      "Production from plane to villa, directed shot by shot",
       "A 30-second arrival film",
     ],
     cover: { kind: "video", src: "/media/luxury-travel.mp4", poster: "/media/luxury-travel.webp", alt: "A private jet banks over turquoise water toward a Caribbean island", w: 1280, h: 720, ai: true },
@@ -217,7 +218,7 @@ export const cases: Case[] = [
       { kind: "video", src: "/media/luxury-travel.mp4", poster: "/media/luxury-travel.webp", alt: "Arrival film: a jet lands, a guest steps onto the tarmac, a driver waits, the car runs along the coast", w: 1280, h: 720, caption: "Arrival film, 0:30", ai: true },
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
-    ai: "Made with AI tools. The on-screen lead is an AI performer. Concept made by CDH for an invented island resort.",
+    fine: "Concept made by CDH for an invented island resort.",
     selected: 5,
   },
   {
@@ -227,7 +228,7 @@ export const cases: Case[] = [
     client: "Consumer brands",
     label: "concept",
     lanes: ["consumer"],
-    disciplines: ["social", "rollout"],
+    disciplines: ["marketing"],
     year: "2026",
     brief: "Paid social for Meta and TikTok lives or dies in the first three seconds. These are the hooks, the cuts and the statics we make on a weekly loop.",
     did: [
@@ -243,7 +244,7 @@ export const cases: Case[] = [
       ...statics.map(([brand, line, id]) => img(spec(id), `${brand} static ad concept: ${line}`, 1080, 1920, `${brand}, static concept`)),
     ],
     credits: ["Directed by Willie Bernoudy", "Edit and motion: CDH network"],
-    ai: "Every spot here is AI-made. UGC-style spots use AI performers and are labeled as such. Static concepts for real brands are not commissioned by, affiliated with or endorsed by those brands.",
+    fine: "Concept work. Static concepts for real brands are not commissioned by, affiliated with or endorsed by those brands.",
   },
   {
     slug: "identity",
@@ -252,7 +253,7 @@ export const cases: Case[] = [
     label: "studio",
     lanes: ["consumer"],
     take: "Take 01",
-    disciplines: ["logo", "identity"],
+    disciplines: ["branding"],
     year: "",
     brief: "Three small brands, three marks built to work at app-icon size and on a storefront.",
     did: ["Logo and wordmark", "Color and type"],
@@ -272,10 +273,10 @@ export const cases: Case[] = [
     client: "Short brand films",
     label: "concept",
     lanes: ["consumer"],
-    disciplines: ["rollout"],
+    disciplines: ["marketing"],
     year: "2026",
     brief: "Two short films that sell a feeling before a product: a golf morning, and a son coming home.",
-    did: ["Script and direction", "AI-assisted production, color and sound"],
+    did: ["Script and direction", "Production, color and sound"],
     cover: { kind: "video", src: "/media/golf-lifestyle.mp4", poster: "/media/golf-lifestyle.webp", alt: "A hand sets a golf ball on a tee in low gold light", w: 1080, h: 1920, ai: true },
     media: [
       { kind: "video", src: "/media/golf-lifestyle.mp4", poster: "/media/golf-lifestyle.webp", alt: "Tee Time: a golf morning in low gold light", w: 1080, h: 1920, caption: "Tee Time, 0:15", ai: true },
@@ -283,7 +284,7 @@ export const cases: Case[] = [
       { kind: "video", src: "/media/morning-routine.mp4", poster: "/media/morning-routine.webp", alt: "Morning Routine: a quiet morning, coffee in hand", w: 1080, h: 1920, caption: "Morning Routine, 0:15", ai: true },
     ],
     credits: ["Written and directed by Willie Bernoudy"],
-    ai: "Made with AI tools. People shown are AI performers.",
+    fine: "Concept films made by CDH, not commissioned by a client.",
   },
   {
     slug: "travel",
@@ -291,7 +292,7 @@ export const cases: Case[] = [
     client: "Personal work",
     label: "personal",
     lanes: ["hospitality"],
-    disciplines: ["rollout"],
+    disciplines: ["photography"],
     year: "",
     brief: "Hotels and travel brands buy an eye for place. This is mine, shot across 23 countries, the Great Wall included.",
     did: ["Travel and landscape photography", "Editorial color", "Licensed for hospitality campaigns on request"],
@@ -313,7 +314,7 @@ export const cases: Case[] = [
     client: "Cafe and juice bar",
     label: "concept",
     lanes: ["hospitality", "consumer"],
-    disciplines: ["social"],
+    disciplines: ["marketing"],
     year: "",
     brief: "A social set a cafe can post the same day: one product, one offer, one picture that makes you thirsty.",
     did: ["Social campaign graphics", "Offer and menu templates", "Sized for feed and story"],
@@ -323,7 +324,7 @@ export const cases: Case[] = [
       img("/work/gfx-liceria-coffee.webp", "Cold cappuccino social graphic with the line Fresh on the menu", 640, 800, "Cafe, offer post"),
     ],
     credits: ["Creative direction: Willie Bernoudy", "Design: CDH network"],
-    ai: "Concept work. Brand names shown are placeholders.",
+    fine: "Concept work. Brand names shown are placeholders.",
   },
   {
     slug: "art-direction",
@@ -332,7 +333,7 @@ export const cases: Case[] = [
     client: "Skincare concept",
     label: "concept",
     lanes: ["consumer"],
-    disciplines: ["packaging", "identity"],
+    disciplines: ["branding"],
     year: "2026",
     brief: "AI can make anything, which is why most of it looks like nothing in particular. This is one product held to one rulebook: same bottle, same light, same palette, across every shot.",
     did: ["A visual rulebook: palette, light, lens and styling", "Two scenes directed to that rulebook, product consistent shot to shot", "Every frame reviewed before it ships"],
@@ -341,7 +342,7 @@ export const cases: Case[] = [
       { kind: "video", src: "/media/art-direction.mp4", poster: "/media/art-direction.webp", alt: "Shot one: the bottle on travertine in morning sun. Shot two: the same bottle on a limestone shelf as a hand lifts the dropper and a golden drop falls", w: 1280, h: 720, caption: "Two shots, one rulebook, 0:10", ai: true },
     ],
     credits: ["Art direction: Willie Bernoudy", "AI production: CDH network"],
-    ai: "Made with AI tools. The hand is AI-generated. The product is an invented concept, not a real brand.",
+    fine: "The product is an invented concept, not a real brand.",
   },
   {
     slug: "dinner-service",
@@ -350,16 +351,16 @@ export const cases: Case[] = [
     client: "Restaurant concept",
     label: "concept",
     lanes: ["hospitality"],
-    disciplines: ["rollout", "social"],
+    disciplines: ["marketing"],
     year: "2026",
     brief: "A dining room sells the moment the plate leaves the pass. This spot is that moment: the final leaf, the wiped rim, the hand-off, candlelight behind it.",
-    did: ["Script, shot design and direction", "AI-assisted production with a labeled AI performer", "A 16:9 spot ready to cut down for Reels"],
+    did: ["Script, shot design and direction", "Production directed shot by shot", "A 16:9 spot ready to cut down for Reels"],
     cover: { kind: "video", src: "/media/dinner-service.mp4", poster: "/media/dinner-service.webp", alt: "A chef plates seared fish at the pass of a candlelit restaurant", w: 1280, h: 720, ai: true },
     media: [
       { kind: "video", src: "/media/dinner-service.mp4", poster: "/media/dinner-service.webp", alt: "A chef sets the final herb leaf with tweezers, wipes the plate rim and slides it to a server, guests and a wood-fired oven glowing behind", w: 1280, h: 720, caption: "Dinner service, 0:08", ai: true },
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
-    ai: "Made with AI tools. People shown are AI performers. Concept made by CDH; not commissioned by any restaurant.",
+    fine: "Concept made by CDH; not commissioned by any restaurant.",
   },
   {
     slug: "her-mark",
@@ -367,16 +368,16 @@ export const cases: Case[] = [
     client: "Brand film concept",
     label: "concept",
     lanes: ["consumer", "personal"],
-    disciplines: ["packaging", "rollout"],
+    disciplines: ["branding", "marketing"],
     year: "2026",
     brief: "Every founder who lands here has had a 1:47 AM: filming the product under a ring light, posting it, watching nothing happen. This film is that night, then the same kitchen directed. Same woman, same sauce, a real brand on the bottle, and what happens when it lands.",
-    did: ["Story, script and an 11-frame storyboard, every frame approved before a second of video", "The brand itself: name, label and the orange mark it stands on", "AI-assisted production with labeled AI performers, held consistent shot to shot", "Supers, score and end card, cut to 30 seconds for paid social"],
+    did: ["Story, script and an 11-frame storyboard, every frame approved before a second of video", "The brand itself: name, label and the orange mark it stands on", "Production held consistent shot to shot", "Supers, score and end card, cut to 30 seconds for paid social"],
     cover: { kind: "video", src: "/media/her-mark-cover.mp4", poster: "/media/her-mark-cover.webp", alt: "Sunrise in a home kitchen: hot sauce ribbons off a wooden spoon into a cast iron skillet beside a Mama Lou's bottle on an orange tape mark", w: 1280, h: 720, ai: true },
     media: [
       { kind: "video", src: "/media/her-mark.mp4", poster: "/media/her-mark-cover.webp", alt: "A founder films her hot sauce at 1:47 AM under a ring light, a director tapes an orange mark on her counter, the same kitchen at sunrise with her branded bottle, a sold-out pop-up, her mother in tears watching the ad", w: 1280, h: 720, caption: "Her Mark. Brand film, 0:30", ai: true, sound: true },
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
-    ai: "Made with AI tools. Everyone shown is an AI performer. Mama Lou's is an invented brand made by CDH to show the work; it is not a real business.",
+    fine: "Mama Lou's is an invented brand made by CDH to show the work; it is not a real business.",
     selected: 4,
   },
   {
@@ -385,10 +386,10 @@ export const cases: Case[] = [
     client: "Commercial concepts",
     label: "concept",
     lanes: ["consumer", "hospitality", "personal"],
-    disciplines: ["rollout"],
+    disciplines: ["marketing"],
     year: "2026",
     brief: "A skincare brand, a small hotel and a founder-led ceramics studio, one for each lane we work in. Each spot is written, art directed, scored and cut the way a paid commercial would be, with the same faces, product and places held shot to shot.",
-    did: ["Script, shot list and a visual rulebook for each brand", "AI-assisted production with labeled AI performers, kept consistent across every shot", "Original score, supers and end card, cut as finished spots under 30 seconds"],
+    did: ["Script, shot list and a visual rulebook for each brand", "Production kept consistent across every shot", "Original score, supers and end card, cut as finished spots under 30 seconds"],
     cover: { kind: "video", src: "/media/spots-cover.mp4", poster: "/media/spots-cover.webp", alt: "Morning sun across a travertine bathroom shelf with an amber dropper bottle", w: 1280, h: 720, ai: true },
     media: [
       { kind: "video", src: "/media/spot-halden.mp4", poster: "/media/spot-halden.webp", alt: "Halden face oil: a quiet bathroom at dawn, an amber dropper bottle, a woman pressing oil into her skin, ending on the bottle in moving sunlight", w: 1280, h: 720, caption: "Halden, face oil. Consumer brands, 0:30", ai: true, sound: true },
@@ -396,7 +397,7 @@ export const cases: Case[] = [
       { kind: "video", src: "/media/spot-okafor.mp4", poster: "/media/spot-okafor.webp", alt: "Okafor Clay: the founder at the potter's wheel, opening the kiln, wrapping an order, then standing in her studio doorway", w: 1280, h: 720, caption: "Okafor Clay, founder brand. Personal brands, 0:30", ai: true, sound: true },
     ],
     credits: ["Written and directed by Willie Bernoudy", "AI production: CDH network"],
-    ai: "Made with AI tools, including the music. Everyone shown is an AI performer. Halden, Casa Marisol and Okafor Clay are invented brands made by CDH to show the work; none of them is a real business.",
+    fine: "Halden, Casa Marisol and Okafor Clay are invented brands made by CDH to show the work; none of them is a real business.",
     selected: 6,
   },
 ];

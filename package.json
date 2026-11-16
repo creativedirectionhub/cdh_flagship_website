@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/fetch-spec.mjs && next build",
+    "build": "node scripts/gates.mjs && node scripts/fetch-spec.mjs && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gates": "node scripts/gates.mjs"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "5.1.0",

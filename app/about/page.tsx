@@ -99,15 +99,15 @@ export default function AboutPage() {
       <section className="gutter border-t border-line bg-raised py-20 md:py-28" aria-labelledby="ai-title">
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
           <div className="reveal min-w-0">
-            <p className="slate text-muted">How we use AI</p>
-            <h2 id="ai-title" className="mt-4 text-[clamp(40px,5.6vw,84px)] font-black leading-[0.92] tracking-tighter">For speed and range. Labeled every time.</h2>
+            <p className="slate text-muted">How the work gets made</p>
+            <h2 id="ai-title" className="mt-4 text-[clamp(40px,5.6vw,84px)] font-black leading-[0.92] tracking-tighter">By people. Checked by a director.</h2>
           </div>
           <ul className="reveal min-w-0 grid border-t border-line">
             {[
-              "We use AI tools for concepts, edits, product shots, voice and AI performers, when they get you a better result faster.",
-              "Every AI person or scene is labeled as AI, on this site and in the work we hand you.",
+              "A director decides the idea, the light and the frame before anything gets made.",
+              "We use the tools that get you the best result, old and new. Ask how any piece was made and we'll tell you.",
               "Where a real face matters, we cast real people and shoot for real.",
-              "A director checks every piece before you see it. Nothing ships straight from a model.",
+              "A director checks every piece before you see it. Nothing ships unchecked.",
               "You own what you pay for.",
             ].map((t) => (
               <li key={t} className="relative border-b border-line py-5 pl-7 text-[18px] leading-[1.5]">

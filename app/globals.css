@@ -318,3 +318,30 @@ html[data-spot] main > *:not([data-cm-on]), html[data-spot] body > footer { opac
 @media (prefers-reduced-motion: reduce) {
   .bbf-anim .bbf-disc, .bbf-anim .bbf-rise { animation: none; }
 }
+
+/* ---- Call sheet: a strip of gaffer slaps down behind the scene you point at ---- */
+.cs-row { position: relative; isolation: isolate; transition: color .18s linear, padding-left .28s cubic-bezier(.2,.9,.2,1); }
+.cs-row::before {
+  content: ""; position: absolute; z-index: -1; left: -14px; right: -14px; top: 7px; bottom: 7px; background: #ff5a1f;
+  clip-path: polygon(0 8%, .6% 30%, 0 52%, .6% 74%, 0 96%, 99.4% 100%, 100% 78%, 99.4% 56%, 100% 34%, 99.4% 12%, 100% 0);
+  transform: scaleX(0) rotate(-.35deg); transform-origin: 0 50%; transition: transform .28s cubic-bezier(.2,.9,.2,1);
+}
+.cs-row:hover::before, .cs-row:focus-visible::before { transform: scaleX(1) rotate(-.35deg); }
+.cs-row:hover, .cs-row:focus-visible { color: #121110; padding-left: 10px; outline: none; }
+.cs-row:hover .cs-num, .cs-row:hover .cs-sub, .cs-row:focus-visible .cs-num, .cs-row:focus-visible .cs-sub { color: #121110; }
+.cs-go { opacity: 0; transform: translateX(-8px); transition: opacity .2s, transform .28s cubic-bezier(.2,.9,.2,1); }
+.cs-row:hover .cs-go, .cs-row:focus-visible .cs-go { opacity: 1; transform: none; }
+@media (hover: none) { .cs-go { opacity: 1; transform: none; color: #ff5a1f; } }
+
+/* Service slate: the stick claps once when the page lands */
+.scene-clap { transform-origin: 2% 100%; animation: sceneClap .5s cubic-bezier(.7,0,1,1) .35s both; }
+@keyframes sceneClap { 0% { transform: rotate(-18deg); } 78% { transform: rotate(-18deg); } 100% { transform: none; } }
+
+/* Header menus drop like a sheet off a clipboard */
+.drop { transform-origin: 50% 0; animation: dropIn .22s cubic-bezier(.2,.9,.2,1) both; }
+@keyframes dropIn { from { opacity: 0; transform: translateY(-6px) rotate(-.6deg); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-row, .cs-row::before, .cs-go { transition: none; }
+  .scene-clap, .drop { animation: none; }
+}
