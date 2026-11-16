@@ -3,20 +3,38 @@ import path from "node:path";
 import type { Pair } from "../components/DirectedSlider";
 
 // Undirected / directed pairs for the home page slider. Concept frames, labeled Concept on the image.
-// One per lane (a consumer product, a personal brand, a hospitality plate), plus a home page for the same invented hot sauce brand.
+// First, two takes from the Her Mark film, playing side by side. Then stills: a home page for the same brand, a founder and a plate.
 export const pairs: Pair[] = [
   {
-    id: "product",
-    lane: "Consumer brand",
-    title: "The bottle on the counter.",
-    before: "/media/directed/product-before.webp",
-    after: "/media/directed/product-after.webp",
-    beforeAlt: "Undirected: the same hot sauce bottle on a cluttered kitchen counter next to mail and a coffee mug, shot with a harsh phone flash",
-    afterAlt: "Directed: the same hot sauce bottle on warm stone in low side light, a pepper and a spoon placed beside it",
+    id: "film",
+    lane: "The film",
+    title: "Same kitchen. Same sauce.",
+    before: "/media/directed/film-before.webp",
+    after: "/media/directed/film-after.webp",
+    beforeVideo: "/media/directed/film-before.mp4",
+    afterVideo: "/media/directed/film-after.mp4",
+    beforeTag: "1:47 AM",
+    afterTag: "Sunrise",
+    beforeAlt: "Undirected: a founder alone in her dark kitchen at night, holding her hot sauce bottle up to a ring light and frowning at it",
+    afterAlt: "Directed: the same founder in the same kitchen at sunrise, hands flat on the counter, looking into the camera, her Mama Lou's bottle standing on an orange tape mark in front of her",
     notes: [
-      "One light, low and from the side, so the glass glows instead of glaring.",
-      "Clutter out. Two props in, each one telling you what's inside.",
-      "Camera down at bottle height, so the label reads like a hero.",
+      "The ring light went back in the drawer. The sun does the work now, from behind her, at the hour that kitchen looks its best.",
+      "The bottle came out of her hand and onto its mark. Dead center, label to camera.",
+      "She stopped looking at the product and started looking at you.",
+    ],
+  },
+  {
+    id: "website",
+    lane: "Website",
+    title: "The home page.",
+    before: "/media/directed/website-before.webp",
+    after: "/media/directed/website-after.webp",
+    beforeAlt: "Undirected: a template home page for Mama Lou's hot sauce with a promo banner, three small copies of the same flash photo, three buttons and three icon boxes",
+    afterAlt: "Directed: the same home page rebuilt around one wide photograph of the branded Mama Lou's bottle on its orange mark beside a steaming skillet, the headline One pot. One recipe. No shortcuts. and a single Order a bottle button",
+    notes: [
+      "One photograph, edge to edge, from the film. Not three small copies of a flash shot.",
+      "One headline that says what makes it hers, and one button. Three buttons is no decision at all.",
+      "Cream, red and a serif taken from the label, so the site and the bottle look like family.",
     ],
   },
   {
@@ -45,20 +63,6 @@ export const pairs: Pair[] = [
       "Low angle at eye level with the plate, the way a guest actually sees it.",
       "Candle and window instead of the yellow overheads.",
       "A hand in frame. People book people, not plates.",
-    ],
-  },
-  {
-    id: "website",
-    lane: "Website",
-    title: "The home page.",
-    before: "/media/directed/website-before.webp",
-    after: "/media/directed/website-after.webp",
-    beforeAlt: "Undirected: a template home page for Mama Lou's hot sauce with a promo banner, three small copies of the same flash photo, three buttons and three icon boxes",
-    afterAlt: "Directed: the same home page rebuilt around one wide photograph of the branded Mama Lou's bottle on its orange mark beside a steaming skillet, the headline One pot. One recipe. No shortcuts. and a single Order a bottle button",
-    notes: [
-      "One photograph, edge to edge, from the film. Not three small copies of a flash shot.",
-      "One headline that says what makes it hers, and one button. Three buttons is no decision at all.",
-      "Cream, red and a serif taken from the label, so the site and the bottle look like family.",
     ],
   },
 ];

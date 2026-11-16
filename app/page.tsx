@@ -108,7 +108,7 @@ export default function Home() {
               <p className="slate text-gaffer">What direction does</p>
               <h2 id="directed-title" className="reveal mt-5 text-[clamp(44px,7vw,120px)] font-black leading-[0.9] tracking-tightest">Same subject.{" "}<br />Directed.</h2>
             </div>
-            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">Most businesses don&apos;t have a product problem. They have a picture problem. Drag the line to see what changes when someone decides the light, the lens and the frame on purpose.</p>
+            <p className="reveal max-w-[44ch] text-[18px] leading-[1.6] text-body">Most businesses don&apos;t have a product problem. They have a picture problem. Two takes of the same woman in the same kitchen are rolling below. Drag the line across them.</p>
           </div>
           <DirectedSlider pairs={readyPairs} />
         </div>

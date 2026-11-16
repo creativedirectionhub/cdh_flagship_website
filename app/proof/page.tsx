@@ -191,7 +191,7 @@ export default function ProofPage() {
                   <p className="slate mt-2 text-[12px] text-[#efe9df]/55">Certified 22 Nov 2020</p>
                 </div>
               </div>
-              <Image src="/proof/nd-seal.webp" alt="ND Awards 2020 Honorable Mention seal" width={727} height={698} className="absolute -bottom-8 -right-4 w-[124px] rotate-[8deg] drop-shadow-[0_14px_24px_rgba(0,0,0,0.35)] sm:-right-8 sm:w-[156px]" />
+              <Image src="/proof/nd-seal.webp" alt="ND Awards 2020 Honorable Mention seal" width={727} height={698} className="absolute -bottom-8 right-0 w-[124px] sm:-right-4 rotate-[8deg] drop-shadow-[0_14px_24px_rgba(0,0,0,0.35)] sm:-right-8 sm:w-[156px]" />
             </div>
             <a href="/proof/nd-certificate.webp" target="_blank" rel="noopener" className="slate mt-12 inline-block border-b border-current pb-0.5 text-[12px] hover:text-gaffer">View the certificate</a>
             <ul className="mt-10 grid border-t border-line text-[16px]">
