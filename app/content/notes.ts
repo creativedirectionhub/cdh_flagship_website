@@ -98,6 +98,48 @@ export const notes: Note[] = [
       ] },
     ],
   },
+  {
+    slug: "where-google-ads-money-goes",
+    title: "Where your Google Ads money is really going",
+    answer: "Open the search terms report in your Google Ads account. It lists the exact words people typed before they clicked your ad. Most accounts find a large share of the budget went to searches that had nothing to do with what they sell.",
+    date: "2026-11-16",
+    services: ["google-ads", "website-design"],
+    sections: [
+      { h: "Keywords are not what people typed", p: [
+        "You pick keywords. Google decides which searches are close enough to match them. A plumber bidding on drain repair can end up paying for clicks from people looking for a drain repair course.",
+        "The search terms report shows what was actually typed. It sits under Insights and reports in the account. Sort it by cost and read the top fifty lines.",
+      ] },
+      { h: "Three things to do with what you find", p: [
+        "Add the junk as negative keywords, so you stop paying for it tomorrow. Words like free, jobs, salary, course and DIY are common ones.",
+        "Take the searches that led to calls and build ads that use those exact words. Then check where each ad sends people.",
+      ] },
+      { h: "The page matters as much as the ad", p: [
+        "An ad for emergency drain repair that lands on a home page makes the visitor start their search over. Most of them leave.",
+        "Send each ad to a page about that one thing, with the phone number at the top and one button. Track calls and forms, so next month you know what a customer cost and not just what a click cost.",
+      ] },
+    ],
+  },
+  {
+    slug: "menu-in-six-places",
+    title: "Your menu is in six places. Do they agree?",
+    answer: "A restaurant menu usually lives on the printed card, the website, Google, the delivery apps, social media and the sign. When prices, hours or dishes differ between them, guests lose trust and search engines and AI assistants repeat the wrong one.",
+    date: "2026-11-16",
+    services: ["restaurant-branding", "aeo"],
+    sections: [
+      { h: "Check all six tonight", p: [
+        "Pull up the printed menu, your website, your Google Business Profile, each delivery app, your last menu post and the board by the door. Compare one dish, one price and tonight's closing time across all of them.",
+        "Most owners find at least two that are out of date. The PDF from last spring is the usual one.",
+      ] },
+      { h: "Why it costs you tables", p: [
+        "A guest who sees one price online and another at the table feels tricked, even when it was an honest mistake.",
+        "Assistants and maps apps answer questions like is it open now and do they have a vegetarian option from whatever they can read. If the readable version is old, the answer is wrong and you never hear about it.",
+      ] },
+      { h: "Fix the source, then the look", p: [
+        "Keep one master menu and update the other five from it on the same day, every time. Put the menu on your site as real text, not only a picture or a PDF, so it can be read by a phone and by a search engine.",
+        "Then design it. A menu that is easy to read and guides the eye to the dishes you want to sell will earn its cost back faster than almost anything else you print.",
+      ] },
+    ],
+  },
 ];
 
 export const noteBySlug = (slug: string) => notes.find((n) => n.slug === slug);
