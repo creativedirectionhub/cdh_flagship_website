@@ -1,6 +1,7 @@
 import { depts, offers } from "../content/offer";
 import { faqs, site } from "../content/services";
 import { LABELS, shownCases } from "../content/work";
+import { notes } from "../content/notes";
 
 // /llms.txt: the site in plain Markdown, for AI assistants that read it. Built from the same content files as the pages.
 export const dynamic = "force-static";
@@ -23,6 +24,10 @@ export function GET() {
     "## Work",
     "",
     ...shownCases.map((c) => `- [${c.client}: ${c.title}](${u}/work/${c.slug}) (${LABELS[c.label]}): ${c.brief}`),
+    "",
+    "## Notes",
+    "",
+    ...notes.map((n) => `- [${n.title}](${u}/notes/${n.slug}): ${n.answer}`),
     "",
     "## How we work",
     "",

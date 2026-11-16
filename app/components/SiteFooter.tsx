@@ -28,6 +28,7 @@ export default function SiteFooter() {
               <ul className="grid font-semibold">
                 <li><Link href="/work" className="inline-flex min-h-[44px] items-center hover:text-gaffer">Work</Link></li>
                 <li><Link href="/proof" className="inline-flex min-h-[44px] items-center hover:text-gaffer">Proof</Link></li>
+                <li><Link href="/notes" className="inline-flex min-h-[44px] items-center hover:text-gaffer">Notes</Link></li>
                 <li><Link href="/about" className="inline-flex min-h-[44px] items-center hover:text-gaffer">About</Link></li>
                 <li><Link href="/start" className="inline-flex min-h-[44px] items-center hover:text-gaffer">Free Creative Audit</Link></li>
                 <li><Link href="/#wall" className="inline-flex min-h-[44px] items-center hover:text-gaffer">Sign the wall</Link></li>

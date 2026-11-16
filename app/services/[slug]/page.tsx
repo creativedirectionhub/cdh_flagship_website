@@ -8,6 +8,7 @@ import { BOOKING_URL } from "../../config";
 import { bySlug } from "../../content/work";
 import { site } from "../../content/services";
 import { deptById, offerBySlug, offers, pad2, sceneOf } from "../../content/offer";
+import { notesFor } from "../../content/notes";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -177,6 +178,21 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+
+      {notesFor(o.slug).length > 0 && (
+        <section className="gutter border-t border-line py-14 md:py-20" aria-labelledby="notes-title">
+          <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+            <h2 id="notes-title" className="slate text-muted">Read before you hire anyone</h2>
+            <ul className="border-t border-line">
+              {notesFor(o.slug).map((n) => (
+                <li key={n.slug} className="border-b border-line">
+                  <Link href={`/notes/${n.slug}`} className="block py-5 text-[clamp(20px,2vw,28px)] font-extrabold leading-[1.15] tracking-[-0.015em] hover:text-gaffer">{n.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* Next scene */}
       <nav aria-label="More services" className="gutter border-t border-line">
