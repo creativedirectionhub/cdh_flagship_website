@@ -63,6 +63,10 @@ Work passes all of these or it does not go on the site. This is what keeps slop 
 - Skin has texture. Nothing waxy, nothing over-symmetrical, no floating props, no nonsense signage.
 - It could sit next to the Black Sox photographs without looking like a different company made it.
 
+**Ads**
+- Every ad, for CDH or a client, on the site or off it, is made through the `/cdh-ad-engine` process: insight, brief, hooks, script, shot prompts, then the read. That is where the cinematic look is set. No ad goes on the site or into an account without it.
+- An ad shown on the site passes the Images and film gates above like any other piece.
+
 **Design**
 - No purple-to-blue gradients, glass panels, glowing blobs, or three matching icon cards.
 - No stock icons as the main visual language. Tape, slates and type do the work.
