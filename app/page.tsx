@@ -18,7 +18,7 @@ import { depts } from "./content/offer";
 const services: { href: string; name: string; line: string; poster: string; alt: string }[] = [
   { href: "/services#branding", name: "Branding", line: depts[0].line, poster: "/work/logo-wall.webp", alt: "Four logos by CDH: Blac Birdie Farms, Soulful Ties, Trading One and Good Laughs" },
   { href: "/services#marketing", name: "Marketing", line: depts[1].line, poster: "/work/btg-cover.webp", alt: "A slice of the Blacktravelgram Instagram grid: Black travelers in bright, sunlit shots at beaches, Petra, a Moroccan street mural and an overwater bungalow" },
-  { href: "/services/website-design", name: "Websites", line: depts[2].line, poster: "/work/hope-cover.webp", alt: "The H.O.P.E Live Agency website on a laptop and a phone" },
+  { href: "/services/website-design", name: "Websites", line: depts[2].line, poster: "/work/tile-websites.webp", alt: "The Creative Direction Hub services pages on a desktop browser and a phone, on a dark stage with a strip of orange gaffer tape" },
   { href: "/services/brand-photography", name: "Photography", line: depts[3].line, poster: "/work/portrait-37.webp", alt: "A woman in a dark dress and leopard scarf, sunglasses on, on a tree-lined path" },
 ];
 

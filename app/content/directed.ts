@@ -3,7 +3,7 @@ import path from "node:path";
 import type { Pair } from "../components/DirectedSlider";
 
 // Undirected / directed pairs for the home page slider. Concept frames, labeled Concept on the image.
-// One per lane: a consumer product, a personal brand, a hospitality plate.
+// One per lane (a consumer product, a personal brand, a hospitality plate), plus a home page for the same invented hot sauce brand.
 export const pairs: Pair[] = [
   {
     id: "product",
@@ -45,6 +45,20 @@ export const pairs: Pair[] = [
       "Low angle at eye level with the plate, the way a guest actually sees it.",
       "Candle and window instead of the yellow overheads.",
       "A hand in frame. People book people, not plates.",
+    ],
+  },
+  {
+    id: "website",
+    lane: "Website",
+    title: "The home page.",
+    before: "/media/directed/website-before.webp",
+    after: "/media/directed/website-after.webp",
+    beforeAlt: "Undirected: a template home page for Mama Lou's hot sauce with a promo banner, three small copies of the same flash photo, three buttons and three icon boxes",
+    afterAlt: "Directed: the same home page rebuilt around one wide photograph of the branded Mama Lou's bottle on its orange mark beside a steaming skillet, the headline One pot. One recipe. No shortcuts. and a single Order a bottle button",
+    notes: [
+      "One photograph, edge to edge, from the film. Not three small copies of a flash shot.",
+      "One headline that says what makes it hers, and one button. Three buttons is no decision at all.",
+      "Cream, red and a serif taken from the label, so the site and the bottle look like family.",
     ],
   },
 ];
