@@ -348,7 +348,7 @@ export const offers: Offer[] = [
     line: "Pictures that prove it.",
     answer: "Brand photography is a planned shoot of your people, products and places, made to be used across your site, ads and social for months.",
     body: [
-      "Our director has spent fifteen years behind a camera, in 23 countries. It comes down to one habit: decide the light, the lens and the frame on purpose.",
+      "Our director has spent fifteen years behind a camera, in 23 countries and on the set of Bid for Love 2. It comes down to one habit: decide the light, the lens and the frame on purpose.",
       "We build the shot list around where the pictures will run, direct the shoot, and deliver edited images cropped for every placement. Founders and teams. Products and food. Rooms, events and game days.",
     ],
     get: ["A shot list built from where the photos will run", "A directed shoot: people, product and place", "Edited images, cropped for site, ads and social", "A library organized by use", "Usage rights spelled out in writing"],

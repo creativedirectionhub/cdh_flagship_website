@@ -121,5 +121,8 @@ export const brandDealsLine = "Paid brand deals where Willie concepted, shot and
 /** Everything above, in one list, for schema and anywhere a single list is needed. */
 export const brands = [...clients, ...brandDeals];
 
+// A credit shown as words only. No stills from the set go on the site until the production says yes.
+export const setCredit = "Behind-the-scenes photography on the set of Bid for Love 2.";
+
 // Talent Willie has photographed.
 export const talent = ["Eva Marcille", "David Banner", "Blac Chyna", "Adrian Lockett", "Blue Kimble", "Ptosha Storey", "DreamDoll", "Jada Wada"];

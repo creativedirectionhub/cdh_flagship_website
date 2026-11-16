@@ -12,7 +12,7 @@ import { readyPairs } from "./content/directed";
 import TapeWipe from "./components/TapeWipe";
 import { TapeMark } from "./components/Brand";
 import { BOOKING_URL } from "./config";
-import { clients, brandDeals, brandDealsLine, talent, values, network, process } from "./content/services";
+import { clients, brandDeals, brandDealsLine, talent, setCredit, values, network, process } from "./content/services";
 import { depts } from "./content/offer";
 
 const services: { href: string; name: string; line: string; poster: string; alt: string }[] = [
@@ -85,6 +85,7 @@ export default function Home() {
           <TapeNames names={brandDeals} tone="bone" className="reveal mt-8" />
           <h2 className="slate mt-16 text-muted">Talent photographed</h2>
           <p className="reveal mt-5 max-w-[60ch] text-[clamp(18px,1.8vw,24px)] font-semibold leading-[1.45] text-body">{talent.join(" · ")}</p>
+          <p className="slate mt-6 text-[12px] text-muted"><span aria-hidden="true" className="mr-3 inline-block h-[3px] w-4 -translate-y-[3px] bg-gaffer" />{setCredit}</p>
         </div>
       </section>
 
